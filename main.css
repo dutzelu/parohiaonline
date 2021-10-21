@@ -1,0 +1,318 @@
+@import url('https://fonts.googleapis.com/css?family=Lora');
+
+.mare {
+  max-width: 950px;
+  margin-left: 250px;
+  padding-top: 0;
+  padding-left: 1vw;
+}
+ 
+a.logo, a.logo:hover {
+  display: block;
+  background: #FFF !important;
+  border-bottom: 3px solid red;
+}
+
+.btn-danger:hover {
+  color: #FFF;
+  background-color: #dc3545;
+  border-color: #dc3545;
+  cursor: default !important;
+}
+
+.red {color:#dc3545}
+.badge {font-weight: normal;}
+
+div.capcalendar {
+  background: #FFF;
+  padding: 16px 0 0 0;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border: 2px dashed #0d6efd;
+  border-bottom:none;
+}
+
+.rezervari {margin-top:50px;}
+ 
+a.logo:after {content:none!important;}
+
+.albastru {color:0d6efd;}
+
+.h1, h1.titlu, h2.titlu {font-size:1.4em; margin-bottom:20px;}
+:link {text-decoration: none!important;}
+li { list-style-type: none; }
+.form-wrapper {
+  margin: 50px auto 50px;
+  font-family: 'Lora', serif;
+  font-size: 1.09em;
+}
+.form-wrapper.login { margin-top: 120px; }
+.form-wrapper p { font-size: .8em; text-align: center; }
+.form-control:focus { box-shadow: none; }
+.form-wrapper {
+  border: 1px solid #0d6efd;
+  border-radius: 5px;
+  padding: 25px 15px 0px 15px;
+}
+.form-wrapper.auth .form-title { color: #0d6efd; }
+.home-wrapper button,
+.form-wrapper.auth button {
+  background: #0d6efd;
+  color: white;
+}
+.home-wrapper {
+  margin-top: 150px;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #80CED7;
+}
+
+.container-fluid {padding:3vw;}
+.container .logo {width:300px;}
+.container h3 {margin-bottom:20px;}
+
+.mb-3 {margin: 0 36px;}
+.rezerva {margin-top:20px;}
+.albastru {color:#007bff}
+
+.form-control-lg, .input-group-lg > .form-control, .input-group-lg > .input-group-append > .btn, .input-group-lg > .input-group-append > .input-group-text, .input-group-lg > .input-group-prepend > .btn, .input-group-lg > .input-group-prepend > .input-group-text {
+  padding: .5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .2rem;
+}
+
+h3 {font-size: 1.5rem;}
+.btn-group-lg > .btn, .btn-lg {font-size: 1rem;}
+
+.email-verificat {display:block; margin:20px 0 0 10px; font-size:12px; color:#777;}
+
+
+/* Tabel */
+
+.styled-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  border-radius:5px 5px 0 0 ;
+  overflow: hidden;
+}
+
+  
+.styled-table thead tr {
+  background-color: #007bff;
+  color: #ffffff;
+  text-align: left;
+}
+
+.styled-table .albastru {font-weight:bold;}
+tr.clickable-row:hover > td > span.albastru {color:#FFF;}  
+tr.clickable-row > td > a.btn-danger:hover {background:#ee4d5d; cursor:pointer!important; border:2px solid #FFF}
+
+.styled-table tr:hover, .styled-table tbody tr:nth-of-type(even):hover {background:#007bff; color:#FFF; cursor:pointer;}
+
+.styled-table th,
+.styled-table td {
+  padding: 8px 15px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+/* .styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+} */
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #007bff;
+}
+
+.styled-table tbody tr.active-row {
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* tabel rezervare */
+
+#tabel-rezervare p { background:#f8f8f8; padding:4px 0px; border-radius: 10px 0 0 10px; line-height:25px}
+
+#tabel-rezervare img {max-width:800px;margin-top:10px;}
+
+#tabel-rezervare .cap {background:#007bff; color:#FFF; padding:8px 15px; border-radius: 10px 0 0 10px; margin-right:10px;}
+.stanga {margin-left:20px;}
+
+#butoane {margin-bottom:20px;}
+
+/* Calendar luat de pe W3 */
+
+ul {list-style-type: none;padding:0}
+ol.lista li {list-style-type: disc;}
+body {font-family: Georgia, sans-serif;}
+
+/* Month header */
+.month {
+  padding: 70px 25px;
+  width: 100%;
+  background: #1abc9c;
+  text-align: center;
+}
+
+/* Month list */
+.month ul {
+  margin: 0;
+  padding: 0;
+}
+
+.month ul li {
+  color: white;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+
+/* Weekdays (Sun-Sat) */
+.weekdays {
+  margin: 0;
+  padding: 10px 0;
+  background-color:#007bff;
+}
+
+.weekdays li {
+  display: inline-block;
+  width: 13.1%;
+  color: #FFF;
+  text-align: center;
+}
+
+
+.calendar-day {font-size:18px;}
+
+/* Days (1-31) */
+.days {
+  padding: 10px 0;
+  margin: 0;
+  border: 2px dashed #007bff;
+      border-top-color: rgb(0, 123, 255);
+      border-top-style: dashed;
+      border-top-width: 2px;
+  border-top: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.days li {
+  list-style-type: none;
+  display: inline-block;
+  width: 13.1%;
+  text-align: right;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+/* Highlight the "current" day */
+.days li .active {
+  padding: 5px;
+  background: #1abc9c;
+  color: white !important
+}
+
+
+/* ---------- Sidebar ---------- */ 
+
+ /* The side navigation menu */
+ .sidebar {
+  margin: 0;
+  padding: 0;
+  width: 250px;
+  background-color:ghostwhite;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+  border-bottom:4px solid red;
+}
+
+/* Sidebar links */
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.sidebar a.active {background:red; color:#FFF;}
+.sidebar a:hover:after {display:inline-block; padding-left:5px;}
+
+/* Active/current link */
+.sidebar a.active {
+  background-color: #007bff;
+  color: white;
+  border-right: 5px solid red;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+  background-color: red;
+  color: white;
+}
+
+
+
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+@media screen and (max-width: 950px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.mare {margin-left: 0;}
+}
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+  .weekdays li {width: 11.71%;}
+  .btn {padding: .275rem .35rem;}
+} 
+
+/* mesaje intre preot si parintii copilului */
+
+#zone_mesaje {
+  padding: 25px;
+  border: 9px solid #EFEFEF;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+ul#zone_mesaje li {padding:20px;}
+ul#zone_mesaje li:nth-child(odd) {background: #EFEFEF; }
+
+@media print {
+
+body * {visibility:hidden}
+#butoane, #butoane * {visibility:hidden}
+
+#tabel-rezervare, #tabel-rezervare * {visibility: visible;}
+
+  #tabel-rezervare {
+    position:absolute;
+    top:0px;
+    left:0px;
+  }
+
+  #tabel-rezervare p {margin:10px; border:1px solid #000;}
+  #tabel-rezervare p span {background:none;}
+ 
+
+
+  #tabel-rezervare .cap {font-weight:bold; border:1px solid #000; margin-right:10px;color:#000}
+.stanga {margin-left:20px;}
+  h5 {font-size:25px;margin:10px;}
+ 
+}
