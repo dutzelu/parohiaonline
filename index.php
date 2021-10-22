@@ -3,10 +3,13 @@
 include 'controllers/authController.php';
 include "conexiune.php";
 
+echo "Treaba-i buna!";
+
 setlocale(LC_ALL, 'ro_RO');
-var_dump($_SESSION['id']);
+ 
 
 $id = $_SESSION['id'];
+var_dump ($_SESSION['id']);
 $sql = "SELECT * FROM users WHERE id= $id AND admin = 1";
 $rezultate = mysqli_query ($conn, $sql);
 while ($data = mysqli_fetch_assoc($rezultate)){  
