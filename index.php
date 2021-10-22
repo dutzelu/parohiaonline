@@ -7,7 +7,7 @@ setlocale(LC_ALL, 'ro_RO');
 var_dump($_SESSION['id']);
 
 $id = $_SESSION['id'];
-$sql = "SELECT * FROM `users` WHERE `id`= $id AND `admin`=1";
+$sql = "SELECT * FROM users WHERE id= $id AND admin = 1";
 $rezultate = mysqli_query ($conn, $sql);
 while ($data = mysqli_fetch_assoc($rezultate)){  
     $admin = $data['admin'];
