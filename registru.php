@@ -1,4 +1,8 @@
-<?php include "header-admin.php"; 
+<?php 
+
+header ('Content-type: text/html; charset=utf-8');
+
+      include "header-admin.php"; 
       include "sidebar-admin.php";
 
       if (isset($_GET['eveniment'])) {
