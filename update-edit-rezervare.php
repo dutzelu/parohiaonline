@@ -1,7 +1,6 @@
 <?php
 
 include "header-frontend.php"; 
-// include "sidebar-frontend.php"; 
 include "functions.php";
 
 if (isset($_GET['id'])) {
