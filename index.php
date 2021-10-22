@@ -3,8 +3,6 @@
 include 'controllers/authController.php';
 include "conexiune.php";
 
-echo "Treaba-i buna!";
-
 setlocale(LC_ALL, 'ro_RO');
  
 
