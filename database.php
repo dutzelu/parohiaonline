@@ -73,8 +73,8 @@ class database{
 
             $sql="SELECT $rows FROM $table $altele";
         }
-
-
+        
+        $this->sql = $result = $this->mysqli->set_charset("utf8");
         $this->sql = $result = $this->mysqli->query($sql);
 
     }
