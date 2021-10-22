@@ -1,6 +1,6 @@
  <div class="sidebar">
   <ul>  
-  <li><a href="registru.php?eveniment=programari_botez" class="logo"><img src="images\logo-parohiaonline" width="100%"></a></li>
+  <li><a href="registru.php?eveniment=programari_botez" class="logo"><img src="images\logo-parohiaonline.png" width="100%"></a></li>
   <li><a href="registru.php?eveniment=programari_botez">Registru Botezuri</a></li>
   <li><a href="registru.php?eveniment=programari_cununie">Registru Cununii</a></li>
   <!-- <li><a href="registru.php?eveniment=programari_spovedanie">Registru Spovedanie</a></li>
