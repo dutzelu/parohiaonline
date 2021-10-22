@@ -5,7 +5,7 @@ include 'database.php';
 include 'functions.php';
 include "conexiune.php";
 
-// redirect user to index  page if they're not logged in
+// redirect user to index page if they're not logged in
 if (empty($_SESSION['id'])) {
     header('location:index.php');
 }
