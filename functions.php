@@ -85,36 +85,6 @@ function replaceSpecialChars($string){
   }
 
 
-
-// function tipProgramare ($status) {
-
-//     global $conn;
-//     $query = 'SELECT * FROM programari_botez WHERE status = ? ORDER BY data_si_ora ASC';
-//     $stmt = $conn->prepare($query);
-//     $stmt->bind_param('s', $status);
-//     $result = $stmt->execute();
-//     $result = $stmt->get_result();
- 
-//   while($data = $result->fetch_assoc()) {
-//     include "extras-programare.php";
-//     echo '<p><a href="rezervare-unica.php?id=' . $id .  '">' . ' ' . date("d.m.Y", strtotime($data_si_ora)) . ' - <span class="red">' . $eveniment . '</span> - ora: ' . date("H:i", strtotime($data_si_ora)) . ' - '  . $nume_mama . ' ' . $prenume_mama .  '</a><br />';
-//   }
-
-//   global $conn;
-//   $query = 'SELECT * FROM programari_cununie WHERE status = ? ORDER BY data_si_ora ASC';
-//   $stmt = $conn->prepare($query);
-//   $stmt->bind_param('s', $status);
-//   $result = $stmt->execute();
-//   $result = $stmt->get_result();
-
-// while($data = $result->fetch_assoc()) {
-//   include "extras-programare-cununie.php";
-//   echo '<p><a href="rezervare-unica-cununie.php?id=' . $id .  '">' . ' ' . date("d.m.Y", strtotime($data_si_ora)) . ' - <span class="red">' . $eveniment . '</span> - ora: ' . date("H:i", strtotime($data_si_ora)) . ' - '  . $nume_mire . ' ' . $prenume_mire .  '</a><br />';
-// }
-
-// }
-
-
 function upload_foto($input, $nume_fisier, $link) {
 
     if( isset($_FILES[$input]) ){
