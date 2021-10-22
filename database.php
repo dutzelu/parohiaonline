@@ -5,9 +5,9 @@ class database{
     public $que;
 
     private $servername='localhost';
-    private $username='root';
-    private $password='';
-    private $dbname='parohiaonline';
+    private $username='ambrozie_dutzelu';
+    private $password='parola92';
+    private $dbname='ambrozie_parohiaonline';
     private $result=array();
     private $mysqli='';
 
