@@ -15,7 +15,7 @@ while ($data = mysqli_fetch_assoc($rezultate)){
 
 // redirect user to login page if they're not logged in
 if (empty($_SESSION['id'])) {
-    header('location: login.php');
+    header('location: index.php');
 } elseif (!empty($_SESSION['id']) && $admin == 0) {
     header('location: frontend.php?pentru=botez');
 } elseif (!empty($_SESSION['id']) && $admin == 1) {

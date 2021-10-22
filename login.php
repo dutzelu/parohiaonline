@@ -30,7 +30,7 @@
         
         ?>
 
-        <form action="login.php" method="post">
+        <form action="index.php" method="post">
           <div class="form-group">
             <label>Utilizator sau Email</label>
             <input type="text" name="username" class="form-control form-control-lg" value="<?php echo $username; ?>">

@@ -9,7 +9,7 @@ $numar_pas = (int) filter_var($nume_fisier, FILTER_SANITIZE_NUMBER_INT);
 
 // redirect user to login page if they're not logged in
 if (empty($_SESSION['id'])) {
-    header('location: login.php');
+    header('location: index.php');
 }
 
 if ( isset($_GET['pentru']) ) {$pentru = $_GET['pentru'];} else {$pentru = "";}
