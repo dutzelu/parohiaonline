@@ -75,11 +75,11 @@ if (isset($_POST['raspunde'])) {
 
         $mesaj_email .= 'Vă rugăm să vă conectați pe site-ul nostru în zona aplicației de <a href="http://localhost/parohiaonline/index.php">programări online</a> cu userul și parola pe care le-ați ales, ca să atașați documentele și informațiile care lipsesc. Apoi părintele va verifica din nou validitatea rezervării și veți primi un răspuns prin email dar și direct în aplicație.';
         
-        $email_admin = 'balan.claudiu@gmail.com';
+        $email_admin = 'parohiaonline@sfantulambrozie.ro';
 
-        emailFaraAtasament ($email, $subiect, $mesaj_email);
-
-        header ('Location:rezervare-unica.php?id=' . $id);
+      
+        mail($email, $subiect, $mesaj_email);
+        echo '<script> location.replace("rezervare-unica.php?id=' . $id . '"); </script>';
 
     }
 
@@ -122,15 +122,19 @@ if (isset($_POST['raspunde'])) {
 
         $mesaj_email .= 'Vă rugăm să vă conectați pe site-ul nostru în zona aplicației de <a href="http://localhost/parohiaonline/index.php">programări online</a> cu userul și parola pe care le-ați ales, ca să atașați documentele și informațiile care lipsesc. Apoi părintele va verifica din nou validitatea rezervării și veți primi un răspuns prin email dar și direct în aplicație.';
         
-        $email_admin = 'balan.claudiu@gmail.com';
+        $email_admin = 'parohiaonline@sfantulambrozie.ro';
        
-        emailFaraAtasament ($email, $subiect, $mesaj_email);
-       
-        header ('Location:rezervare-unica-cununie.php?id=' . $id);
+        mail($email, $subiect, $mesaj_email);
+        echo '<script> location.replace("rezervare-unica-cununie.php?id=' . $id . '"); </script>';
 
     }
 
 } 
+?>
+
+
+
+ 
 
 
     

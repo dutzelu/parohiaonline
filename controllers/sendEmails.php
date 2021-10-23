@@ -2,9 +2,9 @@
 include 'vendor/autoload.php';
 
 // Create the Transport
-$transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
-    ->setUsername("balan.claudiu@gmail.com")
-    ->setPassword("parola92");
+$transport = (new Swift_SmtpTransport('mail.sfantulambrozie.ro ', 465, 'ssl'))
+    ->setUsername("parohiaonline@sfantulambrozie.ro")
+    ->setPassword("Parola*0920");
 
 // Create the Mailer using your created Transport
 $mailer = new Swift_Mailer($transport);
@@ -48,7 +48,7 @@ function sendVerificationEmail($userEmail, $token, $username)
 
     // Create a message
     $message = (new Swift_Message('Programare botez/cununie'))
-        ->setFrom("balan.claudiu@gmail.com", "Parohia Apărătorii Patriei II Sf. Ierarh Ambrozie")
+        ->setFrom("parohiaonline@sfantulambrozie.ro", "Parohia Apărătorii Patriei II Sf. Ierarh Ambrozie")
         ->setTo($userEmail)
         ->setBody($body, 'text/html');
 
@@ -83,7 +83,7 @@ function emailCuAtasament ($email, $subiect, $link_cerere, $mesaj_email)
 
     // Create a message
     $message = (new Swift_Message($subiect))
-        ->setFrom("balan.claudiu@gmail.com", "Parohia Apărătorii Patriei II Sf. Ambrozie")
+        ->setFrom("parohiaonline@sfantulambrozie.ro", "Parohia Apărătorii Patriei II Sf. Ambrozie")
         ->setTo($email)
         ->setBody($body, 'text/html');
 
@@ -118,7 +118,7 @@ function emailFaraAtasament ($email, $subiect, $mesaj_email)
 
     // Create a message
     $message = (new Swift_Message($subiect))
-        ->setFrom("balan.claudiu@gmail.com", "Parohia Apărătorii Patriei II Sf. Ambrozie")
+        ->setFrom("parohiaonline@sfantulambrozie.ro", "Parohia Apărătorii Patriei II Sf. Ambrozie")
         ->setTo($email)
         ->setBody($body, 'text/html');
 

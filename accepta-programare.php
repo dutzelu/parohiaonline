@@ -234,9 +234,15 @@ $mesaj_email_admin .= '
 <p>Am atașat la acest email cererea și declarația.</p>';
 $subiect_admin = "Programare: " . $eveniment . '  ' . date("d.m.Y", strtotime($data_si_ora)) . ' ora: ' . date("H:i", strtotime($data_si_ora)) .' pe numele: ' . $nume_mama . ' ' . $prenume_mama;
 
-$email_admin = 'balan.claudiu@gmail.com';
+$email_admin = 'parohiaonline@sfantulambrozie.ro';
 
-emailCuAtasament ($email, $subiect, $link_cerere, $mesaj_email);
-emailCuAtasament ($email_admin, $subiect_admin, $link_cerere, $mesaj_email_admin);
+// emailCuAtasament ($email, $subiect, $link_cerere, $mesaj_email);
+// emailCuAtasament ($email_admin, $subiect_admin, $link_cerere, $mesaj_email_admin);
 
-header ('Location:rezervare-unica.php?id=' . $id);
+mail($email, $subiect, $mesaj_email);
+mail($email_admin, $subiect_admin, $mesaj_email_admin);
+
+?>
+// header ('Location:rezervare-unica.php?id=' . $id);
+
+<script> location.replace("rezervare-unica.php?id=<?php echo $id; ?>"); </script>

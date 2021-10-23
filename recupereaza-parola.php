@@ -19,7 +19,7 @@ $rezultate = mysqli_query ($conn, $sql);
 
     // Create the Transport
 $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
-->setUsername("balan.claudiu@gmail.com")
+->setUsername("parohiaonline@sfantulambrozie.ro")
 ->setPassword("parola92");
 
 // Create the Mailer using your created Transport
@@ -60,7 +60,7 @@ $mailer = new Swift_Mailer($transport);
 
     // Create a message
     $message = (new Swift_Message('Resetare parolă'))
-        ->setFrom("balan.claudiu@gmail.com", "Parohia Apărătorii Patriei II Sf. Ierarh Ambrozie")
+        ->setFrom("parohiaonline@sfantulambrozie.ro", "Parohia Apărătorii Patriei II Sf. Ierarh Ambrozie")
         ->setTo($email)
         ->setBody($body, 'text/html');
 
