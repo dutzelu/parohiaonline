@@ -1,15 +1,15 @@
 <?php
+
+session_start();
+
 include 'controllers/sendEmails.php';
 include "conexiune.php";
 
-session_start();
 $nume = "";
 $prenume = "";
 $username = "";
 $email = "";
 $errors = [];
-
-
 
 // SIGN UP USER
 if (isset($_POST['signup-btn'])) {
@@ -57,8 +57,9 @@ if (isset($_POST['signup-btn'])) {
             $stmt->close();
 
             // TO DO: send verification email to user
+            $url_site = 'https://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']);
             sendVerificationEmail($email, $token, $username);
-
+         
             $_SESSION['id'] = $user_id;
             $_SESSION['nume'] = $nume;
             $_SESSION['prenume'] = $prenume;

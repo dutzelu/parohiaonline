@@ -7,17 +7,26 @@ include "conexiune.php";
 
 // redirect user to index page if they're not logged in
 if (empty($_SESSION['id'])) {
-    header('location:index.php');
+    echo '<script>location.replace("index.php");</script>';
 }
 
 setlocale(LC_ALL, 'ro_RO');
 
 $id = $_SESSION['id'];
-$sql = "SELECT * FROM `users` WHERE `id`= $id AND `admin`=1";
-$rezultate = mysqli_query ($conn, $sql);
-while ($data = mysqli_fetch_assoc($rezultate)){  
+
+$query = "SELECT * FROM users WHERE id = ? AND admin = 1";
+$stmt = $conn->prepare($query);
+$stmt->bind_param('i', $id);
+$result = $stmt->execute();
+$result = $stmt->get_result();
+
+while ($data = mysqli_fetch_assoc($result)){  
     $admin = $data['admin'];
 }
+ 
+ 
+ 
+
 
  
 
