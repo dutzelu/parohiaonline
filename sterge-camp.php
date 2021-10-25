@@ -17,7 +17,7 @@ if (!$conn) {
 }
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-header('location: zile-stabilite.php?month=' .$month .'&year='. $year .'&pentru=' .$pentru);
+echo '<script> location.replace("zile-stabilite.php?month=' . $month .'&year='. $year .'&pentru=' .$pentru .'"); </script>';
 
 
 

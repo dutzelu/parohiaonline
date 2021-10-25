@@ -27,8 +27,6 @@ $numar = '';
  }
 $data_ora_cateheza = $year . '-' . $month . '-' . $zi . ' ' . $ora_cateheza . ":00";
 
-var_dump($pentru);
-
 if ($pentru == 'cateheza_botez') {$query = "UPDATE programari_botez SET data_ora_cateheza = ? WHERE id = ?";}
 elseif ($pentru == 'cateheza_cununie') {$query = "UPDATE programari_cununie SET data_ora_cateheza = ? WHERE id = ?";}
 
@@ -36,6 +34,8 @@ $stmt = $conn->prepare($query);
 $stmt->bind_param('si', $data_ora_cateheza, $id);
 $result = $stmt->execute();
 
+echo '<script> location.replace("home-unic.php?succes=ok"); </script>';
 
-header('Location:home-unic.php?succes=ok');
 ?>
+
+

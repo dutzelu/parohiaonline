@@ -1,7 +1,7 @@
 <?php include 'header-admin.php';
 
 if (!empty($_SESSION['id']) && $admin == 0) {
-    header('location: frontend.php?pentru=botez');
+    echo '<script> location.replace("frontend.php?pentru=botez"); </script>';
 } 
 
 ;?>
@@ -234,18 +234,7 @@ while ($data = mysqli_fetch_assoc($rezultate)){
         }
 
 
-
-
-
 ?>
-
-
-
-
-
-
-
-
 
 
     </div>

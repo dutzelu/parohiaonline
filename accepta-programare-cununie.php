@@ -2,6 +2,10 @@
 include "header-frontend.php"; 
 include "functions.php"; 
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require 'vendor/autoload.php';
+
 if (isset($_GET['id'])) {$id = $_GET['id'];} 
 
 // modific in baza de date statusul cererii (programarii), daca e cazul
@@ -206,13 +210,15 @@ $mesaj_email_admin .= '
 <p>Am atașat la acest email cererea și declarația.</p>';
 $subiect_admin = "Programare: " . $eveniment . '  ' . date("d.m.Y", strtotime($data_si_ora)) . ' ora: ' . date("H:i", strtotime($data_si_ora)) .' pe numele: ' . $nume_mire . ' ' . $prenume_mire;
 
-$email_admin = 'balan.claudiu@gmail.com';
+$email_admin = 'parohiaonline@sfantulambrozie.ro';
 
-emailCuAtasament ($email, $subiect, $link_cerere, $mesaj_email);
-emailCuAtasament ($email_admin, $subiect_admin, $link_cerere, $mesaj_email_admin);
+$from = 'parohiaonline@parohiasfantulambrozie.ro';
+$name = 'Parohia Sf. Ambrozie București';
+ 
+phpmailer ($email, $from, $name, $subiect, $mesaj_email, $link_cerere);
+phpmailer ($email_admin, $from, $name, $subiect_admin, $mesaj_email_admin, $link_cerere='');
 
-header ('Location:rezervare-unica-cununie.php?id=' . $id); 
-
-
-
+ 
 ?>
+
+<script> location.replace("rezervare-unica-cununie.php?id=<?php echo $id; ?>"); </script>

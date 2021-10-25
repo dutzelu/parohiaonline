@@ -54,7 +54,7 @@
           </div>
         </form>
         
-        <p>Ai deja un cont? <a href="login.php">Login</a></p>
+        <p>Ai deja un cont? <a href="index.php">Login</a></p>
       </div>
     </div>
 

@@ -33,6 +33,14 @@ div.capcalendar {
 }
 
 .rezervari {margin-top:50px;}
+
+#dispari {
+  color: #fff;
+  background-color: #198754!important;
+  border-color: #198754!important;
+  padding: 5px 10px!important;
+  border-radius:10px!important;
+}
  
 a.logo:after {content:none!important;}
 

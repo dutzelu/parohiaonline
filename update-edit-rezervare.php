@@ -1,7 +1,6 @@
 <?php
 
 include "header-frontend.php"; 
-// include "sidebar-frontend.php"; 
 include "functions.php";
 
 if (isset($_GET['id'])) {
@@ -249,9 +248,9 @@ while($data = $result->fetch_assoc()) {
     $admin = $data['admin'];
  
     if ($admin == 0) {
-        header ('Location:home-unic.php?id=' . $id_programare . '&edit=ok');
+        echo '<script> location.replace("home-unic.php?id=' . $id_programare . '&edit=ok"); </script>';
     } elseif ($admin == 1) {
-        header ('Location:rezervare-unica.php?id=' . $id_programare . '&edit=ok');
+        echo '<script> location.replace("rezervare-unica.php?id=' . $id_programare . '&edit=ok"); </script>';
     }
     
 

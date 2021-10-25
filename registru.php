@@ -1,4 +1,6 @@
-<?php include "header-admin.php"; 
+<?php 
+
+      include "header-admin.php"; 
       include "sidebar-admin.php";
 
       if (isset($_GET['eveniment'])) {

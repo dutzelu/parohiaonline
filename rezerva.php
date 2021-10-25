@@ -1,10 +1,9 @@
-
-<?php
+<?php 
 
 if (!empty($_SESSION['id']) && $admin == 0) {
-   header('location: frontend.php?pentru=botez');
+   echo '<script> location.replace("frontend.php?pentru=botez"); </script>';
 } elseif (!empty($_SESSION['id']) && $admin == 1) {
-   header('location: registru.php?eveniment=programari_botez');
+   echo '<script> location.replace("registru.php?eveniment=programari_botez"); </script>';
 }
 
 include "header-admin.php";
@@ -45,13 +44,7 @@ if (isset($_GET['month']) && isset($_GET['year'])) {
 
  }
 
- header('location: zile-stabilite.php?month=' .$month .'&year='. $year .'&pentru=' .$pentru);
-
-
-
-
-
+ echo '<script> location.replace("zile-stabilite.php?month=' . $month .'&year='. $year .'&pentru=' .$pentru .'"); </script>';
 
 ?>
-
-
+ 

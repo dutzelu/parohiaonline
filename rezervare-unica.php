@@ -13,6 +13,12 @@ include "functions.php";
 
 <?php
 
+if (isset($_GET['succes'])) { 
+  echo '<h1 class="h1">Cererea ta de programare online s-a finalizat cu succes. În cel mai scurt timp părintele va confirma PRIN EMAIL primirea rezervării și a documetelor trimise sau vă va cere detalii suplimentare. </h1>'
+  ;
+  $succes = $_GET['succes'];
+} else $succes = '';
+
 
 if (isset($_GET['id'])) {$id_programare = $_GET['id'];} 
 if (isset($_GET['status'])) {
@@ -80,16 +86,16 @@ while($data = $result->fetch_assoc()) {
     echo '<p><span class="cap">Telefon: </span>' . $telefon . '</p>';
     echo '<p><span class="cap">Email: </span>' . $email . '</p>';
 
-    echo '<p><span class="cap">Nume copil: </span>' . $nume_copil . ' ' . $prenume_copil . ' | Nume botez copil: ' . $nume_botez_copil . '</p>';
+    echo '<p><span class="cap">Nume copil: </span>' . $nume_copil . ' ' . $prenume_copil . '  <span class="cap stanga"> Nume botez copil: </span>' . $nume_botez_copil . '</p>';
 
     echo '<p><span class="cap">Data nașterii copilului </span>' . $data_nasterii_copilului . '</p>'; 
     echo '<p><span class="cap">Număr certificat de naștere: </span>' . $numar_certificat_nastere . '</p>';
     echo '<p><span class="cap">Data eliberării certificatului: </span>' . $data_eliberarii_certificatului . '</p>';
     echo '<p><span class="cap">Eliberat de Primăria: </span>' . $eliberat_de_primaria . '</p>';
     echo '<p><span class="cap">Nași: </span>' . $nume_nas . ' și ' . $nume_nasa . '</p>';
-    if (!empty($nume_cameraman)) {
-        echo '<p><span class="cap">Nume cameraman: </span>' . $nume_cameraman . " | Telefon: " . $telefon_cameraman . '</p>';
-    }
+    echo '<p><span class="cap">Nume cameraman: </span>' . $nume_cameraman . '</p>';
+    echo '<p><span class="cap">Telefon cameraman: </span>' . $telefon_cameraman . '</p>';
+    
 
     echo '<p><span class="cap">Carte de identitate tată: </span>';
 
