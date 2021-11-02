@@ -24,15 +24,7 @@
 
  
         <a href="logout.php">Logout</a>
-        <?php if (!$_SESSION['verified']): ?>
-          <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            Trebuie să confirmi adresa ta de email!
-            Conectați-vă la contul dvs. de e-mail și dați clic pe linkul de verificare pe care tocmai vi l-am trimis prin e-mail. 
-            <strong><?php echo $_SESSION['email']; ?></strong>
-          </div>
-        <?php else: ?>
-          <span class="email-verificat">Adresă de email verificată</span>
-        <?php endif;?>
+         
 </ul>
 </div>
 

@@ -1,61 +1,53 @@
 <?php
-include 'vendor/autoload.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+/* Exception class. */
+require 'phpmailer/src/Exception.php';
+
+/* The main PHPMailer class. */
+require 'phpmailer/src/PHPMailer.php';
+
+/* SMTP class, needed if you want to use SMTP. */
+require 'phpmailer/src/SMTP.php';
+
+$email = new PHPMailer();
 
 
-function sendVerificationEmail($userEmail, $token, $username)
+function phpmailer($to, $from, $from_name, $subject, $body, $path)
 {
-    global $url_site;
-    $mesaj = '<!DOCTYPE html>
-    <html>
+    $from = 'parohiaonline@parohiasfantulambrozie.ro';
+    $name = 'Parohia Sf. Ambrozie București';
+    
+    $mail = new PHPMailer();
+    $mail->IsSMTP();
+    $mail->SMTPAuth = true; 
+    $mail->CharSet = 'UTF-8';
+    $mail->setLanguage('ro');
+    $mail->SMTPSecure = 'ssl'; 
+    $mail->Host = 'mail.sfantulambrozie.ro';
+    $mail->Port = 465;  
+    $mail->Username = 'parohiaonline@sfantulambrozie.ro';
+    $mail->Password = 'Parola*0920';   
 
-    <head>
-      <meta charset="UTF-8">
-      <title>Test mail</title>
-      <style>
-        .wrapper {
-          padding: 20px;
-          color: #444;
-          font-size: 1.3em;
-        }
-        a {
-          background: #592f80;
-          text-decoration: none;
-          padding: 8px 15px;
-          border-radius: 5px;
-          color: #fff;
-        }
-      </style>
-    </head>
+    $mail->addAttachment($path);
 
-    <body>
-      <div class="wrapper">
-        <p>Vă mulțumim că v-ați înscris pe site-ul parohiei noastre. Ați primit acest email pentru că doriti să faceți o programare pentru Taina Sfântului Botezul sau Taina Sfintei Cununii la biserica noastră. </p>
-        <p>Datele dvs. de acces sunt următoarele:<br> <strong>Username:</strong> ' .$username . ' <br /><strong>Parolă:</strong> pe care ați ales-o.</p>
-        <p>Dacă ați uitat parola dați click aici: <a href="' .$url_site . '/recupereaza.php"> recuperează parola </a></p>
-        <p>Vă rugăm să dați clic pe linkul de mai jos pentru a vă verifica contul de email:</p>
-        <a href="' . $url_site . '/verify_email.php?token=' . $token . '"> Verificați emailul dumneavoastră! </a>
-      </div>
-    </body>
-
-    </html>';
-
- 
-
-    $subiect = "Programare botez/cununie";
-    $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";  
-    $headers .= 'From: <parohiaonline@sfantulambrozie.ro>' . "\r\n";
-
-
-    // Send the message
- 
-    mail($userEmail, $subiect, $mesaj, $headers);
-
-    if ($result > 0) {
-        return true;
-    } else {
-        return false;
+    $mail->IsHTML(true);
+    $mail->From="parohiaonline@sfantulambrozie.ro";
+    $mail->FromName=$from_name;
+    $mail->Sender=$from;
+    $mail->AddReplyTo($from, $from_name);
+    $mail->Subject = $subject;
+    $mail->Body = $body;
+    $mail->AddAddress($to);
+    if(!$mail->Send())
+    {
+        $error ="Vă rugăm încercați mai târziu. A apărut o eroare...";
+        return $error; 
+    }
+    else 
+    {
+        $error = "Mailul a fost trimis cu succes.";  
+        return $error;
     }
 }
-
- 

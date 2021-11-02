@@ -43,7 +43,7 @@ div.capcalendar {
 }
  
 a.logo:after {content:none!important;}
-
+.loginlink {width:100%; margin-bottom:30px;}
 .albastru {color:0d6efd;}
 
 .h1, h1.titlu, h2.titlu {font-size:1.4em; margin-bottom:20px;}
