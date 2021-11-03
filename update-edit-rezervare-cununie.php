@@ -124,10 +124,11 @@ while($data = $result->fetch_assoc()) {
     $admin = $data['admin'];
  
     if ($admin == 0) {
-        header ('Location:home-unic-cununie.php?id=' . $id_programare . '&edit=ok');
+        echo '<script> location.replace("home-unic-cununie.php?id=' . $id_programare . '&edit=ok"); </script>';
     } elseif ($admin == 1) {
-        header ('Location:rezervare-unica-cununie.php?id=' . $id_programare . '&edit=ok');
+        echo '<script> location.replace("rezervare-unica-cununie.php?id=' . $id_programare . '&edit=ok"); </script>';
     }
+    
     
 
     }

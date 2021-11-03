@@ -69,9 +69,6 @@ while ($data = mysqli_fetch_assoc($rezultate)){
 // ce ore rămân liber aflăm prin intersecția array-urilor
 $ore_libere = array_diff ($ore, $ore_rezervate);
 
-// var_dump($ore);
-// var_dump($ore_rezervate);
-// var_dump ($ore_libere);
 
 // Primul element al array-ului $ore
 $prima_valoare_ore = reset($ore); 
@@ -96,7 +93,7 @@ $prima_valoare_ore_libere = reset($ore_libere);
   }
   ?>
 
-<p><a class="btn btn-primary" href="<?php echo $pasul3;?>" role="button">Acceptă ora</a></p>
+<p><a class="btn btn-primary" href="<?php echo $pasul3;?>" role="button">Confirmă ora</a></p>
 
    
 

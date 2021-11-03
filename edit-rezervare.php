@@ -135,14 +135,14 @@ while ($data = mysqli_fetch_assoc($result)){
 <div class="row mb-1">
     <label class="col-sm-4 col-form-label">Carte identitate tată</label>
          <div class="col-sm-8">
-             <input type="file" name="tata_ci" class="col-sm-8 form-control" >
+             <input type="file" name="tata_ci" class="col-sm-8 form-control" onchange="ValidateSingleInput(this);validateSize(this);">
          </div>
     </div>
 
 <div class="row mb-1">
     <label class="col-sm-4 col-form-label">Carte identitate mamă *</label>
          <div class="col-sm-8">
-                <input type="file" name="mama_ci" class="col-sm-8 form-control" >
+                <input type="file" name="mama_ci" class="col-sm-8 form-control" onchange="ValidateSingleInput(this);validateSize(this);">
           </div>
 </div>
   
@@ -150,7 +150,7 @@ while ($data = mysqli_fetch_assoc($result)){
     <label class="col-sm-4 col-form-label">Plata contribuției anuale față de parohie *</label>
 
     <div class="col-sm-8">
-        <input type="file" name="plata_contributiei" class="col-sm-8 form-control" >
+        <input type="file" name="plata_contributiei" class="col-sm-8 form-control" onchange="ValidateSingleInput(this);validateSize(this);">
         <p>Se atașează copia chitanței plătite la biserică sau copia viramentului bancar (100 lei). <br />Puteți plăti contribuția în contul:<br /> <strong>RO11 RNCB 0083 0028 8937 0001</strong> titular fiind: <br /><strong>PAROHIA APARATORII PATRIEI II</strong>.</p>
     </div>
 </div>
@@ -158,7 +158,7 @@ while ($data = mysqli_fetch_assoc($result)){
 <div class="row mb-1">
     <label class="col-sm-4 col-form-label">Certificatul de naștere al copilului *</label>
     <div class="col-sm-8">
-     <input type="file" name="certificat_nastere_copil" class="col-sm-8 form-control" >
+     <input type="file" name="certificat_nastere_copil" class="col-sm-8 form-control" onchange="ValidateSingleInput(this);validateSize(this);">
     </div>
 </div>
    

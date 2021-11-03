@@ -1,4 +1,8 @@
-<?php include 'controllers/authController.php'; ?>
+<?php 
+
+include 'controllers/authController.php'; 
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +24,13 @@
      
     <div class="col-md-4 offset-md-4 form-wrapper auth login">
       <p><img src="images/logo-parohiaonline.png" class="logo"/></p>
+
+      <p> <?php 
+      
+           if ($_GET['succes'] == 'nu') {echo '<div class="alert alert-danger">' . "Adresa de email introdusă nu există în baza noastră de date." . '</div>'; }
+      
+      ?> </p>
+      
         <h3 class="text-center form-title">Recuperează parola</h3>
        
         <form action="recupereaza-parola.php" method="post">
@@ -27,11 +38,12 @@
             <input type="text" name="email" class="form-control form-control-lg" placeholder = "Introdu aici email tău">
           </div>
           <div class="form-group">
-            <button type="submit" name="login-btn" class="btn btn-lg btn-block">Recuperează</button>
+            <button type="submit" name="recupereaza" class="btn btn-lg btn-block">Recuperează</button>
           </div>
         </form>
-        
+        <p>Ai deja un cont? <a href="index.php">Login</a></p>
         <p>Nu ai încă un cont? <a href="signup.php">Înregistrează-te</a></p>
+        
       </div>
 
     </div>

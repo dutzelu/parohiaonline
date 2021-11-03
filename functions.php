@@ -1,6 +1,7 @@
 <?php
 
 
+
 if (isset($_GET['status'])) {
   $status = $_GET['status'];
 } else {$status = '';}
@@ -101,18 +102,14 @@ function upload_foto($input, $nume_fisier, $link) {
 
       $file_name = 'copie_ci_' . replaceSpecialChars(preg_replace('/\s+/', '-', $nume_fisier)) . '.' . $file_ext;
 
-      $extensions= array("jpeg","jpg","png", "");
-      if(in_array($file_ext,$extensions)=== false){
-      $errors[]="Acceptăm doar fotografii în format JPEG, JPG sau PNG";
-      }
-      
       if($file_size > 10485760) {
       $errors[]='Dimensiunea fișierului trebuie să fie de maxim 10 MB';
       }
       
       if(empty($errors)==true) {
       move_uploaded_file($file_tmp, $target_dir .'/'.$file_name);
-      } else{print_r($errors);}
+      } 
+      // else{print_r($errors);}
 
       if ($file_size !== 0 && empty($errors)==true ) {
       $GLOBALS[$link] = $target_dir .'/'.$file_name; }     
@@ -121,3 +118,29 @@ function upload_foto($input, $nume_fisier, $link) {
 
 }
  
+
+function hideEmailAddress($email)
+
+{
+
+    if(filter_var($email, FILTER_VALIDATE_EMAIL))
+
+    {
+
+        list($first, $last) = explode('@', $email);
+
+        $first = str_replace(substr($first, '3'), str_repeat('*', strlen($first)-3), $first);
+
+        $last = explode('.', $last);
+
+        $last_domain = str_replace(substr($last['0'], '1'), str_repeat('*', strlen($last['0'])-1), $last['0']);
+
+        $hideEmailAddress = $first.'@'.$last_domain.'.'.$last['1'];
+
+        return $hideEmailAddress;
+
+    }
+
+}
+
+

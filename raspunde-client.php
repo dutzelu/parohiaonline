@@ -32,8 +32,8 @@ if (isset($_GET['eveniment'])) {
 }
 
 if ($eveniment == 'botez') {
-header ('Location:home-unic.php?id=' . $id);
+    echo '<script> location.replace("home-unic.php?id=' .$id .'"); </script>';
 } elseif ($eveniment == 'cununie') {
-    header ('Location:home-unic-cununie.php?id=' . $id);
+    echo '<script> location.replace("home-unic-cununie.php?id=' .$id .'"); </script>';
 }
 

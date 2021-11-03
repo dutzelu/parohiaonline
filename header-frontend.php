@@ -1,6 +1,4 @@
-<?php 
-
-include 'controllers/authController.php';
+<?php include 'controllers/authController.php';
 include 'database.php';
 
 $nume_fisier = basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']);
@@ -9,7 +7,7 @@ $numar_pas = (int) filter_var($nume_fisier, FILTER_SANITIZE_NUMBER_INT);
 
 // redirect user to login page if they're not logged in
 if (empty($_SESSION['id'])) {
-    header('location: login.php');
+    header('location: index.php');
 }
 
 if ( isset($_GET['pentru']) ) {$pentru = $_GET['pentru'];} else {$pentru = "";}
@@ -47,13 +45,15 @@ if (isset($_GET['month']) && isset($_GET['year'])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
   <!-- Bootstrap CSS -->
-  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="main.css">
   <link href="lightbox/dist/css/lightbox.css" rel="stylesheet" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="lightbox/dist/js/lightbox.js"></script>
-  <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

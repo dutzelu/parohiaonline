@@ -1,35 +1,45 @@
 <?php
+
+session_start();
+
 include 'controllers/sendEmails.php';
 include "conexiune.php";
 
-session_start();
 $nume = "";
 $prenume = "";
 $username = "";
 $email = "";
 $errors = [];
 
-
-
 // SIGN UP USER
 if (isset($_POST['signup-btn'])) {
     if (empty($_POST['nume'])) {
-        $errors['nume'] = 'Ai uitat să completezi numele';
+        $errors['nume'] = 'Ai uitat să completezi numele.';
     }
     if (empty($_POST['prenume'])) {
-        $errors['prenume'] = 'Ai uitat să completezi prenumele';
+        $errors['prenume'] = 'Ai uitat să completezi prenumele.';
     }
     if (empty($_POST['username'])) {
-        $errors['username'] = 'Ai uitat să completezi utilizatorul';
+        $errors['username'] = 'Ai uitat să completezi utilizatorul.';
     }
     if (empty($_POST['email'])) {
-        $errors['email'] = 'Ai uitat să completezi emailul';
+        $errors['email'] = 'Ai uitat să completezi emailul.';
     }
     if (empty($_POST['password'])) {
-        $errors['password'] = 'Ai uitat să completezi parola';
+        $errors['password'] = 'Ai uitat să completezi parola.';
+    } else {$password = $_POST['password'];}
+
+    $litera_mare = preg_match('@[A-Z]@', $password);
+    $litere_mici = preg_match('@[a-z]@', $password);
+    $numere    = preg_match('@[0-9]@', $password);
+
+    if(!$litera_mare || !$litere_mici || !$numere || strlen($_POST['password']) < 8) {
+        $errors['password'] = 'Parola trebuie să aibă cel puțin 8 caractere și trebuie să includă cel puțin o literă mare și un număr.';
     }
+
+
     if (isset($_POST['password']) && $_POST['password'] !== $_POST['passwordConf']) {
-        $errors['passwordConf'] = 'Cele două parola nu coincid';
+        $errors['passwordConf'] = 'Cele două parole nu coincid.';
     }
 
     $nume = $_POST['nume'];
@@ -57,8 +67,44 @@ if (isset($_POST['signup-btn'])) {
             $stmt->close();
 
             // TO DO: send verification email to user
-            sendVerificationEmail($email, $token, $username);
+            $url_site = 'https://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']);
+            
 
+            $mesaj_email = '<!DOCTYPE html>
+            <html>
+
+            <head>
+            <meta charset="UTF-8">
+            <style>
+                .wrapper {
+                padding: 20px;
+                color: #444;
+                font-size: 1.3em;
+                }
+                a {
+                background: #592f80;
+                text-decoration: none;
+                padding: 8px 15px;
+                border-radius: 5px;
+                color: #fff;
+                }
+            </style>
+            </head>
+
+            <body>
+            <div class="wrapper">
+                <p>Vă mulțumim că v-ați înscris pe site-ul parohiei noastre. Ați primit acest email pentru că doriti să faceți o programare pentru Taina Sfântului Botezul sau Taina Sfintei Cununii la biserica noastră. </p>
+                <p>Datele dvs. de acces sunt următoarele:<br> <strong>Username:</strong> ' .$username . ' <br /><strong>Parolă:</strong> pe care ați ales-o.</p>
+                <p>Dacă ați uitat parola dați click aici: <a href="' .$url_site . '/recupereaza.php"> recuperează parola </a></p>
+                <p>Vă rugăm să activați contul accesând linkul de mai jos:</p>
+                <a href="' . $url_site . '/verify_email.php?token=' . $token . '"> Verificați emailul dumneavoastră! </a>
+            </div>
+            </body>
+
+            </html>';
+
+            phpmailer ($email, $from, "Parohia Sf. Ambrozie București", "Programări botezuri/cununii", $mesaj_email, $link_cerere='');
+         
             $_SESSION['id'] = $user_id;
             $_SESSION['nume'] = $nume;
             $_SESSION['prenume'] = $prenume;
@@ -88,7 +134,7 @@ if (isset($_POST['login-btn'])) {
     if (count($errors) === 0) {
         $query = "SELECT * FROM users WHERE username=? OR email=? LIMIT 1";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param('ss', $username, $password);
+        $stmt->bind_param('ss', $username, $username);
 
         if ($stmt->execute()) {
             $result = $stmt->get_result();

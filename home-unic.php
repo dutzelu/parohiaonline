@@ -15,7 +15,7 @@ $user_id = $_SESSION['id'];
 
 
   if (isset($_GET['succes'])) { 
-    echo '<h1 class="h1">Cererea ta de programare online s-a finalizat cu succes. În cel mai scurt timp părintele va confirma PRIN EMAIL primirea rezervării și a documetelor trimise sau vă va cere detalii suplimentare. </h1>'
+    echo '<h1 class="h1">Cererea ta de programare online s-a finalizat cu succes. În cel mai scurt timp vei primi un EMAIL privind starea cererii tale de programare. Dacă este cazul, ți se vor solicita detalii suplimentare. Dacă dorești să ceri lămuriri suplimentare privind cererea ta de programare făcută, te rugăm să suni la numărul de telefon 0744.185.581 sau să trimiți un mesaj la paroh@sfantulambrozie.ro</h1>'
     ;
     $succes = $_GET['succes'];
   } else $succes = '';
@@ -28,7 +28,7 @@ $user_id = $_SESSION['id'];
 
 ?>
 
-<h2 class="mb-2">Rezervări</h2>
+<h2 class="mb-2">Programările mele</h2>
 
 
 <?php
@@ -52,9 +52,10 @@ while($data = $result->fetch_assoc()) {
   
     . $status_accept_afisat . '</span>' . '<br /><h5 style="color:' . $color . '">'  . date("d.m.Y", strtotime($data_si_ora)) . ' - ' . $eveniment . ' - ora: ' . date("H:i", strtotime($data_si_ora)) . ' - '  . $nume_mama . ' ' . $prenume_mama . '</h5>';
 
-    echo '<a class="btn btn-outline-primary" href="edit-rezervare.php?id=' . $id_programare . '">Modifică detaliile programării / adaugă documente</a>';
+    echo '<a class="btn btn-outline-primary" href="edit-rezervare.php?id=' . $id_programare . '">Modifică detaliile programării / adaugă documente</a> ';
+    echo '<a class="btn btn-outline-danger" href="sterge-camp.php?id-anulare=' . $id_programare . '&eveniment=' . preg_replace('/\s+/', '', $eveniment) . '">Anulează programarea</a>';
     echo  '<hr />';
-
+    
     if (isset($_GET['edit'])) { 
       echo '<p id ="dispari" class="btn btn-success"> Rezervarea a fost editată cu succes</p>' ;
     } 

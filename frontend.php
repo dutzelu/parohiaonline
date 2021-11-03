@@ -28,7 +28,7 @@ $rezervari = '';
  
  </div>
  
- <input type="submit" value="Alege ziua" name="pasul1" class="btn btn-primary rezerva">
+ <input type="submit" value="Confirmă ziua" name="pasul1" class="btn btn-primary rezerva">
  
  </form>
  

@@ -33,9 +33,17 @@ div.capcalendar {
 }
 
 .rezervari {margin-top:50px;}
+
+#dispari {
+  color: #fff;
+  background-color: #198754!important;
+  border-color: #198754!important;
+  padding: 5px 10px!important;
+  border-radius:10px!important;
+}
  
 a.logo:after {content:none!important;}
-
+.loginlink {width:100%; margin-bottom:30px;}
 .albastru {color:0d6efd;}
 
 .h1, h1.titlu, h2.titlu {font-size:1.4em; margin-bottom:20px;}
@@ -46,7 +54,7 @@ li { list-style-type: none; }
   font-family: 'Lora', serif;
   font-size: 1.09em;
 }
-.form-wrapper.login { margin-top: 120px; }
+.form-wrapper.login { margin-top: 20px; }
 .form-wrapper p { font-size: .8em; text-align: center; }
 .form-control:focus { box-shadow: none; }
 .form-wrapper {

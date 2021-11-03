@@ -25,12 +25,20 @@ $user_id = $_SESSION['id'];
     $id_programare = $_GET['id'];
   }
 
+ 
+  if (isset($_GET['status'])) {
+  
+    $status = $_GET['status'];
+    $query = 'UPDATE programari_cununie SET status = ? WHERE id=? ';
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('si', $status, $id_programare);
+    $result = $stmt->execute();
+    $result = $stmt->get_result();
+    
+  } 
 
-?>
 
-<?php
 
-$user_id = $_SESSION['id'];
 
 
 $query = 'SELECT * FROM programari_cununie WHERE id = ? ORDER BY id DESC';
@@ -80,10 +88,9 @@ while($data = $result->fetch_assoc()) {
     echo '<p><span class="cap">Data eliberării certificatului: </span>' . $data_eliberarii_certificatului . '</p>';
     echo '<p><span class="cap">Eliberat de Primăria: </span>' . $eliberat_de_primaria . '</p>';
     echo '<p><span class="cap">Nași: </span>' . $nume_nas . ' și ' . $nume_nasa . '</p>';
-    if (!empty($nume_cameraman)) {
-        echo '<p><span class="cap">Nume cameraman: </span>' . $nume_cameraman . " <span class='cap stanga'>Telefon: </span>" . $telefon_cameraman . '</p>';
-    }
-
+    echo '<p><span class="cap">Nume cameraman: </span>' . $nume_cameraman . '</p>';
+    echo '<p><span class="cap">Telefon cameraman: </span>' . $telefon_cameraman . '</p>';
+ 
     echo '<p><span class="cap">Carte de identitate mire: </span>';
 
     // if-urile sunt necesare pentru a nu încarca galeria foto imagini goale in lightbox 
@@ -156,7 +163,7 @@ while($data = $result->fetch_assoc()) {
         echo '<a class="btn btn-success" href="accepta-programare-cununie.php?id=' . $id_programare . '&status=acceptata" role="button" style="margin-right:10px">Acceptă</a>';
       }  
       
-      echo ' <a class="btn btn-danger" href="rezervare-unica.php?id=' . $id_programare . '&status=respinsa" role="button" style="margin-right:10px">Respinge</a>';
+      echo ' <a class="btn btn-danger" href="rezervare-unica-cununie.php?id=' . $id_programare . '&status=respinsa" role="button" style="margin-right:10px">Respinge</a>';
   
       echo '<hr />';
   

@@ -106,26 +106,6 @@ $ora = '';
     $nume_cameraman = $_POST['nume_cameraman'];
     $telefon_cameraman = $_POST['telefon_cameraman'];
   
-    // var_dump($user_id);
-    // var_dump($eveniment);
-    // var_dump($data_si_ora);
-    // var_dump($nume_si_prenume_mire);
-    // var_dump($nume_si_prenume_mireasa);
-    // var_dump($adresa);
-    // var_dump($telefon);
-    // var_dump($email);
-    // var_dump($nume_si_prenume_copil);
-    // var_dump($data_nasterii_copilului);
-    // var_dump($numar_certificat_nastere);
-    // var_dump($data_eliberarii_certificatului);
-    // var_dump($eliberat_de_primaria);
-    // var_dump($nume_botez);
-    // var_dump($nume_nas);
-    // var_dump($nume_nasa);
-    // var_dump($localitate_nasi);
-    // var_dump($nume_cameraman);
-    // var_dump($telefon_cameraman);
-
     $query = 'INSERT INTO programari_cununie SET 
     user_id=?, 
     eveniment=?,
@@ -184,19 +164,19 @@ $ora = '';
 
           <p><strong>Atașează documentele necesare</strong></p>
           <p style="color: #AAA; font-size:12px;">Câmpurile marcate cu * sunt obligatorii pentru completarea formularului
-         <br />Acceptăm doar fotografii în format JPEG, JPG sau PNG</p>
+         <br />Acceptăm doar fotografii în format JPEG, JPG; BMP, GIF sau PNG</p>
           
           <div class="row mb-1">
               <label class="col-sm-4 col-form-label">Carte identitate mire*</label>
               <div class="col-sm-8">
-                  <input type="file" name="mire_ci" class="col-sm-8 form-control" required>
+                  <input type="file" name="mire_ci" class="col-sm-8 form-control" required  onchange="ValidateSingleInput(this);validateSize(this);" >
               </div>
           </div>
 
           <div class="row mb-1">
             <label class="col-sm-4 col-form-label">Carte identitate mireasă*</label>
             <div class="col-sm-8">
-                <input type="file" name="mireasa_ci" class="col-sm-8 form-control" required>
+                <input type="file" name="mireasa_ci" class="col-sm-8 form-control" required  onchange="ValidateSingleInput(this);validateSize(this);" >
             </div>
         </div>
   
@@ -204,7 +184,7 @@ $ora = '';
               <label class="col-sm-4 col-form-label">Plata contribuției anuale față de parohie *</label>
        
               <div class="col-sm-8">
-                  <input type="file" name="plata_contributiei" class="col-sm-8 form-control" required>
+                  <input type="file" name="plata_contributiei" class="col-sm-8 form-control" required  onchange="ValidateSingleInput(this);validateSize(this);" >
                   <p>Se atașează copia chitanței plătite la biserică sau copia viramentului bancar. <br />Puteți plăti contribuția în contul:<br /> <strong>RO11 RNCB 0083 0028 8937 0001</strong> titular fiind: <br /><strong>PAROHIA APARATORII PATRIEI II</strong>.</p>
               </div>
           </div>
@@ -212,7 +192,7 @@ $ora = '';
           <div class="row mb-1">
             <label class="col-sm-4 col-form-label">Certificatul de căsătorie civilă</label>
             <div class="col-sm-8">
-                <input type="file" name="certificat_casatorie_civila" class="col-sm-8 form-control">
+                <input type="file" name="certificat_casatorie_civila" class="col-sm-8 form-control"  onchange="ValidateSingleInput(this);validateSize(this);" >
             </div>
          </div>
 
@@ -221,14 +201,14 @@ $ora = '';
             <div class="row mb-1">
                 <label class="col-sm-4 col-form-label">Certificatul de botez al MIRELUI</label>
                 <div class="col-sm-8">
-                    <input type="file" name="certificat_botez_mire" class="col-sm-8 form-control" >
+                    <input type="file" name="certificat_botez_mire" class="col-sm-8 form-control"  onchange="ValidateSingleInput(this);validateSize(this);" >
                 </div>
              </div>
 
             <div class="row mb-1">
                 <label class="col-sm-4 col-form-label">Certificatul de botez al MIRESEI</label>
                 <div class="col-sm-8">
-                    <input type="file" name="certificat_botez_mireasa" class="col-sm-8 form-control" >
+                    <input type="file" name="certificat_botez_mireasa" class="col-sm-8 form-control"  onchange="ValidateSingleInput(this);validateSize(this);" >
                 </div>
             </div>
 
@@ -241,7 +221,7 @@ $ora = '';
             <div class="row mb-1">
                 <label class="col-sm-4 col-form-label">Dispensă chiriarhală (vezi pct. VII. Situații excepționale de la <a href="info-cununie.php" target="blank">Info Cununie</a>)</label>
                 <div class="col-sm-8">
-                    <input type="file" name="dispensa" class="col-sm-8 form-control">
+                    <input type="file" name="dispensa" class="col-sm-8 form-control"  onchange="ValidateSingleInput(this);validateSize(this);" >
                 </div>
             </div>
         
