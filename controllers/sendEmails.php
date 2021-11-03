@@ -16,7 +16,7 @@ $email = new PHPMailer();
 
 function phpmailer($to, $from, $from_name, $subject, $body, $path)
 {
-    $from = 'parohiaonline@parohiasfantulambrozie.ro';
+    $from = 'balan.claudiu@gmail.com';
     $name = 'Parohia Sf. Ambrozie București';
     
     $mail = new PHPMailer();
@@ -24,16 +24,16 @@ function phpmailer($to, $from, $from_name, $subject, $body, $path)
     $mail->SMTPAuth = true; 
     $mail->CharSet = 'UTF-8';
     $mail->setLanguage('ro');
-    $mail->SMTPSecure = 'ssl'; 
-    $mail->Host = 'mail.sfantulambrozie.ro';
-    $mail->Port = 465;  
-    $mail->Username = 'parohiaonline@sfantulambrozie.ro';
-    $mail->Password = 'Parola*0920';   
+    $mail->SMTPSecure = 'tls'; 
+    $mail->Host = 'smtp.gmail.com';
+    $mail->Port = 587;  
+    $mail->Username = 'balan.claudiu@gmail.com';
+    $mail->Password = 'parola92';   
 
     $mail->addAttachment($path);
 
     $mail->IsHTML(true);
-    $mail->From="parohiaonline@sfantulambrozie.ro";
+    $mail->From="balan.claudiu@gmail.com";
     $mail->FromName=$from_name;
     $mail->Sender=$from;
     $mail->AddReplyTo($from, $from_name);

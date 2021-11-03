@@ -2,9 +2,9 @@
 
 
 $dbServerName = 'localhost';
-$dbUser = 'ambrozie_dutzelu';
-$dbPassword = 'parola92';
-$dbName = 'ambrozie_parohiaonline';
+$dbUser = 'root';
+$dbPassword = '';
+$dbName = 'parohiaonline';
 
 $conn = mysqli_connect ($dbServerName, $dbUser, $dbPassword, $dbName);
 mysqli_set_charset($conn, "utf8");

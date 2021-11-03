@@ -1,8 +1,8 @@
 <?php
 
-$url_site = 'https://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']);
+$url_site = 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']);
 include "header-admin.php"; 
-include 'controllers/sendEmails.php';
+
  
 
 $mesaj='';
@@ -78,7 +78,7 @@ if (isset($_POST['raspunde'])) {
 
         $mesaj_email .= 'Vă rugăm să vă conectați pe site-ul nostru în zona aplicației de <a href="' . $url_site . '/login.php">programări online</a> cu userul și parola pe care le-ați ales, ca să atașați documentele și informațiile care lipsesc. Apoi părintele va verifica din nou validitatea rezervării și veți primi un răspuns prin email dar și direct în aplicație.';
         
-        $email_admin = 'parohiaonline@sfantulambrozie.ro';
+        $email_admin = 'balan.claudiu@gmail.com';
 
         phpmailer($email, $from, $name, $subiect, $mesaj_email, $path='');
 
@@ -126,7 +126,7 @@ if (isset($_POST['raspunde'])) {
 
         $mesaj_email .= 'Vă rugăm să vă conectați pe site-ul nostru în zona aplicației de <a href="' . $url_site . 'index.php">programări online</a> cu userul și parola pe care le-ați ales, ca să atașați documentele și informațiile care lipsesc. Apoi părintele va verifica din nou validitatea rezervării și veți primi un răspuns prin email dar și direct în aplicație.';
         
-        $email_admin = 'parohiaonline@sfantulambrozie.ro';
+        $email_admin = 'balan.claudiu@gmail.com';
        
         phpmailer($email, $from, "Parohia Online", $subiect, $mesaj_email, $path='');
 

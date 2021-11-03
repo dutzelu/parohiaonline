@@ -2,10 +2,9 @@
 
 include 'controllers/authController.php';
 include "conexiune.php";
-
+$verificat = "";
+$mesaj_inregistrare = "";
 setlocale(LC_ALL, 'ro_RO');
-
-$id = $_SESSION['id'];
 
 
 
@@ -15,6 +14,7 @@ $id = $_SESSION['id'];
 
 if (!empty($_SESSION['id'])) {
 
+    $id = $_SESSION['id'];
     $sql = "SELECT * FROM users WHERE id= $id";
     $rezultate = mysqli_query ($conn, $sql);
     while ($data = mysqli_fetch_assoc($rezultate)){  

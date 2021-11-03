@@ -1,7 +1,6 @@
 <?php
-include "header-frontend.php"; 
-include "functions.php"; 
-include 'controllers/sendEmails.php';
+include "header-admin.php"; 
+
 
 if (isset($_GET['id'])) {$id = $_GET['id'];} 
 
@@ -235,7 +234,7 @@ $mesaj_email_admin .= '
 <p>Am atașat la acest email cererea și declarația.</p>';
 $subiect_admin = "Programare: " . $eveniment . '  ' . date("d.m.Y", strtotime($data_si_ora)) . ' ora: ' . date("H:i", strtotime($data_si_ora)) .' pe numele: ' . $nume_mama . ' ' . $prenume_mama;
 
-$email_admin = 'parohiaonline@sfantulambrozie.ro';
+$email_admin = 'balan.claudiu@gmail.com';
 
 phpmailer ($email, $from, $name, $subiect, $mesaj_email, $link_cerere);
 phpmailer ($email_admin, $from, $name, $subiect_admin, $mesaj_email_admin, $link_cerere='');

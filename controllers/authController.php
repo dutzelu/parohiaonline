@@ -67,7 +67,7 @@ if (isset($_POST['signup-btn'])) {
             $stmt->close();
 
             // TO DO: send verification email to user
-            $url_site = 'https://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']);
+            $url_site = 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']);
             
 
             $mesaj_email = '<!DOCTYPE html>

@@ -24,12 +24,6 @@ while ($data = mysqli_fetch_assoc($result)){
     $admin = $data['admin'];
 }
  
- 
- 
-
-
- 
-
 if ( isset($_GET['pentru']) ) {$pentru = $_GET['pentru'];} else {$pentru = "";}
 
 switch ($pentru) {

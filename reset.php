@@ -170,7 +170,7 @@ if (isset($_POST['reset-btn'])) {
       </div>
 
         <?php ';
-        } echo '<a class="btn btn-primary loginlink" href="https://parohiaonline.sfantulambrozie.ro/login.php" role="button">Login</a>'; 
+        } echo '<a class="btn btn-primary loginlink" href="login.php" role="button">Login</a>'; 
         ?>
     </div>
 

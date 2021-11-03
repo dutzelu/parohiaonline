@@ -1,7 +1,6 @@
 <?php
-include "header-frontend.php"; 
-include "functions.php"; 
-include 'controllers/sendEmails.php';
+include "header-admin.php"; 
+
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -211,9 +210,9 @@ $mesaj_email_admin .= '
 <p>Am atașat la acest email cererea și declarația.</p>';
 $subiect_admin = "Programare: " . $eveniment . '  ' . date("d.m.Y", strtotime($data_si_ora)) . ' ora: ' . date("H:i", strtotime($data_si_ora)) .' pe numele: ' . $nume_mire . ' ' . $prenume_mire;
 
-$email_admin = 'parohiaonline@sfantulambrozie.ro';
+$email_admin = 'balan.claudiu@gmail.com';
 
-$from = 'parohiaonline@parohiasfantulambrozie.ro';
+$from = 'balan.claudiu@gmail.com';
 $name = 'Parohia Sf. Ambrozie București';
  
 phpmailer ($email, $from, $name, $subiect, $mesaj_email, $link_cerere);
