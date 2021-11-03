@@ -1,6 +1,7 @@
 <?php
 include "header-frontend.php"; 
 include "functions.php"; 
+include 'controllers/sendEmails.php';
 
 if (isset($_GET['id'])) {$id = $_GET['id'];} 
 

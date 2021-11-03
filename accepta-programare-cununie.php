@@ -1,6 +1,7 @@
 <?php
 include "header-frontend.php"; 
 include "functions.php"; 
+include 'controllers/sendEmails.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;

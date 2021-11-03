@@ -2,6 +2,7 @@
 
 $url_site = 'https://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']);
 include "header-admin.php"; 
+include 'controllers/sendEmails.php';
  
 
 $mesaj='';
