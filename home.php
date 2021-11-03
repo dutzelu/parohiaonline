@@ -34,7 +34,8 @@ $user_id = $_SESSION['id'];
         while($data = $result->fetch_assoc()) {
 
           include "extras-programare.php";
-          echo '<p><a href="home-unic.php?id=' . $id .  '">' . ' ' . date("d.m.Y", strtotime($data_si_ora)) . ' - <span class="red">' . $eveniment . '</span> - ora: ' . date("H:i", strtotime($data_si_ora)) . ' - '  . $nume_mama . ' ' . $prenume_mama .  '</a><br />';
+          echo "<p>Status: " . $status . "<br>";
+          echo '<a href="home-unic.php?id=' . $id .  '">' . ' ' . date("d.m.Y", strtotime($data_si_ora)) . ' - <span class="red">' . $eveniment . '</span> - ora: ' . date("H:i", strtotime($data_si_ora)) . ' - '  . $nume_mama . ' ' . $prenume_mama .  '</a></p />';
         
         }
 
@@ -53,7 +54,8 @@ $user_id = $_SESSION['id'];
         while($data = $result->fetch_assoc()) {
 
           include "extras-programare-cununie.php";
-          echo '<p><a href="home-unic-cununie.php?id=' . $id_programare .  '">' . ' ' . date("d.m.Y", strtotime($data_si_ora)) . ' - <span class="red">' . $eveniment . '</span> - ora: ' . date("H:i", strtotime($data_si_ora)) . ' - '  . $nume_mire . ' ' . $prenume_mire .  '</a><br />';
+          echo "<p>Status: " . $status . "<br>";
+          echo '<a href="home-unic-cununie.php?id=' . $id_programare .  '">' . ' ' . date("d.m.Y", strtotime($data_si_ora)) . ' - <span class="red">' . $eveniment . '</span> - ora: ' . date("H:i", strtotime($data_si_ora)) . ' - '  . $nume_mire . ' ' . $prenume_mire .  '</a></p>';
         
         }
 
