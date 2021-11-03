@@ -134,7 +134,7 @@ if (isset($_POST['login-btn'])) {
     if (count($errors) === 0) {
         $query = "SELECT * FROM users WHERE username=? OR email=? LIMIT 1";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param('ss', $username, $password);
+        $stmt->bind_param('ss', $username, $username);
 
         if ($stmt->execute()) {
             $result = $stmt->get_result();
