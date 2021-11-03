@@ -173,7 +173,7 @@ $ora = '';
          <p>Eliberat la data de: *</p>
         </div>
         <div class="col-sm-8">
-         <p><input type="date" name="data_eliberarii_certificatului" class="form-control"></p>
+         <p><input type="date" name="data_eliberarii_certificatului" class="form-control" placeholder = "Alege data"></p>
         </div>
     </div>
 

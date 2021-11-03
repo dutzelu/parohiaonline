@@ -27,11 +27,11 @@ include "functions.php";
 
 <h2 class="titlu">II. Ce contribuții se plătesc la botez?</h2>
 
-<p>Contribuția pentru oficierea Botezului este de <strong>300 lei</strong> din care:</p>
+<p>Contribuția pentru oficierea botezului este de <strong>300 lei</strong> din care:</p>
 <ol class="lista">
     <li>150 lei contribuția pentru biserică pentru care se taie chitanță și </li>
     <li>150 lei pentru slujitori;</li>
-    <li>Pentru corala bisericii nașul va dărui dirijorului suma de <strong>100 lei</strong> (fără chitanță). Aceasta se achită în ziua botezului de către naș.</li>
+    <li>Pentru corala bisericii nașul va dărui dirijorului suma de <strong>100 lei</strong> (fără chitanță) în ziua botezului. Aceasta se achită în ziua botezului de către naș.</li>
 </ol>
 
 <h2 class="titlu">III. Programarea cursului de catehizare pentru botez.</h2>
@@ -51,7 +51,7 @@ include "functions.php";
 </ol>
 
 <p>Nașul are îndatorirea de a învăța pe de rost <strong>Crezul (Simbolul de credință);</strong></p>
-<p>Nașul dăruiește în ziua Botezului <strong>o icoană cu sfântul al cărui nume îl va purta finul/fina</strong> şi care va deveni, după botez, ocrotitorul spiritual al acestuia/acesteia.</p>
+<p>Nașul dăruiește în ziua botezului <strong>o icoană cu sfântul al cărui nume îl va purta finul/fina</strong> şi care va deveni, după botez, ocrotitorul spiritual al acestuia/acesteia.</p>
 
 <h2 class="titlu">V. Împodobirea cu flori a cristelniței</h2>
 

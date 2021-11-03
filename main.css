@@ -54,7 +54,7 @@ li { list-style-type: none; }
   font-family: 'Lora', serif;
   font-size: 1.09em;
 }
-.form-wrapper.login { margin-top: 120px; }
+.form-wrapper.login { margin-top: 20px; }
 .form-wrapper p { font-size: .8em; text-align: center; }
 .form-control:focus { box-shadow: none; }
 .form-wrapper {
