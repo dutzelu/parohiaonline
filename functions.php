@@ -100,7 +100,7 @@ function upload_foto($input, $nume_fisier, $link) {
       $file_type = $_FILES[$input]['type'];
       $file_ext= strtolower(pathinfo($file_name,PATHINFO_EXTENSION));
 
-      $file_name = 'copie_ci_' . replaceSpecialChars(preg_replace('/\s+/', '-', $nume_fisier)) . '.' . $file_ext;
+      $file_name = $input . '-' . replaceSpecialChars(preg_replace('/\s+/', '-', $nume_fisier)) . '.' . $file_ext;
 
       if($file_size > 10485760) {
       $errors[]='Dimensiunea fișierului trebuie să fie de maxim 10 MB';
