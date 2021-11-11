@@ -3,6 +3,7 @@ setTimeout(function() {
 }, 2000); // <-- time in milliseconds
 
 
+
  
 var url = document.URL;
 $('.sidebar li:has(a[href="'+url+'"])').addClass('active');
@@ -60,3 +61,5 @@ function validateSize(input) {
       // Proceed further
     }
   }
+
+

@@ -13,7 +13,7 @@
   <title>Login ParohiaOnline</title>
 </head>
 
-<body>
+<body id="login">
   <div class="container">
 
     <div class="row">

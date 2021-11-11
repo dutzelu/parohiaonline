@@ -29,7 +29,7 @@ if (mysqli_num_rows($result) !== 0) {
     $prenume_user = $data['prenume'];
 
     echo "<li>";
-    echo '<p><span style="color:#007bff">' . $data_mesajului . '<br />';
+    echo '<p><span class="albastru-inchis">' . $data_mesajului . '<br />';
     echo  'Mesaj de la ' . $nume_user . ' ' . $prenume_user . ':</span></p>';
     echo '<p>' . $mesaj . '<br /><hr style="border-top:2px dotted #CCC"/>' ;
     echo "</li>";

@@ -1,15 +1,20 @@
-<?php
-
-include "header-frontend.php"; 
-include "sidebar-admin.php"; 
-include "functions.php";
+<?php include "header-admin.php"; 
 
 $user_id = $_SESSION['id'];
 ?>
 
 
-<div class="mare">
-  <div class="container-fluid">
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-3 sidebar-admin"><?php include "sidebar-admin.php"?></div>
+
+        <div class="col-sm-9 p-4 zona-principala">
+
+        <?php include "header-mic-admin.php";?>
+
+  
+        <div class="mt-3 p-5 wrapper-rezervare-unica">
 
 <?php
 
@@ -38,9 +43,6 @@ $user_id = $_SESSION['id'];
   } 
 
 
-
-
-
 $query = 'SELECT * FROM programari_cununie WHERE id = ? ORDER BY id DESC';
 $stmt = $conn->prepare($query);
 $stmt->bind_param('i', $id_programare);
@@ -52,23 +54,68 @@ while($data = $result->fetch_assoc()) {
 
   include "extras-programare-cununie.php";
 
-  echo "<div id='butoane'>";
-  echo '<a class="btn btn-outline-primary" href="edit-rezervare-cununie.php?id=' . $id_programare . '">Modifică detaliile programării / adaugă documente</a> ';
-  echo ' <button class="btn btn-outline-primary" onclick="window.print()">Print</button>';
-  echo "</div>";
+  echo "<p>";
+                  echo '<span class="nume">' . $nume_si_prenume_mire . "</span>"; 
+               
+                  echo ' <i class="fas fa-angle-double-right"></i> ';
+                  
+                  echo ' <span class="albastru-inchis">' . $eveniment . ' </span>';
+
+                  echo ' <i class="fas fa-angle-double-right"></i> ';
+
+                  echo '<span class="rosu">' . date("d M Y", strtotime($data_si_ora)) . '</span>';
+
+                  echo ' <i class="fas fa-angle-double-right"></i> ';
+
+                  echo '<span class="rosu">' . date("H:i", strtotime($data_si_ora)) . '</span>';
+
+              echo "</p>";
+
+              echo "<p class='butoane'>";
+
+              echo '<span class="status ';
+                            
+              switch($status) {
+
+                  case "acceptata": echo 'acceptata';
+                  break;
+                  case "respinsa": echo 'respinsa';
+                  break;
+                  case "anulata": echo 'respinsa';
+                  break;
+                  case "detalii": echo 'detalii';
+                  break;
+                  case "în așteptare": echo 'in-asteptare';
+                  break;
+              }
+              
+              echo '">' .$status . '</span>';
+
+              echo '<a href="registru.php?eveniment=programari_cununie"><i class="fas fa-chevron-circle-left"></i> Înapoi</a> ';
+
+              echo '<a href="accepta-programare-cununie.php?id=' . $id_programare . '&status=acceptata" role="button"><i class="verde far fa-check-circle"></i>  Acceptă</a>';
+
+              echo '<a href="rezervare-unica-cununie.php?id=' . $id_programare . '&status=respinsa" role="button" ><i class="orange fas fa-backspace"></i> Respinge</a>';?>
+
+              <a href="sterge-camp.php?eveniment=programari_cununie&stergeid=<?php echo $id_programare; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+              <i class="rosu fas fa-trash-alt"></i> Șterge</a>
+
+              <?php
+              
+              echo '<a href="edit-rezervare-cununie.php?id=' . $id_programare . '"><i class="albastru-inchis far fa-edit"></i> Modifică</a> ';
+
+              echo '<a href="" onclick="window.print()"><i class="fas fa-print"></i> Print</a>';
+             
+            echo '</p>';
+
+ 
 
   
-    echo '<span class="badge mb-1 ' . $clasa_accept . '">' 
+    echo '   
     
-  
-    . $status_accept_afisat . '</span>' . '<br />
+    <div class="tabel-rezervare view">
     
-    
-    <div id="tabel-rezervare">
-    <h5 style="color:' . $color . '">'  . date("d.m.Y", strtotime($data_si_ora)) . ' - ' . $eveniment . ' - ora: ' . date("H:i", strtotime($data_si_ora)) . ' - '  . $nume_mire . ' ' . $prenume_mire . '</h5>';
-
-
-    echo  '<hr />';
+    <hr />';
 
     if (isset($_GET['edit'])) { 
       echo '<p id ="dispari" class="btn btn-success"> Rezervarea a fost editată cu succes</p>' ;
@@ -98,8 +145,7 @@ while($data = $result->fetch_assoc()) {
     if (!empty($link_mire_ci)) {
 
     echo '<a target="popup" data-title ="' . basename($link_mire_ci) . '"data-lightbox ="foto_acte" href="' . $link_mire_ci .'">
-    <br /><img src="' . $link_mire_ci . '"/></a></p>';
-
+    <img src="' . $link_mire_ci . '"/></a></p>';
     }
 
     echo '<p><span class="cap">Carte de identitate mireasă: </span>';
@@ -107,7 +153,7 @@ while($data = $result->fetch_assoc()) {
     if (!empty($link_mireasa_ci)) {
     
     echo '<a target="popup" data-title ="' . basename($link_mireasa_ci) . '"data-lightbox ="foto_acte"  href="' . $link_mireasa_ci .'">
-    <br /><img src="' . $link_mireasa_ci . '"/></a></p>';
+    <img src="' . $link_mireasa_ci . '"/></a></p>';
 
     }
 
@@ -115,7 +161,7 @@ while($data = $result->fetch_assoc()) {
     
     if (!empty($link_plata_contributiei)) {
 
-    echo '<a target="popup" data-title ="' . basename($link_plata_contributiei) . '"data-lightbox ="foto_acte"  href="' . $link_plata_contributiei .'"><br /><img src="' . $link_plata_contributiei . '"/></a></p>';
+    echo '<a target="popup" data-title ="' . basename($link_plata_contributiei) . '"data-lightbox ="foto_acte"  href="' . $link_plata_contributiei .'"><img src="' . $link_plata_contributiei . '"/></a></p>';
 
     }
 
@@ -123,7 +169,7 @@ while($data = $result->fetch_assoc()) {
     
     if (!empty($link_certificat_casatorie_civila)) {
     
-    echo '<a target="popup" data-title ="' . basename($link_certificat_casatorie_civila) . '"data-lightbox ="foto_acte"  href="' . $link_certificat_casatorie_civila .'"><br /><img src="' . $link_certificat_casatorie_civila . '"/></a></p>';
+    echo '<a target="popup" data-title ="' . basename($link_certificat_casatorie_civila) . '"data-lightbox ="foto_acte"  href="' . $link_certificat_casatorie_civila .'"><img src="' . $link_certificat_casatorie_civila . '"/></a></p>';
 
     }
 
@@ -131,7 +177,7 @@ while($data = $result->fetch_assoc()) {
     
     if (!empty($link_certificat_botez_mire)) {
     
-    echo '<a target="popup" data-title ="' . basename($link_certificat_botez_mire) . '"data-lightbox ="foto_acte"  href="' . $link_certificat_botez_mire .'"><br /><img src="' . $link_certificat_botez_mire . '"/></a></p>';
+    echo '<a target="popup" data-title ="' . basename($link_certificat_botez_mire) . '"data-lightbox ="foto_acte"  href="' . $link_certificat_botez_mire .'"><img src="' . $link_certificat_botez_mire . '"/></a></p>';
 
     }
 
@@ -139,7 +185,7 @@ while($data = $result->fetch_assoc()) {
   
     if (!empty($link_certificat_botez_mireasa)) {
     
-    echo '<a target="popup" data-title ="' . basename($link_certificat_botez_mireasa) . '"data-lightbox ="foto_acte"  href="' . $link_certificat_botez_mireasa .'"><br /><img src="' . $link_certificat_botez_mireasa . '"/></a></p>';
+    echo '<a target="popup" data-title ="' . basename($link_certificat_botez_mireasa) . '"data-lightbox ="foto_acte"  href="' . $link_certificat_botez_mireasa .'"><img src="' . $link_certificat_botez_mireasa . '"/></a></p>';
 
     }
 
@@ -147,7 +193,7 @@ while($data = $result->fetch_assoc()) {
     
     if (!empty($link_dispensa)) {
     
-    echo '<a target="popup" data-title ="' . basename($link_dispensa) . '"data-lightbox ="foto_acte"  href="' . $link_dispensa .'"><br /><img src="' . $link_dispensa . '"/></a></p>';
+    echo '<a target="popup" data-title ="' . basename($link_dispensa) . '"data-lightbox ="foto_acte"  href="' . $link_dispensa .'"><img src="' . $link_dispensa . '"/></a></p>';
 
     }
   
@@ -157,15 +203,6 @@ while($data = $result->fetch_assoc()) {
     echo "</div>";
     echo '<p></p><hr>';
 
-    
-
-    if ($status !== 'acceptata') {
-        echo '<a class="btn btn-success" href="accepta-programare-cununie.php?id=' . $id_programare . '&status=acceptata" role="button" style="margin-right:10px">Acceptă</a>';
-      }  
-      
-      echo ' <a class="btn btn-danger" href="rezervare-unica-cununie.php?id=' . $id_programare . '&status=respinsa" role="button" style="margin-right:10px">Respinge</a>';
-  
-      echo '<hr />';
   
       // selectez din db toate mesajele corespunzătoare acestei rezervări
   
@@ -176,7 +213,7 @@ while($data = $result->fetch_assoc()) {
       echo '<form method="POST" action="raspunde-cu-detalii.php?id=' . $id_programare . '&status=detalii&eveniment=cununie">' .
   
       '<textarea name="mesaj" class="form-control" placeholder = "Scrieți aici mesajul dumneavoastră." style="margin:20px 0" rows="6" cols="10"></textarea>  
-      <button type="submit" name ="raspunde" class="btn btn-warning">Răspunde cu detalii</button>';
+      <button type="submit" name ="raspunde" class="btn btn-warning">Trimite mesaj</button>';
   
   
       echo "</form>";
@@ -188,6 +225,9 @@ while($data = $result->fetch_assoc()) {
 
 
 
+</div>
+
+</div>
 
 </div>
 

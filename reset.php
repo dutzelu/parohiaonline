@@ -3,6 +3,8 @@
 include 'controllers/authController.php'; 
 include 'functions.php'; 
 
+$mesaj_succes = '';
+
 if (isset($_GET['id'])) {
     $id_user_email = $_GET['id'];
 
@@ -105,13 +107,13 @@ if (isset($_POST['reset-btn'])) {
   <title>Parohia Online - Login</title>
 </head>
 
-<body>
+<body id="login">
 
   <div class="container">
 
     <div class="row">
      
-    <div class="col-md-4 offset-md-4 form-wrapper auth login">
+    <div class="col-md-4 form-wrapper auth login">
       <p><img src="images/logo-parohiaonline.png" class="logo"/></p>
 
      
@@ -127,7 +129,7 @@ if (isset($_POST['reset-btn'])) {
             echo "V-am trimis pe adresa de email <strong>" . $email_cenzurat . "</strong> un cod de 6 cifre pentru confirmare.";
         }
          
-         if ($_GET['succes'] == 'nu') {echo '<div class="alert alert-danger">' . "Adresa de email introdusă nu există în baza noastră de date." . '</div>'; }
+         if (isset($_GET['succes'])) {echo '<div class="alert alert-danger">' . "Adresa de email introdusă nu există în baza noastră de date." . '</div>'; }
 
 
         // dacă schimbare s-a făcut cu succes

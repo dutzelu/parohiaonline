@@ -1,8 +1,7 @@
 <?php
 
-include "header-frontend.php"; 
-include "sidebar-admin.php"; 
-include "functions.php";
+include "header-admin.php"; 
+
 
 $data_cateheza = '';
 $ora_cateheza = '';
@@ -30,18 +29,71 @@ while ($data = mysqli_fetch_assoc($result)){
 ?>
 
 
-<div class="mare">
-  <div class="container-fluid">
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-3 sidebar-admin"><?php include "sidebar-admin.php"?></div>
+
+        <div class="col-sm-9 p-4 zona-principala">
+
+        <?php include "header-mic-admin.php";?>
+
+  
+        <div class="mt-3 p-5 wrapper-rezervare-unica">
 
  <?php    
  
- echo '<h5>Modifică rezervarea din <br />'  . date("d.m.Y", strtotime($data_si_ora)) . ' - ' . $eveniment . ' - ora: ' . date("H:i", strtotime($data_si_ora)) . ' - '  . $nume_mama . ' ' . $prenume_mama . '</h5>';
 
-    echo  '<hr />';
+
+    echo "<p>";
+
+        if (empty($nume_tata)) {
+        echo '<span class="nume">' . $nume_mama . ' ' . $prenume_mama . '</span><span class="rosu"> [Edit]</span>"'; 
+        } else {
+        echo '<span class="nume">' . $nume_tata . ' ' . $prenume_tata . '</span><span class="rosu">  [Edit]</span>'; 
+        }
+
+        echo ' <i class="fas fa-angle-double-right"></i> ';
+        
+        echo ' <span class="albastru-inchis">' . $eveniment . ' </span>';
+
+        echo ' <i class="fas fa-angle-double-right"></i> ';
+
+        echo '<span class="rosu">' . date("d M Y", strtotime($data_si_ora)) . '</span>';
+
+        echo ' <i class="fas fa-angle-double-right"></i> ';
+
+        echo '<span class="rosu">' . date("H:i", strtotime($data_si_ora)) . '</span>';
+
+    echo "</p>";
+
+    echo "<p class='butoane'>";
+
+    echo '<span class="status ';
+                    
+    switch($status) {
+
+        case "acceptata": echo 'acceptata';
+        break;
+        case "respinsa": echo 'respinsa';
+        break;
+        case "anulata": echo 'respinsa';
+        break;
+        case "detalii": echo 'detalii';
+        break;
+        case "în așteptare": echo 'in-asteptare';
+        break;
+    }
+
+    echo '">' .$status . '</span>';
+    echo '<a href="rezervare-unica.php?id=' . $id_programare . '"><i class="fas fa-chevron-circle-left"></i> Renunță</a> ';
+    echo ' <button type="submit" form="actualizeaza" name ="actualizeaza" class="btn salveaza"><i class="fas fa-save"></i> Salveaza</button>';
+
+    echo '</p>';
  
  ?>
 
-<form action="update-edit-rezervare.php?id=<?php echo $id_programare?>" method="post" enctype = "multipart/form-data">
+<form id="actualizeaza" action="update-edit-rezervare.php?id=<?php echo $id_programare?>" method="post" enctype = "multipart/form-data">
 
 
 <div class="input-group mb-2">
@@ -164,9 +216,15 @@ while ($data = mysqli_fetch_assoc($result)){
    
  
 
-<button type="submit" name ="actualizeaza" class="btn btn-primary">Actualizează datele</button>
+
  
 </form>
 
-    </div>
+ 
+</div>
+
+</div>
+
+</div>
+
 </div>

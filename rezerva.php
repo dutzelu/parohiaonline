@@ -7,7 +7,6 @@ if (!empty($_SESSION['id']) && $admin == 0) {
 }
 
 include "header-admin.php";
-include "sidebar-admin.php";
 include "conexiune.php";
 
 if (isset($_GET['month']) && isset($_GET['year'])) {

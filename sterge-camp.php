@@ -50,6 +50,37 @@ if (isset($_GET['id-anulare']) && isset($_GET['eveniment'])) {
 
 } 
 
+if (isset($_GET['stergeid']) && isset($_GET['eveniment'])) {
+
+    $stergeid = $_GET['stergeid'];
+    $eveniment = $_GET['eveniment'];
+
+    if ($eveniment=="programari_botez") {
+        $sql="DELETE FROM programari_botez WHERE id = $stergeid";
+        $rezultate = mysqli_query ($conn, $sql);
+
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
+        mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+        echo '<script> location.replace("registru.php?eveniment=programari_botez&sters=ok"); </script>';
+    }
+
+    if ($eveniment=="programari_cununie") {
+        $sql="DELETE FROM programari_cununie WHERE id = $stergeid";
+        $rezultate = mysqli_query ($conn, $sql);
+
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
+        mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+        echo '<script> location.replace("registru.php?eveniment=programari_cununie&sters=ok"); </script>';
+    }
+
+} 
+
 
 
 

@@ -1,7 +1,6 @@
 <?php
 
-include "header-frontend.php"; 
-include "functions.php";
+include "header-admin.php"; 
 
 if (isset($_GET['id'])) {
     $id_programare = $_GET['id'];

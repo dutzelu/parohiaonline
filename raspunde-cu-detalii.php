@@ -9,6 +9,8 @@ $mesaj='';
 $mesaj_email = '';
 $link_cerere = '';
 $data_si_ora = '';
+$from = '';
+$name = '';
 
 $timp = date('Y-m-d h:i:s', time());
 

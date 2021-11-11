@@ -16,18 +16,18 @@ include 'controllers/authController.php';
   <title>Parohia Online - Login</title>
 </head>
 
-<body>
+<body id="login">
 
   <div class="container">
 
     <div class="row">
      
-    <div class="col-md-4 offset-md-4 form-wrapper auth login">
+    <div class="col-md-4 form-wrapper auth login">
       <p><img src="images/logo-parohiaonline.png" class="logo"/></p>
 
       <p> <?php 
       
-           if ($_GET['succes'] == 'nu') {echo '<div class="alert alert-danger">' . "Adresa de email introdusă nu există în baza noastră de date." . '</div>'; }
+           if (isset($_GET['succes']) == 'nu') {echo '<div class="alert alert-danger">' . "Adresa de email introdusă nu există în baza noastră de date." . '</div>'; }
       
       ?> </p>
       

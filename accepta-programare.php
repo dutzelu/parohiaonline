@@ -1,4 +1,7 @@
 <?php
+$mesaj_email_admin = "";
+$name = "";
+$from = "";
 include "header-admin.php"; 
 
 
@@ -170,7 +173,7 @@ while($data = $result->fetch_assoc()) {
 if (file_exists($link_cerere)) {
 
         $query = 'UPDATE programari_botez SET link_cerere = ? WHERE id = ?';
-        var_dump($query);
+       
         $stmt = $conn->prepare($query);
         $stmt->bind_param('si', $link_cerere, $id);
         $result = $stmt->execute();

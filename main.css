@@ -1,17 +1,197 @@
 @import url('https://fonts.googleapis.com/css?family=Lora');
 
-.mare {
-  max-width: 950px;
-  margin-left: 250px;
-  padding-top: 0;
-  padding-left: 1vw;
+
+/* Pagină Login */
+
+body#login {
+  background: url('images/bg-biserica.jpg');
 }
+
+a {color:#4374B9;}
+
+.btn-group-lg > .btn, .btn-lg {
+  border-radius: 3rem;
+}
+
+
+.linkuri_login_form {margin-top:45px;}
+.linkuri_login_form p {margin:0;}
+
+
+.home-wrapper button, .form-wrapper.auth button {
+  background: #4374B9;
+  color: white;
+}
+
+.form-wrapper input {margin-bottom:23px;}
+
+.form-wrapper.auth .form-title {
+  color: #4374B9;
+  font-size: 20px;
+  margin-bottom: 38px;
+}
+
+.form-control::placeholder {
+
+  color: #7081B9;
+  opacity: 1;
+  text-align: center;
+  font-size: 15px;
+
+}
+
+/* Pagina admin */
+
+
+.wrapper {align-items: stretch; height:100%;}
+.zona-principala {background:#EDF0F5; font-family: 'Poppins', sans-serif;}
+ div.logo img {max-width:100%;}
+ img.logo {max-width:260px;}
+div.titlu p {line-height:23px;margin:11px 0; color:#4374B9}
+p.mitropolia {font-size:11px;}
+p.parohia {font-size:22px; font-weight: bold;}
+.setari {color:#AAA;text-align:right}
+
+.zona-principala .contoare a > div {background:#FFF;padding:20px;border-radius:10px;box-shadow: 3px 4px 10px -4px #C7C7C7;}
+.zona-principala div.contoare a {display:inline-block}
+
+
+/* culori Urmează în calendar */
+
  
-a.logo, a.logo:hover {
-  display: block;
-  background: #FFF !important;
-  border-bottom: 3px solid red;
+
+.urmeaza-in-calendar  {background:#F5FAFF;}
+
+.urmeaza-cununie {background:#EFD641} 
+.urmeaza-spovedanie {background:#E41E26} 
+.urmeaza-botez {background:#3498DB} 
+.urmeaza-sfestanie {background:#BAD850} 
+.urmeaza-parastas {background:#FF9D33} 
+
+.urmeaza-in-calendar p span {
+  padding: 2px 7px;
+  border-radius: 4px;
+  color: #FFF;
+  font-size: 14px;
+  margin-right: 8px;
 }
+.urmeaza-in-calendar span.nume {
+  color: #AFAFAF;
+  margin-left: -7px;
+  font-size: 15px;
+  text-transform: capitalize;
+  line-height: 28px;
+  display: inline-block;
+}
+.calendar {background:#FFF;}
+
+/* Ultimele programari */
+
+.ultimele-programari .table > thead:nth-child(1) > tr:nth-child(1) {color:#303E67; background:#F1F5FA;border:1px solid #EAF0F7; font-weight:bold;}
+.ultimele-programari, .zile-stabilite {
+  box-shadow: 3px 4px 10px -4px #C7C7C7;
+  background: #FFF;
+  padding: 49px 34px;
+  margin: 24px 12px;
+}
+
+
+.ultimele-programari .table > :not(:first-child) {border-top:none!important;}
+.ultimele-programari .table {color:#7286A2; font-size:14px;}
+.ultimele-programari .table tr.clickable-row:hover {background:#fafafa;cursor:pointer;}
+
+.ultimele-programari .nume {color:#4374B9;font-weight: bold; font-size:14px; text-transform: capitalize;}
+
+.in-asteptare {background-color:rgba(100,129,245, 0.2); color:#1C6CF9}
+.acceptata {background-color:rgba(30,202,123, 0.2); color:#1ECA7B;}
+.respinsa {background-color:rgba(255,51,51, 0.2); color:#FF0000;}
+.detalii {background-color:rgba(255,204,62, 0.2); color:#C68900;}
+
+span.status {font-size:11px; display:inline-block;width:fit-content; padding:2px 5px; border-radius: 6px;text-align:center;}
+
+.ultimele-programari a.sterge > i {color:red;margin-right:10px;}
+.ultimele-programari a.sterge > i:hover, .ultimele-programari a.edit:hover > i {font-size:18px;}
+
+/* calendar cu slujbe */ 
+
+.legenda {
+  font-size: 13px;
+  margin-left: 26px;
+}
+
+.legenda > div {
+  display: inline-block;
+  width: fit-content;
+  border-radius: 4px;
+  color: white;
+  padding: 1px 9px;
+  margin-right: 2px;
+}
+
+/* Registru botezuri & cununii */
+
+.pagination {font-size:12px;}
+.pagination .page-link {color: #4374B9;}
+
+.pagination .page-item.active .page-link {
+    background-color: #4374B9;
+    border-color: #4374B9;
+}
+
+/* Rezervare unică */
+
+.wrapper-rezervare-unica {background:white; border-radius:4px}
+.wrapper-rezervare-unica i {color:#4374B9;font-size:12px;margin:0 10px;}
+.wrapper-rezervare-unica .nume {color:#4374B9;font-weight: 600; font-size:18px; text-transform: uppercase;}
+.rosu {color:Red!important;}
+.orange  {color:orange!important;}
+.verde {color:green!important}
+.albastru-inchis {color:#4374B9}
+p.butoane a {color:#9DA6C8;font-size:14px }
+p.butoane a:hover {color:#4374B9;}
+p.butoane i {margin:0 0 0 20px; font-size:16px}
+
+.wrapper-rezervare-unica .input-group-text {
+  display: flex;
+  font-size: 14px;
+  font-weight: bold;
+  color: #4374B9;
+  background-color: #F1F5FA;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+      border-top-right-radius: 0.25rem;
+      border-bottom-right-radius: 0.25rem;
+  width: 250px;
+}
+
+.wrapper-rezervare-unica .input-group {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  width: 100%;
+  border: 1px solid #4374B9;
+  border-radius: 4px;
+}
+
+.wrapper-rezervare-unica .col-form-label {
+  color: #4374B9;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.btn.salveaza {
+  padding: 5px 2px;
+  font-size: 14px;
+  color: #9DA6C8;
+  margin-left:-4px;
+}
+
+/* ------------------------------*/
+
+/* Zile stabilite*/
+
+.zile-stabilite .col-sm-12 {max-width:800px; font-size:14px;}
 
 .btn-danger:hover {
   color: #FFF;
@@ -26,13 +206,9 @@ a.logo, a.logo:hover {
 div.capcalendar {
   background: #FFF;
   padding: 16px 0 0 0;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-  border: 2px dashed #0d6efd;
-  border-bottom:none;
 }
 
-.rezervari {margin-top:50px;}
+.rezervari {}
 
 #dispari {
   color: #fff;
@@ -50,24 +226,29 @@ a.logo:after {content:none!important;}
 :link {text-decoration: none!important;}
 li { list-style-type: none; }
 .form-wrapper {
-  margin: 50px auto 50px;
+  margin: 0 auto;
   font-family: 'Lora', serif;
   font-size: 1.09em;
+  max-width:325px;
+  padding:30px;
 }
-.form-wrapper.login { margin-top: 20px; }
+
+.form-wrapper.login {
+  margin-top: 3vw;
+  padding: 2rem;
+  border-radius: 5px;
+}
 .form-wrapper p { font-size: .8em; text-align: center; }
 .form-control:focus { box-shadow: none; }
 .form-wrapper {
-  border: 1px solid #0d6efd;
+  background:white;
+  -webkit-box-shadow: 0px 1px 12px 3px rgba(0,0,0,0.15); 
+  box-shadow: 0px 1px 12px 3px rgba(0,0,0,0.15);
   border-radius: 5px;
   padding: 25px 15px 0px 15px;
 }
-.form-wrapper.auth .form-title { color: #0d6efd; }
-.home-wrapper button,
-.form-wrapper.auth button {
-  background: #0d6efd;
-  color: white;
-}
+
+
 .home-wrapper {
   margin-top: 150px;
   border-radius: 5px;
@@ -75,9 +256,6 @@ li { list-style-type: none; }
   border: 1px solid #80CED7;
 }
 
-.container-fluid {padding:3vw;}
-.container .logo {width:300px;}
-.container h3 {margin-bottom:20px;}
 
 .mb-3 {margin: 0 36px;}
 .rezerva {margin-top:20px;}
@@ -87,7 +265,8 @@ li { list-style-type: none; }
   padding: .5rem 1rem;
   font-size: 1rem;
   line-height: 1.5;
-  border-radius: .2rem;
+  border-radius: 3rem;
+  border: 1px solid #7081B9;
 }
 
 h3 {font-size: 1.5rem;}
@@ -130,10 +309,6 @@ tr.clickable-row > td > a.btn-danger:hover {background:#ee4d5d; cursor:pointer!i
   border-bottom: 1px solid #dddddd;
 }
 
-/* .styled-table tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
-} */
-
 .styled-table tbody tr:last-of-type {
   border-bottom: 2px solid #007bff;
 }
@@ -145,11 +320,23 @@ tr.clickable-row > td > a.btn-danger:hover {background:#ee4d5d; cursor:pointer!i
 
 /* tabel rezervare */
 
-#tabel-rezervare p { background:#f8f8f8; padding:4px 0px; border-radius: 10px 0 0 10px; line-height:25px}
+.tabel-rezervare {font-size:14px}
+.tabel-rezervare p {color:#000; background: #F1F5FA;border:1px solid #4374B9;border-radius: 10px 0 0 10px; line-height:25px; border-radius:4px}
 
-#tabel-rezervare img {max-width:800px;margin-top:10px;}
+.tabel-rezervare img {max-height:100px;}
 
-#tabel-rezervare .cap {background:#007bff; color:#FFF; padding:8px 15px; border-radius: 10px 0 0 10px; margin-right:10px;}
+.tabel-rezervare.view .cap {
+  background:white;
+  color: #4374B9;
+  padding: 7px 15px;
+  border-radius: 4px 0 0 4px;
+  margin-right: 10px;
+  font-weight: bold;
+  width:250px;
+  display: inline-block;
+}
+
+span.cap.imagine {padding:45px 15px!important}
 .stanga {margin-left:20px;}
 
 #butoane {margin-bottom:20px;}
@@ -186,13 +373,12 @@ body {font-family: Georgia, sans-serif;}
 .weekdays {
   margin: 0;
   padding: 10px 0;
-  background-color:#007bff;
+  font-weight: bold;;
 }
 
 .weekdays li {
   display: inline-block;
   width: 13.1%;
-  color: #FFF;
   text-align: center;
 }
 
@@ -203,20 +389,15 @@ body {font-family: Georgia, sans-serif;}
 .days {
   padding: 10px 0;
   margin: 0;
-  border: 2px dashed #007bff;
-      border-top-color: rgb(0, 123, 255);
-      border-top-style: dashed;
-      border-top-width: 2px;
-  border-top: none;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
 }
+
+li.calendar-day > label {width:40px;}
 
 .days li {
   list-style-type: none;
   display: inline-block;
-  width: 13.1%;
-  text-align: right;
+  width: 13.7%;
+  text-align: center;
   margin-bottom: 5px;
   font-size: 16px;
 }
@@ -232,62 +413,105 @@ body {font-family: Georgia, sans-serif;}
 /* ---------- Sidebar ---------- */ 
 
  /* The side navigation menu */
- .sidebar {
-  margin: 0;
-  padding: 0;
-  width: 250px;
-  background-color:ghostwhite;
-  position: fixed;
-  height: 100%;
-  overflow: auto;
-  border-bottom:4px solid red;
+
+ /* Fixed sidenav, full height */
+ .sidenav {
+  z-index: 1;
+  width: 265px;
+  margin-top:30px;
 }
 
-/* Sidebar links */
-.sidebar a {
-  display: block;
-  color: black;
-  padding: 10px;
+.program {background:url('images/potir-negru.png') no-repeat left center !important; color:#4374B9}
+.program:hover, button.program.active {background:url('images/potir-alb.png') no-repeat left center #4374B9 !important;}
+
+
+.zile {background:url('images/ceas-negru.png') no-repeat left center !important; color:#4374B9}
+.zile:hover, button.zile.active {background:url('images/ceas-alb.png') no-repeat 5px center #4374B9 !important;}
+
+a.botezuri {background:url('images/botezuri.png') no-repeat left center; }
+a.prima-pagina {background:url('images/cruce.png') no-repeat left center; }
+a.cununii {background:url('images/cununii.png') no-repeat left center}
+a.spovedanii {background:url('images/spovedanii.png') no-repeat left center}
+a.sfestanii {background:url('images/sfestanii.png') no-repeat left center}
+a.parastase {background:url('images/parastase.png') no-repeat left center}
+a.participare-slujbe {background:url('images/participare-slujbe.png') no-repeat left center}
+a.rugaciuni {background:url('images/rugaciuni.png') no-repeat left center}
+a.pomelnic {background:url('images/pomelnic.png') no-repeat left center}
+
+ul.dropdown-container > li {list-style-type: none;}
+
+ul.dropdown-container > li > a {
+  padding-left: 15px;
+  background: url('images/cerc.png') no-repeat left center;
+  padding: 7px 8px 8px 25px;
+}
+ul.dropdown-container {
+  margin-left: 16px;
+  margin-top: 13px;
+  margin-bottom: 0;
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a {
+  padding: 12px 8px 6px 45px;
   text-decoration: none;
+  font-size: 17px;
+  color: #4374B9;
+  display: block;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
 }
 
-.sidebar a.active {background:red; color:#FFF;}
-.sidebar a:hover:after {display:inline-block; padding-left:5px;}
+.sidenav a:hover {color:red;}
 
-/* Active/current link */
-.sidebar a.active {
-  background-color: #007bff;
+.dropdown-btn {
+  padding: 6px 8px 6px 45px;
+  background:none;
+  text-decoration: none;
+  font-size: 17px;
+  color: #4374B9;
+  display: block;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.dropdown-btn:hover {
+  color: #fff;
+  background: #4374B9;
+  border-radius: 4px;
+}
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: #4374B9;
   color: white;
-  border-right: 5px solid red;
+  border-radius: 4px;
 }
 
-/* Links on mouse-over */
-.sidebar a:hover:not(.active) {
-  background-color: red;
-  color: white;
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  padding-left: 30px;
 }
 
-
-
-/* On screens that are less than 700px wide, make the sidebar into a topbar */
-@media screen and (max-width: 950px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-  .sidebar a {float: left;}
-  div.mare {margin-left: 0;}
-}
-
-/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
-@media screen and (max-width: 400px) {
-  .sidebar a {
-    text-align: center;
-    float: none;
-  }
-  .weekdays li {width: 11.71%;}
-  .btn {padding: .275rem .35rem;}
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
 } 
 
 /* mesaje intre preot si parintii copilului */
@@ -306,20 +530,20 @@ ul#zone_mesaje li:nth-child(odd) {background: #EFEFEF; }
 body * {visibility:hidden}
 #butoane, #butoane * {visibility:hidden}
 
-#tabel-rezervare, #tabel-rezervare * {visibility: visible;}
+.tabel-rezervare, .tabel-rezervare * {visibility: visible;}
 
-  #tabel-rezervare {
+  .tabel-rezervare {
     position:absolute;
     top:0px;
     left:0px;
   }
 
-  #tabel-rezervare p {margin:10px; border:1px solid #000;}
-  #tabel-rezervare p span {background:none;}
+  .tabel-rezervare p {margin:10px; border:1px solid #000;}
+  .tabel-rezervare p span {background:none;}
  
 
-
-  #tabel-rezervare .cap {font-weight:bold; border:1px solid #000; margin-right:10px;color:#000}
+ 
+  .tabel-rezervare.view .cap {width:180px; font-weight:bold; border:1px solid #000; margin-right:10px;color:#000}
 .stanga {margin-left:20px;}
   h5 {font-size:25px;margin:10px;}
  

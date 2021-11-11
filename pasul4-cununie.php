@@ -125,12 +125,13 @@ $ora = '';
     nume_nasa=?,
     localitate_nasi=?,  
     nume_cameraman=?,
-    telefon_cameraman=?
+    telefon_cameraman=?,
+    status=?
     ';
 
     $stmt = $conn->prepare($query);
 
-    $stmt->bind_param('issssssssssssssssss', $user_id, $eveniment, $data_si_ora, $nume_mire, $prenume_mire, $nume_mireasa, $prenume_mireasa, $adresa_mire, $adresa_mireasa, $telefon, $email, $numar_certificat_casatorie, $data_eliberarii_certificatului, $eliberat_de_primaria,  $nume_nas, $nume_nasa, $localitate_nasi, $nume_cameraman, $telefon_cameraman);
+    $stmt->bind_param('isssssssssssssssssss', $user_id, $eveniment, $data_si_ora, $nume_mire, $prenume_mire, $nume_mireasa, $prenume_mireasa, $adresa_mire, $adresa_mireasa, $telefon, $email, $numar_certificat_casatorie, $data_eliberarii_certificatului, $eliberat_de_primaria,  $nume_nas, $nume_nasa, $localitate_nasi, $nume_cameraman, $telefon_cameraman, "în așteptare");
     $result = $stmt->execute();
 
     $last_id = mysqli_insert_id($conn);
