@@ -155,7 +155,7 @@
             </table>
 
 
-            <?php include "paginatie.php"?>
+            <?php $link_paginatie = '?eveniment=' . $eveniment_registru .'&'; include "paginatie.php";?>
 
 
             
@@ -170,10 +170,3 @@
 
 
 
-<script>
-  jQuery(document).ready(function($) {
-    $(".clickable-row").click(function() {
-        window.location = $(this).data("href");
-    });
-});
-</script>

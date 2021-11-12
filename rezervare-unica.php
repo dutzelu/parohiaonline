@@ -91,7 +91,7 @@
                 
                 echo '">' .$status . '</span>';
 
-                echo '<a href="registru.php?eveniment=programari_botez"><i class="fas fa-chevron-circle-left"></i> Înapoi</a> ';
+                echo '<a href="' . $_SERVER['HTTP_REFERER'] . '"><i class="fas fa-chevron-circle-left"></i> Înapoi</a> ';
 
                 echo '<a href="accepta-programare.php?id=' . $id_programare . '&status=acceptata" role="button"><i class="verde far fa-check-circle"></i>  Acceptă</a>';
 

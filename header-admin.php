@@ -23,6 +23,13 @@ $result = $stmt->get_result();
 while ($data = mysqli_fetch_assoc($result)){  
     $admin = $data['admin'];
 }
+
+// // dacă nu e admin
+
+// if ($admin == 0) {
+//     echo '<script>location.replace("admin-client.php");</script>';
+// }
+
  
 if ( isset($_GET['pentru']) ) {$pentru = $_GET['pentru'];} else {$pentru = "";}
 

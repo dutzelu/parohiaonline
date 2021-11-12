@@ -1,15 +1,23 @@
 <?php
 
 include "header-frontend.php"; 
-include "sidebar-frontend.php"; 
-include "functions.php";
+ 
 
 $user_id = $_SESSION['id'];
 ?>
 
 
-<div class="mare">
-  <div class="container-fluid">
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-3 sidebar-admin"><?php include "sidebar-admin.php"?></div>
+
+        <div class="col-sm-9 p-4 zona-principala">
+
+        <?php include "header-mic-admin.php";?>
+
+  
+        <div class="mt-3 p-5 wrapper-rezervare-unica">
 
 <?php
 
@@ -26,13 +34,6 @@ $user_id = $_SESSION['id'];
   }
 
 
-?>
-
-<h2 class="mb-2">Programările mele</h2>
-
-
-<?php
-
 $user_id = $_SESSION['id'];
 
 
@@ -46,14 +47,62 @@ $result = $stmt->get_result();
 while($data = $result->fetch_assoc()) {
 
     include "extras-programare.php";
- 
-    echo '<span class="badge mb-1 ' . $clasa_accept . '">' 
-    
-  
-    . $status_accept_afisat . '</span>' . '<br /><h5 style="color:' . $color . '">'  . date("d.m.Y", strtotime($data_si_ora)) . ' - ' . $eveniment . ' - ora: ' . date("H:i", strtotime($data_si_ora)) . ' - '  . $nume_mama . ' ' . $prenume_mama . '</h5>';
 
-    echo '<a class="btn btn-outline-primary" href="edit-rezervare.php?id=' . $id_programare . '">Modifică detaliile programării / adaugă documente</a> ';
-    echo '<a class="btn btn-outline-danger" href="sterge-camp.php?id-anulare=' . $id_programare . '&eveniment=' . preg_replace('/\s+/', '', $eveniment) . '">Anulează programarea</a>';
+    echo "<p>";
+
+        if (empty($data['nume_tata'])) {
+          echo '<span class="nume">' . $data['nume_mama'] . ' ' . $data['prenume_mama'] . "</span>"; 
+        } else {
+          echo '<span class="nume">' . $data['nume_tata'] . ' ' . $data['prenume_tata'] . "</span>"; 
+        }
+
+        echo ' <i class="fas fa-angle-double-right"></i> ';
+        
+        echo ' <span class="albastru-inchis">' . $eveniment . ' </span>';
+
+        echo ' <i class="fas fa-angle-double-right"></i> ';
+
+        echo '<span class="rosu">' . date("d M Y", strtotime($data_si_ora)) . '</span>';
+
+        echo ' <i class="fas fa-angle-double-right"></i> ';
+
+        echo '<span class="rosu">' . date("H:i", strtotime($data_si_ora)) . '</span>';
+
+    echo "</p>";
+        
+    
+    echo "<p class='butoane'>";
+
+        echo '<span class="status ';
+                      
+        switch($status) {
+
+            case "acceptata": echo 'acceptata';
+            break;
+            case "respinsa": echo 'respinsa';
+            break;
+            case "anulata": echo 'respinsa';
+            break;
+            case "detalii": echo 'detalii';
+            break;
+            case "în așteptare": echo 'in-asteptare';
+            break;
+        }
+
+        echo '">' .$status . '</span>';
+
+        echo '<a href="home.php"><i class="fas fa-chevron-circle-left"></i> Înapoi</a> ';
+
+        echo '<a href="anuleaza.php?id-anulare=' . $id_programare . '&eveniment=' . preg_replace('/\s+/', '', $eveniment) . '"><i class="orange fas fa-backspace"></i> Anuleaza</a>'; ?>
+
+        <?php
+                    
+        echo '<a href="edit-rezervare.php?id=' . $id_programare . '"><i class="albastru-inchis far fa-edit"></i> Modifică</a> ';
+
+        echo '<a href="" onclick="window.print()"><i class="fas fa-print"></i> Print</a>';
+
+    echo '</p>';
+
     echo  '<hr />';
     
     if (isset($_GET['edit'])) { 
@@ -146,8 +195,12 @@ while($data = $result->fetch_assoc()) {
 
 
 
+</div>
+
+</div>
 
 </div>
 
 </div>
+
 

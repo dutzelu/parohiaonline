@@ -1,8 +1,6 @@
 <?php
 
 include "header-frontend.php"; 
-include "sidebar-frontend.php"; 
-include "functions.php";
 
 $user_id = $_SESSION['id'];
 ?>

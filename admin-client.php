@@ -1,16 +1,11 @@
-<?php include "header-frontend.php"; 
- 
+<?php 
+      include "header-frontend.php"; 
 
-
-$user_id = $_SESSION['id'];
-  
 ?>
-
-<title>Programările mele</title>
+<title>Panoul de control</title>
 </head>
 
 <body>
-
 
 <div class="container-fluid">
 
@@ -20,9 +15,87 @@ $user_id = $_SESSION['id'];
         <div class="col-sm-9 p-4 zona-principala">
             
             <?php include "header-mic-admin.php";?>
-        
-        <div class="row mt-3 ultimele-programari">
-              <p class="fw-bold">Programările mele</p>
+
+            <div class="row mt-1 justify-content-start contoare">
+
+                <a href="frontend.php?pentru=botez" class="col-sm-3 m-2">
+                    <div>
+                        <div class="row align-items-center">
+                            <div class="col-sm-3"><img src="images/botez-albastru.png" /></div>
+                            <div class="col-sm-9">Programează Taina Botezului</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="frontend.php?pentru=cununie" class="col-sm-3 m-2">
+                    <div>
+                        <div class="row align-items-center">
+                            <div class="col-sm-3"><img src="images/cununii-auriu.png" /></div>
+                            <div class="col-sm-9">Programează Taina Cununiei</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="frontend.php?pentru=sfestanie" class="col-sm-3 m-2">
+                    <div>
+                        <div class="row align-items-center">
+                            <div class="col-sm-3"><img src="images/sfestanii-verde.png" /></div>
+                            <div class="col-sm-9">Programează Șfeștanie</div>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="row mt-3 justify-content-start contoare">
+
+                <a href="frontend.php?pentru=spovedanie" class="col-sm-4 m-2">
+                    <div>
+                        <div class="row align-items-center">
+                            <div class="col-sm-3"><img src="images/spovedanii-rosu.png" /></div>
+                            <div class="col-sm-9">Programează Taina Spovedaniei</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="frontend.php?pentru=parastas" class="col-sm-3 m-2">
+                    <div>
+                        <div class="row align-items-center">
+                            <div class="col-sm-3"><img src="images/parastase-portocaliu.png" /></div>
+                            <div class="col-sm-9">Programează Parastas</div>
+                        </div>
+                    </div>
+                </a>
+
+                </div>
+
+            <div class="row mt-3 justify-content-start p-4 urmeaza">
+                <div class="col-sm-4 p-5 urmeaza-in-calendar">
+
+                    <p class="fw-bold">Anunțuri</p>
+                    <p>In fiecare duminica <strong>Sfanta Liturghie incepe la ora 9:00,</strong> iar de la ora 13:00 avem popasuri de rugaciune si momente in care se pot impartasi copiii si cei care au binecuvantare pentru impartasanie.</p>
+
+                    <p>Pentru Sfanta Liturghie <strong>se poate intra in biserica doar intre orele 8:15 si 8:45.</strong> Cu alte cuvinte, intodeauna ajungem la biserica inainte de inceperea Sfintei Liturghii. Pentru impartasire de la ora 13:00, se intra in biserica intre 12:45 si 13:00</p>
+
+                    <p><strong>Nu este nevoie de programare pentru a participa la slujbele sus mentionate.</strong><p>
+
+                    <p>Pomelnicele se scriu doar acasa si vor putea fi lasate dimpreuna cu ofranda pentru biserica intr-o cutie la intrare. </p>
+
+                    <p>Tuturor sanatate si pace in viata!</p>
+                
+
+                </div>
+
+                <div class="col-sm-8 p-5 calendar">
+                     
+                        
+ 
+                </div>
+            </div>
+
+            <div class="row mt-3 ultimele-programari">
+                <div class="col-sm-12">
+                    <p class="fw-bold">Ultimele programări</p>
                     <table class="table">
 
                         <thead>
@@ -39,37 +112,6 @@ $user_id = $_SESSION['id'];
                         <tbody >
 
                             <?php 
-
-                          // paginatia 
-
-                          if (isset($_GET['page_no']) && $_GET['page_no']!="") {
-                            $page_no = $_GET['page_no'];
-                            } else {$page_no = 1;}
-
-                            $total_records_per_page = 10; // numar de randuri pe pagina
-                            $offset = ($page_no-1) * $total_records_per_page;
-                            $previous_page = $page_no - 1;
-                            $next_page = $page_no + 1;
-                            $adjacents = "2"; 
-
-                            $result_count = mysqli_query($conn,"
-                            
-                            SELECT COUNT(*) As total_records
-                              FROM (
-                              Select id, 'Botez' as Programare, concat(nume_tata, ' ', prenume_tata) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_botez 
-                              WHERE user_id = 25
-
-                              UNION ALL 
-
-                              Select id, 'Cununie' as Programare, concat(nume_mire, ' ', prenume_mire) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_cununie 
-                              WHERE user_id = 25
-
-                              ) x ");
-
-                            $total_records = mysqli_fetch_array($result_count);
-                            $total_records = $total_records['total_records'];
-                            $total_no_of_pages = ceil($total_records / $total_records_per_page);
-                            $second_last = $total_no_of_pages - 1; // total page minus 1
                             
                             // datele programarilor cu status acceptat
 
@@ -85,19 +127,17 @@ $user_id = $_SESSION['id'];
 
                             ORDER BY Data ASC 
                                     
-                            LIMIT ?, ?";
+                            LIMIT 15";
 
                             $stmt = $conn->prepare($query);
-                            $stmt->bind_param('iiii', $_SESSION['id'], $_SESSION['id'], $offset, $total_records_per_page);
+                            $stmt->bind_param('ii', $_SESSION['id'], $_SESSION['id']);
                             $result = $stmt->execute();
                             $result = $stmt->get_result();
-
-                            
                                 
                             while ($row = mysqli_fetch_assoc($result)) { 
                             ?>
 
-                            <tr class='clickable-row' data-href="<?php 
+                            <tr class='clickable-row' data-href='<?php 
                             
                             if ($row['Programare']=="Botez") {
                                 echo "home-unic.php?id=" . $row['id'];
@@ -108,7 +148,7 @@ $user_id = $_SESSION['id'];
                             }
                             
                             
-                            ?>">
+                            ?>'>
                             <td><?php echo '<span class="nume">' . $row['Nume'] . '</span>'; ?></td>
                             <td><?php echo $row['Programare']; ?></td>
                             <td><?php echo $row['Data']; ?></td>
@@ -172,19 +212,18 @@ $user_id = $_SESSION['id'];
 
                     </table>
 
-                    <?php 
-                    $link_paginatie = 'home.php?'; 
-                    include "paginatie.php"; ?>
+                </div>    
+        </div>
 
- 
-</div>    
+    </div>
+          
 </div>
 
-</div>
-  
-</div>
 
+
+
+<?php include "footer.php"?>
 </body>
 </html>
 
- 
+

@@ -3,6 +3,11 @@ setTimeout(function() {
 }, 2000); // <-- time in milliseconds
 
 
+  jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    });
+});
 
  
 var url = document.URL;

@@ -424,6 +424,9 @@ li.calendar-day > label {width:40px;}
 .program {background:url('images/potir-negru.png') no-repeat left center !important; color:#4374B9}
 .program:hover, button.program.active {background:url('images/potir-alb.png') no-repeat left center #4374B9 !important;}
 
+.programari {background:url('images/ceas-negru.png') no-repeat left center !important; color:#4374B9}
+.programari:hover, button.programari.active {background:url('images/ceas-alb.png') no-repeat left center #4374B9 !important;}
+
 
 .zile {background:url('images/ceas-negru.png') no-repeat left center !important; color:#4374B9}
 .zile:hover, button.zile.active {background:url('images/ceas-alb.png') no-repeat 5px center #4374B9 !important;}
@@ -440,7 +443,7 @@ a.pomelnic {background:url('images/pomelnic.png') no-repeat left center}
 
 ul.dropdown-container > li {list-style-type: none;}
 
-ul.dropdown-container > li > a {
+.sidenav.admin ul.dropdown-container > li > a {
   padding-left: 15px;
   background: url('images/cerc.png') no-repeat left center;
   padding: 7px 8px 8px 25px;

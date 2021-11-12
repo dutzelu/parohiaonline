@@ -5,7 +5,7 @@
 
 <div class="row justify-content-center">
 
-  <div class="sidenav">
+  <div class="sidenav admin">
     <a class="prima-pagina" href="admin.php">Prima pagină</a>
     <button class="program dropdown-btn">Program liturgic <i class="fas fa-chevron-down" style="margin-left:10px; font-size:10px"></i></button>
         <ul class="dropdown-container">
