@@ -19,7 +19,7 @@ $result = $stmt->get_result();
  
 while ($data = mysqli_fetch_assoc($result)){    
 
-    include "extras-programare.php";
+    include "../includes/extras-programare.php";
 
     $data_cateheza = $data_start_fara_ora = date("Y-m-d", strtotime($data["data_ora_cateheza"]));
     $ora_cateheza = date("H:i", strtotime($data["data_ora_cateheza"]));
@@ -86,7 +86,7 @@ while ($data = mysqli_fetch_assoc($result)){
     }
 
     echo '">' .$status . '</span>';
-    echo '<a href="' . $_SERVER['HTTP_REFERER'] . '"><i class="fas fa-chevron-circle-left"></i> Renunță</a> ';
+    echo '<a href="rezervare-unica.php?id=' . $id_programare . '"><i class="fas fa-chevron-circle-left"></i> Renunță</a> ';
     echo ' <button type="submit" form="actualizeaza" name ="actualizeaza" class="btn salveaza"><i class="fas fa-save"></i> Salveaza</button>';
 
     echo '</p>';

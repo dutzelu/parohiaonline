@@ -155,7 +155,7 @@
             </table>
 
 
-            <?php $link_paginatie = '?eveniment=' . $eveniment_registru .'&'; include "paginatie.php";?>
+            <?php $link_paginatie = '?eveniment=' . $eveniment_registru .'&'; include "../includes/paginatie.php";?>
 
 
             

@@ -1,9 +1,9 @@
 <?php 
 include "header-frontend.php"; 
 include "sidebar-frontend.php"; 
-include "functions.php";
 
-$link_rezervare = "pasul1.php?year=" . $selected_year . "&month=" . $selected_month . "&pentru=" . $pentru;
+
+$link_rezervare = "pasi/pasul1.php?year=" . $selected_year . "&month=" . $selected_month . "&pentru=" . $pentru;
 
 $numar_pas = 1;
 $rezervari = '';
@@ -19,12 +19,12 @@ $rezervari = '';
 <div class="mare">
   <div class="container-fluid">
 
-  <?php include "pasi.php";?>
+  <?php include "pasi/pasi.php";?>
 
      <h1 class="h1">Alegeți ziua dorită pentru <span class="albastru"><?php echo $eveniment; ?></span> </h1>
 
 
-<?php include "calendar.php";?>
+<?php include "includes/calendar.php";?>
  
  </div>
  

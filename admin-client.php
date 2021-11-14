@@ -14,7 +14,7 @@
 
         <div class="col-sm-9 p-4 zona-principala">
             
-            <?php include "header-mic-admin.php";?>
+            <?php include "header-mic-frontend.php";?>
 
             <div class="row mt-1 justify-content-start contoare">
 

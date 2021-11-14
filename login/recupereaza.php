@@ -1,6 +1,6 @@
 <?php 
 
-include 'controllers/authController.php'; 
+include '../controllers/authController.php'; 
 
 ?>
 
@@ -12,7 +12,7 @@ include 'controllers/authController.php';
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="../css/main.css">
   <title>Parohia Online - Login</title>
 </head>
 
@@ -23,7 +23,7 @@ include 'controllers/authController.php';
     <div class="row">
      
     <div class="col-md-4 form-wrapper auth login">
-      <p><img src="images/logo-parohiaonline.png" class="logo"/></p>
+      <p><img src="../images/logo-parohiaonline.png" class="logo"/></p>
 
       <p> <?php 
       
@@ -41,8 +41,8 @@ include 'controllers/authController.php';
             <button type="submit" name="recupereaza" class="btn btn-lg btn-block">Recuperează</button>
           </div>
         </form>
-        <p>Ai deja un cont? <a href="index.php">Login</a></p>
-        <p>Nu ai încă un cont? <a href="signup.php">Înregistrează-te</a></p>
+        <p>Ai deja un cont? <a href="../admin/index.php">Login</a></p>
+        <p>Nu ai încă un cont? <a href="../login/signup.php">Înregistrează-te</a></p>
         
       </div>
 

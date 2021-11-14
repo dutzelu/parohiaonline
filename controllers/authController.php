@@ -1,9 +1,16 @@
 <?php
 
+ 
 session_start();
 
-include 'controllers/sendEmails.php';
-include "conexiune.php";
+include __DIR__. "/../includes/config.php";
+include __DIR__. '/../includes/conexiune.php';
+include  __DIR__. '/sendEmails.php';
+
+
+$verificat = "";
+$mesaj_inregistrare = "";
+setlocale(LC_ALL, 'ro_RO');
 
 $nume = "";
 $prenume = "";
@@ -150,7 +157,49 @@ if (isset($_POST['login-btn'])) {
                 $_SESSION['verified'] = $user['verified'];
                 $_SESSION['message'] = 'Ești logat!';
                 $_SESSION['type'] = 'alert-success';
-                header('location: index.php');
+                $_SESSION['admin'] = $user['admin'];
+                 
+            
+                // Cazul 1. Fără cont și nelogat. Afișează mai jos formularul de login.
+                
+                // Cazul 2. Are înregistrat un cont
+                
+                if (!empty($_SESSION['id'])) {
+                
+                    $id = $_SESSION['id'];
+                    $sql = "SELECT * FROM users WHERE id= $id";
+                    $rezultate = mysqli_query ($conn, $sql);
+                    while ($data = mysqli_fetch_assoc($rezultate)){  
+                        $admin = $data['admin'];
+                        $verificat = $data['verified'];
+                    }
+                
+                    // 1a) ..dar nu are emailul verificat
+                
+                        if ($verificat == 0) {
+                
+                            $mesaj_inregistrare = "Înregistrarea a avut loc cu succes! Pentru a valida adresa dvs. de email v-am trimis un link de confirmare. Vă rugăm să dați click pe acel link și apoi vă puteți loga în panoul de administrare. ";
+                
+                        } else {$mesaj_inregistrare = '';}
+                    
+                    // 1b) ..are emailul verificat și este admin
+                
+                        if ($verificat == 1 && $admin == 1 ) {
+                            header('Location:' . BASE_URL . 'admin/admin.php');
+                        } 
+                
+                     // 1c) ..are emailul verificat și NU este admin
+                
+                     if ($verificat == 1 && $admin == 0 ) {
+                        // echo '<script> location.replace("../frontend.php?eveniment=botez"); </script>';
+                        header('Location:' . BASE_URL . 'frontend.php?eveniment=botez');
+                    } 
+                 }
+                 
+
+
+
+
                 exit(0);
             } else { // if password does not match
                $errors['login_fail'] = "Utilizator sau parolă greșit(ă)";

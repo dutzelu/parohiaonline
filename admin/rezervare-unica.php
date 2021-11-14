@@ -44,7 +44,7 @@
 
               while($data = $result->fetch_assoc()) {
 
-              include "extras-programare.php";
+              include "../includes/extras-programare.php";
 
 
               // afisez detaliile cererii (programarii)
@@ -91,7 +91,7 @@
                 
                 echo '">' .$status . '</span>';
 
-                echo '<a href="' . $_SERVER['HTTP_REFERER'] . '"><i class="fas fa-chevron-circle-left"></i> Înapoi</a> ';
+                echo '<a href="registru.php?eveniment=programari_botez"><i class="fas fa-chevron-circle-left"></i> Înapoi</a> ';
 
                 echo '<a href="accepta-programare.php?id=' . $id_programare . '&status=acceptata" role="button"><i class="verde far fa-check-circle"></i>  Acceptă</a>';
 
@@ -144,8 +144,8 @@
 
               if (!empty($link_tata_ci)) {
 
-              echo '<a target="popup" data-title ="' . basename($link_tata_ci) . '"data-lightbox ="foto_acte" href="' . $link_tata_ci .'">
-              <img src="' . $link_tata_ci . '"/></a>';
+              echo '<a target="popup" data-title ="' . basename($link_tata_ci) . '"data-lightbox ="foto_acte" href="' . BASE_URL . $link_tata_ci .'">
+              <img src="../' . $link_tata_ci . '"/></a>';
 
               }
 
@@ -153,8 +153,8 @@
 
               if (!empty($link_mama_ci)) {
 
-              echo '<a target="popup" data-title ="' . basename($link_mama_ci) . '"data-lightbox ="foto_acte"  href="' . $link_mama_ci .'">
-              <img src="' . $link_mama_ci . '"/></a>';
+              echo '<a target="popup" data-title ="' . basename($link_mama_ci) . '"data-lightbox ="foto_acte"  href="'. BASE_URL  . $link_mama_ci .'">
+              <img src="../' . $link_mama_ci . '"/></a>';
 
               }
 
@@ -162,8 +162,8 @@
 
               if (!empty($link_plata_contributiei)) {
 
-              echo '<a target="popup" data-title ="' . basename($link_plata_contributiei) . '"data-lightbox ="foto_acte"  href="' . $link_plata_contributiei .'">
-              <img src="' . $link_plata_contributiei . '"/></a>';
+              echo '<a target="popup" data-title ="' . basename($link_plata_contributiei) . '"data-lightbox ="foto_acte"  href="'. BASE_URL  . $link_plata_contributiei .'">
+              <img src="../' . $link_plata_contributiei . '"/></a>';
 
               }
 
@@ -171,19 +171,19 @@
 
               if (!empty($link_certificat_nastere_copil)) {
 
-              echo '<a target="popup" data-title ="' . basename($link_certificat_nastere_copil) . '"data-lightbox ="foto_acte"  href="' . $link_certificat_nastere_copil .'">
-              <img src="' . $link_certificat_nastere_copil . '"/></a>';
+              echo '<a target="popup" data-title ="' . basename($link_certificat_nastere_copil) . '"data-lightbox ="foto_acte"  href="'. BASE_URL  . $link_certificat_nastere_copil .'">
+              <img src="../' . $link_certificat_nastere_copil . '"/></a>';
 
               }
 
-              echo '<p><span class="cap">Cerere și declarație: </span><a target="popup" href="' . $link_cerere .'">' . basename($link_cerere) . '</a>';
+              echo '<p><span class="cap">Cerere și declarație: </span><a target="popup" href="'. BASE_URL . $link_cerere .'">' . basename($link_cerere) . '</a>';
               echo '<hr>';
               }   
               echo '</div>';
 
               // selectez din db toate mesajele corespunzătoare acestei rezervări
 
-              include "afiseaza-mesaje.php";
+              include "../includes/afiseaza-mesaje.php";
 
               // Formular pentru butonul de "Raspunde cu detalii" 
 

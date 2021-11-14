@@ -1,7 +1,5 @@
 <?php
 
-
-
 if (isset($_GET['status'])) {
   $status = $_GET['status'];
 } else {$status = '';}
@@ -91,7 +89,10 @@ function upload_foto($input, $nume_fisier, $link) {
     if( isset($_FILES[$input]) ){
 
       global $target_dir;
-      
+      global $link_tata_ci;
+      global $link_mama_ci;
+      global $eveniment;
+      global $link_mire_ci;
       $errors= array();
 
       $file_name = $_FILES[$input]['name'];
@@ -109,10 +110,19 @@ function upload_foto($input, $nume_fisier, $link) {
       if(empty($errors)==true) {
       move_uploaded_file($file_tmp, $target_dir .'/'.$file_name);
       } 
-      // else{print_r($errors);}
+      
+       
 
-      if ($file_size !== 0 && empty($errors)==true ) {
-      $GLOBALS[$link] = $target_dir .'/'.$file_name; }     
+
+        if (!empty ($link_tata_ci)) {$GLOBALS[$link] = dirname($link_tata_ci) .'/'.$file_name;}
+          else {$GLOBALS[$link] = dirname($link_mama_ci) .'/'.$file_name;}
+
+        if(empty($link_tata_ci) && empty($link_mama_ci)) {
+          $target_dir = 'rezervari/' . $data_simpla . '-'. $eveniment . '-' . replaceSpecialChars($nume_si_prenume_tata);
+
+        }
+
+      
        
     } else {unset($errors); }
 

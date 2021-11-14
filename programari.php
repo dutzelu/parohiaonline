@@ -13,7 +13,7 @@ if (!empty($_SESSION['id']) && $admin == 0) {
 
 <body>
 
-<?php include "sidebar.php" ?>
+<?php include "sidebar-frontend.php" ?>
 
 <div class="mare">
   <div class="container-fluid">

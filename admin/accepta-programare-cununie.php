@@ -1,10 +1,8 @@
 <?php
 include "header-admin.php"; 
-
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-require 'vendor/autoload.php';
+$mesaj_email_admin = "";
+$name = "";
+$from = "";
 
 if (isset($_GET['id'])) {$id = $_GET['id'];} 
 
@@ -107,7 +105,7 @@ if (isset($_GET['status'])) {
 
   $html = ob_get_clean(); 
 
-  require_once __DIR__ . '/vendorspdf/autoload.php';
+  include '../vendorspdf/autoload.php';
   
   // Crează o instanță Mpdf ----------------
   $mpdf = new \Mpdf\Mpdf([
@@ -121,7 +119,7 @@ if (isset($_GET['status'])) {
   
   // Salvarea fișierului pdf----------------
   ob_clean(); 
-  $mpdf->Output($target_dir . '/' . $file_name, \Mpdf\Output\Destination::FILE);
+  $mpdf->Output(ROOT_PATH . '/' . $target_dir . '/' . $file_name, \Mpdf\Output\Destination::FILE);
   
   
 // inserare link cerere în baza de date ----------------
@@ -221,4 +219,4 @@ phpmailer ($email_admin, $from, $name, $subiect_admin, $mesaj_email_admin, $link
  
 ?>
 
-<script> location.replace("rezervare-unica-cununie.php?id=<?php echo $id; ?>"); </script>
+<!-- <script> location.replace("rezervare-unica-cununie.php?id=<?php echo $id; ?>"); </script> -->

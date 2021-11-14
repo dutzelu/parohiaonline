@@ -1,4 +1,7 @@
-<?php include 'controllers/authController.php'; 
+<?php 
+
+
+include "../controllers/authController.php";
 $mesaj_inregistrare = '';
 ?>
 
@@ -10,7 +13,7 @@ $mesaj_inregistrare = '';
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="../css/main.css">
   <title>Parohia Online - Login</title>
 </head>
 

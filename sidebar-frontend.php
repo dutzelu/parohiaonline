@@ -23,7 +23,7 @@
     <a class="pomelnic" href="pomelnic-online.php">Pomelnic online</a>
     <a href="info-botez.php">Info Botez</a>
     <a href="info-cununie.php">Info Cununie</a>
-    <a class="logout.php" href="logout.php">Logout</a>
+    <a class="login" href="login/logout.php">Logout</a>
         
   </div> 
 

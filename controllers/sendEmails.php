@@ -3,13 +3,14 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 /* Exception class. */
-require 'phpmailer/src/Exception.php';
+include  __DIR__. "/../phpmailer/src/Exception.php";
 
 /* The main PHPMailer class. */
-require 'phpmailer/src/PHPMailer.php';
+
+include  __DIR__. "/../phpmailer/src/PHPMailer.php";
 
 /* SMTP class, needed if you want to use SMTP. */
-require 'phpmailer/src/SMTP.php';
+include  __DIR__. "/../phpmailer/src/SMTP.php";
 
 $email = new PHPMailer();
 

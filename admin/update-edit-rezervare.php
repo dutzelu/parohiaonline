@@ -1,7 +1,7 @@
 <?php
 
-include "header-frontend.php"; 
-include "functions.php";
+include "header-admin.php"; 
+ 
 
 if (isset($_GET['id'])) {
     $id_programare = $_GET['id'];
@@ -53,21 +53,25 @@ if (isset($_POST['actualizeaza'])) {
     $nume_cameraman = $_POST['nume_cameraman'];
     $telefon_cameraman = $_POST['telefon_cameraman'];
 
-    if (!empty($link_tata_ci)) {$target_dir =  dirname ($link_tata_ci);}
-    elseif (!empty($link_mama_ci)) {$target_dir =  dirname ($link_mama_ci);}
-    elseif (!empty($link_plata_contributiei)) {$target_dir =  dirname ($link_plata_contributiei);}
-    elseif (!empty($link_certificat_nastere_copil)) {$target_dir =  dirname ($link_certificat_nastere_copil);} 
-         else {
-                $target_dir = 'rezervari/' . $data_simpla . '-'. $eveniment . '-' . replaceSpecialChars($nume_si_prenume_mama);
-                $target_dir = preg_replace('/\s+/', '-', $target_dir);
-              }
+    // if (!empty($link_tata_ci)) {$target_dir = ROOT_PATH. dirname ($link_tata_ci);}
+    // elseif (!empty($link_mama_ci)) {$target_dir =  ROOT_PATH. dirname ($link_mama_ci);}
+    // elseif (!empty($link_plata_contributiei)) {$target_dir =  ROOT_PATH . dirname ($link_plata_contributiei);}
+    // elseif (!empty($link_certificat_nastere_copil)) {$target_dir =  ROOT_PATH. dirname ($link_certificat_nastere_copil);} 
+    // //      else {
+    //             $target_dir = 'rezervari/' . $data_simpla . '-'. $eveniment . '-' . replaceSpecialChars($nume_si_prenume_mama);
+    //             $target_dir = preg_replace('/\s+/', '-', $target_dir);
+    //         //   }
 
+ 
     
+    $target_dir = ROOT_PATH . '/rezervari/' .  $data_simpla . '-'. $eveniment . '-' . replaceSpecialChars($nume_si_prenume_mama);
+    $target_dir = preg_replace('/\s+/', '-', $target_dir);
+      
     upload_foto('tata_ci', $nume_si_prenume_tata, 'link_tata_ci');
     upload_foto('mama_ci', $nume_si_prenume_mama, 'link_mama_ci');
     upload_foto('plata_contributiei', $nume_si_prenume_mama, 'link_plata_contributiei');
     upload_foto('certificat_nastere_copil', $nume_si_prenume_mama, 'link_certificat_nastere_copil');
-
+   
 
     $query = 'UPDATE programari_botez 
     SET 
@@ -105,10 +109,6 @@ if (isset($_POST['actualizeaza'])) {
     $result = $stmt->execute();
 
 
-
-
-    
-
 }
 
 
@@ -125,7 +125,7 @@ while($data = $result->fetch_assoc()) {
     $admin = $data['admin'];
  
     if ($admin == 0) {
-        echo '<script> location.replace("home-unic.php?id=' . $id_programare . '&edit=ok"); </script>';
+        echo '<script> location.replace("../home-unic.php?id=' . $id_programare . '&edit=ok"); </script>';
     } elseif ($admin == 1) {
         echo '<script> location.replace("rezervare-unica.php?id=' . $id_programare . '&edit=ok"); </script>';
     }

@@ -4,7 +4,7 @@
 /* Pagină Login */
 
 body#login {
-  background: url('images/bg-biserica.jpg');
+  background: url('../images/bg-biserica.jpg');
 }
 
 a {color:#4374B9;}
@@ -421,31 +421,31 @@ li.calendar-day > label {width:40px;}
   margin-top:30px;
 }
 
-.program {background:url('images/potir-negru.png') no-repeat left center !important; color:#4374B9}
-.program:hover, button.program.active {background:url('images/potir-alb.png') no-repeat left center #4374B9 !important;}
+.program {background:url('../images/potir-negru.png') no-repeat left center !important; color:#4374B9}
+.program:hover, button.program.active {background:url('../images/potir-alb.png') no-repeat left center #4374B9 !important;}
 
-.programari {background:url('images/ceas-negru.png') no-repeat left center !important; color:#4374B9}
-.programari:hover, button.programari.active {background:url('images/ceas-alb.png') no-repeat left center #4374B9 !important;}
+.programari {background:url('../images/ceas-negru.png') no-repeat left center !important; color:#4374B9}
+.programari:hover, button.programari.active {background:url('../images/ceas-alb.png') no-repeat left center #4374B9 !important;}
 
 
-.zile {background:url('images/ceas-negru.png') no-repeat left center !important; color:#4374B9}
-.zile:hover, button.zile.active {background:url('images/ceas-alb.png') no-repeat 5px center #4374B9 !important;}
+.zile {background:url('../images/ceas-negru.png') no-repeat left center !important; color:#4374B9}
+.zile:hover, button.zile.active {background:url('../images/ceas-alb.png') no-repeat 5px center #4374B9 !important;}
 
-a.botezuri {background:url('images/botezuri.png') no-repeat left center; }
-a.prima-pagina {background:url('images/cruce.png') no-repeat left center; }
-a.cununii {background:url('images/cununii.png') no-repeat left center}
-a.spovedanii {background:url('images/spovedanii.png') no-repeat left center}
-a.sfestanii {background:url('images/sfestanii.png') no-repeat left center}
-a.parastase {background:url('images/parastase.png') no-repeat left center}
-a.participare-slujbe {background:url('images/participare-slujbe.png') no-repeat left center}
-a.rugaciuni {background:url('images/rugaciuni.png') no-repeat left center}
-a.pomelnic {background:url('images/pomelnic.png') no-repeat left center}
+a.botezuri {background:url('../images/botezuri.png') no-repeat left center; }
+a.prima-pagina {background:url('../images/cruce.png') no-repeat left center; }
+a.cununii {background:url('../images/cununii.png') no-repeat left center}
+a.spovedanii {background:url('../images/spovedanii.png') no-repeat left center}
+a.sfestanii {background:url('../images/sfestanii.png') no-repeat left center}
+a.parastase {background:url('../images/parastase.png') no-repeat left center}
+a.participare-slujbe {background:url('../images/participare-slujbe.png') no-repeat left center}
+a.rugaciuni {background:url('../images/rugaciuni.png') no-repeat left center}
+a.pomelnic {background:url('../images/pomelnic.png') no-repeat left center}
 
 ul.dropdown-container > li {list-style-type: none;}
 
 .sidenav.admin ul.dropdown-container > li > a {
   padding-left: 15px;
-  background: url('images/cerc.png') no-repeat left center;
+  background: url('../images/cerc.png') no-repeat left center;
   padding: 7px 8px 8px 25px;
 }
 ul.dropdown-container {

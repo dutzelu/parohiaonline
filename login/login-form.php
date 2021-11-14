@@ -1,5 +1,6 @@
-<div class="col-xl-4 col-lg-4 col-md-6 col-sm-8 form-wrapper auth login">
-      <p><img src="images/logo-parohiaonline.png" class="logo"/></p>
+  
+ <div class="col-xl-4 col-lg-4 col-md-6 col-sm-8 form-wrapper auth login">
+      <p><img src="<?php echo BASE_URL; ?>/images/logo-parohiaonline.png" class="logo"/></p>
         <h3 class="text-center form-title">Login</h3>
        
         <?php 
@@ -12,7 +13,7 @@
         
         ?>
 
-        <form action="login.php" method="post">
+        <form action="<?php echo BASE_URL; ?>login/login.php" method="post">
           <div class="form-group">
             <input type="text" name="username" class="form-control form-control-lg" value="<?php echo $username; ?>" placeholder="Utilizator sau email">
           </div>
@@ -24,8 +25,8 @@
           </div>
         </form>
         <div class="linkuri_login_form">
-          <p>Nu ai încă un cont? <a href="signup.php">Înregistrează-te</a></p>
-          <p>Ai uitat parola? <a href="recupereaza.php">Recupereaz-o</a></p>
+          <p>Nu ai încă un cont? <a href="<?php echo BASE_URL; ?>login/signup.php">Înregistrează-te</a></p>
+          <p>Ai uitat parola? <a href="<?php echo BASE_URL; ?>login/recupereaza.php">Recupereaz-o</a></p>
        </div>
       </div>
 

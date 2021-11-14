@@ -118,18 +118,18 @@ $stmt->bind_param('i', $user_id);
 $result = $stmt->execute();
 $result = $stmt->get_result();
 
-while($data = $result->fetch_assoc()) {
+// while($data = $result->fetch_assoc()) {
 
-    $admin = $data['admin'];
+//     $admin = $data['admin'];
  
-    if ($admin == 0) {
-        echo '<script> location.replace("home-unic-cununie.php?id=' . $id_programare . '&edit=ok"); </script>';
-    } elseif ($admin == 1) {
-        echo '<script> location.replace("rezervare-unica-cununie.php?id=' . $id_programare . '&edit=ok"); </script>';
-    }
+//     if ($admin == 0) {
+//         echo '<script> location.replace("../home-unic-cununie.php?id=' . $id_programare . '&edit=ok"); </script>';
+//     } elseif ($admin == 1) {
+//         echo '<script> location.replace("rezervare-unica-cununie.php?id=' . $id_programare . '&edit=ok"); </script>';
+//     }
     
     
 
-    }
+//     }
 
 ?>

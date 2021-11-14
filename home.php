@@ -19,7 +19,7 @@ $user_id = $_SESSION['id'];
 
         <div class="col-sm-9 p-4 zona-principala">
             
-            <?php include "header-mic-admin.php";?>
+            <?php include "header-mic-frontend.php";?>
         
         <div class="row mt-3 ultimele-programari">
               <p class="fw-bold">Programările mele</p>
@@ -174,7 +174,7 @@ $user_id = $_SESSION['id'];
 
                     <?php 
                     $link_paginatie = 'home.php?'; 
-                    include "paginatie.php"; ?>
+                    include "includes/paginatie.php"; ?>
 
  
 </div>    

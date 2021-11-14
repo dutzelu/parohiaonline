@@ -71,7 +71,7 @@
                 <a href="registru.php?eveniment=programari_botez" class="col-sm-3 m-2">
                     <div>
                         <div class="row align-items-center">
-                            <div class="col-sm-3"><img src="images/botez-albastru.png" /></div>
+                            <div class="col-sm-3"><img src="../images/botez-albastru.png" /></div>
                             <div class="col-sm-9">3 botezuri <br> în ultimele 30 de zile</div>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                 <a href="registru.php?eveniment=programari_cununie" class="col-sm-3 m-2">
                     <div>
                         <div class="row align-items-center">
-                            <div class="col-sm-3"><img src="images/cununii-auriu.png" /></div>
+                            <div class="col-sm-3"><img src="../images/cununii-auriu.png" /></div>
                             <div class="col-sm-9">2 cununii <br> în ultimele 30 de zile</div>
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                 <a href="registru.php?eveniment=programari_sfestanie" class="col-sm-3 m-2">
                     <div>
                         <div class="row align-items-center">
-                            <div class="col-sm-3"><img src="images/sfestanii-verde.png" /></div>
+                            <div class="col-sm-3"><img src="../images/sfestanii-verde.png" /></div>
                             <div class="col-sm-9">5 sfeștanii <br> în ultimele 30 de zile</div>
                         </div>
                     </div>
@@ -102,7 +102,7 @@
                 <a href="registru.php?eveniment=programari_botez" class="col-sm-4 m-2">
                     <div>
                         <div class="row align-items-center">
-                            <div class="col-sm-3"><img src="images/spovedanii-rosu.png" /></div>
+                            <div class="col-sm-3"><img src="../images/spovedanii-rosu.png" /></div>
                             <div class="col-sm-9">23 persoane programate la Spovedanie în ultimele 30 de zile</div>
                         </div>
                     </div>
@@ -111,7 +111,7 @@
                 <a href="registru.php?eveniment=programari_cununie" class="col-sm-3 m-2">
                     <div>
                         <div class="row align-items-center">
-                            <div class="col-sm-3"><img src="images/parastase-portocaliu.png" /></div>
+                            <div class="col-sm-3"><img src="../images/parastase-portocaliu.png" /></div>
                             <div class="col-sm-9">2 cununii <br> în ultimele 30 de zile</div>
                         </div>
                     </div>
@@ -158,7 +158,7 @@
                         
                         <div class="mt-5 legenda">
                             <p><span class="fw-bold">Legenda:</span><br>
-                            Alegeți una din zilele care au programări pentru detalii.</p>
+                În calendar apar subliniate zilele în care există evenimente. <br> Alegeți una din zilele pentru detalii.</p>
 
 
                         </div>
@@ -271,7 +271,7 @@
 
 
 
-<?php include "footer.php"?>
+<?php include "../includes/footer.php"?>
 </body>
 </html>
 

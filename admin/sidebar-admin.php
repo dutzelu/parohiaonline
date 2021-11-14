@@ -1,6 +1,6 @@
  
  <div class="row justify-content-center">
-    <div class="col-sm-9 mt-4 logo"><img src="images\logo-parohiaonline.png" ></div>
+    <div class="col-sm-9 mt-4 logo"><img src="../images/logo-parohiaonline.png" ></div>
  </div>
 
 <div class="row justify-content-center">
@@ -29,7 +29,7 @@
       <li><a href="zile-stabilite.php?pentru=cateheza_botez">Cateheza Botez</a></li>
       <li><a href="zile-stabilite.php?pentru=cateheza_cununie">Cateheza Cununie</a></li>
     </ul>
-    <a class="logout.php" href="logout.php">Logout</a>
+    <a class="logout.php" href="../login/logout.php">Logout</a>
         
   </div> 
 

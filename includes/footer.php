@@ -1,6 +1,10 @@
 
 
+<?php
 
+echo "Buna!";
+
+?>
 
 
 <script>

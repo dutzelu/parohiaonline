@@ -145,12 +145,12 @@ while($data = $result->fetch_assoc()) {
   // directorul unde se va încarca cererea si declaratia
  
   $file_name = 'Cerere-si-declaratie-' . str_replace(' ','-',$eveniment) . '-' . replaceSpecialChars($nume_mama) . '-' . replaceSpecialChars($prenume_mama) . '-' .date("d.m.Y", strtotime($data_si_ora)) . '.pdf';
-  $link_cerere = $target_dir . '/' . $file_name;
+  $link_cerere = ROOT_PATH . '/' . $target_dir . '/' . $file_name;
 
 
   $html = ob_get_clean(); 
 
-  require_once __DIR__ . '/vendorspdf/autoload.php';
+  include '../vendorspdf/autoload.php';
   
   // Crează o instanță Mpdf ----------------
   $mpdf = new \Mpdf\Mpdf([
@@ -164,18 +164,19 @@ while($data = $result->fetch_assoc()) {
   
   // Salvarea fișierului pdf----------------
   ob_clean(); 
-  $mpdf->Output($target_dir . '/' . $file_name, \Mpdf\Output\Destination::FILE);
+  $mpdf->Output(ROOT_PATH . '/' . $target_dir . '/' . $file_name, \Mpdf\Output\Destination::FILE);
   
   
 // inserare link cerere în baza de date ----------------
   
+$link_cerere_fara_calea_serverului = $target_dir . '/' . $file_name;
 
 if (file_exists($link_cerere)) {
 
         $query = 'UPDATE programari_botez SET link_cerere = ? WHERE id = ?';
        
         $stmt = $conn->prepare($query);
-        $stmt->bind_param('si', $link_cerere, $id);
+        $stmt->bind_param('si', $link_cerere_fara_calea_serverului, $id);
         $result = $stmt->execute();
    
      }  

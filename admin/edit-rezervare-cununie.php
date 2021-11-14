@@ -18,7 +18,7 @@ $result = $stmt->get_result();
  
 while ($data = mysqli_fetch_assoc($result)){    
 
-    include "extras-programare-cununie.php";
+    include "../includes/extras-programare-cununie.php";
 
     $data_cateheza = $data_start_fara_ora = date("Y-m-d", strtotime($data["data_ora_cateheza"]));
     $ora_cateheza = date("H:i", strtotime($data["data_ora_cateheza"]));

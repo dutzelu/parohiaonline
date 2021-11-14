@@ -52,7 +52,7 @@ $result = $stmt->get_result();
 
 while($data = $result->fetch_assoc()) {
 
-  include "extras-programare-cununie.php";
+  include "../includes/extras-programare-cununie.php";
 
   echo "<p>";
                   echo '<span class="nume">' . $nume_si_prenume_mire . "</span>"; 
@@ -144,16 +144,18 @@ while($data = $result->fetch_assoc()) {
     
     if (!empty($link_mire_ci)) {
 
-    echo '<a target="popup" data-title ="' . basename($link_mire_ci) . '"data-lightbox ="foto_acte" href="' . $link_mire_ci .'">
-    <img src="' . $link_mire_ci . '"/></a></p>';
+    echo '<a target="popup" data-title ="' . basename($link_mire_ci) . '"data-lightbox ="foto_acte" href="' . BASE_URL . $link_mire_ci .'">
+    <img src="../' . $link_mire_ci . '"/></a></p>';
     }
+
+  
 
     echo '<p><span class="cap">Carte de identitate mireasă: </span>';
     
     if (!empty($link_mireasa_ci)) {
     
-    echo '<a target="popup" data-title ="' . basename($link_mireasa_ci) . '"data-lightbox ="foto_acte"  href="' . $link_mireasa_ci .'">
-    <img src="' . $link_mireasa_ci . '"/></a></p>';
+    echo '<a target="popup" data-title ="' . basename($link_mireasa_ci) . '"data-lightbox ="foto_acte"  href="' . BASE_URL  . $link_mireasa_ci .'">
+    <img src="../' . $link_mireasa_ci . '"/></a></p>';
 
     }
 
@@ -161,7 +163,7 @@ while($data = $result->fetch_assoc()) {
     
     if (!empty($link_plata_contributiei)) {
 
-    echo '<a target="popup" data-title ="' . basename($link_plata_contributiei) . '"data-lightbox ="foto_acte"  href="' . $link_plata_contributiei .'"><img src="' . $link_plata_contributiei . '"/></a></p>';
+    echo '<a target="popup" data-title ="' . basename($link_plata_contributiei) . '"data-lightbox ="foto_acte"  href="' . BASE_URL  . $link_plata_contributiei .'"><img src="../' . $link_plata_contributiei . '"/></a></p>';
 
     }
 
@@ -169,7 +171,7 @@ while($data = $result->fetch_assoc()) {
     
     if (!empty($link_certificat_casatorie_civila)) {
     
-    echo '<a target="popup" data-title ="' . basename($link_certificat_casatorie_civila) . '"data-lightbox ="foto_acte"  href="' . $link_certificat_casatorie_civila .'"><img src="' . $link_certificat_casatorie_civila . '"/></a></p>';
+    echo '<a target="popup" data-title ="' . basename($link_certificat_casatorie_civila) . '"data-lightbox ="foto_acte"  href="' . BASE_URL  . $link_certificat_casatorie_civila .'"><img src="../' . $link_certificat_casatorie_civila . '"/></a></p>';
 
     }
 
@@ -177,7 +179,7 @@ while($data = $result->fetch_assoc()) {
     
     if (!empty($link_certificat_botez_mire)) {
     
-    echo '<a target="popup" data-title ="' . basename($link_certificat_botez_mire) . '"data-lightbox ="foto_acte"  href="' . $link_certificat_botez_mire .'"><img src="' . $link_certificat_botez_mire . '"/></a></p>';
+    echo '<a target="popup" data-title ="' . basename($link_certificat_botez_mire) . '"data-lightbox ="foto_acte"  href="'  . BASE_URL . $link_certificat_botez_mire .'"><img src="../' . $link_certificat_botez_mire . '"/></a></p>';
 
     }
 
@@ -185,7 +187,7 @@ while($data = $result->fetch_assoc()) {
   
     if (!empty($link_certificat_botez_mireasa)) {
     
-    echo '<a target="popup" data-title ="' . basename($link_certificat_botez_mireasa) . '"data-lightbox ="foto_acte"  href="' . $link_certificat_botez_mireasa .'"><img src="' . $link_certificat_botez_mireasa . '"/></a></p>';
+    echo '<a target="popup" data-title ="' . basename($link_certificat_botez_mireasa) . '"data-lightbox ="foto_acte"  href="' . BASE_URL  . $link_certificat_botez_mireasa .'"><img src="../' . $link_certificat_botez_mireasa . '"/></a></p>';
 
     }
 
@@ -193,12 +195,12 @@ while($data = $result->fetch_assoc()) {
     
     if (!empty($link_dispensa)) {
     
-    echo '<a target="popup" data-title ="' . basename($link_dispensa) . '"data-lightbox ="foto_acte"  href="' . $link_dispensa .'"><img src="' . $link_dispensa . '"/></a></p>';
+    echo '<a target="popup" data-title ="' . basename($link_dispensa) . '"data-lightbox ="foto_acte"  href="' . BASE_URL  . $link_dispensa .'"><img src="../' . $link_dispensa . '"/></a></p>';
 
     }
   
   
-    echo '<p><span class="cap">Link cerere și declarație: </span><a target="popup" href="' . $link_cerere .'">' . basename($link_cerere) . '</a>';
+    echo '<p><span class="cap">Link cerere și declarație: </span><a target="popup" href="../' . BASE_URL  . $link_cerere .'">' . basename($link_cerere) . '</a>';
 
     echo "</div>";
     echo '<p></p><hr>';
@@ -206,7 +208,7 @@ while($data = $result->fetch_assoc()) {
   
       // selectez din db toate mesajele corespunzătoare acestei rezervări
   
-      include "afiseaza-mesaje.php";
+      include "../includes/afiseaza-mesaje.php";
   
       // Formular pentru butonul de "Raspunde cu detalii" 
   

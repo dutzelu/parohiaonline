@@ -1,7 +1,7 @@
 <?php 
-include "header-frontend.php"; 
-include "sidebar-frontend.php"; 
-include "functions.php";
+include "../header-frontend.php"; 
+include "../sidebar-frontend.php"; 
+ 
 
  if ( isset($_GET['zi']) ) {
      $zi = $_GET['zi'];
@@ -9,8 +9,10 @@ include "functions.php";
 
 $start = '';
 $ora = '';
-$ore_rezervate = [];
-
+// $data_start_fara_ora = '';
+$ore_rezervate[] ='';
+// $ore[] ='';
+ 
 ?>
 
  

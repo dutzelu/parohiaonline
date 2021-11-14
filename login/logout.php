@@ -8,7 +8,7 @@ unset($_SESSION['email']);
 unset($_SESSION['verify']);
 session_destroy();
 
-header("location: index.php");
+header("location: ../admin/index.php");
 
 
 
