@@ -1,7 +1,6 @@
 <?php 
 include "../header-frontend.php"; 
-include "../sidebar-frontend.php"; 
- 
+
 
  if ( isset($_GET['zi']) ) {
      $zi = $_GET['zi'];
@@ -9,10 +8,10 @@ include "../sidebar-frontend.php";
 
 $start = '';
 $ora = '';
-// $data_start_fara_ora = '';
+$data_start_fara_ora = '';
 $ore_rezervate[] ='';
-// $ore[] ='';
- 
+$ore[] ='';
+
 ?>
 
  
@@ -21,8 +20,14 @@ $ore_rezervate[] ='';
 <body>
 
 
-<div class="mare">
-  <div class="container-fluid">
+<div class="container-fluid">
+
+    <div class="row wrapper">
+        <div class="col-sm-3 sidebar-admin"><?php include "../sidebar-frontend.php"?></div>
+
+        <div class="col-sm-9 p-4 zona-principala">
+            
+            <?php include "../header-mic-frontend.php";?>
   <?php include "pasi.php";?>
 
      <h1 class="h1"><?php echo $eveniment; ?> | Ziua: <span class="albastru"><?php echo $zi . '.' . $month . '.' . $year; ?>  </span></h1>
@@ -99,6 +104,8 @@ $prima_valoare_ore_libere = reset($ore_libere);
 
    
 
+ </div>
+ </div>
  </div>
  </div>
 </body>

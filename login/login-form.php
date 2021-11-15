@@ -1,6 +1,6 @@
   
  <div class="col-xl-4 col-lg-4 col-md-6 col-sm-8 form-wrapper auth login">
-      <p><img src="<?php echo BASE_URL; ?>/images/logo-parohiaonline.png" class="logo"/></p>
+      <p><img src="<?php echo BASE_URL . 'images/logo-parohiaonline.png';?>" class="logo"/></p>
         <h3 class="text-center form-title">Login</h3>
        
         <?php 

@@ -2,28 +2,27 @@
  
  
   <div class="row justify-content-center">
-    <div class="col-sm-9 mt-4 logo"><img src="images\logo-parohiaonline.png" ></div>
+    <div class="col-sm-9 mt-4 logo"><img src="<?php echo BASE_URL . 'images\logo-parohiaonline.png'; ?>" ></div>
  </div>
 
 <div class="row justify-content-center">
 
   <div class="sidenav frontend">
-    <a class="prima-pagina" href="admin-client.php">Prima pagină</a>
-    <a class="prima-pagina" href="home.php">Programările mele</a>
+    <a class="prima-pagina" href="<?php echo BASE_URL . 'admin-client.php'; ?>">Prima pagină</a>
+    <a class="prima-pagina" href="<?php echo BASE_URL . 'home.php';?>">Programările mele</a>
     <button class="programari dropdown-btn">Programează<i class="fas fa-chevron-down" style="margin-left:10px; font-size:10px"></i></button>
         <ul class="dropdown-container">
-          <li><a class="botezuri" href="frontend.php?pentru=botez">Botez</a></li>
-          <li><a  class="cununii" href="frontend.php?pentru=cununie">Cununie</a></li>
-          <li><a  class="spovedanii" href="frontend.php?pentru=cununie">Spovedanie</a></li>
-          <li><a  class="parastase" href="frontend.php?pentru=cununie">Parastas</a></li>
-          <li><a  class="sfestanii" href="frontend.php?pentru=cununie">Sfeștanie</a></li>
+          <li><a class="botezuri" href="<?php echo BASE_URL . 'frontend.php?pentru=botez';?>">Botez</a></li>
+          <li><a class="cununii" href="<?php echo BASE_URL . 'frontend.php?pentru=cununie';?>">Cununie</a></li>
+          <li><a class="parastase" href="<?php echo BASE_URL . 'frontend.php?pentru=parastas';?>">Parastas</a></li>
+          <li><a class="sfestanii" href="<?php echo BASE_URL . 'frontend.php?pentru=sfestanie';?>">Sfeștanie</a></li>
         </ul>
     <a class="participare-slujbe" href="participare_la_slujbe.php">Participare la slujbe</a>
     <a class="rugaciuni" href="rugaciuni-in-comun.php">Rugăciuni în comun</a>
     <a class="pomelnic" href="pomelnic-online.php">Pomelnic online</a>
-    <a href="info-botez.php">Info Botez</a>
-    <a href="info-cununie.php">Info Cununie</a>
-    <a class="login" href="login/logout.php">Logout</a>
+    <a href="<?php echo BASE_URL . 'info-botez.php';?>">Info Botez</a>
+    <a href="<?php echo BASE_URL . 'info-cununie.php';?>">Info Cununie</a>
+    <a class="login" href="<?php echo BASE_URL . 'login/logout.php';?>">Logout</a>
         
   </div> 
 

@@ -1,7 +1,6 @@
 <?php 
-include "header-frontend.php"; 
-include "sidebar-frontend.php"; 
-include "functions.php";
+include "../header-frontend.php"; 
+
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -72,6 +71,8 @@ $ora = '';
     $localitate_nasi = $_POST['localitate_nasi'];
     $nume_cameraman = $_POST['nume_cameraman'];
     $telefon_cameraman = $_POST['telefon_cameraman'];
+
+    $status = "în așteptare";
   
     $query = 'INSERT INTO programari_botez SET 
     user_id=?, 
@@ -101,7 +102,7 @@ $ora = '';
 
     $stmt = $conn->prepare($query);
 
-    $stmt->bind_param('issssssssssssssssssssss', $user_id, $eveniment, $data_si_ora, $nume_tata, $prenume_tata, $nume_mama, $prenume_mama, $adresa, $telefon, $email, $nume_copil, $prenume_copil, $data_nasterii_copilului, $numar_certificat_nastere, $data_eliberarii_certificatului, $eliberat_de_primaria, $nume_botez_copil, $nume_nas, $nume_nasa, $localitate_nasi, $nume_cameraman, $telefon_cameraman, 'în asteptare');
+    $stmt->bind_param('issssssssssssssssssssss', $user_id, $eveniment, $data_si_ora, $nume_tata, $prenume_tata, $nume_mama, $prenume_mama, $adresa, $telefon, $email, $nume_copil, $prenume_copil, $data_nasterii_copilului, $numar_certificat_nastere, $data_eliberarii_certificatului, $eliberat_de_primaria, $nume_botez_copil, $nume_nas, $nume_nasa, $localitate_nasi, $nume_cameraman, $telefon_cameraman, $status);
     $result = $stmt->execute();
 
     $last_id = mysqli_insert_id($conn);
@@ -122,9 +123,14 @@ $ora = '';
 <body>
 
 
+<div class="container-fluid">
 
-<div class="mare">
-  <div class="container-fluid">
+    <div class="row wrapper">
+        <div class="col-sm-3 sidebar-admin"><?php include "../sidebar-frontend.php"?></div>
+
+        <div class="col-sm-9 p-4 zona-principala">
+            
+            <?php include "../header-mic-frontend.php";?>
 
     <?php include "pasi.php";?>
 
@@ -173,4 +179,11 @@ $ora = '';
     
     </form>
 
-   
+    </div>
+
+</div>
+  
+</div>
+
+</body>
+</html>

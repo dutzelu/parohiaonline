@@ -14,7 +14,7 @@ $user_id = $_SESSION['id'];
 
         <div class="col-sm-9 p-4 zona-principala">
 
-        <?php include "header-mic-admin.php";?>
+        <?php include "header-mic-frontend.php";?>
 
   
         <div class="mt-3 p-5 wrapper-rezervare-unica">
@@ -46,7 +46,7 @@ $result = $stmt->get_result();
 
 while($data = $result->fetch_assoc()) {
 
-    include "extras-programare.php";
+    include "includes/extras-programare.php";
 
     echo "<p>";
 
@@ -174,7 +174,7 @@ while($data = $result->fetch_assoc()) {
 
       // selectez din db toate mesajele corespunzătoare acestei rezervări
 
-          include "afiseaza-mesaje.php";
+          include "includes/afiseaza-mesaje.php";
 
       // Formular pentru butonul de "Raspunde cu detalii" 
 

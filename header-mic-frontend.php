@@ -1,7 +1,7 @@
 <div class="row p-3 justify-content-between align-items-center header">
         <div class="col-sm-8 col-lg-9">
             <div class="row align-items-center">
-                <div class="col-sm-3 icon-biserica col-xl-2"><img src="images/imagine-parohie.png" width="100px"></div>
+                <div class="col-sm-3 icon-biserica col-xl-2"><img src="<?php echo BASE_URL . 'images\imagine-parohie.png'; ?>" width="100px"></div>
                 <div class="col-sm-9 titlu">
                     <p class="mitropolia">Mitrolia Munteniei și Dobrogei > Arhiepiscopia Bucureștilor</p>
                     <p class="parohia">Parohia Sfântul Apostol Andrei din București</p>

@@ -34,7 +34,7 @@ if (isset($_GET['month']) && isset($_GET['year'])) {
   $selected_year = date ('Y');
 }
 
-
+$link_rezervare = "rezerva.php?year=" . $selected_year . "&month=" . $selected_month . "&pentru=" . $pentru;
 
 ?>
 

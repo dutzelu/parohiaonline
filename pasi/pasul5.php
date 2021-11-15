@@ -1,14 +1,16 @@
 <?php 
-include "header-frontend.php"; 
-include "sidebar-frontend.php"; 
-include "functions.php";
+include "../header-frontend.php"; 
+$data_simpla = '';
+$nume_si_prenume_mama = '';
+$nume_si_prenume_tata = '';
+$nume_si_prenume_copil = '';
+
 
 
 
 if (isset($_GET['id'])) {
 
     $last_id = (int)$_GET['id'];
-  
 
     $sql = 'SELECT * FROM programari_botez WHERE id=?';
     $stmt = $conn->prepare($sql);
@@ -32,20 +34,36 @@ if (isset($_GET['id'])) {
         $prenume_copil = $data['prenume_copil'];
         $nume_si_prenume_copil = $nume_copil . '-' . $prenume_copil;
 
+        
+
     }
 }
  
-
+ 
 
 if (isset($_POST['ataseaza'])) {
 
      
     $base_dir = "rezervari/";
     
-    $target_dir = 'rezervari/' . $data_simpla . '-'. $eveniment . '-' . replaceSpecialChars($nume_si_prenume_mama);
+    if (!empty($_POST['tata_ci'])) {
+        $target_dir = ROOT_PATH . '/rezervari/' . $data_simpla . '-'. $eveniment . '-' . replaceSpecialChars($nume_si_prenume_tata);
+    } else {
+        $target_dir = ROOT_PATH . '/rezervari/' . $data_simpla . '-'. $eveniment . '-' . replaceSpecialChars($nume_si_prenume_mama);
+    }
+
     $target_dir = preg_replace('/\s+/', '-', $target_dir);
 
     mkdir($target_dir);
+
+
+    if (!empty($_POST['tata_ci'])) {
+        $target_dir_www = 'rezervari/' . $data_simpla . '-'. $eveniment . '-' . replaceSpecialChars($nume_si_prenume_tata);
+    } else {
+        $target_dir_www = 'rezervari/' . $data_simpla . '-'. $eveniment . '-' . replaceSpecialChars($nume_si_prenume_mama);
+    }
+
+    $target_dir_www = preg_replace('/\s+/', '-', $target_dir_www);
 
 
     // preia fișierele uplodate în inputuri
@@ -78,8 +96,15 @@ if (isset($_POST['ataseaza'])) {
 
 
 
-<div class="mare">
-  <div class="container-fluid">
+<div class="container-fluid">
+
+    <div class="row wrapper">
+        <div class="col-sm-3 sidebar-admin"><?php include "../sidebar-frontend.php"?></div>
+
+        <div class="col-sm-9 p-4 zona-principala">
+            
+            <?php include "../header-mic-frontend.php";?>
+
 
   <?php include "pasi.php";?>
 
@@ -240,6 +265,8 @@ if (isset($_POST['ataseaza'])) {
   
 
 
+ </div>
+ </div>
  </div>
  </div>
 </body>

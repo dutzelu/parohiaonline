@@ -1,9 +1,8 @@
 <?php
 
-include "header-frontend.php"; 
-include "sidebar-frontend.php"; 
-include "functions.php";
+include "../header-frontend.php"; 
 
+ 
 $ora = '';
 $judetsector = '';
 $strada = '';
@@ -34,7 +33,7 @@ $stmt = $conn->prepare($query);
 $stmt->bind_param('si', $data_ora_cateheza, $id);
 $result = $stmt->execute();
 
-echo '<script> location.replace("home-unic.php?succes=ok"); </script>';
+echo '<script> location.replace("../home-unic.php?succes=ok"); </script>';
 
 ?>
 

@@ -1,7 +1,5 @@
 <?php 
-include "header-frontend.php"; 
-include "sidebar-frontend.php"; 
-include "functions.php";
+include "../header-frontend.php"; 
 
  
 if (isset($_POST['pasul1'])) {
@@ -35,9 +33,15 @@ $ore_rezervate = [];
 <body>
 
 
+<div class="container-fluid">
 
-<div class="mare">
-  <div class="container-fluid">
+    <div class="row wrapper">
+        <div class="col-sm-3 sidebar-admin"><?php include "../sidebar-frontend.php"?></div>
+
+        <div class="col-sm-9 p-4 zona-principala">
+            
+            <?php include "../header-mic-frontend.php";?>
+
   <?php include "pasi.php";?>
 
      <h1 class="h1 "><?php echo $eveniment; ?> <br />Alegeți ora pentru ziua de cateheză <span class="albastru"><?php echo $zi . '.' . $month . '.' . $year; ?>  </span><br />din cele disponibile mai jos:</h1>
@@ -63,7 +67,7 @@ while ($data = mysqli_fetch_assoc($rezultate)){
  
     $ore = create_time_range($ora_start, $ora_final, '60 mins');
 
-    // var_dump($ore);
+ 
     ?>
 
     <form method="POST" action="pasul7.php<?php echo '?id=' . $id . '&pentru=' .  $pentru . '&year=' .  $year . '&month=' . $month . '&zi=' . $zi;?> " enctype = "multipart/form-data">
@@ -118,6 +122,8 @@ while ($data = mysqli_fetch_assoc($rezultate)){
 
 
  
+ </div>
+ </div>
  </div>
  </div>
 </body>

@@ -1,7 +1,6 @@
 <?php 
-include "header-frontend.php"; 
-include "sidebar-frontend.php"; 
-include "functions.php";
+include "../header-frontend.php"; 
+
 
 $ora = '';
 
@@ -20,10 +19,16 @@ $ora = '';
 
 <body>
 
+<div class="container-fluid">
 
-<div class="mare">
-  <div class="container-fluid">
-  <?php include "pasi.php";?>
+    <div class="row wrapper">
+        <div class="col-sm-3 sidebar-admin"><?php include "../sidebar-frontend.php"?></div>
+
+        <div class="col-sm-9 p-4 zona-principala">
+            
+            <?php include "../header-mic-frontend.php";?>
+
+     <?php include "pasi.php";?>
 
      <h1 class="h1"><?php echo $eveniment; ?> <?php echo ' - ' . $zi . '.' . $month . '.' . $year . ' ora: ' . $ora; ?> <br />Completează formularul cu datele personale:</h1>
 
@@ -131,7 +136,7 @@ $ora = '';
         <p>Conform certificatului de naștere nr.:</p>
         </div>
         <div class="col-sm">
-           <p><input type="text" name="numar_certificat_nastere" class="form-control" placeholder="nr. certificatului de naștere  *" required> <a href="images/certificat-de-nastere-numar.jpg" data-lightbox="certificat-de-nastere-numar.jpg">vezi certificat »</a>
+           <p><input type="text" name="numar_certificat_nastere" class="form-control" placeholder="nr. certificatului de naștere  *" required> <a href="<?php echo BASE_URL . 'images/certificat-de-nastere-numar.jpg'; ?>" data-lightbox="certificat-de-nastere-numar.jpg">vezi certificat »</a>
         
         
         </p>
@@ -181,3 +186,14 @@ $ora = '';
 
     <button type="submit" name ="date_personale" class="btn btn-primary">Trimite</button>
      </form>
+
+
+     </div>    
+</div>
+
+</div>
+  
+</div>
+
+</body>
+</html>

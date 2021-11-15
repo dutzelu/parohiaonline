@@ -1,6 +1,5 @@
 <?php 
 include "header-frontend.php"; 
-include "sidebar-frontend.php"; 
 
 
 $link_rezervare = "pasi/pasul1.php?year=" . $selected_year . "&month=" . $selected_month . "&pentru=" . $pentru;
@@ -10,14 +9,20 @@ $rezervari = '';
 
 ?>
 
-<title>Programare Botez</title>
+<title>Programări Botez</title>
 </head>
 
 <body>
 
 
-<div class="mare">
-  <div class="container-fluid">
+<div class="container-fluid">
+
+    <div class="row wrapper">
+        <div class="col-sm-3 sidebar-admin"><?php include "sidebar-frontend.php"?></div>
+
+        <div class="col-sm-9 p-4 zona-principala">
+
+          <?php include "header-mic-frontend.php";?>
 
   <?php include "pasi/pasi.php";?>
 
@@ -32,9 +37,11 @@ $rezervari = '';
  
  </form>
  
- 
- </div>
- </div>
+</div>
+</div>
+</div>    
+</div>
+
 </body>
 </html>
 
