@@ -3,6 +3,10 @@ include "header-admin.php";
 $mesaj_email_admin = "";
 $name = "";
 $from = "";
+$data_si_ora = NULL;
+$data_ora_cateheza = NULL;
+$nume_mire = NULL;
+$prenume_mire = NULL;
 
 if (isset($_GET['id'])) {$id = $_GET['id'];} 
 
@@ -27,7 +31,47 @@ if (isset($_GET['status'])) {
 
 
   while($data = $result->fetch_assoc()) {
-      include 'extras-programare-cununie.php';
+      
+    $id_programare = $data['id'];
+    $userid = $data['user_id'];
+    $eveniment = $data['eveniment'];
+    $data_si_ora = $data['data_si_ora'];
+
+    $data_cateheza = $data_start_fara_ora = date("Y-m-d", strtotime($data["data_ora_cateheza"]));
+    $ora_cateheza = date("H:i", strtotime($data["data_ora_cateheza"]));
+    $data_simpla = date("d-m-Y", strtotime($data["data_si_ora"]));
+
+    $nume_mire = $data['nume_mire'];
+    $prenume_mire = $data['prenume_mire'];
+    $nume_si_prenume_mire = $nume_mire . '-' . $prenume_mire;
+
+    $nume_mireasa = $data['nume_mireasa'];
+    $prenume_mireasa = $data['prenume_mireasa'];
+    $nume_si_prenume_mireasa = $nume_mireasa . '-' . $prenume_mireasa;
+
+    $adresa_mire =  $data['adresa_mire'];
+    $adresa_mireasa =  $data['adresa_mireasa'];
+    $telefon = $data['telefon'];
+    $email = $data['email'];
+
+    $numar_certificat_casatorie = $data['numar_certificat_casatorie'];
+    $data_eliberarii_certificatului = $data['data_eliberarii_certificatului'];
+    $eliberat_de_primaria = $data['eliberat_de_primaria'];
+    $nume_nas = $data['nume_nas'];
+    $nume_nasa = $data['nume_nasa'];
+    $localitate_nasi = $data['localitate_nasi'];
+    $nume_cameraman = $data['nume_cameraman'];
+    $telefon_cameraman = $data['telefon_cameraman'];
+
+    $link_mire_ci = $data['link_mire_ci'];
+    $link_mireasa_ci = $data['link_mireasa_ci'];
+    $link_plata_contributiei = $data['link_plata_contributiei'];
+    $link_certificat_casatorie_civila = $data['link_certificat_casatorie_civila'];
+    $link_certificat_botez_mire = $data['link_certificat_botez_mire'];
+    $link_certificat_botez_mireasa = $data['link_certificat_botez_mireasa'];
+    $link_dispensa = $data['link_dispensa'];
+    $link_cerere = $data['link_cerere'];
+    $data_ora_cateheza = $data['data_ora_cateheza'];
   }
 
     $target_dir = dirname($link_mire_ci);
@@ -100,7 +144,7 @@ if (isset($_GET['status'])) {
   // directorul unde se va încarca cererea si declaratia
  
   $file_name = 'Cerere-si-declaratie-' . str_replace(' ','-',$eveniment) . '-' . replaceSpecialChars($nume_mire) . '-' . replaceSpecialChars($prenume_mire) . '-' .date("d.m.Y", strtotime($data_si_ora)) . '.pdf';
-  $link_cerere = $target_dir . '/' . $file_name;
+  $link_cerere = ROOT_PATH . '/' . $target_dir . '/' . $file_name;
 
 
   $html = ob_get_clean(); 
@@ -124,12 +168,13 @@ if (isset($_GET['status'])) {
   
 // inserare link cerere în baza de date ----------------
   
+$link_cerere_fara_calea_serverului = $target_dir . '/' . $file_name;
 
 if (file_exists($link_cerere)) {
 
         $query = 'UPDATE programari_cununie SET link_cerere = ? WHERE id = ?';
         $stmt = $conn->prepare($query);
-        $stmt->bind_param('si', $link_cerere, $id);
+        $stmt->bind_param('si', $link_cerere_fara_calea_serverului, $id);
         $result = $stmt->execute();
    
      }  
@@ -219,4 +264,4 @@ phpmailer ($email_admin, $from, $name, $subiect_admin, $mesaj_email_admin, $link
  
 ?>
 
-<!-- <script> location.replace("rezervare-unica-cununie.php?id=<?php echo $id; ?>"); </script> -->
+<script> location.replace("rezervare-unica-cununie.php?id=<?php echo $id; ?>"); </script>

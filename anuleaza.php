@@ -1,6 +1,6 @@
 <?php
 
-include "conexiune.php";
+include "includes/conexiune.php";
 
 if (isset($_GET['id-anulare']) && isset($_GET['eveniment'])) {
 
@@ -16,7 +16,7 @@ if (isset($_GET['id-anulare']) && isset($_GET['eveniment'])) {
         }
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-        echo '<script> location.replace("home.php"); </script>';
+        echo '<script> location.replace("home-unic.php?id=' . $id_anulare . '"); </script>';
     }
 
     if ($eveniment=="TainaCununiei") {
@@ -28,7 +28,7 @@ if (isset($_GET['id-anulare']) && isset($_GET['eveniment'])) {
         }
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-        echo '<script> location.replace("home.php"); </script>';
+        echo '<script> location.replace("home-unic-cununie.php?id=' . $id_anulare . '"); </script>';
     }
 
 } 

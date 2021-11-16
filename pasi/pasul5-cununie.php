@@ -1,7 +1,6 @@
 <?php 
-include "header-frontend.php"; 
-include "sidebar-frontend.php"; 
-include "functions.php";
+include "../header-frontend.php"; 
+ 
 
 
 if (isset($_GET['id'])) {
@@ -39,10 +38,13 @@ if (isset($_POST['ataseaza'])) {
 
     $base_dir = "rezervari/";
     
-    $target_dir = 'rezervari/' . $data_simpla . '-'. $eveniment . '-' . replaceSpecialChars($nume_si_prenume_mire);
+    $target_dir = ROOT_PATH . '/rezervari/' . $data_simpla . '-'. $eveniment . '-' . 'id-' . $last_id;
     $target_dir = preg_replace('/\s+/', '-', $target_dir);
 
     mkdir($target_dir);
+
+    $target_dir_www = 'rezervari/' . $data_simpla . '-'. $eveniment . '-' . 'id-' . $last_id;
+    $target_dir_www = preg_replace('/\s+/', '-', $target_dir_www);
 
     $link_mire_ci = $link_mireasa_ci = $plata_contributiei = $link_certificat_botez_mire = $link_certificat_botez_mireasa = '';
 
@@ -77,9 +79,14 @@ if (isset($_POST['ataseaza'])) {
 ?>
 
 
+<div class="container-fluid">
 
-<div class="mare">
-  <div class="container-fluid">
+    <div class="row wrapper">
+        <div class="col-sm-3 sidebar-admin"><?php include "../sidebar-frontend.php"?></div>
+
+        <div class="col-sm-9 p-4 zona-principala">
+            
+            <?php include "../header-mic-frontend.php";?>
 
   <?php include "pasi.php";?>
 
@@ -240,6 +247,8 @@ if (isset($_POST['ataseaza'])) {
   
 
 
+ </div>
+ </div>
  </div>
  </div>
 </body>

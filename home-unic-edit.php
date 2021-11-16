@@ -1,6 +1,6 @@
 <?php
 
-include "header-admin.php"; 
+include "header-frontend.php"; 
 
 
 $data_cateheza = '';
@@ -19,7 +19,7 @@ $result = $stmt->get_result();
  
 while ($data = mysqli_fetch_assoc($result)){    
 
-    include "../includes/extras-programare.php";
+    include "includes/extras-programare.php";
 
     $data_cateheza = $data_start_fara_ora = date("Y-m-d", strtotime($data["data_ora_cateheza"]));
     $ora_cateheza = date("H:i", strtotime($data["data_ora_cateheza"]));
@@ -32,11 +32,11 @@ while ($data = mysqli_fetch_assoc($result)){
 <div class="container-fluid">
 
     <div class="row">
-        <div class="col-sm-3 sidebar-admin"><?php include "sidebar-admin.php"?></div>
+        <div class="col-sm-3 sidebar-admin"><?php include "sidebar-frontend.php"?></div>
 
         <div class="col-sm-9 p-4 zona-principala">
 
-        <?php include "header-mic-admin.php";?>
+        <?php include "header-mic-frontend.php";?>
 
   
         <div class="mt-3 p-5 wrapper-rezervare-unica">
@@ -86,14 +86,14 @@ while ($data = mysqli_fetch_assoc($result)){
     }
 
     echo '">' .$status . '</span>';
-    echo '<a href="rezervare-unica.php?id=' . $id_programare . '"><i class="fas fa-chevron-circle-left"></i> Renunță</a> ';
+    echo '<a href="home-unic.php?id=' . $id_programare . '"><i class="fas fa-chevron-circle-left"></i> Renunță</a> ';
     echo ' <button type="submit" form="actualizeaza" name ="actualizeaza" class="btn salveaza"><i class="fas fa-save"></i> Salveaza</button>';
 
     echo '</p>';
  
  ?>
 
-<form id="actualizeaza" action="update-edit-rezervare.php?id=<?php echo $id_programare?>" method="post" enctype = "multipart/form-data">
+<form id="actualizeaza" action="admin/update-edit-rezervare.php?id=<?php echo $id_programare?>" method="post" enctype = "multipart/form-data">
 
 
 <div class="input-group mb-2">

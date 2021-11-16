@@ -6,11 +6,11 @@ include "../header-frontend.php";
      $zi = $_GET['zi'];
  }
 
-$start = '';
-$ora = '';
-$data_start_fara_ora = '';
-$ore_rezervate[] ='';
-$ore[] ='';
+$start = NULL;
+$ora = NULL;
+$data_start_fara_ora = NULL;
+$ore_rezervate = (array) NULL;
+$ore =(array) NULL;
 
 ?>
 
@@ -52,6 +52,7 @@ while ($data = mysqli_fetch_assoc($rezultate)){
     $ora_final = date("H:i", strtotime($data["data_final"]));
 
     $ore = create_time_range($ora_start, $ora_final, '60 mins');
+    array_pop ($ore);
 
 }    
 
@@ -68,7 +69,9 @@ while ($data = mysqli_fetch_assoc($rezultate)){
           $result = $stmt->get_result();
       
           while($data = $result->fetch_assoc()) {
+            
             array_push($ore_rezervate, date("H:i", strtotime($data['data_si_ora'])));
+            
           }
     }
      
@@ -76,14 +79,28 @@ while ($data = mysqli_fetch_assoc($rezultate)){
 // ce ore rămân liber aflăm prin intersecția array-urilor
 $ore_libere = array_diff ($ore, $ore_rezervate);
 
+// echo "\$ore<br>";
+// var_dump ($ore);
+// echo "<br><br>\$ore_rezervate <br>";
+// var_dump ($ore_rezervate);
+// echo "<br><br>\$ore_libere <br>";
+// var_dump ($ore_libere);
+// echo "<br>";
+// echo "<br><br>Primul element al array-ului \$ore<br>";
 
 // Primul element al array-ului $ore
 $prima_valoare_ore = reset($ore); 
 
+
+// var_dump ($prima_valoare_ore);
+// echo "<br>";
+
 // Primul element al array-ului $ore_libere
 $prima_valoare_ore_libere = reset($ore_libere); 
 
- 
+// echo "<br><br>Primul element al array-ului \$ore libere<br>";
+// var_dump ($prima_valoare_ore_libere);
+
 
   if(!empty($ore_libere)) {
     echo '<p>Ora liberă la care se poate desfășura ' . $eveniment .  ' este <span class="albastru">' . $prima_valoare_ore_libere . '</span></p>';
@@ -92,11 +109,14 @@ $prima_valoare_ore_libere = reset($ore_libere);
     echo '<p>Ora liberă la care se poate desfășura ' . $eveniment .  ' este <span class="albastru">' . $prima_valoare_ore . '</span></p>';
     $ora_afisata = $prima_valoare_ore;
   }
+
+  if ($prima_valoare_ore_libere === FALSE) {$x = $prima_valoare_ore;}
+  else {$x = $prima_valoare_ore_libere;}
     
   if ($eveniment == 'Taina Botezului') {
-     $pasul3 = 'pasul3.php?month=' . $month . '&year=' .  $year . '&pentru=' .  $pentru . '&zi=' . $zi . '&ora=' . $prima_valoare_ore;
+     $pasul3 = 'pasul3.php?month=' . $month . '&year=' .  $year . '&pentru=' .  $pentru . '&zi=' . $zi . '&ora=' . $x;
   } elseif ($eveniment == "Taina Cununiei") {
-    $pasul3 = 'pasul3-cununie.php?month=' . $month . '&year=' .  $year . '&pentru=' .  $pentru . '&zi=' . $zi . '&ora=' . $prima_valoare_ore;
+    $pasul3 = 'pasul3-cununie.php?month=' . $month . '&year=' .  $year . '&pentru=' .  $pentru . '&zi=' . $zi . '&ora=' . $x;
   }
   ?>
 

@@ -46,23 +46,12 @@ if (isset($_POST['ataseaza'])) {
      
     $base_dir = "rezervari/";
     
-    if (!empty($_POST['tata_ci'])) {
-        $target_dir = ROOT_PATH . '/rezervari/' . $data_simpla . '-'. $eveniment . '-' . replaceSpecialChars($nume_si_prenume_tata);
-    } else {
-        $target_dir = ROOT_PATH . '/rezervari/' . $data_simpla . '-'. $eveniment . '-' . replaceSpecialChars($nume_si_prenume_mama);
-    }
-
+    $target_dir = ROOT_PATH . '/rezervari/' . $data_simpla . '-'. $eveniment . '-' . 'id-' . $last_id;
     $target_dir = preg_replace('/\s+/', '-', $target_dir);
 
     mkdir($target_dir);
 
-
-    if (!empty($_POST['tata_ci'])) {
-        $target_dir_www = 'rezervari/' . $data_simpla . '-'. $eveniment . '-' . replaceSpecialChars($nume_si_prenume_tata);
-    } else {
-        $target_dir_www = 'rezervari/' . $data_simpla . '-'. $eveniment . '-' . replaceSpecialChars($nume_si_prenume_mama);
-    }
-
+    $target_dir_www = 'rezervari/' . $data_simpla . '-'. $eveniment . '-' . 'id-' . $last_id;
     $target_dir_www = preg_replace('/\s+/', '-', $target_dir_www);
 
 

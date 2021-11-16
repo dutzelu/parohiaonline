@@ -24,22 +24,26 @@ $rezervari = '';
 
           <?php include "header-mic-frontend.php";?>
 
-  <?php include "pasi/pasi.php";?>
+           <div class="row mt-3 ultimele-programari">
 
-     <h1 class="h1">Alegeți ziua dorită pentru <span class="albastru"><?php echo $eveniment; ?></span> </h1>
+              <div class="col-sm-12 calendar-frontend">
+              <?php include "pasi/pasi.php";?>
+
+              <h1 class="h1">Alegeți ziua dorită pentru <span class="albastru"><?php echo $eveniment; ?></span> </h1>
 
 
-<?php include "includes/calendar.php";?>
+              <?php include "includes/calendar.php";?>
  
- </div>
- 
- <input type="submit" value="Confirmă ziua" name="pasul1" class="btn btn-primary rezerva">
- 
- </form>
- 
-</div>
-</div>
-</div>    
+              </div>
+              
+              <input type="submit" value="Confirmă ziua" name="pasul1" class="btn btn-primary rezerva">
+              
+              </form>
+              </div>
+              </div>
+            </div>
+        </div>    
+     </div>
 </div>
 
 </body>

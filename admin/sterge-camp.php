@@ -1,6 +1,6 @@
 <?php
 
-include "header-admin.php";
+include "../admin/header-admin.php";
 
 $id = $_SESSION['id'];
 

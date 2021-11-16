@@ -6,8 +6,16 @@ $user_id = $_SESSION['id'];
 ?>
 
 
-<div class="mare">
-  <div class="container-fluid">
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-3 sidebar-admin"><?php include "sidebar-frontend.php"?></div>
+
+        <div class="col-sm-9 p-4 zona-principala">
+
+        <?php include "header-mic-frontend.php";?>
+
+        <div class="mt-3 p-5 wrapper-rezervare-unica">
 
 <?php
 
@@ -23,12 +31,6 @@ $user_id = $_SESSION['id'];
     $id_programare = $_GET['id'];
   }
 
-?>
-
-<h2 class="mb-2">Rezervări</h2>
-
-
-<?php
 
 $user_id = $_SESSION['id'];
 
@@ -42,105 +44,160 @@ $result = $stmt->get_result();
 
 while($data = $result->fetch_assoc()) {
 
-    include 'extras-programare-cununie.php';
+    include 'includes/extras-programare-cununie.php';
 
-    echo '<span class="badge mb-1 ' . $clasa_accept . '">' 
-    
+    echo "<p>";
   
-    . $status_accept_afisat . '</span>' . '<br /><h5 style="color:' . $color . '">'  . date("d.m.Y", strtotime($data_si_ora)) . ' - ' . $eveniment . ' - ora: ' . date("H:i", strtotime($data_si_ora)) . ' - '  . $nume_mire . ' ' . $prenume_mire . '</h5>';
+    echo '<span class="nume">' . $data['nume_mire'] . ' ' . $data['prenume_mire'] . "</span>"; 
+   
 
-    echo '<a class="btn btn-outline-primary" href="edit-rezervare-cununie.php?id=' . $id_programare . '">Modifică detaliile programării / adaugă documente</a>';
+    echo ' <i class="fas fa-angle-double-right"></i> ';
+    
+    echo ' <span class="albastru-inchis">' . $eveniment . ' </span>';
+
+    echo ' <i class="fas fa-angle-double-right"></i> ';
+
+    echo '<span class="rosu">' . date("d M Y", strtotime($data_si_ora)) . '</span>';
+
+    echo ' <i class="fas fa-angle-double-right"></i> ';
+
+    echo '<span class="rosu">' . date("H:i", strtotime($data_si_ora)) . '</span>';
+
+    echo "</p>";
+        
+
+    echo "<p class='butoane'>";
+
+        echo '<span class="status ';
+                      
+        switch($status) {
+
+            case "acceptata": echo 'acceptata';
+            break;
+            case "respinsa": echo 'respinsa';
+            break;
+            case "anulata": echo 'respinsa';
+            break;
+            case "detalii": echo 'detalii';
+            break;
+            case "în așteptare": echo 'in-asteptare';
+            break;
+        }
+
+        echo '">' .$status . '</span>';
+
+        echo '<a href="home.php"><i class="fas fa-chevron-circle-left"></i> Înapoi</a> ';
+
+        echo '<a href="anuleaza.php?id-anulare=' . $id_programare . '&eveniment=' . preg_replace('/\s+/', '', $eveniment) . '"><i class="orange fas fa-backspace"></i> Anuleaza</a>'; ?>
+
+        <a href="sterge.php?eveniment=programari_botez&stergeid=<?php echo $id_programare; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+        <i class="rosu fas fa-trash-alt"></i> Șterge</a>
+
+        <?php
+                    
+        echo '<a href="home-unic-cununie-edit.php?id=' . $id_programare . '"><i class="albastru-inchis far fa-edit"></i> Modifică</a> ';
+
+        echo '<a href="" onclick="window.print()"><i class="fas fa-print"></i> Print</a>';
+
+    echo '</p>';
+
     echo  '<hr />';
+
+    echo '<div class="tabel-rezervare view">';
 
     if (isset($_GET['edit'])) { 
       echo '<p id ="dispari" class="btn btn-success"> Rezervarea a fost editată cu succes</p>' ;
     } 
 
-    echo '<p>Data catehezei: <strong>' . date("d.m.Y", strtotime($data_ora_cateheza)) . '</strong>' . ' | Ora: <strong>' . date("H:i", strtotime($data_ora_cateheza)) . '</strong></p>';
+    echo '<p><span class="cap">Data catehezei: </span>' . date("d.m.Y", strtotime($data_ora_cateheza)) . '' . '<span class="cap stanga">Ora: </span>' . date("H:i", strtotime($data_ora_cateheza)) . '</p>';
 
-    echo '<p>Nume mire: <strong>' . $nume_mire . ' ' . $prenume_mire . '</strong> | Nume mireasă: <strong>' . $nume_mireasa . ' ' . $prenume_mireasa . '</strong></p>';
+    echo '<p><span class="cap">Nume mire: </span>' . $nume_mire . ' ' . $prenume_mire . '<span class="cap stanga">Nume mireasă: </span>' . $nume_mireasa . ' ' . $prenume_mireasa . '</p>';
 
-    echo '<p>Adresă mire: <strong> ' . $adresa_mire . '</strong></p>';
-    echo '<p>Adresă mireasă: <strong> ' . $adresa_mireasa . '</strong></p>';
-    echo '<p>Telefon: <strong>' . $telefon . '</strong></p>';
-    echo '<p>Email: <strong>' . $email . '</strong></p>';
+    echo '<p><span class="cap">Adresă mire: </span> ' . $adresa_mire . '</p>';
+    echo '<p><span class="cap">Adresă mireasă: </span> ' . $adresa_mireasa . '</p>';
+    echo '<p><span class="cap">Telefon: </span>' . $telefon . '</p>';
+    echo '<p><span class="cap">Email: </span>' . $email . '</p>';
 
-    echo '<p>Număr certificat de căsătorie: <strong>' . $numar_certificat_casatorie . '</strong></p>';
-    echo '<p>Data eliberării certificatului: <strong>' . $data_eliberarii_certificatului . '</strong></p>';
-    echo '<p>Eliberat de Primăria: <strong>' . $eliberat_de_primaria . '</strong></p>';
-    echo '<p>Nași: <strong>' . $nume_nas . ' și ' . $nume_nasa . '</strong></p>';
+    echo '<p><span class="cap">Număr certificat de căsătorie: </span>' . $numar_certificat_casatorie . '</p>';
+    echo '<p><span class="cap">Data eliberării certificatului: </span>' . $data_eliberarii_certificatului . '</p>';
+    echo '<p><span class="cap">Eliberat de Primăria: </span>' . $eliberat_de_primaria . '</p>';
+    echo '<p><span class="cap">Nași: </span>' . $nume_nas . ' și ' . $nume_nasa . '</p>';
     if (!empty($nume_cameraman)) {
-        echo '<p>Nume cameraman: <strong>' . $nume_cameraman . "</strong> | Telefon: <strong>" . $telefon_cameraman . '</strong></p>';
+        echo '<p><span class="cap">Nume cameraman: </span>' . $nume_cameraman . '<span class="cap stanga">Telefon: </span>' . $telefon_cameraman . '</p>';
     }
 
-    echo '<p>Link carte de identitate mire: ';
+    echo '<p><span class="cap">Link carte de identitate mire: </span>';
 
     // if-urile sunt necesare pentru a nu încarca galeria foto imagini goale in lightbox 
     
     if (!empty($link_mire_ci)) {
 
-    echo '<a target="popup" data-title ="' . basename($link_mire_ci) . '"data-lightbox ="foto_acte" href="' . $link_mire_ci .'">'. basename($link_mire_ci) . '</a></p>';
+    echo '<a target="popup" data-title ="' . basename($link_mire_ci) . '"data-lightbox ="foto_acte" href="' . $link_mire_ci .'">
+    <img src="' . $link_mire_ci . '"/></a></p>';
 
     }
 
-    echo '<p>Link carte de identitate mireasă: ';
+    echo '<p><span class="cap">Link carte de identitate mireasă: </span>';
     
     if (!empty($link_mireasa_ci)) {
     
-    echo '<a target="popup" data-title ="' . basename($link_mireasa_ci) . '"data-lightbox ="foto_acte"  href="' . $link_mireasa_ci .'">' . basename($link_mireasa_ci) . '</a></p>';
+    echo '<a target="popup" data-title ="' . basename($link_mireasa_ci) . '"data-lightbox ="foto_acte"  href="' . $link_mireasa_ci .'">
+    <img src="' . $link_mireasa_ci . '"/></a></a></p>';
 
     }
 
-    echo '<p>Link plata contribuției: ';
+    echo '<p><span class="cap">Link plata contribuției: </span>';
     
     if (!empty($link_plata_contributiei)) {
 
-    echo '<a target="popup" data-title ="' . basename($link_plata_contributiei) . '"data-lightbox ="foto_acte"  href="' . $link_plata_contributiei .'">' . basename($link_plata_contributiei) . '</a></p>';
+    echo '<a target="popup" data-title ="' . basename($link_plata_contributiei) . '"data-lightbox ="foto_acte"  href="' . $link_plata_contributiei .'"><img src="' . $link_plata_contributiei . '"/></a></a></p>';
 
     }
 
-    echo '<p>Link certificat de căsătorie: ';
+    echo '<p><span class="cap">Link certificat de căsătorie: </span>';
     
     if (!empty($link_certificat_casatorie_civila)) {
     
-    echo '<a target="popup" data-title ="' . basename($link_certificat_casatorie_civila) . '"data-lightbox ="foto_acte"  href="' . $link_certificat_casatorie_civila .'">' . basename($link_certificat_casatorie_civila) . '</a></p>';
+    echo '<a target="popup" data-title ="' . basename($link_certificat_casatorie_civila) . '"data-lightbox ="foto_acte"  href="' . $link_certificat_casatorie_civila .'"><img src="' . $link_certificat_casatorie_civila . '"/></a></a></p>';
 
     }
 
-    echo '<p>Link certificat de botez mire: ';
+    echo '<p><span class="cap">Link certificat de botez mire: </span>';
     
     if (!empty($link_certificat_botez_mire)) {
     
-    echo '<a target="popup" data-title ="' . basename($link_certificat_botez_mire) . '"data-lightbox ="foto_acte"  href="' . $link_certificat_botez_mire .'">' . basename($link_certificat_botez_mire) . '</a></p>';
+    echo '<a target="popup" data-title ="' . basename($link_certificat_botez_mire) . '"data-lightbox ="foto_acte"  href="' . $link_certificat_botez_mire .'"><img src="' . $link_certificat_botez_mire . '"/></a></a></p>';
 
     }
 
-    echo '<p>Link certificat de botez mireasă: ';
+    echo '<p><span class="cap">Link certificat de botez mireasă: </span>';
   
     if (!empty($link_certificat_botez_mireasa)) {
     
-    echo '<a target="popup" data-title ="' . basename($link_certificat_botez_mireasa) . '"data-lightbox ="foto_acte"  href="' . $link_certificat_botez_mireasa .'">' . basename($link_certificat_botez_mireasa) . '</a></p>';
+    echo '<a target="popup" data-title ="' . basename($link_certificat_botez_mireasa) . '"data-lightbox ="foto_acte"  href="' . $link_certificat_botez_mireasa .'"><img src="' . $link_certificat_botez_mireasa . '"/></a></p>';
 
     }
 
-    echo '<p>Link dispensă: ';
+    echo '<p><span class="cap">Link dispensă: </span>';
     
     if (!empty($link_dispensa)) {
     
-    echo '<a target="popup" data-title ="' . basename($link_dispensa) . '"data-lightbox ="foto_acte"  href="' . $link_dispensa .'">' . basename($link_dispensa) . '</a></p>';
+    echo '<a target="popup" data-title ="' . basename($link_dispensa) . '"data-lightbox ="foto_acte"  href="' . $link_dispensa .'">
+    <img src="' . $link_dispensa . '"/></a></p>';
 
     }
   
   
-    echo '<p>Link cerere și declarație: <a target="popup" href="' . $link_cerere .'">' . basename($link_cerere) . '</a>';
+    echo '<p><span class="cap">Link cerere și declarație: </span><a target="popup" href="' . $link_cerere .'">' . basename($link_cerere) . '</a>';
     echo '<p></p><hr>';
+    echo '</div>';
 
     
     if (empty($succes)) {
 
       // selectez din db toate mesajele corespunzătoare acestei rezervări
 
-          include "afiseaza-mesaje.php";
+          include "includes/afiseaza-mesaje.php";
 
       // Formular pentru butonul de "Raspunde cu detalii" 
 
@@ -165,4 +222,9 @@ while($data = $result->fetch_assoc()) {
 </div>
 
 </div>
+</div>
+
+</div>
+</body>
+</html>
 

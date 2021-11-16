@@ -53,19 +53,12 @@ if (isset($_POST['actualizeaza'])) {
     $nume_cameraman = $_POST['nume_cameraman'];
     $telefon_cameraman = $_POST['telefon_cameraman'];
 
-    // if (!empty($link_tata_ci)) {$target_dir = ROOT_PATH. dirname ($link_tata_ci);}
-    // elseif (!empty($link_mama_ci)) {$target_dir =  ROOT_PATH. dirname ($link_mama_ci);}
-    // elseif (!empty($link_plata_contributiei)) {$target_dir =  ROOT_PATH . dirname ($link_plata_contributiei);}
-    // elseif (!empty($link_certificat_nastere_copil)) {$target_dir =  ROOT_PATH. dirname ($link_certificat_nastere_copil);} 
-    // //      else {
-    //             $target_dir = 'rezervari/' . $data_simpla . '-'. $eveniment . '-' . replaceSpecialChars($nume_si_prenume_mama);
-    //             $target_dir = preg_replace('/\s+/', '-', $target_dir);
-    //         //   }
-
- 
     
-    $target_dir = ROOT_PATH . '/rezervari/' .  $data_simpla . '-'. $eveniment . '-' . replaceSpecialChars($nume_si_prenume_mama);
+    $target_dir = ROOT_PATH . '/rezervari/' . $data_simpla . '-'. $eveniment . '-' . 'id-' . $id_programare;
     $target_dir = preg_replace('/\s+/', '-', $target_dir);
+
+    $target_dir_www = 'rezervari/' . $data_simpla . '-'. $eveniment . '-' . 'id-' . $id_programare;
+    $target_dir_www = preg_replace('/\s+/', '-', $target_dir_www);
       
     upload_foto('tata_ci', $nume_si_prenume_tata, 'link_tata_ci');
     upload_foto('mama_ci', $nume_si_prenume_mama, 'link_mama_ci');

@@ -1,7 +1,5 @@
 <?php 
 include "header-frontend.php"; 
-include "sidebar-frontend.php"; 
-include "functions.php";
 
 ?>
 
@@ -10,8 +8,17 @@ include "functions.php";
 
 <body>
 
-<div class="mare">
-  <div class="container-fluid">
+<div class="container-fluid">
+
+    <div class="row wrapper">
+        <div class="col-sm-3 sidebar-admin"><?php include "sidebar-frontend.php"?></div>
+
+        <div class="col-sm-9 p-4 zona-principala">
+
+          <?php include "header-mic-frontend.php";?>
+
+           <div class="row mt-3 ultimele-programari">
+
 
 <h1 class="titlu mb-5"><strong>Informații utile pentru programarea botezului</strong></h1>
 
@@ -61,6 +68,8 @@ include "functions.php";
 
 <p>În ziua botezului, părinții copilului vor prezenta <strong>o copie a certificatului de naștere al pruncului necesar</strong> înregistrării botezului în actele mitricale ale parohiei şi pentru eliberarea Certificatului de botez. Certificatul de naștere depus la programarea Botezului a fost deja arhivat. De aceea, fără acest act prezentat în ziua botezului nu se poate oficia Taina Botezului, fiind actul de identitate al copilului care urmează a fi botezat !</p>
 
+  </div>
+</div>
   </div>
 </div>
 

@@ -1,7 +1,6 @@
 <?php 
-include "header-frontend.php"; 
-include "sidebar-frontend.php"; 
-include "functions.php";
+include "../header-frontend.php"; 
+
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -105,6 +104,8 @@ $ora = '';
     $localitate_nasi = $_POST['localitate_nasi'];
     $nume_cameraman = $_POST['nume_cameraman'];
     $telefon_cameraman = $_POST['telefon_cameraman'];
+
+    $status = "în așteptare";
   
     $query = 'INSERT INTO programari_cununie SET 
     user_id=?, 
@@ -131,7 +132,7 @@ $ora = '';
 
     $stmt = $conn->prepare($query);
 
-    $stmt->bind_param('isssssssssssssssssss', $user_id, $eveniment, $data_si_ora, $nume_mire, $prenume_mire, $nume_mireasa, $prenume_mireasa, $adresa_mire, $adresa_mireasa, $telefon, $email, $numar_certificat_casatorie, $data_eliberarii_certificatului, $eliberat_de_primaria,  $nume_nas, $nume_nasa, $localitate_nasi, $nume_cameraman, $telefon_cameraman, "în așteptare");
+    $stmt->bind_param('isssssssssssssssssss', $user_id, $eveniment, $data_si_ora, $nume_mire, $prenume_mire, $nume_mireasa, $prenume_mireasa, $adresa_mire, $adresa_mireasa, $telefon, $email, $numar_certificat_casatorie, $data_eliberarii_certificatului, $eliberat_de_primaria,  $nume_nas, $nume_nasa, $localitate_nasi, $nume_cameraman, $telefon_cameraman, $status);
     $result = $stmt->execute();
 
     $last_id = mysqli_insert_id($conn);
@@ -139,7 +140,7 @@ $ora = '';
 
     $sql="UPDATE zile_stabilite
     SET rezervari = rezervari - 1
-    WHERE data_start LIKE '%$data_simpla%' ";
+    WHERE tip_programare = 'cununie' AND data_start LIKE '%$data_simpla%' ";
 
     $rezultate = mysqli_query ($conn, $sql);
 
@@ -151,10 +152,14 @@ $ora = '';
 
 <body>
 
+<div class="container-fluid">
 
+    <div class="row wrapper">
+        <div class="col-sm-3 sidebar-admin"><?php include "../sidebar-frontend.php"?></div>
 
-<div class="mare">
-  <div class="container-fluid">
+        <div class="col-sm-9 p-4 zona-principala">
+            
+            <?php include "../header-mic-frontend.php";?>
 
     <?php include "pasi.php";?>
 
@@ -231,4 +236,11 @@ $ora = '';
     
     </form>
 
-   
+    </div>
+
+</div>
+  
+</div>
+
+</body>
+</html>

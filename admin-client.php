@@ -191,11 +191,11 @@
                                 echo '  <a href="';
                                 
                                 if ($row['Programare']=="Botez") {
-                                    echo "edit-rezervare.php?id=" . $row['id'];
+                                    echo "home-unic.php?id=" . $row['id'];
                                 }
     
                                 if ($row['Programare']=="Cununie") {
-                                    echo "edit-rezervare-cununie.php?id=" .  $row['id'];
+                                    echo "home-unic-cununie.php?id=" .  $row['id'];
                                 }
                                 
                                 
@@ -222,7 +222,7 @@
 
 
 
-<?php include "footer.php"?>
+<?php include "includes/footer.php"?>
 </body>
 </html>
 

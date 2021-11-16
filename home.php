@@ -23,6 +23,12 @@ $user_id = $_SESSION['id'];
         
         <div class="row mt-3 ultimele-programari">
               <p class="fw-bold">Programările mele</p>
+
+              <?php
+                  if (isset($_GET['sters'])) {
+                      echo '<p id="dispari">Programarea a fost ștearsă cu succes</p>';
+                  }
+             ?>
                     <table class="table">
 
                         <thead>
@@ -134,13 +140,13 @@ $user_id = $_SESSION['id'];
 
                                 if ($row['Programare']=="Botez") {?>
 
-                                      <a href="sterge-camp.php?eveniment=programari_botez&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                                      <a href="sterge.php?eveniment=programari_botez&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                                       <i class="rosu fas fa-trash-alt"></i></a>
                                 <?php
                                 }
     
                                 if ($row['Programare']=="Cununie") {?>
-                                     <a href="sterge-camp.php?eveniment=programari_cununie&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                                     <a href="sterge.php?eveniment=programari_cununie&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                                       <i class="rosu fas fa-trash-alt"></i></a>
                                 
                                 <?php    

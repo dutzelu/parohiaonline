@@ -110,7 +110,7 @@ $ora = '';
 
     $sql="UPDATE zile_stabilite
     SET rezervari = rezervari - 1
-    WHERE data_start LIKE '%$data_simpla%' ";
+    WHERE tip_programare = 'botez' AND data_start LIKE '%$data_simpla%' ";
 
     $rezultate = mysqli_query ($conn, $sql);
 

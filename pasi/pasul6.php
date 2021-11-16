@@ -6,9 +6,7 @@ if (isset($_POST['pasul1'])) {
 
   $zile = $_POST['zile'];
  foreach ($zile as $zi) {
-    echo $zi;
-   echo $month;
-   echo $year;
+
  }
 
 }
@@ -21,9 +19,10 @@ if (isset($_POST['pasul1'])) {
   $id = $_GET['id'];
 }
 
-$start = '';
-$ora = '';
-$ore_rezervate = [];
+$start = NULL;
+$ora = NULL;
+$ore_rezervate = (array) NULL;
+$ore =(array) NULL;
 
 ?>
 
@@ -64,9 +63,10 @@ while ($data = mysqli_fetch_assoc($rezultate)){
     $ora_start = date("H:i", strtotime($data["data_start"]));
     $ora_final = date("H:i", strtotime($data["data_final"]));
 
- 
-    $ore = create_time_range($ora_start, $ora_final, '60 mins');
 
+
+    $ore = create_time_range($ora_start, $ora_final, '60 mins');
+    array_pop($ore);
  
     ?>
 
@@ -82,7 +82,7 @@ while ($data = mysqli_fetch_assoc($rezultate)){
 
           $ora = $data_start_fara_ora . ' ' . $ora . ':00';
 
-          $query = 'SELECT * FROM programari_botez WHERE data_si_ora=?';
+          $query = 'SELECT * FROM programari_botez WHERE data_ora_cateheza=?';
           $stmt = $conn->prepare($query);
           $stmt->bind_param('s', $ora);
           $result = $stmt->execute();
@@ -90,7 +90,7 @@ while ($data = mysqli_fetch_assoc($rezultate)){
       
 
           while($data = $result->fetch_assoc()) {
-            array_push($ore_rezervate, $data['data_si_ora']);
+            array_push($ore_rezervate, $data['data_ora_cateheza']);
           }
 
       // afisez doar orele care nu sunt rezervate

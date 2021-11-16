@@ -189,7 +189,7 @@
 
               echo '<form method="POST" action="raspunde-cu-detalii.php?id=' . $id_programare . '&status=detalii&eveniment=botez">' .
 
-              '<textarea name="mesaj" class="form-control" placeholder = "Scrieți aici mesajul dumneavoastră." style="margin:20px 0" rows="6" cols="10"></textarea>  
+              '<textarea name="mesaj" class="form-control" placeholder = "Scrieți aici un mesaj persoanei care a făcut programarea." style="margin:20px 0" rows="6" cols="10"></textarea>  
               <button type="submit" name ="raspunde" class="btn btn-warning">Trimite mesaj</button>';
 
 

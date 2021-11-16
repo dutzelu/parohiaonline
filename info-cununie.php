@@ -1,7 +1,6 @@
 <?php 
 include "header-frontend.php"; 
-include "sidebar-frontend.php"; 
-include "functions.php";
+
 
 ?>
 
@@ -10,8 +9,18 @@ include "functions.php";
 
 <body>
 
-<div class="mare">
-  <div class="container-fluid">
+
+<div class="container-fluid">
+
+    <div class="row wrapper">
+        <div class="col-sm-3 sidebar-admin"><?php include "sidebar-frontend.php"?></div>
+
+        <div class="col-sm-9 p-4 zona-principala">
+
+          <?php include "header-mic-frontend.php";?>
+
+           <div class="row mt-3 ultimele-programari">
+
 
 <h1 class="titlu mb-5"><strong>Informații utile pentru programarea cununiei</strong></h1>
 
@@ -71,6 +80,8 @@ include "functions.php";
 
 
 
+  </div>
+</div>
   </div>
 </div>
 

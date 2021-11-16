@@ -191,7 +191,8 @@ p.butoane i {margin:0 0 0 20px; font-size:16px}
 
 /* Zile stabilite*/
 
-.zile-stabilite .col-sm-12 {max-width:800px; font-size:14px;}
+.zile-stabilite .col-sm-12{max-width:800px; font-size:14px;}
+.calendar-frontend {max-width:600px; font-size:14px;}
 
 .btn-danger:hover {
   color: #FFF;
@@ -208,7 +209,14 @@ div.capcalendar {
   padding: 16px 0 0 0;
 }
 
-.rezervari {}
+ /* Edit rezervare */ 
+
+ .edit-foto {
+  border: 1px solid #4374B9;
+  border-radius: 4px;
+  padding:10px;
+  margin:20px 0;
+ }
 
 #dispari {
   color: #fff;
