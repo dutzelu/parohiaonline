@@ -3,6 +3,7 @@
 include '../controllers/authController.php';
 include '../includes/functions.php';
 
+require '../includes/role.php';
 
 // redirect user to index page if they're not logged in
 if (empty($_SESSION['id'])) {
@@ -74,7 +75,8 @@ $link_rezervare = "rezerva.php?year=" . $selected_year . "&month=" . $selected_m
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> 
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
   <script src="../lightbox/dist/js/lightbox.js"></script>
 
@@ -83,6 +85,9 @@ $link_rezervare = "rezerva.php?year=" . $selected_year . "&month=" . $selected_m
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
   <script src="https://kit.fontawesome.com/2211423278.js" crossorigin="anonymous"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
+
 
 
  

@@ -41,7 +41,7 @@ if (!empty($_SESSION['id'])) {
      // 1c) ..are emailul verificat și NU este admin
 
      if ($verificat == 1 && $admin == 0 ) {
-        header('location: ../frontend.php?pentru=botez');
+        header('location: ../eroare-404.php');
     } 
  }
  

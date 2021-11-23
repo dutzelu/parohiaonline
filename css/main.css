@@ -75,7 +75,7 @@ p.parohia {font-size:22px; font-weight: bold;}
   font-size: 14px;
   margin-right: 8px;
 }
-.urmeaza-in-calendar span.nume {
+.urmeaza-in-calendar span.nume{
   color: #AFAFAF;
   margin-left: -7px;
   font-size: 15px;
@@ -93,14 +93,20 @@ p.parohia {font-size:22px; font-weight: bold;}
   background: #FFF;
   padding: 49px 34px;
   margin: 24px 12px;
+  font-size:14px;
+}
+.ultimele-programari .input-group-text {
+    font-size: 14px;
+    background-color: #F1F5FA;
 }
 
+.ultimele-programari .btn {font-size:14px;}
 
 .ultimele-programari .table > :not(:first-child) {border-top:none!important;}
 .ultimele-programari .table {color:#7286A2; font-size:14px;}
 .ultimele-programari .table tr.clickable-row:hover {background:#fafafa;cursor:pointer;}
 
-.ultimele-programari .nume {color:#4374B9;font-weight: bold; font-size:14px; text-transform: capitalize;}
+.ultimele-programari .nume, .ziua {font-weight: bold; font-size:14px; text-transform: capitalize;}
 
 .in-asteptare {background-color:rgba(100,129,245, 0.2); color:#1C6CF9}
 .acceptata {background-color:rgba(30,202,123, 0.2); color:#1ECA7B;}
@@ -143,7 +149,7 @@ span.status {font-size:11px; display:inline-block;width:fit-content; padding:2px
 .wrapper-rezervare-unica {background:white; border-radius:4px}
 .wrapper-rezervare-unica i {color:#4374B9;font-size:12px;margin:0 10px;}
 .wrapper-rezervare-unica .nume {color:#4374B9;font-weight: 600; font-size:18px; text-transform: uppercase;}
-.rosu {color:Red!important;}
+.rosu {color:Red!important; font-color:red;}
 .orange  {color:orange!important;}
 .verde {color:green!important}
 .albastru-inchis {color:#4374B9}
@@ -217,6 +223,23 @@ div.capcalendar {
   padding:10px;
   margin:20px 0;
  }
+
+/* Programul slujbelor */ 
+.programul-slujbelor .table {color:#000;}
+.programul-slujbelor .table tr > td {border:none}
+tr.subliniat {border-top:2px solid #EAF0F7;}
+
+.table > tbody > tr > td > select, .table > tbody > tr > td > input, .table > tbody > tr > td > textarea  {font-size:14px!important;}
+ul.programe-salvate li {list-style-type: disc;}
+/* .blue-ciel {background-color:#3498DB;}
+.auriu {background-color:#FFB624; }
+.verde-crud {background-color:#60BA50;}
+.sange {background-color:#E41E26;}
+.mov {background-color:#AB00C4; }
+
+td.slujba_colorata span{color:#FFF; border-radius: 5px; font-size:12px;} */
+
+ /*----------------------*/
 
 #dispari {
   color: #fff;
@@ -559,3 +582,6 @@ body * {visibility:hidden}
   h5 {font-size:25px;margin:10px;}
  
 }
+
+
+

@@ -7,13 +7,7 @@
 
   <div class="sidenav admin">
     <a class="prima-pagina" href="admin.php">Prima pagină</a>
-    <button class="program dropdown-btn">Program liturgic <i class="fas fa-chevron-down" style="margin-left:10px; font-size:10px"></i></button>
-        <ul class="dropdown-container">
-          <li><a href="#">Program normal</a></li>
-          <li><a href="#">Program special</a></li>
-          <li><a href="#">Calendar</a></li>
-          <li><a href="#">Setări</a></li>
-        </ul>
+    <a class="prima-pagina" href="programul-slujbelor.php">Programul slujbelor</a>
     <a class="botezuri" href="registru.php?eveniment=programari_botez">Registru Botezuri</a>
     <a class="cununii" href="registru.php?eveniment=programari_cununie">Registru Cununii</a>
     <a class="spovedanii" href="registru.php?eveniment=programari_spovedanie">Spovedanii</a>

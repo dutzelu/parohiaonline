@@ -4,7 +4,7 @@ include "../admin/header-admin.php";
 
 $id = $_SESSION['id'];
 
-$query = "SELECT * FROM users WHERE id = ? AND admin = 1";
+$query = "SELECT * FROM users WHERE id = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param('i', $id);
 $result = $stmt->execute();

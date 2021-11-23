@@ -1,3 +1,6 @@
+
+// dispare un mesaj
+
 setTimeout(function() {
     $('#dispari').fadeOut('fast');
 }, 2000); // <-- time in milliseconds
@@ -9,7 +12,9 @@ setTimeout(function() {
     });
 });
 
- 
+
+// nefolosit... cred
+
 var url = document.URL;
 $('.sidebar li:has(a[href="'+url+'"])').addClass('active');
 
@@ -55,6 +60,7 @@ function ValidateSingleInput(oInput) {
     return true;
 }
 
+/* Valideaza dimensiunea imaginii*/
 
 function validateSize(input) {
     const fileSize = input.files[0].size / 1024 / 1024; // in MiB
@@ -67,4 +73,24 @@ function validateSize(input) {
     }
   }
 
-
+  /* Adauga zi in programul slujbelor*/
+	
+	var counter = 0;
+	
+	function moreFields() {
+    counter++;
+		var newFields = document.getElementById('readroot').cloneNode(true);
+		newFields.id = '';
+		newFields.style.display = 'block';
+    
+    var newField = newFields.querySelectorAll('[name]');
+		for (var i=0;i<newField.length;i++) {
+      var theName = newField[i].name
+			if (theName)
+      newField[i].name = theName + counter;
+		}
+		var insertHere = document.getElementById('writeroot');
+		insertHere.parentNode.insertBefore(newFields,insertHere);
+	}
+	
+	window.onload = moreFields;
