@@ -174,28 +174,43 @@ if (!empty($_SESSION['id']) && $admin == 0) {
                         ?>
 
                         
-                    <!--select pentru ora_start -->
-                    <div class="row mt-3">
-                        <div class="row mt-3">
-                            <label class="col-sm-3 col-form-label">Start</label>  
-                            <div class="col-sm-3">
+           
+                        <div class="input-group">
+
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Ora start</span>  
+                            </div>
+                            <div>
                                 <?php ore_pentru_select("ora_start"); ?>
                             </div>
-                        </div>
 
-                        <!--select pentru ora_final -->
-
-                        <div class="row mt-3">
-                            <label class="col-sm-3 col-form-label">Final</label>  
-                            <div class="col-sm-3">
-                                <?php ore_pentru_select("ora_final"); ?>
+                            <div class="input-group-prepend ml-2" style="margin-left:25px">
+                                <span class="input-group-text">Ora final</span>  
                             </div>
+                            <div >
+                            <?php ore_pentru_select("ora_final"); ?>
+                            </div>
+               
                         </div>
+                        
+                        
+                        <div class="input-group mt-3">
+                            <label class="col-sm-6 col-form-label">Intervalul dintre programări în min.</label>  
+                            <div class="col-sm-3">
+                                <input type="number" name="intervalul" value="30" class="form-control" min="1" max="120">
+                            </div>
+
+                        </div>
+
+                        <input type="submit" value="Rezervă" name="rezerva" class="btn btn-primary rezerva">
+                        
+                        
+
+
 
                         
-                        <input type="submit" value="Rezervă" name="rezerva" class="btn btn-primary rezerva">
 
-                    </div>
+                  
                     </form>
                     
                    
@@ -217,8 +232,9 @@ if (!empty($_SESSION['id']) && $admin == 0) {
                         <thead>
                         <tr>
                             <th scope="col">Dată</th>
-                            <th scope="col">Ora start</th>
-                            <th scope="col">Ora final</th>
+                            <th scope="col">Start</th>
+                            <th scope="col">Final</th>
+                            <th scope="col">Interval (min)</th>
                             <th scope="col">Rezervate</th>
                             <th scope="col">Libere</th>
                             <th scope="col">Șterge</th>
@@ -238,7 +254,7 @@ if (!empty($_SESSION['id']) && $admin == 0) {
                             $ora_final = date("H:i", strtotime($data["data_final"]));
                             $ora_start_simpla = date("H", strtotime($data["data_start"]));
                             $ora_final_simpla = date("H", strtotime($data["data_final"]));
-                    
+                            $interval_programari = $data['intervalul'];
 
                             $total_rezervari =  $ora_final_simpla - $ora_start_simpla;
                             $rezervari_disponibile = $data['rezervari'];
@@ -251,6 +267,7 @@ if (!empty($_SESSION['id']) && $admin == 0) {
                             echo '<td>' . $data_start_fara_ora . '</td>';
                             echo '<td>' . $ora_start . '</td>';
                             echo '<td>' . $ora_final . '</td>';
+                            echo '<td>' . $interval_programari . '</td>';
                             echo '<td>' . $rezervari . '</td>';
                             echo '<td>' . $rezervari_disponibile . '</td>';
                             echo '<td> <a href="sterge-camp.php?month='. $month .'&year='. $year .'&id='. $id_rezervare .'&pentru='. $pentru .'">x șterge</a>' . '</td>';

@@ -5,6 +5,12 @@ if ($eveniment == "Taina Botezului") {
 
 if ($eveniment == "Taina Cununiei") {
   $eveniment = 'cununie';}
+
+if ($eveniment == "Sfeștania") {
+  $eveniment = 'sfestanie';}
+  
+if ($eveniment == "Parastas") {
+  $eveniment = 'Parastas';}
   
 
 $query =
@@ -29,7 +35,7 @@ if (mysqli_num_rows($result) !== 0) {
     $prenume_user = $data['prenume'];
 
     echo "<li>";
-    echo '<p><span class="albastru-inchis">' . $data_mesajului . '<br />';
+    echo '<p><span>' . $data_mesajului . '<br />';
     echo  'Mesaj de la ' . $nume_user . ' ' . $prenume_user . ':</span></p>';
     echo '<p>' . $mesaj . '<br /><hr style="border-top:2px dotted #CCC"/>' ;
     echo "</li>";

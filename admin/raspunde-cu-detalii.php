@@ -18,8 +18,10 @@ $user_id = $_SESSION['id'];
  
 if (isset($_POST['raspunde'])) {
     $id = $_GET['id'];
-    $status = $_GET['status'];
-}
+    if (isset($_GET['status'])) {
+        $status = $_GET['status'];
+    }
+} 
 
 if (isset($_GET['eveniment'])) {
     $eveniment = $_GET['eveniment'];
@@ -133,6 +135,56 @@ if (isset($_POST['raspunde'])) {
         phpmailer($email, $from, "Parohia Online", $subiect, $mesaj_email, $path='');
 
         echo '<script> location.replace("rezervare-unica-cununie.php?id=' . $id . '"); </script>';
+
+    }
+
+    elseif ($eveniment == 'spovedanie') {
+
+        $query = 'UPDATE programari_spovedanie SET status = ? WHERE id = ? ';
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param('si', $status, $id);
+        $result = $stmt->execute();
+        $result = $stmt->get_result();
+
+        // extrage adresa de email
+
+        $query = 'SELECT * FROM programari_spovedanie WHERE id=?';
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param('i', $id);
+        $result = $stmt->execute();
+        $result = $stmt->get_result();
+
+        while($data = $result->fetch_assoc()) {
+            $email = $data['email'];
+            $eveniment = $data['eveniment'];
+            $data_si_ora = $data['data_si_ora'];
+        }
+
+        echo '<script> location.replace("rezervare-unica-spovedanie.php?id=' . $id . '"); </script>';
+
+    }
+
+    elseif ($eveniment == 'sfestanie') {
+
+        $query = 'UPDATE programari_sfestanie SET status = ? WHERE id = ? ';
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param('si', $status, $id);
+        $result = $stmt->execute();
+        $result = $stmt->get_result();
+
+          echo '<script> location.replace("rezervare-unica-sfestanie.php?id=' . $id . '"); </script>';
+
+    }
+
+    elseif ($eveniment == 'parastas') {
+
+        $query = 'UPDATE programari_parastas SET status = ? WHERE id = ? ';
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param('si', $status, $id);
+        $result = $stmt->execute();
+        $result = $stmt->get_result();
+
+        echo '<script> location.replace("rezervare-unica-parastas.php?id=' . $id . '"); </script>';
 
     }
 

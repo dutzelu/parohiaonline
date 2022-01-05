@@ -132,57 +132,61 @@ $ora = '';
             
             <?php include "../header-mic-frontend.php";?>
 
-    <?php include "pasi.php";?>
-
-     <h1 class="h1 mb-5">Cererea de programare pentru <?php echo $eveniment; ?> în data de <?php echo ' ' . $zi . '-' . $month . '-' . $year . ' ora: ' . $ora; ?> a fost înregistrată.</h1>
-
-
-    <form method="POST" action="pasul5.php?id=<?php echo $last_id . '&pentru=cateheza_botez'; ?>" enctype = "multipart/form-data" > 
-
-          <p><strong>Atașează documentele necesare</strong></p>
-          <p style="color: #AAA; font-size:12px;">Câmpurile marcate cu * sunt obligatorii pentru completarea formularului</p>
-          <p style="color: #AAA; font-size:12px;">Acceptăm doar fotografii în format JPEG, JPG; BMP, GIF sau PNG</p>
-          
-          <div class="row mb-1">
-              <label class="col-sm-4 col-form-label">Carte identitate tată *</label>
-              <div class="col-sm-8">
-                  <input type="file" name="tata_ci" class="col-sm-8 form-control size" id="tata_ci" onchange="ValidateSingleInput(this);validateSize(this);" > 
-                  <p class="mt-2"><input type="checkbox" id="checkMe" name="checkMe" onclick="disableMyInput()" class="form-check-input"/> Tatăl nu este trecut în certificatul de naștere al copilului. </p> 
-              </div>
-             
-          </div>
-
-          <div class="row mb-1">
+            <div class="ultimele-programari">
+                
+                
+                <?php include "pasi.php";?>
+                
+                <h1 class="h1 mb-5">Cererea de programare pentru <?php echo $eveniment; ?> în data de <?php echo ' ' . $zi . '-' . $month . '-' . $year . ' ora: ' . $ora; ?> a fost înregistrată.</h1>
+                
+                
+                <form method="POST" action="pasul5.php?id=<?php echo $last_id . '&pentru=cateheza_botez'; ?>" enctype = "multipart/form-data" > 
+                    
+                    <p><strong>Atașează documentele necesare</strong></p>
+                    <p style="color: #AAA; font-size:12px;">Câmpurile marcate cu * sunt obligatorii pentru completarea formularului</p>
+                    <p style="color: #AAA; font-size:12px;">Acceptăm doar fotografii în format JPEG, JPG; BMP, GIF sau PNG</p>
+                    
+                    <div class="row mb-1">
+                        <label class="col-sm-4 col-form-label">Carte identitate tată *</label>
+                        <div class="col-sm-8">
+                            <input type="file" name="tata_ci" class="col-sm-8 form-control size" id="tata_ci" onchange="ValidateSingleInput(this);validateSize(this);" > 
+                            <p class="mt-2"><input type="checkbox" id="checkMe" name="checkMe" onclick="disableMyInput()" class="form-check-input"/> Tatăl nu este trecut în certificatul de naștere al copilului. </p> 
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="row mb-1">
             <label class="col-sm-4 col-form-label">Carte identitate mamă *</label>
             <div class="col-sm-8">
                 <input type="file" name="mama_ci" class="col-sm-8 form-control size" required onchange="ValidateSingleInput(this);validateSize(this);" >
             </div>
         </div>
-  
-          <div class="row mb-1">
-              <label class="col-sm-4 col-form-label">Plata contribuției anuale față de parohie *</label>
-       
-              <div class="col-sm-8">
-                  <input type="file" name="plata_contributiei" class="col-sm-8 form-control size" required onchange="ValidateSingleInput(this);validateSize(this);">
-                  <p>Se atașează copia chitanței plătite la biserică sau copia viramentului bancar. <br />Puteți plăti contribuția în contul:<br /> <strong>RO11 RNCB 0083 0028 8937 0001</strong> titular fiind: <br /><strong>PAROHIA APARATORII PATRIEI II</strong>.</p>
-              </div>
-          </div>
-
-          <div class="row mb-1">
+        
+        <div class="row mb-1">
+            <label class="col-sm-4 col-form-label">Plata contribuției anuale față de parohie *</label>
+            
+            <div class="col-sm-8">
+                <input type="file" name="plata_contributiei" class="col-sm-8 form-control size" required onchange="ValidateSingleInput(this);validateSize(this);">
+                <p>Se atașează copia chitanței plătite la biserică sau copia viramentului bancar. <br />Puteți plăti contribuția în contul:<br /> <strong>RO11 RNCB 0083 0028 8937 0001</strong> titular fiind: <br /><strong>PAROHIA APARATORII PATRIEI II</strong>.</p>
+            </div>
+        </div>
+        
+        <div class="row mb-1">
             <label class="col-sm-4 col-form-label">Certificatul de naștere al copilului *</label>
             <div class="col-sm-8">
                 <input type="file" name="certificat_nastere_copil" class="col-sm-8 form-control size" required onchange="ValidateSingleInput(this);validateSize(this);" >
             </div>
         </div>
         <button type="submit" name ="ataseaza" class="btn btn-primary">Atașează</button>
-      </div>
-    
-    </form>
-
     </div>
+    
+</form>
 
 </div>
-  
+</div>
+
+</div>
+
 </div>
 
 </body>

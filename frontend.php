@@ -1,6 +1,8 @@
 <?php 
 include "header-frontend.php"; 
-
+if(isset($_POST['pentru'])){
+  $pentru = $_POST['pentru'];
+}
 
 $link_rezervare = "pasi/pasul1.php?year=" . $selected_year . "&month=" . $selected_month . "&pentru=" . $pentru;
 

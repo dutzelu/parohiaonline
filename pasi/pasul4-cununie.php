@@ -163,63 +163,66 @@ $ora = '';
 
     <?php include "pasi.php";?>
 
-     <h1 class="h1 mb-5">Cererea de programare pentru <?php echo $eveniment; ?> în data de <?php echo ' ' . $zi . '-' . $month . '-' . $year . ' ora: ' . $ora; ?> a fost înregistrată.</h1>
+    <div class="ultimele-programari">
 
-
-    <form method="POST" action="pasul5-cununie.php?id=<?php echo $last_id . '&pentru=cateheza_cununie'; ?>" enctype = "multipart/form-data" > 
-
+        
+        <h1 class="h1 mb-5">Cererea de programare pentru <?php echo $eveniment; ?> în data de <?php echo ' ' . $zi . '-' . $month . '-' . $year . ' ora: ' . $ora; ?> a fost înregistrată.</h1>
+        
+        
+        <form method="POST" action="pasul5-cununie.php?id=<?php echo $last_id . '&pentru=cateheza_cununie'; ?>" enctype = "multipart/form-data" > 
+            
           <p><strong>Atașează documentele necesare</strong></p>
           <p style="color: #AAA; font-size:12px;">Câmpurile marcate cu * sunt obligatorii pentru completarea formularului
-         <br />Acceptăm doar fotografii în format JPEG, JPG; BMP, GIF sau PNG</p>
-          
-          <div class="row mb-1">
-              <label class="col-sm-4 col-form-label">Carte identitate mire*</label>
-              <div class="col-sm-8">
-                  <input type="file" name="mire_ci" class="col-sm-8 form-control" required  onchange="ValidateSingleInput(this);validateSize(this);" >
-              </div>
-          </div>
-
-          <div class="row mb-1">
-            <label class="col-sm-4 col-form-label">Carte identitate mireasă*</label>
-            <div class="col-sm-8">
-                <input type="file" name="mireasa_ci" class="col-sm-8 form-control" required  onchange="ValidateSingleInput(this);validateSize(this);" >
+            <br />Acceptăm doar fotografii în format JPEG, JPG; BMP, GIF sau PNG</p>
+            
+            <div class="row mb-1">
+                <label class="col-sm-4 col-form-label">Carte identitate mire*</label>
+                <div class="col-sm-8">
+                    <input type="file" name="mire_ci" class="col-sm-8 form-control" required  onchange="ValidateSingleInput(this);validateSize(this);" >
+                </div>
             </div>
-        </div>
-  
-          <div class="row mb-1">
-              <label class="col-sm-4 col-form-label">Plata contribuției anuale față de parohie *</label>
-       
-              <div class="col-sm-8">
-                  <input type="file" name="plata_contributiei" class="col-sm-8 form-control" required  onchange="ValidateSingleInput(this);validateSize(this);" >
-                  <p>Se atașează copia chitanței plătite la biserică sau copia viramentului bancar. <br />Puteți plăti contribuția în contul:<br /> <strong>RO11 RNCB 0083 0028 8937 0001</strong> titular fiind: <br /><strong>PAROHIA APARATORII PATRIEI II</strong>.</p>
-              </div>
-          </div>
-
-          <div class="row mb-1">
-            <label class="col-sm-4 col-form-label">Certificatul de căsătorie civilă</label>
-            <div class="col-sm-8">
-                <input type="file" name="certificat_casatorie_civila" class="col-sm-8 form-control"  onchange="ValidateSingleInput(this);validateSize(this);" >
+            
+            <div class="row mb-1">
+                <label class="col-sm-4 col-form-label">Carte identitate mireasă*</label>
+                <div class="col-sm-8">
+                    <input type="file" name="mireasa_ci" class="col-sm-8 form-control" required  onchange="ValidateSingleInput(this);validateSize(this);" >
+                </div>
             </div>
-         </div>
-
- 
-
+            
+            <div class="row mb-1">
+                <label class="col-sm-4 col-form-label">Plata contribuției anuale față de parohie *</label>
+                
+                <div class="col-sm-8">
+                    <input type="file" name="plata_contributiei" class="col-sm-8 form-control" required  onchange="ValidateSingleInput(this);validateSize(this);" >
+                    <p>Se atașează copia chitanței plătite la biserică sau copia viramentului bancar. <br />Puteți plăti contribuția în contul:<br /> <strong>RO11 RNCB 0083 0028 8937 0001</strong> titular fiind: <br /><strong>PAROHIA APARATORII PATRIEI II</strong>.</p>
+                </div>
+            </div>
+            
+            <div class="row mb-1">
+                <label class="col-sm-4 col-form-label">Certificatul de căsătorie civilă</label>
+                <div class="col-sm-8">
+                    <input type="file" name="certificat_casatorie_civila" class="col-sm-8 form-control"  onchange="ValidateSingleInput(this);validateSize(this);" >
+                </div>
+            </div>
+            
+            
+            
             <div class="row mb-1">
                 <label class="col-sm-4 col-form-label">Certificatul de botez al MIRELUI</label>
                 <div class="col-sm-8">
                     <input type="file" name="certificat_botez_mire" class="col-sm-8 form-control"  onchange="ValidateSingleInput(this);validateSize(this);" >
                 </div>
-             </div>
-
+            </div>
+            
             <div class="row mb-1">
                 <label class="col-sm-4 col-form-label">Certificatul de botez al MIRESEI</label>
                 <div class="col-sm-8">
                     <input type="file" name="certificat_botez_mireasa" class="col-sm-8 form-control"  onchange="ValidateSingleInput(this);validateSize(this);" >
                 </div>
             </div>
-
+            
             <div class="row mb-1">
-            <p><hr /></p>
+                <p><hr /></p>
                 <p>În cazul în care nu aveți <strong>CERTIFICATELE DE BOTEZ</strong>, le veți solicita de la parohia unde ați fost botezat. Și le veți atașa la rezervarea dvs. din contul creat pe siteul parohie cu cel puțin 7 zile înaintea nunții, sau le veți aduce direct la biserică.</p>
             <p><hr /></p>
             </div>
@@ -230,16 +233,17 @@ $ora = '';
                     <input type="file" name="dispensa" class="col-sm-8 form-control"  onchange="ValidateSingleInput(this);validateSize(this);" >
                 </div>
             </div>
+            
+            <button type="submit" name ="ataseaza" class="btn btn-primary">Atașează</button>
+        </div>
         
-        <button type="submit" name ="ataseaza" class="btn btn-primary">Atașează</button>
-      </div>
-    
     </form>
-
-    </div>
+    
+</div>
 
 </div>
-  
+
+</div>
 </div>
 
 </body>

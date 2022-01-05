@@ -58,21 +58,31 @@ $user_id = $_SESSION['id'];
                             $next_page = $page_no + 1;
                             $adjacents = "2"; 
 
-                            $result_count = mysqli_query($conn,"
+                            $query_count = "
                             
                             SELECT COUNT(*) As total_records
                               FROM (
                               Select id, 'Botez' as Programare, concat(nume_tata, ' ', prenume_tata) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_botez 
-                              WHERE user_id = 25
+                              WHERE user_id = ?
 
                               UNION ALL 
 
                               Select id, 'Cununie' as Programare, concat(nume_mire, ' ', prenume_mire) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_cununie 
-                              WHERE user_id = 25
+                              WHERE user_id = ?
 
-                              ) x ");
+                              UNION ALL 
 
-                            $total_records = mysqli_fetch_array($result_count);
+                              Select id, 'Spovedanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_spovedanie 
+                              WHERE user_id = ?
+
+                              ) x ";
+
+                            $stmt = $conn->prepare($query_count);
+                            $stmt->bind_param('iii', $_SESSION['id'], $_SESSION['id'], $_SESSION['id']);
+                            $rez = $stmt->execute();
+                            $rez = $stmt->get_result();
+ 
+                            $total_records = mysqli_fetch_array($rez);
                             $total_records = $total_records['total_records'];
                             $total_no_of_pages = ceil($total_records / $total_records_per_page);
                             $second_last = $total_no_of_pages - 1; // total page minus 1
@@ -89,12 +99,18 @@ $user_id = $_SESSION['id'];
 
                             WHERE user_id = ?
 
+                            UNION ALL 
+
+                            Select id, 'Spovedanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_spovedanie 
+
+                            WHERE user_id = ?
+
                             ORDER BY Data ASC 
                                     
                             LIMIT ?, ?";
 
                             $stmt = $conn->prepare($query);
-                            $stmt->bind_param('iiii', $_SESSION['id'], $_SESSION['id'], $offset, $total_records_per_page);
+                            $stmt->bind_param('iiiii', $_SESSION['id'], $_SESSION['id'], $_SESSION['id'], $offset, $total_records_per_page);
                             $result = $stmt->execute();
                             $result = $stmt->get_result();
 
@@ -111,6 +127,10 @@ $user_id = $_SESSION['id'];
 
                             if ($row['Programare']=="Cununie") {
                                 echo "home-unic-cununie.php?id=" .  $row['id'];
+                            }
+
+                            if ($row['Programare']=="Spovedanie") {
+                                echo "home-unic-spovedanie.php?id=" .  $row['id'];
                             }
                             
                             
@@ -147,6 +167,14 @@ $user_id = $_SESSION['id'];
     
                                 if ($row['Programare']=="Cununie") {?>
                                      <a href="sterge.php?eveniment=programari_cununie&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                                      <i class="rosu fas fa-trash-alt"></i></a>
+                                
+                                <?php    
+                                }
+
+                                
+                                if ($row['Programare']=="Spovedanie") {?>
+                                     <a href="sterge.php?eveniment=programari_spovedanie&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                                       <i class="rosu fas fa-trash-alt"></i></a>
                                 
                                 <?php    

@@ -1,8 +1,10 @@
 <?php 
 
+setlocale(LC_TIME, array('ro.utf-8', 'ro_RO.UTF-8', 'ro_RO.utf-8', 'ro', 'ro_RO', 'ro_RO.ISO8859-2'));  
+
 include __DIR__ .'/controllers/authController.php';
 include __DIR__ .'/includes/functions.php';
- 
+
 
 $nume_fisier = basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']);
 $numar_pas = (int) filter_var($nume_fisier, FILTER_SANITIZE_NUMBER_INT);
@@ -15,6 +17,7 @@ switch ($pentru) {
     case "cununie": $eveniment = "Taina Cununiei"; break;
     case "spovedanie": $eveniment = "Taina Spovedaniei"; break;
     case "sfestanie": $eveniment = "Sfeștania"; break;
+    case "parastas": $eveniment = "Parastas"; break;
     default: $eveniment = '';
 }
 

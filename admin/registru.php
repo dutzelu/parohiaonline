@@ -19,6 +19,24 @@
           $titlu = "Cununii";
         break;
 
+        case 'programari_spovedanie':
+          $fisier_editare = "";
+          $vizualizare = "rezervare-unica-spovedanie.php";
+          $titlu = "Spovedanii";
+        break;
+
+        case 'programari_sfestanie':
+          $fisier_editare = "";
+          $vizualizare = "rezervare-unica-sfestanie.php";
+          $titlu = "Sfeștanii";
+        break;
+
+        case 'programari_parastas':
+          $fisier_editare = "";
+          $vizualizare = "rezervare-unica-parastas.php";
+          $titlu = "Parastase";
+        break;
+
       }
 ?>
 
@@ -105,6 +123,16 @@
                     }
                   } elseif ($eveniment_registru == 'programari_cununie') {
                       echo '<span class="nume">' . $row['nume_mire'] . ' ' . $row['prenume_mire'] . "</span>"; 
+                  }
+                   elseif ($eveniment_registru == 'programari_spovedanie') {
+                      echo '<span class="nume">' . $row['nume'] . ' ' . $row['prenume'] . "</span>"; 
+                  }
+
+                   elseif ($eveniment_registru == 'programari_sfestanie') {
+                      echo '<span class="nume">' . $row['nume'] . ' ' . $row['prenume'] . "</span>"; 
+                  }
+                   elseif ($eveniment_registru == 'programari_parastas') {
+                      echo '<span class="nume">' . $row['nume'] . ' ' . $row['prenume'] . "</span>"; 
                   }
 
                   ?></td>

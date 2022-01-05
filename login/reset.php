@@ -1,7 +1,7 @@
 <?php 
 
-include 'controllers/authController.php'; 
-include 'functions.php'; 
+include '../controllers/authController.php'; 
+include '../includes/functions.php'; 
 
 $mesaj_succes = '';
 

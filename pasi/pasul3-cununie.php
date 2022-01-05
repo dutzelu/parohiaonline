@@ -26,6 +26,7 @@ $ora = '';
         <div class="col-sm-9 p-4 zona-principala">
             
             <?php include "../header-mic-frontend.php";?>
+<div class="col-xl-9 ultimele-programari">
   <?php include "pasi.php";?>
 
      <h1 class="h1"><?php echo $eveniment; ?> <?php echo ' - ' . $zi . '.' . $month . '.' . $year . ' ora: ' . $ora; ?> <br />Completează formularul cu datele personale:</h1>
@@ -208,7 +209,7 @@ $ora = '';
 
     <button type="submit" name ="date_personale" class="btn btn-primary">Trimite</button>
      </form>
-
+</div>
 
 </div>
 

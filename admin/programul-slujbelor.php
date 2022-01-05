@@ -199,7 +199,6 @@
                                         // dacă e zi calendaristică
                                         else {
                                             $time = strtotime($ziua);
-                                            setlocale(LC_TIME, array('ro.utf-8', 'ro_RO.UTF-8', 'ro_RO.utf-8', 'ro', 'ro_RO', 'ro_RO.ISO8859-2'));  
                                             echo strftime('%A',$time) . ', ' . strftime('%e %b %Y',$time);
                                         }
                                     }?>

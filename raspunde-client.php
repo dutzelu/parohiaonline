@@ -35,5 +35,9 @@ if ($eveniment == 'botez') {
     echo '<script> location.replace("home-unic.php?id=' .$id .'"); </script>';
 } elseif ($eveniment == 'cununie') {
     echo '<script> location.replace("home-unic-cununie.php?id=' .$id .'"); </script>';
+} elseif ($eveniment == 'sfestanie') {
+    echo '<script> location.replace("home-unic-sfestanie.php?id=' .$id .'"); </script>';
+} elseif ($eveniment == 'parastas') {
+    echo '<script> location.replace("home-unic-parastas.php?id=' .$id .'"); </script>';
 }
 

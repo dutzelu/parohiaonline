@@ -106,7 +106,7 @@ p.parohia {font-size:22px; font-weight: bold;}
 .ultimele-programari .table {color:#7286A2; font-size:14px;}
 .ultimele-programari .table tr.clickable-row:hover {background:#fafafa;cursor:pointer;}
 
-.ultimele-programari .nume, .ziua {font-weight: bold; font-size:14px; text-transform: capitalize;}
+.ultimele-programari .nume, .ziua {font-weight: bold; font-size:14px; text-transform: capitalize; color:#4374B9;}
 
 .in-asteptare {background-color:rgba(100,129,245, 0.2); color:#1C6CF9}
 .acceptata {background-color:rgba(30,202,123, 0.2); color:#1ECA7B;}
@@ -133,6 +133,10 @@ span.status {font-size:11px; display:inline-block;width:fit-content; padding:2px
   padding: 1px 9px;
   margin-right: 2px;
 }
+
+/* Pomelnic */
+
+.pomelnic .input-group-text {width:200px;}
 
 /* Registru botezuri & cununii */
 
@@ -558,6 +562,8 @@ ul.dropdown-container {
 }
 ul#zone_mesaje li {padding:20px;}
 ul#zone_mesaje li:nth-child(odd) {background: #EFEFEF; }
+#zone_mesaje p {background:none!important; border:none!important;}
+
 
 @media print {
 

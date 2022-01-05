@@ -63,7 +63,7 @@
   
  while ($data = mysqli_fetch_assoc($rezultat)) { 
 
-     $zi = str_replace ($an_si_luna . "-", '', $data['Data'],);
+     $zi = str_replace ($an_si_luna . "-", '', $data['Data']);
      $zi = ltrim ($zi, '0');
      $zile_programate[]= $zi; 
 

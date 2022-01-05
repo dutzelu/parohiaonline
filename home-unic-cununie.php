@@ -189,7 +189,7 @@ while($data = $result->fetch_assoc()) {
   
   
     echo '<p><span class="cap">Link cerere și declarație: </span><a target="popup" href="' . $link_cerere .'">' . basename($link_cerere) . '</a>';
-    echo '<p></p><hr>';
+    echo '<p></p>';
     echo '</div>';
 
     

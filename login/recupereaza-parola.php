@@ -1,7 +1,7 @@
 <?php
 
-include "conexiune.php";
-include 'controllers/sendEmails.php';
+include "../includes/conexiune.php";
+include "../controllers/sendEmails.php";
 
 if (isset($_POST['recupereaza'])) {
 
@@ -57,7 +57,7 @@ if (isset($_POST['recupereaza'])) {
 
         echo '<script> location.replace("reset.php?id=' . $id_user_email . '&email=ok"); </script>';
 
-      } else {echo '<script> location.replace("recupereaza.php?succes=nu"); </script>';}
+      } else {echo '<script> location.replace("login/recupereaza.php?succes=nu"); </script>';}
 } 
  
 ?>

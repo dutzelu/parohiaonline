@@ -1,5 +1,7 @@
 <?php 
 
+setlocale(LC_TIME, array('ro.utf-8', 'ro_RO.UTF-8', 'ro_RO.utf-8', 'ro', 'ro_RO', 'ro_RO.ISO8859-2'));  
+
 include '../controllers/authController.php';
 include '../includes/functions.php';
 
@@ -38,6 +40,7 @@ switch ($pentru) {
     case "cununie": $eveniment = "Taina Cununiei"; break;
     case "spovedanie": $eveniment = "Taina Spovedaniei"; break;
     case "sfestanie": $eveniment = "Sfeștania"; break;
+    case "parastas": $eveniment = "Parastas"; break;
     case "cateheza_botez": $eveniment = "Cateheză Botez"; break;
     case "cateheza_cununie": $eveniment = "Cateheză Cununie"; break;
     default: $eveniment = '';

@@ -12,7 +12,20 @@
           Select id, 'Cununie' as Programare, concat(nume_mire, ' ', prenume_mire) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_cununie 
           WHERE status LIKE 'acceptata'
 
-          ORDER BY Data ASC 
+          UNION ALL 
+
+          Select id, 'Spovedanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_spovedanie 
+
+          UNION ALL 
+
+          Select id, 'Sfeștanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_sfestanie
+          
+          UNION ALL 
+
+          Select id, 'Parastas' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_parastas
+          
+
+          ORDER BY Data DESC 
           
           LIMIT 15";
 
@@ -35,7 +48,20 @@
 
           Select id, 'Cununie' as Programare, concat(nume_mire, ' ', prenume_mire) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_cununie 
 
-          ORDER BY Data ASC 
+          UNION ALL 
+
+          Select id, 'Spovedanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_spovedanie 
+
+          UNION ALL 
+
+          Select id, 'Sfeștanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_sfestanie
+          
+          UNION ALL 
+
+          Select id, 'Parastas' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_parastas
+          
+
+          ORDER BY Data DESC 
           
           LIMIT 15";
 
@@ -141,14 +167,14 @@
                             break;
                             case "Parastas": echo 'urmeaza-parastas';
                             break;
-                            case "Sfestanie": echo 'urmeaza-sfestanie';
+                            case "Sfeștanie": echo 'urmeaza-sfestanie';
                             break;
                         
                         }
                         
                        echo '">' . $row['Programare'] . '</span> ' . $row['Data'] . ' | ' . $row['Ora'] . '<br>' . '<span class="nume">' . $row['Nume'] . '</span></p><hr>';
                        
-                       if (++$i == 5) break;
+                       if (++$i == 6) break;
                     } ?>
 
 
@@ -195,6 +221,19 @@
                             if ($row2['Programare']=="Cununie") {
                                 echo "rezervare-unica-cununie.php?id=" .  $row2['id'];
                             }
+
+                            if ($row2['Programare']=="Sfeștanie") {
+                                echo "rezervare-unica-sfestanie.php?id=" . $row2['id'];
+                            }
+
+                            if ($row2['Programare']=="Spovedanie") {
+                                echo "rezervare-unica-spovedanie.php?id=" .  $row2['id'];
+                            }
+                            
+
+                            if ($row2['Programare']=="Parastas") {
+                                echo "rezervare-unica-parastas.php?id=" .  $row2['id'];
+                            }
                             
                             
                             ?>'>
@@ -221,35 +260,50 @@
                             echo '">' .$row2['status'] . '</span>'; ?></td>
                             <td><?php 
 
-                                if ($row2['Programare']=="Botez") {?>
+                            if ($row['Programare']=="Botez") {?>
 
-                                      <a href="sterge-camp.php?eveniment=programari_botez&stergeid=<?php echo $row2['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
-                                      <i class="rosu fas fa-trash-alt"></i></a>
-                                <?php
-                                }
-    
-                                if ($row2['Programare']=="Cununie") {?>
-                                     <a href="sterge-camp.php?eveniment=programari_cununie&stergeid=<?php echo $row2['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
-                                      <i class="rosu fas fa-trash-alt"></i></a>
-                                
-                                <?php    
-                                }
+                                <a href="sterg-camp.php?eveniment=programari_botez&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                                <i class="rosu fas fa-trash-alt"></i></a>
+                            <?php
+                            }
 
-                                
-                                
+                            if ($row['Programare']=="Cununie") {?>
+                            <a href="sterg-camp.php?eveniment=programari_cununie&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                                <i class="rosu fas fa-trash-alt"></i></a>
+
+                            <?php    
+                            }
+
+                            if ($row['Programare']=="Spovedanie") {?>
+                            <a href="sterg-camp.php?eveniment=programari_spovedanie&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                                <i class="rosu fas fa-trash-alt"></i></a>
+
+                            <?php    
+                            }
+
+                            if ($row['Programare']=="Sfeștanie") {?>
+                            <a href="sterg-camp.php?eveniment=programari_sfestanie&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                                <i class="rosu fas fa-trash-alt"></i></a>
+
+                            <?php    
+                            }
+
+                            if ($row['Programare']=="Parastas") {?>
+                            <a href="sterg-camp.php?eveniment=programari_parastas&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                                <i class="rosu fas fa-trash-alt"></i></a>
+
+                            <?php    
+                            }
+
+                            if ($row['Programare']=="Botez") {
                                 echo '  <a href="';
-                                
-                                if ($row2['Programare']=="Botez") {
-                                    echo "edit-rezervare.php?id=" . $row2['id'];
-                                }
-    
-                                if ($row2['Programare']=="Cununie") {
-                                    echo "edit-rezervare-cununie.php?id=" .  $row2['id'];
-                                }
-                                
-                                
+                                echo "home-unic.php?id=" . $row['id'];
                                 echo '" class="edit"><i class="fas fa-edit"></i></a>';
-                            
+                            } elseif ($row['Programare']=="Cununie") {
+                                echo '  <a href="';
+                                echo "home-unic-cununie.php?id=" .  $row['id'];
+                                echo '" class="edit"><i class="fas fa-edit"></i></a>';
+                            } else {echo '';}
 
                             
                             ?></td>
