@@ -15,8 +15,8 @@ if (isset($_POST['pomelnic'])) {
    $nume_si_prenume = $_POST['nume_si_prenume'];
    $telefon = $_POST['telefon'];
    $email = $_POST['email'];
-   $data_trimiterii =$_POST['data_trimiterii'];
-   $cu_donatie = isset($_POST['cu_donatie']) ? '1' : '0';
+   $data_inceperii =$_POST['data_inceperii'];
+   $cu_donatie = isset($_POST['cu_donatie']) ? '1' : '2';
 
 
 
@@ -28,13 +28,13 @@ if (isset($_POST['pomelnic'])) {
         nume_si_prenume=?,
         telefon=?,
         email=?,
-        data_trimiterii=?,
+        data_inceperii=?,
         cu_donatie=?
     ';
 
     $stmt = $conn->prepare($query);
 
-    $stmt->bind_param('isissssi', $tip_pomelnic, $lista_nume, $durata_in_zile, $nume_si_prenume, $telefon, $email, $data_trimiterii, $cu_donatie);
+    $stmt->bind_param('isissssi', $tip_pomelnic, $lista_nume, $durata_in_zile, $nume_si_prenume, $telefon, $email, $data_inceperii, $cu_donatie);
     $result = $stmt->execute();
 
 

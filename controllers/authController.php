@@ -192,7 +192,7 @@ if (isset($_POST['login-btn'])) {
                 
                      if ($verificat == 1 && $admin == 0 ) {
                         // echo '<script> location.replace("../frontend.php?eveniment=botez"); </script>';
-                        header('Location:' . BASE_URL . 'frontend.php?pentru=botez');
+                        header('Location:' . BASE_URL . 'admin-client.php');
                     } 
                  }
                  

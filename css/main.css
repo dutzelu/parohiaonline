@@ -137,6 +137,7 @@ span.status {font-size:11px; display:inline-block;width:fit-content; padding:2px
 /* Pomelnic */
 
 .pomelnic .input-group-text {width:200px;}
+div.filtre .form-control {display:inline-block!important; width: unset; }
 
 /* Registru botezuri & cununii */
 

@@ -25,7 +25,7 @@
     <a class="parastase" href="registru.php?eveniment=programari_parastas">Parastase</a>
     <a class="participare-slujbe" href="participare_la_slujbe.php">Participare la slujbe</a>
     <a class="rugaciuni" href="rugaciuni-in-comun.php">Rugăciuni în comun</a>
-    <a class="pomelnic" href="pomelnic-online.php">Pomelnic online</a>
+    <a class="pomelnic" href="pomelnice.php">Pomelnice</a>
     <a class="logout.php" href="../login/logout.php">Logout</a>
         
   </div> 

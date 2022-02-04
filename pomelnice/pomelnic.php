@@ -55,8 +55,8 @@ if (isset($_GET['tip'])) {
                     <form  method="POST" action="update-pomelnic.php?tip=<?php echo $tip;?>">
 
                     <div class="input-group mb-2">
-                        <span class="input-group-text">Listă nume de botez</span>
-                        <textarea name="lista_nume" class="form-control" cols="20" rows="10" placeholder="Ex: Ioan, Aneta, Gheorghe, Irina, Florin, Andra."></textarea>
+                        <span class="input-group-text">Listă nume de botez *</span>
+                        <textarea name="lista_nume" class="form-control" cols="20" rows="10" placeholder="Ex: Ioan, Aneta, Gheorghe, Irina, Florin, Andra." required></textarea>
                     </div>
 
                     <div class="input-group mb-2">
@@ -71,13 +71,13 @@ if (isset($_GET['tip'])) {
                     </div>
 
                     <div class="input-group mb-2">
-                        <span class="input-group-text">Numele și prenumele tău</span>
-                        <input type="text" class="form-control" name="nume_si_prenume">
+                        <span class="input-group-text">Numele și prenumele tău *</span>
+                        <input type="text" class="form-control" name="nume_si_prenume" required>
                     </div>
 
                     <div class="input-group mb-2">
-                        <span class="input-group-text">Telefon</span>
-                        <input type="tel" class="form-control" name="telefon">
+                        <span class="input-group-text">Telefon *</span>
+                        <input type="tel" class="form-control" name="telefon" required>
                     </div>
 
                     <div class="input-group mb-2">
@@ -86,8 +86,8 @@ if (isset($_GET['tip'])) {
                     </div>
 
                     <div class="input-group mb-2">
-                        <span class="input-group-text">Alege data începerii</span>
-                        <input type="date" class="form-control" name="data_trimiterii">
+                        <span class="input-group-text">Alege data începerii *</span>
+                        <input type="date" class="form-control" name="data_inceperii" required>
                     </div>
 
                     
