@@ -39,7 +39,7 @@ if ($pentru == 'cateheza_botez') {
     WHERE tip_programare = 'cateheza_botez' AND data_start LIKE '%$data_cateheza%'";
     $rezultate = mysqli_query ($conn, $sql);
 
-
+    echo '<script> location.replace("../info-utile.php?succes=ok&tip=botez"); </script>';
 
 }
 elseif ($pentru == 'cateheza_cununie') {
@@ -55,10 +55,10 @@ elseif ($pentru == 'cateheza_cununie') {
 
     $rezultate = mysqli_query ($conn, $sql);
 
-
+    echo '<script> location.replace("../info-utile.php?succes=ok&tip=cununie"); </script>';
 }
 
-echo '<script> location.replace("../home-unic.php?succes=ok"); </script>';
+
 
 ?>
 

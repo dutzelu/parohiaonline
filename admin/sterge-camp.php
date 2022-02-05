@@ -90,6 +90,18 @@ if ($admin == 0) {
                     echo '<script> location.replace("pomelnice.php?sters=ok"); </script>';
                 }
 
+                if ($eveniment=="anunt") {
+                    $sql="DELETE FROM articole WHERE id = $stergeid";
+                    $rezultate = mysqli_query ($conn, $sql);
+
+                    if (!$conn) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+                    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+                    echo '<script> location.replace("anunturi.php?sters=ok"); </script>';
+                }
+
             } 
 
 }

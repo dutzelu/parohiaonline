@@ -7,7 +7,7 @@
 
   <div class="sidenav admin">
     <a class="prima-pagina" href="admin.php">Prima pagină</a>
-    <a class="prima-pagina" href="programul-slujbelor.php">Programul slujbelor</a>
+    <a class="potir" href="programul-slujbelor.php">Programul slujbelor</a>
     <button class="zile dropdown-btn">Zile rânduite <i class="fas fa-chevron-down" style="margin-left:10px; font-size:10px"></i></button>
     <ul class="dropdown-container">
       <li><a href="zile-stabilite.php?pentru=spovedanie ">Spovedanie</a></li>
@@ -25,7 +25,9 @@
     <a class="parastase" href="registru.php?eveniment=programari_parastas">Parastase</a>
     <a class="participare-slujbe" href="participare_la_slujbe.php">Participare la slujbe</a>
     <a class="rugaciuni" href="rugaciuni-in-comun.php">Rugăciuni în comun</a>
+    <a class="info" href="info-slujbe.php">Info slujbe</a>
     <a class="pomelnic" href="pomelnice.php">Pomelnice</a>
+    <a class="info" href="anunturi.php">Anunțuri</a>
     <a class="logout.php" href="../login/logout.php">Logout</a>
         
   </div> 

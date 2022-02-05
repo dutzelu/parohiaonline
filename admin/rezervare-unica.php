@@ -13,13 +13,7 @@
         <div class="mt-3 p-5 wrapper-rezervare-unica">
               <?php
 
-              // if (isset($_GET['succes'])) { 
-              // echo '<h1 class="h1">Cererea ta de programare online s-a finalizat cu succes. În cel mai scurt timp părintele va confirma PRIN EMAIL primirea rezervării și a documetelor trimise sau vă va cere detalii suplimentare. </h1>'
-              // ;
-              // $succes = $_GET['succes'];
-              // } else $succes = '';
-
-
+ 
               if (isset($_GET['id'])) {$id_programare = $_GET['id'];} 
               if (isset($_GET['status'])) {
 

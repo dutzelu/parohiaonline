@@ -61,40 +61,6 @@ $ora = '';
 
 }
 
-?>
-</head>
-
-<body>
-    
-    
-    <div class="container-fluid">
-        
-        <div class="row wrapper">
-            <div class="col-sm-3 sidebar-admin"><?php include "../sidebar-frontend.php"?></div>
-            
-            <div class="col-sm-9 p-4 zona-principala">
-                
-                <?php include "../header-mic-frontend.php";?>
-                
-                <div class="ultimele-programari">
-                    
-                    
-                    <?php include "pasi.php";?>
-                    
-                    <h1 class="h1 mb-5">Cererea de programare pentru <span class="rosu"><?php echo $eveniment; ?></span> în data de <span class="rosu"><?php echo ' ' . $zi . '-' . $month . '-' . $year . ' ora: ' . $ora; ?></span> a fost înregistrată.</h1>
-                    
-                    
-                </div>
-                
-            </div>
-            
-        </div>
-    </div>
-    
-</body>
-</html>
-
-<?php
 // detalii mail
 
 
@@ -110,5 +76,7 @@ $name = "Parohia Online";
  </p>';
  
  phpmailer ($email, $from, $name, $subiect, $mesaj_email, "");
+
+ echo '<script> location.replace("../info-utile.php?succes=ok&tip=sfestanie"); </script>';
  
  ?>

@@ -80,7 +80,6 @@
             ?>
 
             
-            
             <table class="table">
 
               <thead>

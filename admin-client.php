@@ -72,17 +72,31 @@
             <div class="row mt-3 justify-content-start p-4 urmeaza">
                 <div class="col-sm-4 p-5 urmeaza-in-calendar">
 
-                    <p class="fw-bold">Anunțuri</p>
-                    <p>In fiecare duminica <strong>Sfanta Liturghie incepe la ora 9:00,</strong> iar de la ora 13:00 avem popasuri de rugaciune si momente in care se pot impartasi copiii si cei care au binecuvantare pentru impartasanie.</p>
+                <p>Anunțuri în parohie</p>
+                <?php
 
-                    <p>Pentru Sfanta Liturghie <strong>se poate intra in biserica doar intre orele 8:15 si 8:45.</strong> Cu alte cuvinte, intodeauna ajungem la biserica inainte de inceperea Sfintei Liturghii. Pentru impartasire de la ora 13:00, se intra in biserica intre 12:45 si 13:00</p>
+                    $query = 'Select * From articole WHERE tip_articol = "anunt" ORDER BY id DESC';
 
-                    <p><strong>Nu este nevoie de programare pentru a participa la slujbele sus mentionate.</strong><p>
+                    $stmt = $conn->prepare($query);
+                    $rezultat = $stmt->execute();
+                    $rezultat = $stmt->get_result();
 
-                    <p>Pomelnicele se scriu doar acasa si vor putea fi lasate dimpreuna cu ofranda pentru biserica intr-o cutie la intrare. </p>
+                    echo '<ul class="anunt">';
 
-                    <p>Tuturor sanatate si pace in viata!</p>
-                
+                    while ($data = mysqli_fetch_assoc($rezultat)) {
+
+                    $continut_scurt = substr($data['continut'],0,100).'...';
+                    $data_articolului =  date("d M. Y", strtotime($data["data"]));
+
+                    echo '<a class="fs-6" href=info-utile.php?id=' . $data['id'] . '><li>';
+                        echo '<p class="titlu-anunt">' . $data['titlu'] .'</p>';
+                        echo '<p class="data">' . $data_articolului .'</p>';
+                    echo '</li></a>' ; 
+                    }
+
+                    echo "</ul>";
+                            
+                ?>
 
                 </div>
 
