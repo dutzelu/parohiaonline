@@ -68,7 +68,7 @@ p.parohia {font-size:22px; font-weight: bold;}
 .urmeaza-sfestanie {background:#BAD850} 
 .urmeaza-parastas {background:#FF9D33} 
 
-.urmeaza-in-calendar p span {
+.urmeaza-in-calendar p span, .inscris_la_slujba {
   padding: 2px 7px;
   border-radius: 4px;
   color: #FFF;
@@ -104,9 +104,9 @@ p.parohia {font-size:22px; font-weight: bold;}
 
 .ultimele-programari .table > :not(:first-child) {border-top:none!important;}
 .ultimele-programari .table {color:#7286A2; font-size:14px;}
-.ultimele-programari .table tr.clickable-row:hover {background:#fafafa;cursor:pointer;}
+.table tr.clickable-row:hover {background:#fafafa;cursor:pointer;}
 
-.ultimele-programari .nume, .ziua {font-weight: bold; font-size:14px; text-transform: capitalize; color:#4374B9;}
+.ultimele-programari .nume, .ziua, .participare_slujbe .nume {font-weight: bold; font-size:14px; text-transform: capitalize; color:#4374B9;}
 
 .in-asteptare {background-color:rgba(100,129,245, 0.2); color:#1C6CF9}
 .acceptata {background-color:rgba(30,202,123, 0.2); color:#1ECA7B;}
@@ -479,6 +479,7 @@ a.participare-slujbe {background:url('../images/participare-slujbe.png') no-repe
 a.rugaciuni {background:url('../images/rugaciuni.png') no-repeat left center}
 a.pomelnic {background:url('../images/pomelnic.png') no-repeat left center}
 a.info {background:url('../images/info.png') no-repeat left center}
+a.calendar {background:url('../images/monitor.png') no-repeat left center}
 
 ul.dropdown-container > li {list-style-type: none;}
 
@@ -568,15 +569,29 @@ ul#zone_mesaje li {padding:20px;}
 ul#zone_mesaje li:nth-child(odd) {background: #EFEFEF; }
 #zone_mesaje p {background:none!important; border:none!important;}
 
+/* Pagina calendar complet */ 
+
+form.calendar-complet #month,  form.calendar-complet #year {width:150px!important;}
+form.calendar-complet .sageti {font-size:20px;}
+form.calendar-complet .btn {margin-left:5px!important;padding:7px; margin-top:-5px;}
+
+table.calendar-complet tr > td {border:none}
+table.calendar-complet tr.subliniat {border-top:2px solid #EAF0F7;}
+
+/* Pagina participare slujbe */
+
+.inscris_la_slujba {background:#BAD850;padding:1px 5px!important;}
+.inscrie_te .btn {padding:1px 5px;}
 
 @media print {
 
-body * {visibility:hidden}
+
+.noprint {visibility: hidden;}
 #butoane, #butoane * {visibility:hidden}
 
 .tabel-rezervare, .tabel-rezervare * {visibility: visible;}
 
-  .tabel-rezervare {
+  .tabel-rezervare, .print {
     position:absolute;
     top:0px;
     left:0px;

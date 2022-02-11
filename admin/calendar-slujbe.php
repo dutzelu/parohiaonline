@@ -48,12 +48,23 @@
  $query_prog_luna_in_curs = "
 
  Select id, 'Botez' as Programare, concat(nume_tata, ' ', prenume_tata) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_botez 
- WHERE data_si_ora LIKE '%$an_si_luna%' AND status LIKE 'acceptata'
+ WHERE data_si_ora LIKE '%$an_si_luna%'
 
  UNION ALL 
 
  Select id, 'Cununie' as Programare, concat(nume_mire, ' ', prenume_mire) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_cununie 
- WHERE `data_si_ora` LIKE '%$an_si_luna%' AND status LIKE 'acceptata'
+ WHERE `data_si_ora` LIKE '%$an_si_luna%'
+
+         UNION ALL 
+
+Select id, 'Spovedanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_spovedanie WHERE `data_si_ora` LIKE '%$an_si_luna%' 
+
+         UNION ALL 
+
+Select id, 'Sfeștanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_sfestanie WHERE `data_si_ora` LIKE '%$an_si_luna%'
+         UNION ALL 
+
+Select id, 'Parastas' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_parastas WHERE `data_si_ora` LIKE '%$an_si_luna%' 
 
  ORDER BY Data ASC";
 
@@ -72,18 +83,18 @@
 
      for($list_day = 1; $list_day <= $days_in_month; $list_day++):   
          $calendar.= '<li class="calendar-day">';
-// var_dump($zile_programate);
+ 
             if (!in_array($list_day, $zile_programate)) {
     
                 /* daca ziua ESTE deja rezervata*/
                     $calendar.= ' 
-                    <span class="btn" data-toggle="tooltip" title="">' . $list_day . '</span>';
+                   <span class="btn" data-toggle="tooltip" title="">' . $list_day . '</span>';
                 } else {
    
                 /* daca NU este rezervata*/ 
                     $calendar.= ' 
                     
-                    <a href="?ziua='. $list_day . '&luna=' . $month . '&an=' . $year . '"><label class="btn btn-outline-primary " for="btncheck' . $list_day .  '">' . $list_day . '</label></a>';
+                    <a href="calendar-complet.php?day='. $list_day . '&month=' . $month . '&year=' . $year . '"><label class="btn btn-outline-primary " for="btncheck' . $list_day .  '">' . $list_day . '</label></a>';
                 }
                       
 
@@ -151,15 +162,11 @@
  /* bringing the controls together */
  
  $controls = 
-        '<form method="get">
-            <div class="row justify-content-between align-items-center mb-5">
-                <div class="col-sm-1 text-center">' . $previous_month_link . '</div>
-                <div class="col-sm-3">' . $select_month_control . '</div>
-                <div class="col-sm-1 text-center">' . $next_month_link . '</div> 
-                <div class="col-sm-2">' . $select_year_control .  '</div> 
-                <div class="col-sm-4"><button type="submit" name="pentru" value="' .$pentru . '" class="btn btn-outline-primary"/> '.' Schimbă luna și anul</button></div>
-            </div>
-        </form>';
+            '<form method="get" class="calendar-complet">
+                
+                    <p><span class="sageti">' .  $previous_month_link . ' ' . $next_month_link . '</span>' . $select_month_control . $select_year_control .  '<button type="submit" class="btn btn-outline-primary"/> '.' Schimbă luna și anul</button></p>
+ 
+            </form>';
  echo $controls;
  echo draw_calendar($month,$year);
  
