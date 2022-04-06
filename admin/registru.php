@@ -101,10 +101,15 @@
 
             // datele
 
-                $a = new database();
-                $altele = "ORDER BY id DESC Limit " . $offset . ',' . $total_records_per_page; // Limit și Offset
-                $a -> select($eveniment_registru, '*', "", $altele);
-                $result = $a->sql;
+          
+         
+                $altele = $offset . ',' . $total_records_per_page; // Limit și Offset
+                $sql="SELECT * FROM " . $eveniment_registru  . " ORDER BY id DESC Limit " . $altele;
+
+                $stmt = $conn->prepare($sql);
+                $result = $stmt->execute();
+                $result = $stmt->get_result();
+
                 $nr_randuri = mysqli_num_rows ($result);
                 
                 

@@ -69,6 +69,8 @@ if (isset($_POST['signup-btn'])) {
         $stmt->bind_param('ssssss', $nume, $prenume, $username, $email, $token, $password);
         $result = $stmt->execute();
 
+        
+
         if ($result) {
             $user_id = $stmt->insert_id;
             $stmt->close();
@@ -120,7 +122,9 @@ if (isset($_POST['signup-btn'])) {
             $_SESSION['verified'] = false;
             $_SESSION['message'] = 'Ești logat!';
             $_SESSION['type'] = 'alert-success';
-            header('location: index.php');
+ 
+            header('location: ../index.php?inregistrare=succes');
+            
         } else {
             $_SESSION['error_msg'] = "Eroare de bază de date: Nu am putut înregistra utilizatorul.";
         }

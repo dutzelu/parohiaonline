@@ -9,7 +9,7 @@ if (isset($_GET['id'])) {
     $id_user_email = $_GET['id'];
 
     // aflu adresa de email pentru a-o afișa și cenzura parțial
-    $query = 'SELECT * FROM users WHERE id = ?';
+    $query = 'SELECT * FROM parohii WHERE id = ?';
     $stmt = $conn->prepare($query);
     $stmt->bind_param('i',  $id_user_email);
     $result = $stmt->execute();
@@ -30,7 +30,7 @@ if (isset($_POST['reset-btn'])) {
 
     // verifică dacă codul există în baza de date la acel id
 
-    $query = 'SELECT * FROM users WHERE code = ?';
+    $query = 'SELECT * FROM parohii WHERE code = ?';
     $stmt = $conn->prepare($query);
     $stmt->bind_param('i',  $code);
     $result = $stmt->execute();
@@ -74,7 +74,7 @@ if (isset($_POST['reset-btn'])) {
     // dacă totul este corect
 
     if (count($errors) === 0) {
-        $query = 'Update users SET password = ? WHERE id = ?';
+        $query = 'Update parohii SET password = ? WHERE id = ?';
         $stmt = $conn->prepare($query);
         $parola_noua = password_hash($parola_noua, PASSWORD_DEFAULT); //encrypt password
         $stmt->bind_param('si', $parola_noua, $id_user_email);
@@ -85,7 +85,7 @@ if (isset($_POST['reset-btn'])) {
             $mesaj_succes = '<div class="alert alert-success" role="alert">Parola a fost schimbată cu succes.</div>';
 
             // schimb codul in baza de date ca să nu mai poată fi folosit
-            $query = 'Update users SET code = code-101 WHERE id = ?';
+            $query = 'Update parohii SET code = code-101 WHERE id = ?';
             $stmt = $conn->prepare($query);
             $stmt->bind_param('i', $id_user_email);
             $result2 = $stmt->execute();
@@ -166,13 +166,13 @@ if (isset($_POST['reset-btn'])) {
           </div>
         </form>
         
-        <p>Ai deja un cont? <a href="index.php">Login</a></p>
-        <p>Nu ai încă un cont? <a href="signup.php">Înregistrează-te</a></p>
+        <p>Ai deja un cont? <a href="../admin/index.php">Login</a></p>
+        <p>Nu ai încă un cont? <a href="../inregistreaza-parohie.php">Înregistrează-te</a></p>
         
       </div>
 
         <?php ';
-        } echo '<a class="btn btn-primary loginlink" href="login.php" role="button">Login</a>'; 
+        } echo '<a class="btn btn-primary loginlink" href="../admin/index.php" role="button">Login</a>'; 
         ?>
     </div>
 

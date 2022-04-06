@@ -10,7 +10,7 @@ body#login {
 a {color:#4374B9;}
 
 .btn-group-lg > .btn, .btn-lg {
-  border-radius: 3rem;
+  border-radius: 10px;
 }
 
 
@@ -261,6 +261,13 @@ a.logo:after {content:none!important;}
 .h1, h1.titlu, h2.titlu {font-size:1.4em; margin-bottom:20px;}
 :link {text-decoration: none!important;}
 li { list-style-type: none; }
+
+.alert li{
+  list-style-type: disc;
+  margin: 0 10px;
+  font-size: 14px;
+}
+
 .form-wrapper {
   margin: 0 auto;
   font-family: 'Lora', serif;
@@ -284,6 +291,7 @@ li { list-style-type: none; }
   padding: 25px 15px 0px 15px;
 }
 
+.parohia {background:seashell!important}
 
 .home-wrapper {
   margin-top: 150px;
@@ -301,7 +309,7 @@ li { list-style-type: none; }
   padding: .5rem 1rem;
   font-size: 1rem;
   line-height: 1.5;
-  border-radius: 3rem;
+  border-radius: 10px;
   border: 1px solid #7081B9;
 }
 
@@ -582,6 +590,20 @@ table.calendar-complet tr.subliniat {border-top:2px solid #EAF0F7;}
 
 .inscris_la_slujba {background:#BAD850;padding:1px 5px!important;}
 .inscrie_te .btn {padding:1px 5px;}
+
+/* Pagina înregistrare parohie */ 
+
+form.parohie select.form-control {
+  /* height: calc(2.25rem + 2px); */
+  border: 1px solid #7081B9;
+  border-radius: 10px;
+  text-align: center;
+  color: #7081B9;
+  font-size: 15px;
+  padding:.5rem 1rem;
+}
+
+
 
 @media print {
 

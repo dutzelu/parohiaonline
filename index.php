@@ -2,7 +2,9 @@
 
 include "controllers/authController.php";
 
-
+if (isset($_GET['inregistrare'])) {
+  $mesaj_inregistrare = "Înregistrarea a avut loc cu succes! Pentru a valida adresa dvs. de email v-am trimis un link de confirmare. Vă rugăm să dați click pe acel link și apoi vă puteți loga în panoul de administrare. ";
+}
     
 ?>
 
@@ -24,7 +26,18 @@ include "controllers/authController.php";
 
     <div class="row">
      
-    <?php include "login/login-form.php";?>
+    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-8 form-wrapper auth login">
+      <p><img src="<?php echo BASE_URL . 'images/logo-parohiaonline.png';?>" class="logo"/></p>
+      
+      <div style="margin-top:30px">
+        <a href="login/login.php" class="btn btn-warning" role="button" style="width:49%">Utilizator</a>
+        <a href="admin/index.php" class="btn btn-success" role="button" style="width:49%">Parohie</a>
+      </div>
+ 
+
+      </div>
+
+    </div>
 
     </div>
   

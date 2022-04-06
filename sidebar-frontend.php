@@ -18,7 +18,7 @@
       <li><a class="parastase" href="<?php echo BASE_URL . 'home-parastas.php';?>">Parastase</a></li>
     </ul>
     <a class="participare-slujbe" href="participare-slujbe-crestini.php">Participare la slujbe</a>
-    <a class="rugaciuni" href="rugaciuni-in-comun.php">Rugăciuni în comun</a>
+    <!-- <a class="rugaciuni" href="rugaciuni-in-comun.php">Rugăciuni în comun</a> -->
     <a class="pomelnic" href="<?php echo BASE_URL . 'pomelnic-online.php';?>">Pomelnic online</a>
     <button class="dropdown-btn">Informații utile<i class="fas fa-chevron-down" style="margin-left:10px; font-size:10px"></i></button>
     <ul class="dropdown-container">

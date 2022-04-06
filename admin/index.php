@@ -1,50 +1,7 @@
 <?php 
 
- include "../controllers/authController.php";
+ include "../controllers/authController-parohie.php";
  include "../includes/functions.php";
- 
-
-$verificat = "";
-$mesaj_inregistrare = "";
-setlocale(LC_ALL, 'ro_RO');
-
-
-
-// Cazul 1. Fără cont și nelogat. Afișează mai jos formularul de login.
-
-// Cazul 2. Are înregistrat un cont
-
-if (!empty($_SESSION['id'])) {
-
-    $id = $_SESSION['id'];
-    $sql = "SELECT * FROM users WHERE id= $id";
-    $rezultate = mysqli_query ($conn, $sql);
-    while ($data = mysqli_fetch_assoc($rezultate)){  
-        $admin = $data['admin'];
-        $verificat = $data['verified'];
-    }
-
-    // 1a) ..dar nu are emailul verificat
-
-        if ($verificat == 0) {
-
-            $mesaj_inregistrare = "Înregistrarea a avut loc cu succes! Pentru a valida adresa dvs. de email v-am trimis un link de confirmare. Vă rugăm să dați click pe acel link și apoi vă puteți loga în panoul de administrare. ";
-
-        } else {$mesaj_inregistrare = '';}
-    
-    // 1b) ..are emailul verificat și este admin
-
-        if ($verificat == 1 && $admin == 1 ) {
-            header('location: ../admin/registru.php?eveniment=programari_botez');
-        } 
-
-     // 1c) ..are emailul verificat și NU este admin
-
-     if ($verificat == 1 && $admin == 0 ) {
-        header('location: ../eroare-404.php');
-    } 
- }
- 
     
 ?>
 
@@ -57,7 +14,7 @@ if (!empty($_SESSION['id'])) {
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
   <link rel="stylesheet" href="../css/main.css">
-  <title>Parohia Online - Login</title>
+  <title>Login Parohie</title>
 </head>
 
 <body id="login">
@@ -66,7 +23,40 @@ if (!empty($_SESSION['id'])) {
 
     <div class="row">
      
-    <?php include ("../login/login-form.php"); ?>
+      
+    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-8 form-wrapper parohia auth login">
+      <p><a href="../"><img src="<?php echo BASE_URL . 'images/logo-parohiaonline.png';?>" class="logo"/></a></p>
+        <h3 class="text-center form-title"><img src="../images/participare-slujbe.png" /><br >Login parohie</h3>
+       
+        <?php 
+
+        foreach ($errors as $error) {
+          echo '<p class="btn btn-danger">' . $error . '</p>';
+        }
+
+        echo '<p>' .  $mesaj_inregistrare . '</p>';
+
+
+        ?>
+
+        <form action="index.php" method="post">
+          <div class="form-group">
+            <input type="text" name="username" class="form-control form-control-lg" value="<?php echo $username; ?>" placeholder="Utilizator parohie sau email">
+          </div>
+          <div class="form-group">
+            <input type="password" name="password" class="form-control form-control-lg" placeholder="Parola parohiei">
+          </div>
+          <div class="form-group">
+            <button type="submit" name="login-parohie" class="btn btn-lg btn-block">Login</button>
+          </div>
+        </form>
+        <div class="linkuri_login_form">
+          <p>Nu ai încă un cont? <a href="<?php echo BASE_URL; ?>inregistreaza-parohie.php">Înregistrează-te</a></p>
+          <p>Ai uitat parola? <a href="<?php echo BASE_URL; ?>login/recupereaza-parohie.php">Recupereaz-o</a></p>
+       </div>
+      </div>
+
+    </div>
 
     </div>
   

@@ -248,18 +248,9 @@ if (!empty($_SESSION['id']) && $admin == 0) {
 
                         <input type="submit" value="Crează listă" name="participare_slujbe" class="btn btn-primary rezerva">
                         
-                        
-
-
-
-                        
-
                   
                     </form>
                     
-                   
-
-
                
                 </div></div>
                 <div class="col-sm-12 col-xl-7">

@@ -24,7 +24,7 @@
     <a class="sfestanii" href="registru.php?eveniment=programari_sfestanie">Sfeștanii</a>
     <a class="parastase" href="registru.php?eveniment=programari_parastas">Parastase</a>
     <a class="participare-slujbe" href="participare-slujbe.php">Participare la slujbe</a>
-    <a class="rugaciuni" href="rugaciuni-in-comun.php">Rugăciuni în comun</a>
+    <!-- <a class="rugaciuni" href="rugaciuni-in-comun.php">Rugăciuni în comun</a> -->
     <a class="info" href="info-slujbe.php">Info slujbe</a>
     <a class="pomelnic" href="pomelnice.php">Pomelnice</a>
     <a class="info" href="anunturi.php">Anunțuri</a>

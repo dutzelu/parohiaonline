@@ -4,7 +4,6 @@ setlocale(LC_TIME, array('ro.utf-8', 'ro_RO.UTF-8', 'ro_RO.utf-8', 'ro', 'ro_RO'
 
 include '../controllers/authController.php';
 include '../includes/functions.php';
-
 require '../includes/role.php';
 
 // redirect user to index page if they're not logged in
