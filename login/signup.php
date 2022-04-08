@@ -1,4 +1,4 @@
-<?php include '../controllers/authController.php' ?>
+<?php include '../header-frontend.php' ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +18,7 @@
 
     <div class="row">
       <div class="col-md-4 offset-md-4 form-wrapper auth">
-        <p><img src="../images/logo-parohiaonline.png" class="logo"/></p>
+        <p><a href="../"><img src="<?php echo BASE_URL . 'images/logo-parohiaonline.png';?>" class="logo"/></a></p>
       
         <h3 class="text-center form-title">Înregistrare utilizator</h3>
 
@@ -31,17 +31,42 @@
             <?php endif;?>
 
         <form action="signup.php" method="post">
-        <div class="form-group">
+
+          <div class="form-group">
+            <select name="parohia" class="form-control form-control-lg js-example-basic-single " >
+            <option hidden disabled selected value>Alege parohia ta</option>
+
+            <?php
+                $query = "Select * FROM parohii Order by tara";
+                $stmt = $conn->prepare($query);
+                $rezultat = $stmt->execute();
+                $rezultat = $stmt->get_result();
+                while ($data = mysqli_fetch_assoc($rezultat)) {
+                  if ($data['tara'] !== $tara_curenta) {
+                    echo '<optgroup label="' . $data['tara'] . '">';
+                  } 
+                  echo '<option  value="' . $data['id'] .'">' .$data['nume_parohie']  . '</option>'; 
+                  $tara_curenta = $data['tara'];
+                }
+            ?>
+            </select>
+          </div>
+
+          <div class="form-group">
             <input type="text" name="nume" class="form-control form-control-lg" value="<?php echo $nume; ?>" placeholder="Nume">
           </div>
+
          <div class="form-group">
             <input type="text" name="prenume" class="form-control form-control-lg" value="<?php echo $prenume; ?>" placeholder="Prenume">
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" class="form-control form-control-lg" value="<?php echo $email; ?>" placeholder="Email">
           </div>
           <div class="form-group">
             <input type="text" name="username" class="form-control form-control-lg" value="<?php echo $username; ?>" placeholder="Utilizator">
           </div>
           <div class="form-group">
-            <input type="text" name="email" class="form-control form-control-lg" value="<?php echo $email; ?>" placeholder="Email">
+            <input type="tel" name="telefon" class="form-control form-control-lg" value="<?php echo $telefon; ?>" placeholder="Telefon">
           </div>
           <div class="form-group">
             <input type="password" name="password" class="form-control form-control-lg" placeholder="Parolă">
@@ -60,5 +85,13 @@
 
   </div>
 
+
+  <script>
+      $(document).ready(function() {
+         $('.js-example-basic-single').select2();
+       });
+</script>
+
 </body>
 </html>
+

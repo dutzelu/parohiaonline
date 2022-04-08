@@ -1,4 +1,6 @@
 <?php 
+
+$active_meniu = ["botez", "programari"];
 include "../header-frontend.php"; 
 
 
@@ -12,7 +14,7 @@ $ora = '';
     $ora = $_GET['ora'];
 }
 
-
+ 
 ?>
  
 </head>

@@ -16,22 +16,40 @@ $nume = "";
 $prenume = "";
 $username = "";
 $email = "";
+$telefon = "";
+$password = "";
+$parohia = "";
 $errors = [];
+
+
 
 // SIGN UP USER
 if (isset($_POST['signup-btn'])) {
+
+    if (empty($_POST['parohia'])) {
+        $errors['parohia'] = 'Ai uitat să alegi parohia.';
+    } else {$parohia = $_POST['parohia'];}
+
     if (empty($_POST['nume'])) {
         $errors['nume'] = 'Ai uitat să completezi numele.';
-    }
+    } else {$nume = $_POST['nume'];}
+
     if (empty($_POST['prenume'])) {
         $errors['prenume'] = 'Ai uitat să completezi prenumele.';
-    }
+    } else {$prenume = $_POST['prenume'];}
+
     if (empty($_POST['username'])) {
         $errors['username'] = 'Ai uitat să completezi utilizatorul.';
-    }
+    } else {$username = $_POST['username'];}
+
     if (empty($_POST['email'])) {
         $errors['email'] = 'Ai uitat să completezi emailul.';
-    }
+    } else {$email = $_POST['email'];}
+
+    if (empty($_POST['telefon'])) {
+        $errors['telefon'] = 'Ai uitat să completezi telefonul.';
+    } else {$telefon = $_POST['telefon'];}
+
     if (empty($_POST['password'])) {
         $errors['password'] = 'Ai uitat să completezi parola.';
     } else {$password = $_POST['password'];}
@@ -41,18 +59,13 @@ if (isset($_POST['signup-btn'])) {
     $numere    = preg_match('@[0-9]@', $password);
 
     if(!$litera_mare || !$litere_mici || !$numere || strlen($_POST['password']) < 8) {
-        $errors['password'] = 'Parola trebuie să aibă cel puțin 8 caractere și trebuie să includă cel puțin o literă mare și un număr.';
+        $errors['passwordIncompleta'] = 'Parola trebuie să aibă cel puțin 8 caractere și trebuie să includă cel puțin o literă mare și un număr.';
     }
-
 
     if (isset($_POST['password']) && $_POST['password'] !== $_POST['passwordConf']) {
         $errors['passwordConf'] = 'Cele două parole nu coincid.';
     }
-
-    $nume = $_POST['nume'];
-    $prenume = $_POST['prenume'];
-    $username = $_POST['username'];
-    $email = $_POST['email'];
+   
     $token = bin2hex(random_bytes(50)); // generate unique token
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT); //encrypt password
 
@@ -64,9 +77,9 @@ if (isset($_POST['signup-btn'])) {
     }
 
     if (count($errors) === 0) {
-        $query = "INSERT INTO users SET nume=?, prenume=?, username=?, email=?, token=?, password=?";
+        $query = "INSERT INTO users SET id_parohie=?, nume=?, prenume=?, username=?, email=?, telefon=?, token=?, password=?";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param('ssssss', $nume, $prenume, $username, $email, $token, $password);
+        $stmt->bind_param('isssssss', $parohia, $nume, $prenume, $username, $email, $telefon, $token, $password);
         $result = $stmt->execute();
 
         
@@ -76,7 +89,7 @@ if (isset($_POST['signup-btn'])) {
             $stmt->close();
 
             // TO DO: send verification email to user
-            $url_site = 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']);
+            $url_site = BASE_URL . 'login/';
             
 
             $mesaj_email = '<!DOCTYPE html>
@@ -112,7 +125,7 @@ if (isset($_POST['signup-btn'])) {
 
             </html>';
 
-            phpmailer ($email, $from, "Parohia Sf. Ambrozie București", "Programări botezuri/cununii", $mesaj_email, $link_cerere='');
+            phpmailer ($email, $from, "Parohia Sf. Ambrozie București", "Înregistrare parohiaonline.com", $mesaj_email, $link_cerere='');
          
             $_SESSION['id'] = $user_id;
             $_SESSION['nume'] = $nume;
@@ -123,7 +136,7 @@ if (isset($_POST['signup-btn'])) {
             $_SESSION['message'] = 'Ești logat!';
             $_SESSION['type'] = 'alert-success';
  
-            header('location: ../index.php?inregistrare=succes');
+            header('location: ../login/login.php?inregistrare=succes');
             
         } else {
             $_SESSION['error_msg'] = "Eroare de bază de date: Nu am putut înregistra utilizatorul.";
@@ -156,6 +169,7 @@ if (isset($_POST['login-btn'])) {
                 $_SESSION['id'] = $user['id'];
                 $_SESSION['nume'] = $user['nume'];
                 $_SESSION['prenume'] = $user['prenume'];
+                $_SESSION['telefon'] = $user['telefon'];
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['verified'] = $user['verified'];
@@ -174,7 +188,6 @@ if (isset($_POST['login-btn'])) {
                     $sql = "SELECT * FROM users WHERE id= $id";
                     $rezultate = mysqli_query ($conn, $sql);
                     while ($data = mysqli_fetch_assoc($rezultate)){  
-                        $admin = $data['admin'];
                         $verificat = $data['verified'];
                     }
                 
@@ -200,9 +213,6 @@ if (isset($_POST['login-btn'])) {
                     } 
                  }
                  
-
-
-
 
                 exit(0);
             } else { // if password does not match

@@ -32,6 +32,10 @@ $mesaj_inregistrare = '';
           echo '<p class="btn btn-danger">' . $error . '</p>';
         }
 
+        if (isset($_GET['inregistrare'])) {
+          $mesaj_inregistrare = "Înregistrarea a avut loc cu succes! Pentru a valida adresa dvs. de email v-am trimis un link de confirmare. Vă rugăm să dați click pe acel link și apoi vă puteți loga în panoul de administrare. ";
+        }
+
         echo '<p>' . $mesaj_inregistrare . '</p>';
 
         if (isset($_GET['verificat'])) {

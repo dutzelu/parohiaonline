@@ -1,4 +1,8 @@
 
+// select2
+
+
+
 // dispare un mesaj
 
 setTimeout(function() {
@@ -13,7 +17,7 @@ setTimeout(function() {
 });
 
 
-// nefolosit... cred
+// nefolosit... 
 
 var url = document.URL;
 $('.sidebar li:has(a[href="'+url+'"])').addClass('active');

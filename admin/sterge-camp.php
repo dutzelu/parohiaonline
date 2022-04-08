@@ -16,16 +16,30 @@ while ($data = mysqli_fetch_assoc($result)){
 
 // dacă nu e admin
 
-if ($admin == 0) {
-    echo '<script>location.replace("admin-client.php");</script>';
-} else {
+    if (isset($_GET['id']) && isset($_GET['month']) && isset($_GET['year'])) {
+        $id_rezervare = $_GET['id'];
+        $month = $_GET['month'];
+        $year = $_GET['year'];
 
-            if (isset($_GET['id']) && isset($_GET['month']) && isset($_GET['year'])) {
-                $id_rezervare = $_GET['id'];
-                $month = $_GET['month'];
-                $year = $_GET['year'];
+    $sql="DELETE FROM zile_stabilite where id = '$id_rezervare'";
+    $rezultate = mysqli_query ($conn, $sql);
 
-            $sql="DELETE FROM zile_stabilite where id = '$id_rezervare'";
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+    echo '<script> location.replace("zile-stabilite.php?month=' . $month .'&year='. $year .'&pentru=' .$pentru .'"); </script>';
+
+    } 
+    
+    if (isset($_GET['stergeid']) && isset($_GET['eveniment'])) {
+
+        $stergeid = $_GET['stergeid'];
+        $eveniment = $_GET['eveniment'];
+
+        if ($eveniment=="programari_botez") {
+            $sql="DELETE FROM programari_botez WHERE id = $stergeid";
             $rezultate = mysqli_query ($conn, $sql);
 
             if (!$conn) {
@@ -33,90 +47,84 @@ if ($admin == 0) {
             }
             mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-            echo '<script> location.replace("zile-stabilite.php?month=' . $month .'&year='. $year .'&pentru=' .$pentru .'"); </script>';
+            echo '<script> location.replace("registru.php?eveniment=programari_botez&sters=ok"); </script>';
+        }
 
-            } 
-            
-            if (isset($_GET['stergeid']) && isset($_GET['eveniment'])) {
+        if ($eveniment=="programari_cununie") {
+            $sql="DELETE FROM programari_cununie WHERE id = $stergeid";
+            $rezultate = mysqli_query ($conn, $sql);
 
-                $stergeid = $_GET['stergeid'];
-                $eveniment = $_GET['eveniment'];
+            if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
+            mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-                if ($eveniment=="programari_botez") {
-                    $sql="DELETE FROM programari_botez WHERE id = $stergeid";
-                    $rezultate = mysqli_query ($conn, $sql);
+            echo '<script> location.replace("registru.php?eveniment=programari_cununie&sters=ok"); </script>';
+        }
 
-                    if (!$conn) {
-                        die("Connection failed: " . mysqli_connect_error());
-                    }
-                    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+        if ($eveniment=="programari_spovedanie") {
+            $sql="DELETE FROM programari_spovedanie WHERE id = $stergeid";
+            $rezultate = mysqli_query ($conn, $sql);
 
-                    echo '<script> location.replace("registru.php?eveniment=programari_botez&sters=ok"); </script>';
-                }
+            if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
+            mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-                if ($eveniment=="programari_cununie") {
-                    $sql="DELETE FROM programari_cununie WHERE id = $stergeid";
-                    $rezultate = mysqli_query ($conn, $sql);
+            echo '<script> location.replace("registru.php?eveniment=programari_spovedanie&sters=ok"); </script>';
+        }
 
-                    if (!$conn) {
-                        die("Connection failed: " . mysqli_connect_error());
-                    }
-                    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+        if ($eveniment=="pomelnic") {
+            $sql="DELETE FROM pomelnice WHERE id = $stergeid";
+            $rezultate = mysqli_query ($conn, $sql);
 
-                    echo '<script> location.replace("registru.php?eveniment=programari_cununie&sters=ok"); </script>';
-                }
+            if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
+            mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-                if ($eveniment=="programari_spovedanie") {
-                    $sql="DELETE FROM programari_spovedanie WHERE id = $stergeid";
-                    $rezultate = mysqli_query ($conn, $sql);
+            echo '<script> location.replace("pomelnice.php?sters=ok"); </script>';
+        }
 
-                    if (!$conn) {
-                        die("Connection failed: " . mysqli_connect_error());
-                    }
-                    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+        if ($eveniment=="anunt") {
+            $sql="DELETE FROM articole WHERE id = $stergeid";
+            $rezultate = mysqli_query ($conn, $sql);
 
-                    echo '<script> location.replace("registru.php?eveniment=programari_spovedanie&sters=ok"); </script>';
-                }
+            if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
+            mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-                if ($eveniment=="pomelnic") {
-                    $sql="DELETE FROM pomelnice WHERE id = $stergeid";
-                    $rezultate = mysqli_query ($conn, $sql);
+            echo '<script> location.replace("anunturi.php?sters=ok"); </script>';
+        }
 
-                    if (!$conn) {
-                        die("Connection failed: " . mysqli_connect_error());
-                    }
-                    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+        if ($eveniment=="participare_slujbe") {
+            $sql="DELETE FROM participare_slujbe WHERE id = $stergeid";
+            $rezultate = mysqli_query ($conn, $sql);
 
-                    echo '<script> location.replace("pomelnice.php?sters=ok"); </script>';
-                }
+            if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
+            mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-                if ($eveniment=="anunt") {
-                    $sql="DELETE FROM articole WHERE id = $stergeid";
-                    $rezultate = mysqli_query ($conn, $sql);
+            echo '<script> location.replace("participare-slujbe.php?sters=ok"); </script>';
+        }
 
-                    if (!$conn) {
-                        die("Connection failed: " . mysqli_connect_error());
-                    }
-                    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+        if ($eveniment=="membri") {
+            $sql="DELETE FROM users WHERE id = $stergeid";
+            $rezultate = mysqli_query ($conn, $sql);
 
-                    echo '<script> location.replace("anunturi.php?sters=ok"); </script>';
-                }
+            if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
+            mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-                if ($eveniment=="participare_slujbe") {
-                    $sql="DELETE FROM participare_slujbe WHERE id = $stergeid";
-                    $rezultate = mysqli_query ($conn, $sql);
+            echo '<script> location.replace("membri.php?sters=ok"); </script>';
+        }
 
-                    if (!$conn) {
-                        die("Connection failed: " . mysqli_connect_error());
-                    }
-                    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+    } 
 
-                    echo '<script> location.replace("participare-slujbe.php?sters=ok"); </script>';
-                }
 
-            } 
-
-}
 
 
 

@@ -7,6 +7,7 @@
 
   <div class="sidenav admin">
     <a class="prima-pagina" href="admin.php">Prima pagină</a>
+    <a class="membri" href="membri.php">Membri</a>
     <a class="potir" href="programul-slujbelor.php">Programul slujbelor</a>
     <button class="zile dropdown-btn">Zile rânduite <i class="fas fa-chevron-down" style="margin-left:10px; font-size:10px"></i></button>
     <ul class="dropdown-container">

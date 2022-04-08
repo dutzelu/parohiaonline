@@ -24,7 +24,7 @@ if (isset($_GET['inregistrare'])) {
 
 }  
 
-// Cazul 2. Încearcă să se înregistreze dar nu și-a validat adresa de email
+//Cazul 2. Încearcă să se înregistreze dar nu și-a validat adresa de email
 
 if (isset($_GET['verificat'])) {
 

@@ -21,7 +21,7 @@ if (isset($_GET['token'])) {
             $_SESSION['verified'] = true;
             $_SESSION['message'] = 'Adresa dvs. de e-mail a fost verificată cu succes.';
             $_SESSION['type'] = 'alert-success';
-            header('location: ../index.php?verificat=ok');
+            header('location: ../login/login.php?verificat=ok');
             exit(0);
         }
     } else {
