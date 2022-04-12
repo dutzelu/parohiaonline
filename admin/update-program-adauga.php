@@ -17,14 +17,14 @@ if (isset($_POST['salveazaProgram'])) {
 
  
 
-$query = 'INSERT INTO programul_slujbelor (nume, program, status) VALUES (?,?,?)';
+$query = 'INSERT INTO programul_slujbelor (nume, program, status, parohie_id) VALUES (?,?,?,?)';
 
 $role=0;
 $stmt = $conn->prepare($query);
-$stmt->bind_param('ssi', $_POST['nume_program'], $jsondata, $role);
+$stmt->bind_param('ssii', $_POST['nume_program'], $jsondata, $role, $id);
 $result = $stmt->execute();
 $result = $stmt->get_result();
 
-// var_dump($_POST);
+
     
 echo '<script> location.replace("programul-slujbelor.php?adaugat=ok"); </script>';

@@ -33,7 +33,7 @@ if (!empty($_SESSION['id']) && $admin == 0) {
                         $an_si_luna = $selected_year . '-' . $selected_month;
                         $zile_programate = [];
 
-                        $sql="SELECT * FROM participare_slujbe WHERE data_start LIKE '%$an_si_luna%' ";
+                        $sql="SELECT * FROM participare_slujbe WHERE data_start LIKE '%$an_si_luna%' AND parohie_id = $id";
                         $rezultate = mysqli_query ($conn, $sql);
 
                         while ($data = mysqli_fetch_assoc($rezultate)){   
@@ -278,7 +278,7 @@ if (!empty($_SESSION['id']) && $admin == 0) {
                         <tbody>
                     ';
 
-                    $sql="SELECT * FROM participare_slujbe WHERE data_start LIKE '%$an_si_luna%' ORDER BY DATE(data_start) ASC";
+                    $sql="SELECT * FROM participare_slujbe WHERE data_start LIKE '%$an_si_luna%' AND parohie_id = $id ORDER BY DATE(data_start) ASC";
                     $rezultate = mysqli_query ($conn, $sql);
 
                     while ($data = mysqli_fetch_assoc($rezultate)){   
@@ -301,7 +301,7 @@ if (!empty($_SESSION['id']) && $admin == 0) {
                             echo '<td><span class="nume">' . $slujba . '</span></td>';
                             echo '<td>' . $numar_persoane . '</td>';
                             echo '<td>' . $rezervari . '</td>';
-                            echo '<td> <a href="sterge-camp.php?stergeid='. $id_slujba.'&eveniment=participare_slujbe">x șterge</a>' . '</td>';
+                            echo '<td> <a href="actiuni.php?stergeid='. $id_slujba.'&eveniment=participare_slujbe">x șterge</a>' . '</td>';
                             echo '</tr>';
                     
                             }

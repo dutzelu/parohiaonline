@@ -12,7 +12,7 @@ while ($row = mysqli_fetch_assoc($rez)) {
     $prenume = $row['prenume'];
 }
  
-$query_parohie = "SELECT * FROM parohii WHERE id = (Select id_parohie from users Where id = ?);";
+$query_parohie = "SELECT * FROM parohii WHERE id = (Select parohie_id from users Where id = ?);";
 $stmt = $conn->prepare($query_parohie);
 $stmt->bind_param('i', $_SESSION['id']);
 $rez = $stmt->execute();
@@ -32,7 +32,7 @@ while ($data = mysqli_fetch_assoc($rez)) {
 <div class="row p-3 justify-content-between align-items-center header noprint">
         <div class="col-sm-8 col-lg-9">
             <div class="row align-items-center">
-                <div class="col-sm-5 icon-biserica col-xl-2"><img src="images/credinciosi.png" width="130px"></div>
+                <div class="col-sm-5 icon-biserica col-xl-2"><img src="<?php echo BASE_URL . 'images/credinciosi.png'?>" width="130px"></div>
                 <div class="col-sm-9 titlu">
                     <p class="mitropolia"><?php echo $mitropolia . ' » ' . $episcopia; ?></p>
                     <p class="parohie"><?php echo $parohia; ?></p>

@@ -6,9 +6,9 @@ if (isset($_GET['id'])) {
     $id_programare = $_GET['id'];
 }
 
-$query = "SELECT * FROM programari_cununie WHERE id = ? ";
+$query = "SELECT * FROM programari_cununie WHERE id = ? AND parohie_id = ?";
 $stmt = $conn->prepare($query);
-$stmt->bind_param('i', $id_programare);
+$stmt->bind_param('ii', $id_programare, $id);
 $result = $stmt->execute();
 $result = $stmt->get_result();
 
@@ -23,9 +23,7 @@ while($data = $result->fetch_assoc()) {
     $link_dispensa = $data['link_dispensa'];
     $link_cerere = $data['link_cerere'];
 
-    
 }
-
 
 if (isset($_POST['actualizeaza'])) {
 
@@ -95,37 +93,21 @@ if (isset($_POST['actualizeaza'])) {
     link_certificat_botez_mireasa=?,
     link_dispensa=?
 
-    WHERE id = ?
+    WHERE id = ? AND parohie_id = ?
     ';
 
     $stmt = $conn->prepare($query);
 
-    $stmt->bind_param('sssssssssssssssssssssssi', $nume_mire, $prenume_mire, $nume_mireasa, $prenume_mireasa, $adresa_mire, $adresa_mireasa, $telefon, $email, $numar_certificat_casatorie, $data_eliberarii_certificatului, $eliberat_de_primaria,  $nume_nas, $nume_nasa, $localitate_nasi, $nume_cameraman, $telefon_cameraman, $link_mire_ci, $link_mireasa_ci, $link_plata_contributiei, $link_certificat_casatorie_civila, $link_certificat_botez_mire, $link_certificat_botez_mireasa,  $link_dispensa, $id_programare);
+    $stmt->bind_param('sssssssssssssssssssssssii', $nume_mire, $prenume_mire, $nume_mireasa, $prenume_mireasa, $adresa_mire, $adresa_mireasa, $telefon, $email, $numar_certificat_casatorie, $data_eliberarii_certificatului, $eliberat_de_primaria,  $nume_nas, $nume_nasa, $localitate_nasi, $nume_cameraman, $telefon_cameraman, $link_mire_ci, $link_mireasa_ci, $link_plata_contributiei, $link_certificat_casatorie_civila, $link_certificat_botez_mire, $link_certificat_botez_mireasa,  $link_dispensa, $id_programare, $id);
     $result = $stmt->execute();
 
+    echo '<script> location.replace("rezervare-unica-cununie.php?id=' . $id_programare . '&edit=ok"); </script>';
 }
 
 
-$user_id = $_SESSION['id'];
 
-$query = 'SELECT * FROM users WHERE id = ?';
-$stmt = $conn->prepare($query);
-$stmt->bind_param('i', $user_id);
-$result = $stmt->execute();
-$result = $stmt->get_result();
+  
 
-while($data = $result->fetch_assoc()) {
 
-    $admin = $data['admin'];
- 
-    if ($admin == 0) {
-        echo '<script> location.replace("../home-unic-cununie.php?id=' . $id_programare . '&edit=ok"); </script>';
-    } elseif ($admin == 1) {
-        echo '<script> location.replace("rezervare-unica-cununie.php?id=' . $id_programare . '&edit=ok"); </script>';
-    }
-    
-    
-
-    }
 
 ?>

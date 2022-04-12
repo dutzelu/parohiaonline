@@ -27,6 +27,14 @@ $id = $_SESSION['id'];
                   if (isset($_GET['sters'])) {
                       echo '<p id="dispari">Membrul a fost șters cu succes</p>';
                   }
+
+                  if (isset($_GET['blocat'])) {
+                      echo '<p id="dispari">Membrul a fost blocat.</p>';
+                  }
+
+                  if (isset($_GET['deblocat'])) {
+                      echo '<p id="dispari">Membrul a fost deblocat.</p>';
+                  }
             ?>
             
             <table class="table">
@@ -38,6 +46,7 @@ $id = $_SESSION['id'];
                   <th scope="col">Username</th>
                   <th scope="col">Email</th>
                   <th scope="col">Verificat</th>
+                  <th scope="col">Status</th>
                   <th scope="col">Acțiuni</th>
                 </tr>
               </thead>
@@ -57,7 +66,7 @@ $id = $_SESSION['id'];
                   $next_page = $page_no + 1;
                   $adjacents = "2"; 
 
-                  $result_count = mysqli_query($conn,"SELECT COUNT(*) As total_records FROM users WHERE id_parohie = $id");
+                  $result_count = mysqli_query($conn,"SELECT COUNT(*) As total_records FROM users WHERE parohie_id = $id");
                   $total_records = mysqli_fetch_array($result_count);
                   $total_records = $total_records['total_records'];
                   $total_no_of_pages = ceil($total_records / $total_records_per_page);
@@ -69,7 +78,7 @@ $id = $_SESSION['id'];
           
          
                 $altele = $offset . ',' . $total_records_per_page; // Limit și Offset
-                $sql="SELECT * FROM users WHERE id_parohie = ? ORDER BY id DESC Limit " . $altele;
+                $sql="SELECT * FROM users WHERE parohie_id = ? ORDER BY id DESC Limit " . $altele;
                 $stmt = $conn->prepare($sql);
                 $stmt->bind_param ("i", $id);
                 $result = $stmt->execute();
@@ -89,12 +98,17 @@ $id = $_SESSION['id'];
                   <td><?php echo $row['username'];?></td>
                   <td><?php echo $row['email'];?></td>
                   <td><?php if ($row['verified'] == 1){echo '<img src="../images/check.png">  ';} else {echo '<img src="../images/xbutton.png">';};?></td>
-
+                  <td><?= ($row['blocat'] == 1) ? "<span class='red'>blocat</span>" :  "activ"; ?></td>
+                  
 
                   <td>
+                      <a href="actiuni.php?eveniment=membri&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');" >
+                      <img class="m-1" src="../images/bin.png" title="Șterge"></a> 
 
-                      <a href="sterge-camp.php?eveniment=membri&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
-                      <i class="fas fa-trash-alt"></i></a>
+                      <?= ($row['blocat'] == 0) ? 
+                      '<a href="actiuni.php?blocheaza_id=' . $row['id'] .'"><img src="../images/lock.png" title="Blochează"></a>' : 
+                      '<a href="actiuni.php?deblocheaza_id=' . $row['id'] .'"><img src="../images/unlock.png" title="Deblochează"></a>'?>
+                     
                   </td>
                 </tr>
 

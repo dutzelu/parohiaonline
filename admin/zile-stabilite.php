@@ -31,7 +31,7 @@ if (!empty($_SESSION['id']) && $admin == 0) {
                         $an_si_luna = $selected_year . '-' . $selected_month;
                         $zile_programate = [];
 
-                        $sql="SELECT * FROM zile_stabilite WHERE tip_programare LIKE '$pentru' AND data_start LIKE '%$an_si_luna%' ";
+                        $sql="SELECT * FROM zile_stabilite WHERE tip_programare LIKE '$pentru' AND (data_start LIKE '%$an_si_luna%' AND parohie_id = $id)";
                         $rezultate = mysqli_query ($conn, $sql);
 
                         while ($data = mysqli_fetch_assoc($rezultate)){   
@@ -173,8 +173,6 @@ if (!empty($_SESSION['id']) && $admin == 0) {
 
                         ?>
 
-                        
-           
                         <div class="input-group">
 
                             <div class="input-group-prepend">
@@ -205,12 +203,6 @@ if (!empty($_SESSION['id']) && $admin == 0) {
                         <input type="submit" value="Rezervă" name="rezerva" class="btn btn-primary rezerva">
                         
                         
-
-
-
-                        
-
-                  
                     </form>
                     
                    
@@ -243,7 +235,7 @@ if (!empty($_SESSION['id']) && $admin == 0) {
                         <tbody>
                     ';
 
-                    $sql="SELECT * FROM zile_stabilite WHERE tip_programare LIKE '$pentru' AND data_start LIKE '%$an_si_luna%' ORDER BY DATE(data_start) ASC";
+                    $sql="SELECT * FROM zile_stabilite WHERE tip_programare LIKE '$pentru' AND (data_start LIKE '%$an_si_luna%' AND parohie_id = $id) ORDER BY DATE(data_start) ASC";
                     $rezultate = mysqli_query ($conn, $sql);
 
                     while ($data = mysqli_fetch_assoc($rezultate)){   
@@ -270,7 +262,7 @@ if (!empty($_SESSION['id']) && $admin == 0) {
                             echo '<td>' . $interval_programari . '</td>';
                             echo '<td>' . $rezervari . '</td>';
                             echo '<td>' . $rezervari_disponibile . '</td>';
-                            echo '<td> <a href="sterge-camp.php?month='. $month .'&year='. $year .'&id='. $id_rezervare .'&pentru='. $pentru .'">x șterge</a>' . '</td>';
+                            echo '<td> <a href="actiuni.php?month='. $month .'&year='. $year .'&id='. $id_rezervare .'&pentru='. $pentru .'">x șterge</a>' . '</td>';
                             echo '</tr>';
                     
                             }

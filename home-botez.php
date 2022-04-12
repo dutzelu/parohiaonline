@@ -1,9 +1,6 @@
 <?php include "header-frontend.php"; 
  
 
-
-$user_id = $_SESSION['id'];
-  
 ?>
 
 <title>Programări Botezuri</title>

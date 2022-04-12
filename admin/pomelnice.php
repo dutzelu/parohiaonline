@@ -110,7 +110,7 @@
                   $next_page = $page_no + 1;
                   $adjacents = "2"; 
 
-                    $result_count = mysqli_query($conn,"SELECT COUNT(*) As total_records FROM pomelnice");
+                    $result_count = mysqli_query($conn,"SELECT COUNT(*) As total_records FROM pomelnice WHERE parohie_id = $id");
              
                     $total_records = mysqli_fetch_array($result_count);
                     $total_records = $total_records['total_records'];
@@ -119,7 +119,7 @@
 
             // datele
 
-                $query_pom = "Select * FROM pomelnice ORDER BY id DESC Limit "  . $offset . ',' . $total_records_per_page; // Limit și Offset
+                $query_pom = "Select * FROM pomelnice WHERE parohie_id = $id ORDER BY id DESC Limit "  . $offset . ',' . $total_records_per_page; // Limit și Offset
                
 
                 $stmt = $conn->prepare($query_pom);
@@ -159,7 +159,7 @@
                   
                   ;?></td>
  
-                  <td>  <a href="sterge-camp.php?eveniment=pomelnic&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                  <td>  <a href="actiuni.php?eveniment=pomelnic&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                                 <i class="rosu fas fa-trash-alt"></i></a></td>
                 </tr>
 

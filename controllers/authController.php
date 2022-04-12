@@ -77,7 +77,7 @@ if (isset($_POST['signup-btn'])) {
     }
 
     if (count($errors) === 0) {
-        $query = "INSERT INTO users SET id_parohie=?, nume=?, prenume=?, username=?, email=?, telefon=?, token=?, password=?";
+        $query = "INSERT INTO users SET parohie_id=?, nume=?, prenume=?, username=?, email=?, telefon=?, token=?, password=?";
         $stmt = $conn->prepare($query);
         $stmt->bind_param('isssssss', $parohia, $nume, $prenume, $username, $email, $telefon, $token, $password);
         $result = $stmt->execute();

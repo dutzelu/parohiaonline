@@ -1,9 +1,5 @@
 
-// select2
-
-
-
-// dispare un mesaj
+ // dispare un mesaj
 
 setTimeout(function() {
     $('#dispari').fadeOut('fast');

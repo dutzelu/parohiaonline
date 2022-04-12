@@ -1,5 +1,5 @@
 <?php include "header-admin.php"; 
-$user_id = $_SESSION['id'];
+
 
 $continut = NULL;
 
@@ -7,9 +7,9 @@ if (isset($_POST['anunt'])) {
     $titlu = $_POST['titlu'];
     $continut = $_POST['continut'];
 
-    $query = 'INSERT INTO articole (titlu, continut, tip_articol) Values (?,?,"anunt")';
+    $query = 'INSERT INTO articole (parohie_id, titlu, continut, tip_articol) Values (?,?,?,"anunt")';
     $stmt = $conn->prepare($query);
-    $stmt->bind_param('ss', $titlu, $continut);
+    $stmt->bind_param('iss', $id, $titlu, $continut);
     $result = $stmt->execute();
 }
 ?>
@@ -44,7 +44,7 @@ if (isset($_POST['anunt'])) {
                         echo '<p id="dispari">Programarea a fost ștearsă cu succes</p>';
                     }
 
-                    $query = 'Select * From articole WHERE tip_articol = "anunt" ORDER BY id DESC';
+                    $query = 'Select * From articole WHERE tip_articol = "anunt" AND parohie_id =' . $id . ' ORDER BY id DESC';
 
                     $stmt = $conn->prepare($query);
                     $rezultat = $stmt->execute();

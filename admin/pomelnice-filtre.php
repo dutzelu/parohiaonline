@@ -70,7 +70,7 @@ $i = 0;
             // var_dump($filtre); echo "<br>";
  
 
-        $query_filtru = "Select * from pomelnice "  . $filtre;
+        $query_filtru = "Select * from pomelnice "  . $filtre . " AND parohie_id = " . $id . " ";
 
 ?>
 
@@ -199,7 +199,7 @@ $i = 0;
 
                     echo "<br>";
                     // var_dump($query_filtru_c); echo "<br>";
-                    $query_filtru = "Select * from pomelnice "  . $filtre . " ORDER BY id DESC Limit " . $offset . ',' .    $total_records_per_page; // Limit și Offset"
+                    $query_filtru = "Select * from pomelnice "  . $filtre . " AND parohie_id = " .$id . " ORDER BY id DESC Limit " . $offset . ',' .    $total_records_per_page; // Limit și Offset"
                     // var_dump($query_filtru); echo "<br>";
 
                     $stmt = $conn->prepare($query_filtru);

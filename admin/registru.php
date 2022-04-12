@@ -92,7 +92,7 @@
                   $next_page = $page_no + 1;
                   $adjacents = "2"; 
 
-                  $result_count = mysqli_query($conn,"SELECT COUNT(*) As total_records FROM $eveniment_registru");
+                  $result_count = mysqli_query($conn,"SELECT COUNT(*) As total_records FROM $eveniment_registru WHERE parohie_id = $id");
                   $total_records = mysqli_fetch_array($result_count);
                   $total_records = $total_records['total_records'];
                   $total_no_of_pages = ceil($total_records / $total_records_per_page);
@@ -104,7 +104,7 @@
           
          
                 $altele = $offset . ',' . $total_records_per_page; // Limit și Offset
-                $sql="SELECT * FROM " . $eveniment_registru  . " ORDER BY id DESC Limit " . $altele;
+                $sql="SELECT * FROM " . $eveniment_registru  . " WHERE parohie_id=" . $id . " ORDER BY id DESC Limit " . $altele;
 
                 $stmt = $conn->prepare($sql);
                 $result = $stmt->execute();
@@ -163,7 +163,7 @@
                             echo '">' .$row['status'] . '</span>'; ?></td>
                   <td>
 
-                      <a href="sterge-camp.php?eveniment=<?php echo $eveniment_registru; ?>&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                      <a href="actiuni.php?eveniment=<?php echo $eveniment_registru; ?>&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                       <i class="fas fa-trash-alt"></i></a>
 
                       <?php echo '<a href="';

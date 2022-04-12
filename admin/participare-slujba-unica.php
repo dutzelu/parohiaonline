@@ -4,9 +4,9 @@ $user_id = $_SESSION['id'];
 if ($_GET['id']) {
     $id_slujba = $_GET['id'];
 
-    $query="SELECT * FROM participare_slujbe WHERE id = ?";
+    $query="SELECT * FROM participare_slujbe WHERE id = ? AND parohie_id = ?";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param('i', $id_slujba);
+    $stmt->bind_param('ii', $id_slujba, $id);
     $rezultate = $stmt->execute();
     $rezultate = $stmt->get_result();
 }

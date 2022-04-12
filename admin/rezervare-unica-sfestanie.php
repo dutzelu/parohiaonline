@@ -30,18 +30,18 @@ $user_id = $_SESSION['id'];
   if (isset($_GET['status'])) {
   
     $status = $_GET['status'];
-    $query = 'UPDATE programari_sfestanie SET status = ? WHERE id=? ';
+    $query = 'UPDATE programari_sfestanie SET status = ? WHERE id=? AND parohie_id = ?';
     $stmt = $conn->prepare($query);
-    $stmt->bind_param('si', $status, $id_programare);
+    $stmt->bind_param('sii', $status, $id_programare, $id);
     $result = $stmt->execute();
     $result = $stmt->get_result();
     
   } 
 
 
-$query = 'SELECT * FROM programari_sfestanie WHERE id = ? ORDER BY id DESC';
+$query = 'SELECT * FROM programari_sfestanie WHERE id = ? AND parohie_id = ? ORDER BY id DESC';
 $stmt = $conn->prepare($query);
-$stmt->bind_param('i', $id_programare);
+$stmt->bind_param('ii', $id_programare, $id);
 $result = $stmt->execute();
 $result = $stmt->get_result();
 
@@ -93,7 +93,7 @@ while($data = $result->fetch_assoc()) {
 
               echo '<a href="rezervare-unica-sfestanie.php?id=' . $id_programare . '&status=respinsa" role="button" ><i class="orange fas fa-backspace"></i> Respinge</a>';?>
 
-              <a href="sterge-camp.php?eveniment=programari_sfestanie&stergeid=<?php echo $id_programare; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+              <a href="actiuni.php?eveniment=programari_sfestanie&stergeid=<?php echo $id_programare; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
               <i class="rosu fas fa-trash-alt"></i> Șterge</a>
 
               <?php

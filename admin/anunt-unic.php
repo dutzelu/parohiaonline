@@ -45,7 +45,7 @@ if (isset($_POST['anunt'])) {
 
                     Modifică anunț <a href="anunturi.php"><i class="fas fa-chevron-circle-left"></i> Înapoi</a>
 
-                    <a href="sterge-camp.php?eveniment=anunt&stergeid= <?php echo $id_articol; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                    <a href="actiuni.php?eveniment=anunt&stergeid= <?php echo $id_articol; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                     <i class="rosu fas fa-trash-alt"></i> Șterge</a>
 
                    <?php

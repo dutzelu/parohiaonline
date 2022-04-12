@@ -1,5 +1,5 @@
 <?php include "header-admin.php"; 
-$user_id = $_SESSION['id'];
+ 
 
 $continut = NULL;
 $tip = NULL;
@@ -42,16 +42,16 @@ if (isset($_GET['tip'])) {
 if (isset($_POST['info-slujbe'])) {
     $continut = $_POST['continut'];
 
-    $query = "UPDATE articole SET continut = ? WHERE id = ?";
+    $query = "UPDATE articole SET continut = ? WHERE id = ? AND parohie_id = ?";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param('si', $continut, $id_articol);
+    $stmt->bind_param('sii', $continut, $id_articol, $id);
     $result = $stmt->execute();
 }
 ?>
 
 <title>Info slujbe</title>
 
-<script src="https://cdn.tiny.cloud/1/ywpqronwp4p5zyx3ymuriis579s5rjamd0k04eqknrk9pd4c/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
 
 </head>
 
@@ -86,9 +86,9 @@ if (isset($_POST['info-slujbe'])) {
                         <div class="mb-2">
                             <textarea name="continut" placeholder="Adăugați aici informațiile utile pentru fiecare creștin înainte de a participa la această slujbă.">'; 
                             
-                            $query = "Select * FROM articole WHERE id = ?";
+                            $query = "Select * FROM articole WHERE id = ? AND parohie_id = ?";
                             $stmt = $conn->prepare($query);
-                            $stmt->bind_param('i', $id_articol);
+                            $stmt->bind_param('ii', $id_articol, $id);
                             $result = $stmt->execute();
                             $result  = $stmt->get_result();
                             while ($row = mysqli_fetch_assoc($result)) { 
@@ -117,15 +117,15 @@ if (isset($_POST['info-slujbe'])) {
 
 
 
+
+
 <script>
-tinymce.init({
-  selector: 'textarea',
-  plugins: 'textcolor advlist autolink lists link image charmap print preview hr anchor pagebreak',
-  toolbar: 'undo redo styleselect forecolor backcolor link bold italic underline alignleft aligncenter alignright bullist numlist outdent indent code',
-  toolbar_mode: 'floating',
-  height:400,
-});
-</script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'advlist autolink lists link image charmap preview anchor pagebreak',
+      toolbar_mode: 'floating',
+    });
+  </script>
 
 
 

@@ -6,13 +6,13 @@
     if (isset($_POST['salveaza_rol_program'])) {
   
               $program_ales = $_POST["program_ales"];
-              $query = "UPDATE programul_slujbelor SET status = 1 Where id = ?;";
+              $query = "UPDATE programul_slujbelor SET status = 1 Where id = ? AND parohie_id = $id;";
               $stmt = $conn->prepare($query);
               $stmt->bind_param('i', $program_ales);
               $result = $stmt->execute();
   
               
-              $query = "UPDATE programul_slujbelor SET status = 0 Where id != ?;";
+              $query = "UPDATE programul_slujbelor SET status = 0 Where id != ? AND parohie_id = $id;";
               $stmt = $conn->prepare($query);
               $stmt->bind_param('i', $program_ales);
               $result = $stmt->execute();
@@ -25,7 +25,7 @@
  
     elseif (isset($_GET['adaugat'])) {
             // dacă se adaugă program nou
-            $sql = "SELECT * FROM programul_slujbelor ORDER BY id DESC LIMIT 1; ";
+            $sql = "SELECT * FROM programul_slujbelor WHERE parohie_id = $id ORDER BY id DESC LIMIT 1; ";
             $stmt = $conn->prepare($sql);
             $rezultat = $stmt->execute();
             $rezultat = $stmt->get_result();
@@ -37,7 +37,7 @@
 
     else {
             // dacă nu este selectat niciun id atunci ia idul cel mai recent
-            $sql = "SELECT * FROM programul_slujbelor WHERE status = 1; ";
+            $sql = "SELECT * FROM programul_slujbelor WHERE status = 1 AND parohie_id = $id;";
             $stmt = $conn->prepare($sql);
             $rezultat = $stmt->execute();
             $rezultat = $stmt->get_result();
@@ -81,7 +81,7 @@
                     
                          <?php
 
-                            $query = "Select * From programul_slujbelor Where id = ?;";
+                            $query = "Select * From programul_slujbelor Where id = ? AND parohie_id = $id;";
 
                             $stmt = $conn->prepare($query);
                             $stmt->bind_param('i', $id_selectat);
@@ -111,7 +111,7 @@
                                         <div class="input-group mb-2">
                                             <form id="role_program" method="POST" action="programul-slujbelor.php">
                                             <?php
-                                            $query = 'Select * From programul_slujbelor';
+                                            $query = 'Select * From programul_slujbelor Where parohie_id = ' . $id;
 
                                             $stmt = $conn->prepare($query);
                                             $rezultat = $stmt->execute();
@@ -252,7 +252,7 @@
                     <?php 
     
                     
-                    $query = 'Select * From programul_slujbelor ORDER BY id DESC';
+                    $query = 'Select * From programul_slujbelor WHERE parohie_id =' . $id . ' ORDER BY id DESC';
 
                     $stmt = $conn->prepare($query);
                     $rezultat = $stmt->execute();

@@ -7,9 +7,9 @@ if (isset($_GET['id'])) {
     $id_programare = $_GET['id'];
 }
 
-$query = "SELECT * FROM programari_botez WHERE id = ? ";
+$query = "SELECT * FROM programari_botez WHERE id = ? AND parohie_id = ?";
 $stmt = $conn->prepare($query);
-$stmt->bind_param('i', $id_programare);
+$stmt->bind_param('ii', $id_programare, $id);
 $result = $stmt->execute();
 $result = $stmt->get_result();
 
@@ -93,38 +93,19 @@ if (isset($_POST['actualizeaza'])) {
     link_plata_contributiei=?,
     link_certificat_nastere_copil=?
 
-    WHERE id = ?
+    WHERE id = ? AND parohie_id = ?
     ';
 
     $stmt = $conn->prepare($query);
 
-    $stmt->bind_param('sssssssssssssssssssssssi', $nume_tata, $prenume_tata, $nume_mama, $prenume_mama, $adresa, $telefon, $email, $nume_copil, $prenume_copil, $data_nasterii_copilului, $numar_certificat_nastere, $data_eliberarii_certificatului, $eliberat_de_primaria, $nume_botez_copil, $nume_nas, $nume_nasa, $localitate_nasi, $nume_cameraman, $telefon_cameraman, $link_tata_ci, $link_mama_ci, $link_plata_contributiei, $link_certificat_nastere_copil, $id_programare);
+    $stmt->bind_param('sssssssssssssssssssssssii', $nume_tata, $prenume_tata, $nume_mama, $prenume_mama, $adresa, $telefon, $email, $nume_copil, $prenume_copil, $data_nasterii_copilului, $numar_certificat_nastere, $data_eliberarii_certificatului, $eliberat_de_primaria, $nume_botez_copil, $nume_nas, $nume_nasa, $localitate_nasi, $nume_cameraman, $telefon_cameraman, $link_tata_ci, $link_mama_ci, $link_plata_contributiei, $link_certificat_nastere_copil, $id_programare, $id);
     $result = $stmt->execute();
 
-
+    echo '<script> location.replace("rezervare-unica.php?id=' . $id_programare . '&edit=ok"); </script>';
 }
 
 
-$user_id = $_SESSION['id'];
-
-$query = 'SELECT * FROM users WHERE id = ?';
-$stmt = $conn->prepare($query);
-$stmt->bind_param('i', $user_id);
-$result = $stmt->execute();
-$result = $stmt->get_result();
-
-while($data = $result->fetch_assoc()) {
-
-    $admin = $data['admin'];
  
-    if ($admin == 0) {
-        echo '<script> location.replace("../home-unic.php?id=' . $id_programare . '&edit=ok"); </script>';
-    } elseif ($admin == 1) {
-        echo '<script> location.replace("rezervare-unica.php?id=' . $id_programare . '&edit=ok"); </script>';
-    }
-    
-
-    }
 
 
 

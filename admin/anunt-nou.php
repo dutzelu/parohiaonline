@@ -24,13 +24,8 @@ $user_id = $_SESSION['id'];
               <p class="fw-bold">Adaugă anunț nou</p>
 
               <div class="col-sm">
-                    
-                <?php 
-                    
 
-                    echo 
-
-                    '<form action="anunturi.php" method="POST">
+                    <form action="anunturi.php" method="POST">
 
                         <div class="row mb-2">
                             <div class="col-sm ">    
@@ -44,14 +39,9 @@ $user_id = $_SESSION['id'];
                         </div>
                         <button type="submit" name="anunt" class="btn btn-primary">Salvează</button>
                         
-                    </form>';
+                    </form>
                         
                     
-                ?>
-
- 
- 
- 
 </div>    
 </div>
 

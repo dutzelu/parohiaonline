@@ -34,9 +34,9 @@ if (isset($_POST['rezerva'])) {
 
      $data_start = $year . '-' . $month . '-' . $zi . ' ' . $ora_start;
      $data_final = $year . '-' . $month . '-' . $zi . ' ' . $ora_final;
-     $query = "INSERT INTO zile_stabilite SET tip_programare=?, data_start=?, data_final=?, rezervari=?, intervalul=?";
+     $query = "INSERT INTO zile_stabilite SET parohie_id=?, tip_programare=?, data_start=?, data_final=?, rezervari=?, intervalul=?";
      $stmt = $conn->prepare($query);
-     $stmt->bind_param('sssii', $pentru, $data_start, $data_final, $ore_diferenta, $interval_programari);
+     $stmt->bind_param('isssii', $id, $pentru, $data_start, $data_final, $ore_diferenta, $interval_programari);
      $result = $stmt->execute();
     
   }
@@ -62,9 +62,9 @@ if (isset($_POST['participare_slujbe'])) {
 
      $data_start = $year . '-' . $month . '-' . $zi . ' ' . $ora_start;
      $data_final = $year . '-' . $month . '-' . $zi . ' ' . $ora_final;
-     $query = "INSERT INTO participare_slujbe SET slujba=?, data_start=?, data_final=?, numar_persoane=?";
+     $query = "INSERT INTO participare_slujbe SET parohie_id=?, slujba=?, data_start=?, data_final=?, numar_persoane=?";
      $stmt = $conn->prepare($query);
-     $stmt->bind_param('sssi', $slujba, $data_start, $data_final, $numar_persoane);
+     $stmt->bind_param('isssi', $id, $slujba, $data_start, $data_final, $numar_persoane);
      $result = $stmt->execute();
     
   }
