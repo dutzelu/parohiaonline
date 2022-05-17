@@ -31,7 +31,7 @@
         <?php 
 
         foreach ($errors as $error) {
-          echo '<p class="btn btn-danger">' . $error . '</p>';
+          echo '<p class="alert alert-danger">' . $error . '</p>';
         }
 
         echo '<p>' .  $mesaj_inregistrare . '</p>';
@@ -39,12 +39,12 @@
 
         ?>
 
-        <form action="index.php" method="post">
+        <form action="<?php echo BASE_URL; ?>admin/index.php" method="post">
           <div class="form-group">
-            <input type="text" name="username" class="form-control form-control-lg" value="<?php echo $username; ?>" placeholder="Utilizator parohie sau email">
+            <input type="text" name="username" class="form-control form-control-lg" value="<?php echo $username; ?>" placeholder="Utilizator parohie sau email" required>
           </div>
           <div class="form-group">
-            <input type="password" name="password" class="form-control form-control-lg" placeholder="Parola parohiei">
+            <input type="password" name="password" class="form-control form-control-lg" placeholder="Parola parohiei" required>
           </div>
           <div class="form-group">
             <button type="submit" name="login-parohie" class="btn btn-lg btn-block">Login</button>

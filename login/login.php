@@ -46,10 +46,10 @@ $mesaj_inregistrare = '';
 
         <form action="<?php echo BASE_URL; ?>login/login.php" method="post">
           <div class="form-group">
-            <input type="text" name="username" class="form-control form-control-lg" value="<?php echo $username; ?>" placeholder="Utilizator sau email">
+            <input type="text" name="username" class="form-control form-control-lg" value="<?php echo $username; ?>" placeholder="Utilizator sau email" required>
           </div>
           <div class="form-group">
-            <input type="password" name="password" class="form-control form-control-lg" placeholder="Parola">
+            <input type="password" name="password" class="form-control form-control-lg" placeholder="Parola" required>
           </div>
           <div class="form-group">
             <button type="submit" name="login-btn" class="btn btn-lg btn-block">Login</button>

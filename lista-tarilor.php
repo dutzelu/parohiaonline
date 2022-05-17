@@ -1,5 +1,8 @@
-
-       <option hidden disabled selected value>Alege țara</option>
+<?php $tara = '';?>
+       
+       
+       
+       <option hidden disabled selected value>Țara</option>
        <option value="Afganistan">Afghanistan</option>
        <option value="Albania">Albania</option>
        <option value="Algeria">Algeria</option>
@@ -12,14 +15,14 @@
        <option value="Armenia">Armenia</option>
        <option value="Aruba">Aruba</option>
        <option value="Australia">Australia</option>
-       <option value="Austria">Austria</option>
+       <option <?= ($tara == "Austria") ? 'selected="selected"' : "" ?> value="Austria">Austria</option>
        <option value="Azerbaijan">Azerbaijan</option>
        <option value="Bahamas">Bahamas</option>
        <option value="Bahrain">Bahrain</option>
        <option value="Bangladesh">Bangladesh</option>
        <option value="Barbados">Barbados</option>
        <option value="Belarus">Belarus</option>
-       <option value="Belgia">Belgia</option>
+       <option <?= ($tara == "Belgia") ? 'selected="selected"' : "" ?> value="Belgia">Belgia</option>
        <option value="Belize">Belize</option>
        <option value="Benin">Benin</option>
        <option value="Bermuda">Bermuda</option>
@@ -53,12 +56,12 @@
        <option value="Cook Islands">Cook Islands</option>
        <option value="Costa Rica">Costa Rica</option>
        <option value="Coasta de Azur">Coasta de Azur</option>
-       <option value="Croatia">Croatia</option>
+       <option <?= ($tara == "Croatia") ? 'selected="selected"' : "" ?>  value="Croatia">Croatia</option>
        <option value="Cuba">Cuba</option>
        <option value="Curaco">Curacao</option>
        <option value="Cipru">Cipru</option>
        <option value="Cehia">Cehia</option>
-       <option value="Danemarca">Danemarca</option>
+       <option <?= ($tara == "Danemarca") ? 'selected="selected"' : "" ?>  value="Danemarca">Danemarca</option>
        <option value="Djibouti">Djibouti</option>
        <option value="Dominica">Dominica</option>
        <option value="Republica Dominicană">Republica Dominicană</option>
@@ -73,19 +76,19 @@
        <option value="Falkland Islands">Falkland Islands</option>
        <option value="Insulele Feroe">Insulele Feroe</option>
        <option value="Fiji">Fiji</option>
-       <option value="Finlanda">Finlanda</option>
-       <option value="Franța">Franța</option>
+       <option <?= ($tara == "Finlanda") ? 'selected="selected"' : "" ?>  value="Finlanda">Finlanda</option>
+       <option <?= ($tara == "Franța") ? 'selected="selected"' : "" ?>  value="Franța">Franța</option>
        <option value="Guiana Franceză">Guiana Franceză</option>
        <option value="Polynesia Franceză">French Franceză</option>
        <option value="French Southern Ter">French Southern Ter</option>
        <option value="Gabon">Gabon</option>
        <option value="Gambia">Gambia</option>
        <option value="Georgia">Georgia</option>
-       <option value="Germania">Germania</option>
+       <option <?= ($tara == "Germania") ? 'selected="selected"' : "" ?> value="Germania">Germania</option>
        <option value="Ghana">Ghana</option>
        <option value="Gibraltar">Gibraltar</option>
-       <option value="Marea Britanie">Marea Britanie</option>
-       <option value="Grecia">Grecia</option>
+       <option <?= ($tara == "Marea Britanie") ? 'selected="selected"' : "" ?>  value="Marea Britanie">Marea Britanie</option>
+       <option <?= ($tara == "Grecia") ? 'selected="selected"' : "" ?>  value="Grecia">Grecia</option>
        <option value="Groenlanda">Groenlanda</option>
        <option value="Grenada">Grenada</option>
        <option value="Guadeloupe">Guadeloupe</option>
@@ -103,10 +106,10 @@
        <option value="India">India</option>
        <option value="Iran">Iran</option>
        <option value="Iraq">Iraq</option>
-       <option value="Irlanda">Irlanda</option>
+       <option <?= ($tara == "Irlanda") ? 'selected="selected"' : "" ?>  value="Irlanda">Irlanda</option>
        <option value="Isle of Man">Isle of Man</option>
        <option value="Israel">Israel</option>
-       <option value="Italia">Italia</option>
+       <option <?= ($tara == "Italia") ? 'selected="selected"' : "" ?> value="Italia">Italia</option>
        <option value="Jamaica">Jamaica</option>
        <option value="Japonia">Japonia</option>
        <option value="Iordania">Iordania</option>
@@ -123,9 +126,9 @@
        <option value="Lesotho">Lesotho</option>
        <option value="Liberia">Liberia</option>
        <option value="Libia">Libia</option>
-       <option value="Liechtenstein">Liechtenstein</option>
-       <option value="Lituania">Lituania</option>
-       <option value="Luxembourg">Luxembourg</option>
+       <option <?= ($tara == "Liechtenstein") ? 'selected="selected"' : "" ?> value="Liechtenstein">Liechtenstein</option>
+       <option <?= ($tara == "Lituania") ? 'selected="selected"' : "" ?>  value="Lituania">Lituania</option>
+       <option <?= ($tara == "Luxembourg") ? 'selected="selected"' : "" ?> value="Luxembourg">Luxembourg</option>
        <option value="Macau">Macau</option>
        <option value="Macedonia">Macedonia</option>
        <option value="Madagascar">Madagascar</option>
@@ -141,7 +144,7 @@
        <option value="Mayotte">Mayotte</option>
        <option value="Mexic">Mexic</option>
        <option value="Midway Islands">Midway Islands</option>
-       <option value="Moldova">Moldova</option>
+       <option <?= ($tara == "Moldova") ? 'selected="selected"' : "" ?>  value="Moldova">Moldova</option>
        <option value="Monaco">Monaco</option>
        <option value="Mongolia">Mongolia</option>
        <option value="Montserrat">Montserrat</option>
@@ -153,7 +156,7 @@
        <option value="Nauru">Nauru</option>
        <option value="Nepal">Nepal</option>
        <option value="Netherland Antilles">Netherland Antilles</option>
-       <option value="Olanda">Olanda</option>
+       <option <?= ($tara == "Olanda") ? 'selected="selected"' : "" ?> value="Olanda">Olanda</option>
        <option value="Nevis">Nevis</option>
        <option value="Noua Caledonia">Noua Caledonia</option>
        <option value="Noua Zealandă">Noua Zealandă</option>
@@ -162,7 +165,7 @@
        <option value="Nigeria">Nigeria</option>
        <option value="Niue">Niue</option>
        <option value="Norfolk Island">Norfolk Island</option>
-       <option value="Norvegia">Norvegia</option>
+       <option <?= ($tara == "Norvegia") ? 'selected="selected"' : "" ?> value="Norvegia">Norvegia</option>
        <option value="Oman">Oman</option>
        <option value="Pakistan">Pakistan</option>
        <option value="Palau Island">Palau Island</option>
@@ -173,13 +176,13 @@
        <option value="Peru">Peru</option>
        <option value="Filipine">Filippine</option>
        <option value="Pitcairn Island">Pitcairn Island</option>
-       <option value="Polonia">Polonia</option>
-       <option value="Portugalia">Portugalia</option>
+       <option <?= ($tara == "Polonia") ? 'selected="selected"' : "" ?> value="Polonia">Polonia</option>
+       <option <?= ($tara == "Portugalia") ? 'selected="selected"' : "" ?> value="Portugalia">Portugalia</option>
        <option value="Puerto Rico">Puerto Rico</option>
        <option value="Qatar">Qatar</option>
        <option value="Serbia">Serbia</option>
        <option value="Reunion">Reunion</option>
-       <option value="România">România</option>
+       <option <?= ($tara == "România") ? 'selected="selected"' : "" ?> value="România">România</option>
        <option value="Rusia">Rusia</option>
        <option value="Rwanda">Rwanda</option>
        <option value="St Barthelemy">St Barthelemy</option>
@@ -200,18 +203,18 @@
        <option value="Seychelles">Seychelles</option>
        <option value="Sierra Leone">Sierra Leone</option>
        <option value="Singapore">Singapore</option>
-       <option value="Slovacia">Slovacia</option>
-       <option value="Slovenia">Slovenia</option>
+       <option <?= ($tara == "Slovacia") ? 'selected="selected"' : "" ?> value="Slovacia">Slovacia</option>
+       <option <?= ($tara == "Slovenia") ? 'selected="selected"' : "" ?> value="Slovenia">Slovenia</option>
        <option value="Solomon Islands">Solomon Islands</option>
        <option value="Somalia">Somalia</option>
        <option value="South Africa">South Africa</option>
-       <option value="Spania">Spania</option>
+       <option <?= ($tara == "Spania") ? 'selected="selected"' : "" ?> value="Spania">Spania</option>
        <option value="Sri Lanka">Sri Lanka</option>
        <option value="Sudan">Sudan</option>
        <option value="Suriname">Suriname</option>
        <option value="Swaziland">Swaziland</option>
        <option value="Suedia">Suedia</option>
-       <option value="Elveția">Elveția</option>
+       <option <?= ($tara == "Elveția") ? 'selected="selected"' : "" ?> value="Elveția">Elveția</option>
        <option value="Siria">Siria</option>
        <option value="Tahiti">Tahiti</option>
        <option value="Taiwan">Taiwan</option>
@@ -223,7 +226,7 @@
        <option value="Tonga">Tonga</option>
        <option value="Trinidad & Tobago">Trinidad & Tobago</option>
        <option value="Tunisia">Tunisia</option>
-       <option value="Turcia">Turcia</option>
+       <option <?= ($tara == "Turcia") ? 'selected="selected"' : "" ?> value="Turcia">Turcia</option>
        <option value="Turkmenistan">Turkmenistan</option>
        <option value="Turks & Caicos Is">Turks & Caicos Is</option>
        <option value="Tuvalu">Tuvalu</option>

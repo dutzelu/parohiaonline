@@ -35,7 +35,7 @@ include '../controllers/authController.php';
        
         <form action="recupereaza-parola.php" method="post">
           <div class="form-group">
-            <input type="text" name="email" class="form-control form-control-lg" placeholder = "Introdu aici email tău">
+            <input type="email" name="email" class="form-control form-control-lg" placeholder = "Introdu aici email tău" required>
           </div>
           <div class="form-group">
             <button type="submit" name="recupereaza-parohie" class="btn btn-lg btn-block">Recuperează</button>

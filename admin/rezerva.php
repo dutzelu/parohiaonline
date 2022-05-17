@@ -1,13 +1,7 @@
 <?php 
 
-if (!empty($_SESSION['id']) && $admin == 0) {
-   echo '<script> location.replace("frontend.php?pentru=botez"); </script>';
-} elseif (!empty($_SESSION['id']) && $admin == 1) {
-   echo '<script> location.replace("registru.php?eveniment=programari_botez"); </script>';
-}
-
 include "header-admin.php";
-
+$zile = NULL;
 
 if (isset($_GET['month']) && isset($_GET['year'])) {
    $month = $_GET['month'];
@@ -18,25 +12,37 @@ if (isset($_GET['month']) && isset($_GET['year'])) {
 }
 if (isset($_POST['rezerva'])) {
 
+   // datele din formular 
+
    $zile = $_POST['zile'];
    $ora_start = $_POST['ora_start'];
    $ora_final = $_POST['ora_final'];
    $interval_programari = $_POST['intervalul'];
 
+   // calculez diferența între ore
+
    $date1 = new DateTime($ora_start);
    $date2 = new DateTime($ora_final);
-   $interval = $date1->diff($date2);
-   
-   // aflu numarul de rezervari
-   $ore_diferenta = $interval->h;
+   $interval = $date2->diff($date1)->format("%h:%i");
+
+   $ore_minute = explode (":", $interval);
+   $diferenta_ore = (int)$ore_minute[0];
+   $diferenta_minute = (int)$ore_minute[1];
+
+   // calculez diferența în minute
+   $diferenta_minute = $diferenta_ore * 60 + $diferenta_minute; echo "<br>";
+
+   // calculez numarul total de rezervări disponibile (libere)
+   $libere = round($diferenta_minute / $interval_programari);
+
 
   foreach ($zile as $zi) {
 
      $data_start = $year . '-' . $month . '-' . $zi . ' ' . $ora_start;
      $data_final = $year . '-' . $month . '-' . $zi . ' ' . $ora_final;
-     $query = "INSERT INTO zile_stabilite SET parohie_id=?, tip_programare=?, data_start=?, data_final=?, rezervari=?, intervalul=?";
+     $query = "INSERT INTO zile_stabilite SET parohie_id=?, tip_programare=?, data_start=?, data_final=?, libere=?, intervalul=?";
      $stmt = $conn->prepare($query);
-     $stmt->bind_param('isssii', $id, $pentru, $data_start, $data_final, $ore_diferenta, $interval_programari);
+     $stmt->bind_param('isssii', $id, $pentru, $data_start, $data_final, $libere, $interval_programari);
      $result = $stmt->execute();
     
   }

@@ -75,11 +75,7 @@ If ( isset ($_POST['inregistrare_parohie']) ) {
                 font-size: 1.3em;
                 }
                 a {
-                background: #592f80;
-                text-decoration: none;
-                padding: 8px 15px;
-                border-radius: 5px;
-                color: #fff;
+                color: #592f80;
                 }
             </style>
             </head>
@@ -88,9 +84,9 @@ If ( isset ($_POST['inregistrare_parohie']) ) {
             <div class="wrapper">
                 <p>Ați creat cu succes un cont pentru parohia dumneavoastră pe siteul parohiaonline.com</p>
                 <p>Datele dvs. de acces sunt următoarele:<br> <strong>Username:</strong> ' .$utilizator . ' <br /><strong>Parolă:</strong> pe care ați ales-o.</p>
-                <p>Dacă ați uitat password dați click aici: <a href="' .$url_site . '/recupereaza.php"> recuperează parolă </a></p>
                 <p>Vă rugăm să activați contul accesând linkul de mai jos:</p>
                 <a href="' . $url_site . '/verify_email.php?ptoken=' . $token . '"> Verificați emailul dumneavoastră! </a>
+                <p>Dacă ați uitat password dați click aici: <a href="' .$url_site . '/recupereaza.php"> recuperează parolă </a></p>
             </div>
             </body>
 
@@ -113,6 +109,18 @@ If ( isset ($_POST['inregistrare_parohie']) ) {
             $_SESSION['error_msg'] = "Eroare de bază de date: Nu am putut înregistra utilizatorul.";
         }
     }  
+} else {
+    $nume_parohie = NULL;
+    $episcopia = NULL;
+    $mitropolia = NULL;
+    $tara = NULL;
+    $localitatea = NULL;
+    $adresa_bisericii = NULL;
+    $hramul_bisericii = NULL;
+    $telefon = NULL;
+    $email = NULL;
+    $numele_preotului = NULL;
+    $utilizator = NULL;
 }
 
 

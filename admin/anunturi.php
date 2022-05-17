@@ -41,10 +41,10 @@ if (isset($_POST['anunt'])) {
 
 
                     if (isset($_GET['sters'])) {
-                        echo '<p id="dispari">Programarea a fost ștearsă cu succes</p>';
+                        echo '<p id="dispari">Anunțul a fost șters cu succes</p>';
                     }
 
-                    $query = 'Select * From articole WHERE tip_articol = "anunt" AND parohie_id =' . $id . ' ORDER BY id DESC';
+                    $query = 'Select * From articole WHERE tip_articol LIKE "anunt" AND parohie_id =' . $id . ' ORDER BY id DESC';
 
                     $stmt = $conn->prepare($query);
                     $rezultat = $stmt->execute();
@@ -55,12 +55,13 @@ if (isset($_POST['anunt'])) {
                         while ($data = mysqli_fetch_assoc($rezultat)) {
 
                             $continut_scurt = substr($data['continut'],0,100).'...';
+                            $continut_scurt = strip_tags ($continut_scurt);
                             $data_articolului =  date("d M. Y", strtotime($data["data"]));
 
                             echo '<a class="fs-6" href=anunt-unic.php?id=' . $data['id'] . '><li>';
                                 echo '<p class="titlu-anunt">' . $data['titlu'] .'</p>';
-                                echo '<div class="continut mb-2">' . $continut_scurt .'</div>';
                                 echo '<p class="data">' . $data_articolului .'</p>';
+                                echo '<div class="continut mb-2">' . $continut_scurt .'</div>';
                             echo '</li></a>' ; 
                         }
                     

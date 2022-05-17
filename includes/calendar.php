@@ -2,22 +2,22 @@
  $an_si_luna = $selected_year . '-' . $selected_month;
  $zile_programate = [];
  
- $sql="SELECT * FROM zile_stabilite WHERE tip_programare LIKE '$pentru' AND data_start LIKE '%$an_si_luna%' ";
+ $sql="SELECT * FROM zile_stabilite WHERE tip_programare LIKE '$pentru' AND data_start LIKE '%$an_si_luna%'";
  $rezultate = mysqli_query ($conn, $sql);
  
         while ($data = mysqli_fetch_assoc($rezultate)){   
-         
+
           $zi = date("d", strtotime($data['data_start']));
           $zi = ltrim ($zi, '0');
-          $rezervari = $data['rezervari'];
-          $rezervari = (int)$rezervari;
+          $libere = $data['libere'];
+          $libere = (int)$libere;
 
           // daca nu mai sunt ore de rezervat pentru acea zi, nu mai adauga ziua in array
-            if ($rezervari !== 0) {
-                 $zile_programate += [$zi => $rezervari];
+            if ($libere !== 0) {
+                 $zile_programate += [$zi => $libere];
             }
 
-                }
+        }
  
  
          /* draws a calendar */
@@ -56,7 +56,7 @@
  
  global $zile_programate;
  global $an_si_luna;
- global $rezervari;
+ global $libere;
  
  
 

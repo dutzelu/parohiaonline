@@ -1,5 +1,5 @@
 <?php include "header-admin.php"; 
-$user_id = $_SESSION['id'];
+
 
 $continut = NULL;
 
@@ -12,7 +12,7 @@ if (isset($_POST['anunt'])) {
     $titlu = $_POST['titlu'];
     $continut = $_POST['continut'];
 
-    $query = 'UPDATE articole SET titlu = ?, continut = ? WHERE id = ?';
+    $query = "UPDATE articole SET titlu = ?, continut = ? WHERE id = ? AND tip_articol LIKE 'anunt';";
     $stmt = $conn->prepare($query);
     $stmt->bind_param('ssi', $titlu, $continut, $id_articol);
     $result = $stmt->execute();
@@ -53,7 +53,7 @@ if (isset($_POST['anunt'])) {
                     '<form method="POST">
                         <div class="mb-2">';
 
-                        $query = "Select * FROM articole WHERE id = ?";
+                        $query = "Select * FROM articole WHERE id = ? AND tip_articol LIKE 'anunt'";
                         $stmt = $conn->prepare($query);
                         $stmt->bind_param('i', $id_articol);
                         $result = $stmt->execute();
@@ -62,7 +62,7 @@ if (isset($_POST['anunt'])) {
  
                  
 
-                       <form  action="<?php echo htmlentities($_SERVER['PHP_SELF']) . "?id=" . $id_articol; ?> method="POST">
+                       <form  action="anunt-unic.php?id=<?php echo $id_articol;?>" method="POST">
     
                             <div class="row mb-2">
                                 <div class="col-sm">    

@@ -1,9 +1,5 @@
 <?php include 'header-admin.php';
 
-if (!empty($_SESSION['id']) && $admin == 0) {
-    echo '<script> location.replace("frontend.php?pentru=botez"); </script>';
-} 
-
 ;?>
 
   <title><?php echo $eveniment; ?></title>
@@ -208,6 +204,8 @@ if (!empty($_SESSION['id']) && $admin == 0) {
                                     <option value="Ceasul IX">Ceasul IX</option>
                                 </optgroup>
                                 <optgroup label="Speciale">
+                                    <option value="Venirea cu icoana (Crăciun)">Venirea cu icoana (Crăciun)</option>
+                                    <option value="Sfințirea caselor (Bobotează)">Sfințirea caselor (Bobotează)</option>
                                     <option value="Denia">Denia</option>
                                     <option value="Slujba Învierii">Slujba Învierii</option>
                                     <option value="Cateheză">Cateheză</option>

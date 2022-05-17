@@ -1,9 +1,5 @@
 <?php include 'header-admin.php';
 
-if (!empty($_SESSION['id']) && $admin == 0) {
-    echo '<script> location.replace("frontend.php?pentru=botez"); </script>';
-} 
-
 ;?>
 
   <title><?php echo $eveniment; ?></title>
@@ -247,10 +243,11 @@ if (!empty($_SESSION['id']) && $admin == 0) {
                             $ora_start_simpla = date("H", strtotime($data["data_start"]));
                             $ora_final_simpla = date("H", strtotime($data["data_final"]));
                             $interval_programari = $data['intervalul'];
-
-                            $total_rezervari =  $ora_final_simpla - $ora_start_simpla;
-                            $rezervari_disponibile = $data['rezervari'];
-                            $rezervari = $total_rezervari - $rezervari_disponibile;
+                            $libere = $data['libere'];
+                            $rezervari = $data['rezervari'];
+                       
+  
+ 
 
                             
 
@@ -261,7 +258,7 @@ if (!empty($_SESSION['id']) && $admin == 0) {
                             echo '<td>' . $ora_final . '</td>';
                             echo '<td>' . $interval_programari . '</td>';
                             echo '<td>' . $rezervari . '</td>';
-                            echo '<td>' . $rezervari_disponibile . '</td>';
+                            echo '<td>' . $libere . '</td>';
                             echo '<td> <a href="actiuni.php?month='. $month .'&year='. $year .'&id='. $id_rezervare .'&pentru='. $pentru .'">x șterge</a>' . '</td>';
                             echo '</tr>';
                     

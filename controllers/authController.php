@@ -12,6 +12,7 @@ $verificat = "";
 $mesaj_inregistrare = "";
 setlocale(LC_ALL, 'ro_RO');
 
+$parohie_id = NULL;
 $nume = "";
 $prenume = "";
 $username = "";
@@ -104,11 +105,7 @@ if (isset($_POST['signup-btn'])) {
                 font-size: 1.3em;
                 }
                 a {
-                background: #592f80;
-                text-decoration: none;
-                padding: 8px 15px;
-                border-radius: 5px;
-                color: #fff;
+                color: #592f80;
                 }
             </style>
             </head>
@@ -117,17 +114,18 @@ if (isset($_POST['signup-btn'])) {
             <div class="wrapper">
                 <p>Vă mulțumim că v-ați înscris pe site-ul parohiei noastre. Ați primit acest email pentru că doriti să faceți o programare pentru Taina Sfântului Botezul sau Taina Sfintei Cununii la biserica noastră. </p>
                 <p>Datele dvs. de acces sunt următoarele:<br> <strong>Username:</strong> ' .$username . ' <br /><strong>Parolă:</strong> pe care ați ales-o.</p>
-                <p>Dacă ați uitat parola dați click aici: <a href="' .$url_site . '/recupereaza.php"> recuperează parola </a></p>
                 <p>Vă rugăm să activați contul accesând linkul de mai jos:</p>
                 <a href="' . $url_site . '/verify_email.php?token=' . $token . '"> Verificați emailul dumneavoastră! </a>
+                <p>Dacă ați uitat parola dați click aici: <a href="' .$url_site . '/recupereaza.php"> recuperează parola </a></p>
             </div>
             </body>
 
             </html>';
 
-            phpmailer ($email, $from, "Parohia Sf. Ambrozie București", "Înregistrare parohiaonline.com", $mesaj_email, $link_cerere='');
+            phpmailer ($email, $from, $parohia, "Înregistrare parohiaonline.com", $mesaj_email, $link_cerere='');
          
             $_SESSION['id'] = $user_id;
+            $_SESSION['parohie_id'] = $user['parohie_id'];
             $_SESSION['nume'] = $nume;
             $_SESSION['prenume'] = $prenume;
             $_SESSION['username'] = $username;
@@ -152,8 +150,13 @@ if (isset($_POST['login-btn'])) {
     if (empty($_POST['password'])) {
         $errors['password'] = 'Parola obligatorie';
     }
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    if (isset($_POST['username'])){
+        $username = $_POST['username'];
+    } else {$username = NULL;}
+    
+    if (isset($_POST['password'])){
+        $password = $_POST['password'];
+    } else {$password = NULL;}
 
     if (count($errors) === 0) {
         $query = "SELECT * FROM users WHERE username=? OR email=? LIMIT 1";
@@ -163,61 +166,66 @@ if (isset($_POST['login-btn'])) {
         if ($stmt->execute()) {
             $result = $stmt->get_result();
             $user = $result->fetch_assoc();
-            if (password_verify($password, $user['password'])) { // if password matches
-                $stmt->close();
 
-                $_SESSION['id'] = $user['id'];
-                $_SESSION['nume'] = $user['nume'];
-                $_SESSION['prenume'] = $user['prenume'];
-                $_SESSION['telefon'] = $user['telefon'];
-                $_SESSION['username'] = $user['username'];
-                $_SESSION['email'] = $user['email'];
-                $_SESSION['verified'] = $user['verified'];
-                $_SESSION['message'] = 'Ești logat!';
-                $_SESSION['type'] = 'alert-success';
-                $_SESSION['admin'] = $user['admin'];
-                 
-            
-                // Cazul 1. Fără cont și nelogat. Afișează mai jos formularul de login.
-                
-                // Cazul 2. Are înregistrat un cont
-                
-                if (!empty($_SESSION['id'])) {
-                
-                    $id = $_SESSION['id'];
-                    $sql = "SELECT * FROM users WHERE id= $id";
-                    $rezultate = mysqli_query ($conn, $sql);
-                    while ($data = mysqli_fetch_assoc($rezultate)){  
-                        $verificat = $data['verified'];
-                    }
-                
-                    // 1a) ..dar nu are emailul verificat
-                
-                        if ($verificat == 0) {
-                
-                            $mesaj_inregistrare = "Înregistrarea a avut loc cu succes! Pentru a valida adresa dvs. de email v-am trimis un link de confirmare. Vă rugăm să dați click pe acel link și apoi vă puteți loga în panoul de administrare. ";
-                
-                        } else {$mesaj_inregistrare = '';}
+            if  (isset( $_POST['username'] ) && isset( $_POST['password'] ) ) {
+
+                if (password_verify($password, $user['password'])) { // if password matches
+                    $stmt->close();
+
+                    $_SESSION['id'] = $user['id'];
+                    $_SESSION['parohie_id'] = $user['parohie_id'];
+                    $_SESSION['nume'] = $user['nume'];
+                    $_SESSION['prenume'] = $user['prenume'];
+                    $_SESSION['telefon'] = $user['telefon'];
+                    $_SESSION['username'] = $user['username'];
+                    $_SESSION['email'] = $user['email'];
+                    $_SESSION['verified'] = $user['verified'];
+                    $_SESSION['message'] = 'Ești logat!';
+                    $_SESSION['type'] = 'alert-success';
+    
                     
-                    // 1b) ..are emailul verificat și este admin
                 
-                        if ($verificat == 1 && $admin == 1 ) {
-                            header('Location:' . BASE_URL . 'admin/admin.php');
+                    // Cazul 1. Fără cont și nelogat. Afișează mai jos formularul de login.
+                    
+                    // Cazul 2. Are înregistrat un cont
+                    
+                    if (!empty($_SESSION['id'])) {
+                    
+                        $id = $_SESSION['id'];
+                        $sql = "SELECT * FROM users WHERE id= $id";
+                        $rezultate = mysqli_query ($conn, $sql);
+                        while ($data = mysqli_fetch_assoc($rezultate)){  
+                            $verificat = $data['verified'];
+                        }
+                    
+                        // 1a) ..dar nu are emailul verificat
+                    
+                            if ($verificat == 0) {
+                    
+                                $mesaj_inregistrare = "Înregistrarea a avut loc cu succes! Pentru a valida adresa dvs. de email v-am trimis un link de confirmare. Vă rugăm să dați click pe acel link și apoi vă puteți loga în panoul de administrare. ";
+                    
+                            } else {$mesaj_inregistrare = '';}
+                        
+                        // 1b) ..are emailul verificat și este admin
+                    
+                            if ($verificat == 1 && $admin == 1 ) {
+                                header('Location:' . BASE_URL . 'admin/admin.php');
+                            } 
+                    
+                        // 1c) ..are emailul verificat și NU este admin
+                    
+                        if ($verificat == 1) {
+                            // echo '<script> location.replace("../frontend.php?eveniment=botez"); </script>';
+                            header('Location:' . BASE_URL . 'admin-client.php');
                         } 
-                
-                     // 1c) ..are emailul verificat și NU este admin
-                
-                     if ($verificat == 1 && $admin == 0 ) {
-                        // echo '<script> location.replace("../frontend.php?eveniment=botez"); </script>';
-                        header('Location:' . BASE_URL . 'admin-client.php');
-                    } 
-                 }
-                 
+                    }
+                    
 
-                exit(0);
-            } else { // if password does not match
-               $errors['login_fail'] = "Utilizator sau parolă greșit(ă)";
-            }
+                    exit(0);
+                } else { // if password does not match
+                $errors['login_fail'] = "Utilizator sau parolă greșit(ă)";
+                }
+        }
         } else {
             $_SESSION['message'] = "Eroare de bază de date. Loginul a eșuat!";
             $_SESSION['type'] = "alert-danger";

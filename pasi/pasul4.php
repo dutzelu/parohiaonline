@@ -27,6 +27,7 @@ $ora = '';
     $prenume_tata = $_POST['prenume_tata'];
     $nume_mama = $_POST['nume_mama'];
     $prenume_mama = $_POST['prenume_mama'];
+    $tara = $_POST['tara'];
 
     $localitate =  $_POST['localitate'];
     $judetsector =  $_POST['judetsector'];
@@ -38,7 +39,7 @@ $ora = '';
     $apartament  =  $_POST['apartament'];
 
 
-    $adresa = $_POST['localitate'] . ', judet/sector ' . $_POST['judetsector'] . ', strada ' 
+    $adresa = $_POST['tara'] . " , " . $_POST['localitate'] . ', judet/sector ' . $_POST['judetsector'] . ', strada ' 
               . $_POST['strada'] . ' nr. ' . $_POST['numar'];
 
     if (!empty($bloc)) {
@@ -82,6 +83,7 @@ $ora = '';
     prenume_tata=?,
     nume_mama=?,
     prenume_mama=?,
+    tara=?,
     adresa=?,
     telefon=?,
     email=?,
@@ -97,20 +99,21 @@ $ora = '';
     localitate_nasi=?,  
     nume_cameraman=?,
     telefon_cameraman=?,
-    status=?
+    status=?,
+    parohie_id=?
     ';
 
     $stmt = $conn->prepare($query);
 
-    $stmt->bind_param('issssssssssssssssssssss', $user_id, $eveniment, $data_si_ora, $nume_tata, $prenume_tata, $nume_mama, $prenume_mama, $adresa, $telefon, $email, $nume_copil, $prenume_copil, $data_nasterii_copilului, $numar_certificat_nastere, $data_eliberarii_certificatului, $eliberat_de_primaria, $nume_botez_copil, $nume_nas, $nume_nasa, $localitate_nasi, $nume_cameraman, $telefon_cameraman, $status);
+    $stmt->bind_param('isssssssssssssssssssssssi', $user_id, $eveniment, $data_si_ora, $nume_tata, $prenume_tata, $nume_mama, $prenume_mama, $tara, $adresa, $telefon, $email, $nume_copil, $prenume_copil, $data_nasterii_copilului, $numar_certificat_nastere, $data_eliberarii_certificatului, $eliberat_de_primaria, $nume_botez_copil, $nume_nas, $nume_nasa, $localitate_nasi, $nume_cameraman, $telefon_cameraman, $status, $parohie_id);
     $result = $stmt->execute();
 
     $last_id = mysqli_insert_id($conn);
 
 
     $sql="UPDATE zile_stabilite
-    SET rezervari = rezervari - 1
-    WHERE tip_programare = 'botez' AND data_start LIKE '%$data_simpla%' ";
+    SET libere = libere - 1, rezervari = rezervari + 1
+    WHERE tip_programare = 'botez' AND (data_start LIKE '%$data_simpla%' AND parohie_id = $parohie_id) ";
 
     $rezultate = mysqli_query ($conn, $sql);
 

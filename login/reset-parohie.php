@@ -153,13 +153,13 @@ if (isset($_POST['reset-btn'])) {
        
        ?>
         <div class="form-group">
-            <input type="number" name="code" class="form-control form-control-lg" placeholder = "Cod de confirmare">
+            <input type="number" name="code" class="form-control form-control-lg" placeholder = "Cod de confirmare" required>
           </div>
           <div class="form-group">
-            <input type="password" name="parola_noua" class="form-control form-control-lg" placeholder = "Parola nouă">
+            <input type="password" name="parola_noua" class="form-control form-control-lg" placeholder = "Parola nouă" required>
           </div>
           <div class="form-group">
-            <input type="password" name="confirma_parola" class="form-control form-control-lg" placeholder = "Confirmă parola">
+            <input type="password" name="confirma_parola" class="form-control form-control-lg" placeholder = "Confirmă parola" required>
           </div>
           <div class="form-group">
             <button type="submit" name="reset-btn" class="btn btn-lg btn-block">Schimbă parola</button>

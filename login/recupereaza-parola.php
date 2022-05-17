@@ -103,14 +103,15 @@ if (isset($_POST['recupereaza-parohie'])) {
 
         <body>
           <div class="wrapper">
-            <p>Ați ales să vă resetați parola contului de pe site-ul parohiei. Codul pentru a continua procesul de schimbare a parolei este: <strong>' . $code . ' <strong></p>
+            <p>Ați ales să vă resetați parola contului de pe site-ul parohiei.</p>
+            <p>Codul dvs. este: <strong>' . $code . ' <strong></p>
                   
           </div>
         </body>
 
         </html>';
 
-        phpmailer ($email, $from, "Parohia Sf. Ambrozie București", "Cod recuperare parolă", $mesaj_email, $link_cerere='');
+        phpmailer ($email, $from, "Parohia Sf. Ambrozie București", "Cod recuperare parolă paroniaonline.com", $mesaj_email, $link_cerere='');
 
         echo '<script> location.replace("reset-parohie.php?id=' . $id_user_email . '&email=ok"); </script>';
 

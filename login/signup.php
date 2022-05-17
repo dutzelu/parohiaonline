@@ -33,7 +33,7 @@
         <form action="signup.php" method="post">
 
           <div class="form-group">
-            <select name="parohia" class="form-control form-control-lg js-example-basic-single " >
+            <select name="parohia" class="form-control form-control-lg js-select " >
             <option hidden disabled selected value>Alege parohia ta</option>
 
             <?php
@@ -79,16 +79,16 @@
           </div>
         </form>
         
-        <p>Ai deja un cont? <a href="../admin/index.php">Login</a></p>
+        <p>Ai deja un cont? <a href="../login/login.php">Login</a></p>
       </div>
     </div>
 
   </div>
 
 
-  <script>
+<script>
       $(document).ready(function() {
-         $('.js-example-basic-single').select2();
+         $('.js-select').select2();
        });
 </script>
 

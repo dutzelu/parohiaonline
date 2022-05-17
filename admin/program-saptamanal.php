@@ -48,7 +48,7 @@
                     
                     <div class="input-group mb-2">
                         <span class="input-group-text">Alege o slujbă</span>
-                        <select class="form-control" name="slujba" id="slujba" value="Sfânta Liturghie">
+                        <select class="form-control js-select" name="slujba" id="slujba" value="Sfânta Liturghie">
                             <optgroup label="Liturgice">
                                 <option value="Sfânta Liturghie">Sfânta Liturghie</option>
                                 <option value="Vecernia">Vecernia</option>
@@ -145,6 +145,11 @@
 
 </div>
 
+<script>
+      $(document).ready(function() {
+         $('.js-select').select2();
+       });
+</script>
 
 
 </body>

@@ -12,41 +12,64 @@ if (isset($_GET['tip'])) {
         
         case 'botez':
             $tip_complet = "Taina Botezului";
-            $id_articol = 1;
+            $tip_articol = 1;
             break;
             
         case 'cununie':
             $tip_complet = "Taina Cununiei";
-            $id_articol = 2;
+            $tip_articol = 2;
             break;
             
         case 'spovedanie':
             $tip_complet = "Taina Spovedaniei";
-            $id_articol = 3;
+            $tip_articol = 3;
             break;
     
         case 'sfestanie':
-            $id_articol = 4;
+            $tip_articol = 4;
             $tip_complet = "Sfeștania";
             break;
         
         case 'parastas':
             $tip_complet = "Parastas";
-            $id_articol = 5;
+            $tip_articol = 5;
             break;
     }
 }
 
+$query = "Select * from articole WHERE parohie_id = ? AND tip_articol = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param('ii', $id, $tip_articol);
+$result = $stmt->execute();
+$result = $stmt->get_result();
+$rowcount = mysqli_num_rows($result); 
 
 
-if (isset($_POST['info-slujbe'])) {
-    $continut = $_POST['continut'];
+if($rowcount == 0) {
+    
+    if (isset($_POST['info-slujbe'])) {
+        $continut = $_POST['continut'];
+    
+        $query = "INSERT INTO articole (parohie_id, titlu, continut, tip_articol) VALUES (?,?,?,?)";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param('issi', $id, $tip_complet, $continut, $tip_articol);
+        $result = $stmt->execute();
+    }
+} else {
 
-    $query = "UPDATE articole SET continut = ? WHERE id = ? AND parohie_id = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param('sii', $continut, $id_articol, $id);
-    $result = $stmt->execute();
+    if (isset($_POST['info-slujbe'])) {
+        $continut = $_POST['continut'];
+    
+        $query = "UPDATE articole SET titlu = ?, continut = ? WHERE parohie_id = ? AND tip_articol = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param('ssii', $tip_complet, $continut, $id, $tip_articol);
+        $result = $stmt->execute();
+    }
+
+
 }
+
+
 ?>
 
 <title>Info slujbe</title>
@@ -86,9 +109,9 @@ if (isset($_POST['info-slujbe'])) {
                         <div class="mb-2">
                             <textarea name="continut" placeholder="Adăugați aici informațiile utile pentru fiecare creștin înainte de a participa la această slujbă.">'; 
                             
-                            $query = "Select * FROM articole WHERE id = ? AND parohie_id = ?";
+                            $query = "Select * FROM articole WHERE parohie_id = ? AND tip_articol = ?";
                             $stmt = $conn->prepare($query);
-                            $stmt->bind_param('ii', $id_articol, $id);
+                            $stmt->bind_param('ii', $id, $tip_articol);
                             $result = $stmt->execute();
                             $result  = $stmt->get_result();
                             while ($row = mysqli_fetch_assoc($result)) { 

@@ -1,10 +1,6 @@
 <?php include 'header-frontend.php';
 $user_id = $_SESSION['id'];
 
-// if (!empty($_SESSION['id']) && $frontend == 0) {
-//     echo '<script> location.replace("frontend.php?pentru=botez"); </script>';
-// } 
-
 ;?>
 
   <title><?php echo $eveniment; ?></title>

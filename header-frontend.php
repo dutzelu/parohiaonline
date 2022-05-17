@@ -5,6 +5,9 @@ setlocale(LC_TIME, array('ro.utf-8', 'ro_RO.UTF-8', 'ro_RO.utf-8', 'ro', 'ro_RO'
 include __DIR__ .'/controllers/authController.php';
 include __DIR__ .'/includes/functions.php';
 
+if (isset($_SESSION['parohie_id'])) {
+  $parohie_id = $_SESSION['parohie_id'];
+}
 
 $nume_fisier = basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']);
 $numar_pas = (int) filter_var($nume_fisier, FILTER_SANITIZE_NUMBER_INT);
@@ -57,17 +60,11 @@ $link_rezervare = "rezerva.php?year=" . $selected_year . "&month=" . $selected_m
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> 
-
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script src="<?php echo BASE_URL . "/lightbox/dist/js/lightbox.js";?>"></script>
-
   <script src="<?php echo BASE_URL . "/js/main.js";?>"></script>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
   <script src="https://kit.fontawesome.com/2211423278.js" crossorigin="anonymous"></script>

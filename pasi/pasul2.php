@@ -43,7 +43,7 @@ if (strlen($zi)==1) {
 
 $an_luna_zi = $year . '-' . $month . '-' . $zi;
 
-$sql="SELECT * FROM zile_stabilite WHERE tip_programare LIKE '$pentru' AND data_start LIKE '%$an_luna_zi%' ORDER BY DATE(data_start) ASC";
+$sql="SELECT * FROM zile_stabilite WHERE tip_programare LIKE '$pentru' AND (data_start LIKE '%$an_luna_zi%' AND parohie_id = $parohie_id) ORDER BY DATE(data_start) ASC";
 $rezultate = mysqli_query ($conn, $sql);
 
 
@@ -65,19 +65,18 @@ foreach ($ore as $key => $ora) {
   
   $ora = $data_start_fara_ora . ' ' . $ora . ':00';
   
-  $query = 'SELECT * FROM programari_botez WHERE data_si_ora=?';
+  $query = 'SELECT * FROM programari_botez WHERE data_si_ora=? AND parohie_id = ?';
   $stmt = $conn->prepare($query);
-  $stmt->bind_param('s', $ora);
+  $stmt->bind_param('si', $ora, $parohie_id);
   $result = $stmt->execute();
   $result = $stmt->get_result();
   
   while($data = $result->fetch_assoc()) {
-    
+
     array_push($ore_rezervate, date("H:i", strtotime($data['data_si_ora'])));
     
   }
 }
-
 
 // ce ore rămân liber aflăm prin intersecția array-urilor
 $ore_libere = array_diff ($ore, $ore_rezervate);

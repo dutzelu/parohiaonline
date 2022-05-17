@@ -55,7 +55,7 @@ if (strlen($zi)==1) {
 
 $an_luna_zi = $year . '-' . $month . '-' . $zi;
 
-$sql="SELECT * FROM zile_stabilite WHERE tip_programare LIKE '$pentru' AND data_start LIKE '%$an_luna_zi%' ORDER BY DATE(data_start) ASC";
+$sql="SELECT * FROM zile_stabilite WHERE tip_programare LIKE '$pentru' AND (data_start LIKE '%$an_luna_zi%' AND parohie_id = $parohie_id) ORDER BY DATE(data_start) ASC";
 $rezultate = mysqli_query ($conn, $sql);
 
 while ($data = mysqli_fetch_assoc($rezultate)){   
@@ -64,10 +64,10 @@ while ($data = mysqli_fetch_assoc($rezultate)){
   $data_start_fara_ora = date("Y-m-d", strtotime($data["data_start"]));
   $ora_start = date("H:i", strtotime($data["data_start"]));
   $ora_final = date("H:i", strtotime($data["data_final"]));
-  
-  
-  
-  $ore = create_time_range($ora_start, $ora_final, '60 mins');
+  $intervalul = $data['intervalul'];
+  $intervalul = $intervalul . ' mins';
+
+  $ore = create_time_range($ora_start, $ora_final, $intervalul, $format = '24');
   array_pop($ore);
   
   ?>
@@ -84,9 +84,9 @@ foreach ($ore as $key => $ora) {
   
   $ora = $data_start_fara_ora . ' ' . $ora . ':00';
   
-  $query = 'SELECT * FROM programari_botez WHERE data_ora_cateheza=?';
+  $query = 'SELECT * FROM programari_botez WHERE data_ora_cateheza=? AND parohie_id = ?';
   $stmt = $conn->prepare($query);
-  $stmt->bind_param('s', $ora);
+  $stmt->bind_param('si', $ora, $parohie_id);
   $result = $stmt->execute();
   $result = $stmt->get_result();
   

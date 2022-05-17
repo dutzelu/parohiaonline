@@ -12,9 +12,9 @@ if (isset($_GET['id'])) {
 
     $last_id = (int)$_GET['id'];
 
-    $sql = 'SELECT * FROM programari_botez WHERE id=?';
+    $sql = 'SELECT * FROM programari_botez WHERE id=? AND parohie_id = ?';
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param('i', $last_id);
+    $stmt->bind_param('ii', $last_id, $parohie_id);
     $result = $stmt->execute();
     $result = $stmt->get_result();
 
@@ -33,8 +33,6 @@ if (isset($_GET['id'])) {
         $nume_copil = $data['nume_copil'];
         $prenume_copil = $data['prenume_copil'];
         $nume_si_prenume_copil = $nume_copil . '-' . $prenume_copil;
-
-        
 
     }
 }
@@ -109,7 +107,7 @@ if (isset($_POST['ataseaza'])) {
 $an_si_luna = $selected_year . '-' . $selected_month;
 $zile_programate = [];
 
-$sql="SELECT * FROM zile_stabilite WHERE tip_programare LIKE '$pentru' AND data_start LIKE '%$an_si_luna%' ";
+$sql="SELECT * FROM zile_stabilite WHERE tip_programare LIKE '$pentru' AND (data_start LIKE '%$an_si_luna%' AND parohie_id = $parohie_id)";
 $rezultate = mysqli_query ($conn, $sql);
 
 while ($data = mysqli_fetch_assoc($rezultate)){   

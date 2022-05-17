@@ -127,12 +127,13 @@ $ora = '';
     localitate_nasi=?,  
     nume_cameraman=?,
     telefon_cameraman=?,
-    status=?
+    status=?,
+    parohie_id=?
     ';
 
     $stmt = $conn->prepare($query);
 
-    $stmt->bind_param('isssssssssssssssssss', $user_id, $eveniment, $data_si_ora, $nume_mire, $prenume_mire, $nume_mireasa, $prenume_mireasa, $adresa_mire, $adresa_mireasa, $telefon, $email, $numar_certificat_casatorie, $data_eliberarii_certificatului, $eliberat_de_primaria,  $nume_nas, $nume_nasa, $localitate_nasi, $nume_cameraman, $telefon_cameraman, $status);
+    $stmt->bind_param('isssssssssssssssssssi', $user_id, $eveniment, $data_si_ora, $nume_mire, $prenume_mire, $nume_mireasa, $prenume_mireasa, $adresa_mire, $adresa_mireasa, $telefon, $email, $numar_certificat_casatorie, $data_eliberarii_certificatului, $eliberat_de_primaria,  $nume_nas, $nume_nasa, $localitate_nasi, $nume_cameraman, $telefon_cameraman, $status, $parohie_id);
     $result = $stmt->execute();
 
     $last_id = mysqli_insert_id($conn);
@@ -140,7 +141,7 @@ $ora = '';
 
     $sql="UPDATE zile_stabilite
     SET rezervari = rezervari - 1
-    WHERE tip_programare = 'cununie' AND data_start LIKE '%$data_simpla%' ";
+    WHERE tip_programare = 'cununie' AND (data_start LIKE '%$data_simpla%' AND parohie_id = $parohie_id) ";
 
     $rezultate = mysqli_query ($conn, $sql);
 

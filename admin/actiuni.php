@@ -2,18 +2,7 @@
 
 include "../admin/header-admin.php";
 
-$id = $_SESSION['id'];
-
-$query = "SELECT * FROM users WHERE id = ?";
-$stmt = $conn->prepare($query);
-$stmt->bind_param('i', $id);
-$result = $stmt->execute();
-$result = $stmt->get_result();
-
-while ($data = mysqli_fetch_assoc($result)){  
-    $admin = $data['admin'];
-}
-
+ 
 // dacă nu e admin
 
     if (isset($_GET['id']) && isset($_GET['month']) && isset($_GET['year'])) {
@@ -21,9 +10,9 @@ while ($data = mysqli_fetch_assoc($result)){
         $month = $_GET['month'];
         $year = $_GET['year'];
 
-    $sql="DELETE FROM zile_stabilite where id = ?";
+    $sql="DELETE FROM zile_stabilite WHERE id = ? AND parohie_id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param('i', $id_rezervare);
+    $stmt->bind_param('ii', $id_rezervare, $id);
     $result = $stmt->execute();  
 
 
@@ -42,50 +31,50 @@ while ($data = mysqli_fetch_assoc($result)){
         $eveniment = $_GET['eveniment'];
 
         if ($eveniment=="programari_botez") {
-            $sql="DELETE FROM programari_botez WHERE id = ?";
+            $sql="DELETE FROM programari_botez WHERE id = ? AND parohie_id = ?";
 
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param('i', $stergeid);
+            $stmt->bind_param('ii', $stergeid, $id);
             $result = $stmt->execute();  
         
             echo '<script> location.replace("registru.php?eveniment=programari_botez&sters=ok"); </script>';
         }
 
         if ($eveniment=="programari_cununie") {
-            $sql="DELETE FROM programari_cununie WHERE id = ?";
+            $sql="DELETE FROM programari_cununie WHERE id = ? AND parohie_id = ?";
 
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param('i', $stergeid);
+            $stmt->bind_param('ii', $stergeid, $id);
             $result = $stmt->execute();  
         
             echo '<script> location.replace("registru.php?eveniment=programari_cununie&sters=ok"); </script>';
         }
 
         if ($eveniment=="programari_spovedanie") {
-            $sql="DELETE FROM programari_spovedanie WHERE id = ?";
+            $sql="DELETE FROM programari_spovedanie WHERE id = ? AND parohie_id = ?";
 
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param('i', $stergeid);
+            $stmt->bind_param('ii', $stergeid, $id);
             $result = $stmt->execute();  
         
             echo '<script> location.replace("registru.php?eveniment=programari_spovedanie&sters=ok"); </script>';
         }
 
         if ($eveniment=="pomelnic") {
-            $sql="DELETE FROM pomelnice WHERE id = ?";
+            $sql="DELETE FROM pomelnice WHERE id = ? AND parohie_id = ?";
              
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param('i', $stergeid);
+            $stmt->bind_param('ii', $stergeid, $id);
             $result = $stmt->execute();  
         
             echo '<script> location.replace("pomelnice.php?sters=ok"); </script>';
         }
 
         if ($eveniment=="anunt") {
-            $sql="DELETE FROM articole WHERE id = ?";
+            $sql="DELETE FROM articole WHERE id = ? AND parohie_id = ?";
              
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param('i', $stergeid);
+            $stmt->bind_param('ii', $stergeid, $id);
             $result = $stmt->execute();  
         
 
@@ -93,10 +82,10 @@ while ($data = mysqli_fetch_assoc($result)){
         }
 
         if ($eveniment=="participare_slujbe") {
-            $sql="DELETE FROM participare_slujbe WHERE id = ?";
+            $sql="DELETE FROM participare_slujbe WHERE id = ? AND parohie_id = ?";
              
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param('i', $stergeid);
+            $stmt->bind_param('ii', $stergeid, $id);
             $result = $stmt->execute();  
         
 
@@ -104,10 +93,10 @@ while ($data = mysqli_fetch_assoc($result)){
         }
 
         if ($eveniment=="membri") {
-            $sql="DELETE FROM users WHERE id = ?";
+            $sql="DELETE FROM users WHERE id = ? AND parohie_id = ?";
              
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param('i', $stergeid);
+            $stmt->bind_param('ii', $stergeid, $id);
             $result = $stmt->execute();  
         
 

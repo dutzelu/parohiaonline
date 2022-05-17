@@ -63,16 +63,33 @@ $ora = '';
 
      <p>Domiciliați în </p>
 
+
+     <div class="form-group mb-3">
+        
+     </div>
+
      <div class="row">
+
+        <div class="col-sm">
+            <p> <select name="tara" class="form-control js-select" required><?php include "../lista-tarilor.php";?></select></p>
+        </div>
+
         <div class="col-sm">
             <p><input type="text" name="localitate" class="form-control" placeholder="Localitatea *" required></p>
         </div>
-        <div class="col-sm">
-            <p><input type="text" name="judetsector" class="form-control" placeholder="Județul / Sectorul *" required></p>
-        </div>  
-    </div>
-     <p><input type="text" name="strada" class="form-control" placeholder="Strada *" required></p>
 
+     </div>
+
+     <div class="row">
+        <div class="col-sm">
+            <p><input type="text" name="judetsector" class="form-control" placeholder="Județul / Sectorul / Regiunea " required></p>
+        </div>
+        <div class="col-sm">
+            <p><input type="text" name="strada" class="form-control" placeholder="Strada *" required></p>
+        </div>
+    </div>  
+
+ 
      <div class="row">
 
         <div class="col-sm">
@@ -199,6 +216,13 @@ $ora = '';
 </div>
   
 </div>
+
+<script>
+      $(document).ready(function() {
+         $('.js-select').select2();
+       });
+</script>
+
 
 </body>
 </html>

@@ -57,7 +57,7 @@ if (isset($_POST['login-parohie'])) {
 
     if (count($errors) === 0) {
 
-        $query = "SELECT * FROM parohii WHERE username=? OR email=? LIMIT 1";
+        $query = "SELECT * FROM parohii WHERE username=? OR email=?";
         $stmt = $conn->prepare($query);
         $stmt->bind_param('ss', $username, $username);
         $stmt->execute();
@@ -86,7 +86,7 @@ if (isset($_POST['login-parohie'])) {
                     }
     
             }
-                    // if password does not match
+                    // dacă nu e contul verificat
 
             
                 if ($verificat == 1) {
