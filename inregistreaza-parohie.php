@@ -1,10 +1,11 @@
 <?php 
-include "header-frontend.php";
-include "update-inregistrare-parohie.php";
+
+include "includes/functions.php";
+include "controllers/authController-parohie.php";
 
 if (isset($_GET['inregistrare'])) {
   $mesaj_inregistrare = "Înregistrarea a avut loc cu succes! Pentru a valida adresa dvs. de email v-am trimis un link de confirmare. Vă rugăm să dați click pe acel link și apoi vă puteți loga în panoul de administrare. ";
-}
+} else {$mesaj_inregistrare = '';}
 
 ?>
 

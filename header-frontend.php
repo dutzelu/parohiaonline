@@ -5,6 +5,11 @@ setlocale(LC_TIME, array('ro.utf-8', 'ro_RO.UTF-8', 'ro_RO.utf-8', 'ro', 'ro_RO'
 include __DIR__ .'/controllers/authController.php';
 include __DIR__ .'/includes/functions.php';
 
+// dacă userul nu este logat pagina nu se încarcă
+if ( empty ($_SESSION['id']) ) {
+  die;
+}
+
 if (isset($_SESSION['parohie_id'])) {
   $parohie_id = $_SESSION['parohie_id'];
 }

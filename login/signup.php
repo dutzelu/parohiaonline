@@ -1,4 +1,7 @@
-<?php include '../header-frontend.php' ?>
+<?php 
+include '../controllers/authController.php';
+include '../includes/functions.php'; 
+?>
 
 <!DOCTYPE html>
 <html lang="en">

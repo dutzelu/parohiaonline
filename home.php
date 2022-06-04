@@ -1,8 +1,8 @@
 <?php include "header-frontend.php"; 
  
-
-
-$user_id = $_SESSION['id'];
+if (!empty($_SESSION['id'])) {
+    $user_id = $_SESSION['id'];
+}
   
 ?>
 

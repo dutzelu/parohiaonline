@@ -5,6 +5,9 @@ setlocale(LC_TIME, array('ro.utf-8', 'ro_RO.UTF-8', 'ro_RO.utf-8', 'ro', 'ro_RO'
 include '../controllers/authController.php';
 include '../includes/functions.php';
  
+if ( empty ($_SESSION['id']) ) {
+    die;
+  }
 
 setlocale(LC_ALL, 'ro_RO');
 

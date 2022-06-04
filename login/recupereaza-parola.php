@@ -75,7 +75,7 @@ if (isset($_POST['recupereaza-parohie'])) {
       {
       
         // generez un cod de 6 cifre random și-l trimit pe email
-        $code = mt_rand(100000,999999); 
+        $code = mt_rand(102000,999999); 
 
         $sql="UPDATE parohii SET code = $code WHERE email = '$email';";
         mysqli_query ($conn, $sql);
