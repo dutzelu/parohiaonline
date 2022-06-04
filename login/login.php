@@ -40,6 +40,10 @@ $mesaj_inregistrare = '';
           $mesaj_inregistrare = "Înregistrarea a avut loc cu succes! Pentru a valida adresa dvs. de email v-am trimis un link de confirmare. Vă rugăm să dați click pe acel link și apoi vă puteți loga în panoul de administrare. ";
         }
 
+        if (isset($_GET['blocat'])) {
+          $mesaj_inregistrare = '<p class="btn btn-outline-danger">Userul dvs. a fost blocat temporar.</p>';
+        }
+
         if (isset($_GET['verificat'])) {
           if ($_GET ['verificat'] = 'nu') {$mesaj_inregistrare = "Pentru a vă loga validați adresa dvs. de email, v-am trimis un link de confirmare.";}
           if ($_GET ['verificat'] = 'ok') {$mesaj_inregistrare = "Adresa dvs. de email a fost verificată cu succes.";}

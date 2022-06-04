@@ -179,10 +179,15 @@ if (isset($_POST['login-btn'])) {
             if ($campuri == 1) {
 
                 $verificat = $user['verified'];
+                $blocat = $user['blocat'];
 
                 // și emailul NU este verificat
                 if ($verificat == 0) {
                     echo '<script> location.replace("login.php?verificat=nu"); </script>';
+                }    
+
+                if ($blocat == 1) {
+                    echo '<script> location.replace("login.php?blocat=da"); </script>';
                 }    
 
                 // și emailul ESTE verificat
