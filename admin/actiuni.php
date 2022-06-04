@@ -60,6 +60,18 @@ include "../admin/header-admin.php";
             echo '<script> location.replace("registru.php?eveniment=programari_spovedanie&sters=ok"); </script>';
         }
 
+        if ($eveniment=="programari_parastas") {
+            $sql="DELETE FROM programari_parastas WHERE id = ? AND parohie_id = ?";
+
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('ii', $stergeid, $id);
+            $result = $stmt->execute();  
+        
+            echo '<script> location.replace("registru.php?eveniment=programari_parastas&sters=ok"); </script>';
+        }
+
+ 
+
         if ($eveniment=="pomelnic") {
             $sql="DELETE FROM pomelnice WHERE id = ? AND parohie_id = ?";
              

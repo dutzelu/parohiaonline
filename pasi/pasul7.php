@@ -20,22 +20,29 @@ $numar = '';
     $ora_cateheza = $_POST['ora'];
 }
 
- 
+if (isset($_GET['id'])) {
    $id_prog = $_GET['id'];
-
+}
  
 $data_ora_cateheza = $year . '-' . $month . '-' . $zi . ' ' . $ora_cateheza . ":00";
 $data_cateheza = $year . '-' . $month . '-' . $zi;
 
 var_dump($data_ora_cateheza);
-
+echo "<br>";
+var_dump($id_prog);
 
 if ($pentru == 'cateheza_botez') {
  
-    $query = "UPDATE programari_botez SET data_ora_cateheza = ? WHERE id = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param('si', $data_ora_cateheza, $id_progr);
-    $result = $stmt->execute();
+    // $query = "UPDATE programari_botez SET data_ora_cateheza = ? WHERE id = ?";
+    // $stmt = $conn->prepare($query);
+    // $stmt->bind_param('si', $status, $id);
+    // $result = $stmt->execute();
+    // $result = $stmt->get_result();
+    
+    $query = "UPDATE programari_botez SET data_ora_cateheza = '$data_ora_cateheza'  WHERE id =  $id_prog";
+    var_dump ( $query);
+    $rezultate = mysqli_query ($conn, $query);
+
 
     $sql="UPDATE zile_stabilite
     SET libere = libere - 1, rezervari = rezervari + 1
@@ -48,10 +55,8 @@ if ($pentru == 'cateheza_botez') {
 
 if ($pentru == 'cateheza_cununie') {
 
-    $query = "UPDATE programari_cununie SET data_ora_cateheza = ? WHERE id = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param('si', $data_ora_cateheza, $id_progr);
-    $result = $stmt->execute();
+    $query = "UPDATE programari_cununie SET data_ora_cateheza = '$data_ora_cateheza' WHERE id = $id_prog";
+    $rezultate = mysqli_query ($conn, $query);
 
     $sql="UPDATE zile_stabilite
     SET libere = libere - 1, rezervari = rezervari + 1

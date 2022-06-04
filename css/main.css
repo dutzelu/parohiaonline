@@ -710,5 +710,5 @@ ul.anunt li .titlu-anunt {
   line-height: 20px;
   margin-bottom: 7px;
 }
-ul.anunt li .continut {color:#AAA!important; line-height:18px; font-size:14px;}
+ul.anunt li .continut {color:#AAA!important; line-height:18px; font-size:14px;word-break: break-all;}
 ul.anunt li .data {font-size:12px;color:#AAA!important; }

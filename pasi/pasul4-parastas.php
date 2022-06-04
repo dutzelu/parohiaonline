@@ -48,7 +48,7 @@ $ora = '';
 
     $stmt = $conn->prepare($query);
 
-    $stmt->bind_param('isssssssssi', $user_id, $eveniment, $nume, $prenume, $adresa, $telefon, $email, $mesaj, $data_si_ora, $status, $id);
+    $stmt->bind_param('isssssssssi', $user_id, $eveniment, $nume, $prenume, $adresa, $telefon, $email, $mesaj, $data_si_ora, $status, $parohie_id);
     $result = $stmt->execute();
 
     $last_id = mysqli_insert_id($conn);
@@ -56,7 +56,7 @@ $ora = '';
 
     $sql="UPDATE zile_stabilite
     SET rezervari = rezervari - 1
-    WHERE tip_programare = 'botez' AND (data_start LIKE '%$data_simpla%' AND parohie_id = $id)";
+    WHERE tip_programare = 'botez' AND (data_start LIKE '%$data_simpla%' AND parohie_id = $parohie_id)";
 
     $rezultate = mysqli_query ($conn, $sql);
 

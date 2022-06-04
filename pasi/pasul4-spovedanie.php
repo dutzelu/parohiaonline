@@ -33,19 +33,19 @@ $ora = '';
   
     $query = 'INSERT INTO programari_spovedanie SET 
     user_id=?, 
+    parohie_id=?,
     eveniment=?,
     nume=?,
     prenume=?,
     telefon=?,
     email=?,
     data_si_ora=?,
-    status=?,
-    parohie_id=?
+    status=?
     ';
 
     $stmt = $conn->prepare($query);
 
-    $stmt->bind_param('isssssssi', $user_id, $eveniment, $nume, $prenume, $telefon, $email, $data_si_ora, $status, $id);
+    $stmt->bind_param('iisssssss', $user_id, $parohie_id, $eveniment, $nume, $prenume, $telefon, $email, $data_si_ora, $status);
     $result = $stmt->execute();
 
     $last_id = mysqli_insert_id($conn);
@@ -53,7 +53,7 @@ $ora = '';
 
     $sql="UPDATE zile_stabilite
     SET rezervari = rezervari - 1
-    WHERE tip_programare = 'spovedanie' AND (data_start LIKE '%$data_simpla%' AND parohie_id = $id) ";
+    WHERE tip_programare = 'spovedanie' AND (data_start LIKE '%$data_simpla%' AND parohie_id = $parohie_id) ";
 
     $rezultate = mysqli_query ($conn, $sql);
 

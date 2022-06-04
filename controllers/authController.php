@@ -209,7 +209,7 @@ if (isset($_POST['login-btn'])) {
                         $_SESSION['message'] = 'Ești logat!';
                         $_SESSION['type'] = 'alert-success';
 
-                        echo '<script> location.replace("../home.php"); </script>';
+                        echo '<script> location.replace("../admin-client.php"); </script>';
                     } else { 
                         // dacă parolele NU coincid
                             $errors['login_fail'] = "Utilizator sau parolă greșit(ă)";

@@ -21,11 +21,11 @@
     <a class="pomelnic" href="<?php echo BASE_URL . 'pomelnic-online.php';?>">Pomelnic online</a>
     <button class="dropdown-btn">Informații utile<i class="fas fa-chevron-down" style="margin-left:10px; font-size:10px"></i></button>
     <ul class="dropdown-container">
-      <li><a class="info" href="<?php echo BASE_URL . 'info-utile.php?id=1';?>">Info Botez</a></li>
-      <li><a class="info" href="<?php echo BASE_URL . 'info-utile.php?id=2';?>">Info Cununiei</a></li>
-      <li><a class="info" href="<?php echo BASE_URL . 'info-utile.php?id=3';?>">Info Spovedanie</a></li>
-      <li><a class="info" href="<?php echo BASE_URL . 'info-utile.php?id=4';?>">Info Sfeștanie</a></li>
-      <li><a class="info" href="<?php echo BASE_URL . 'info-utile.php?id=5';?>">Info Parastas</a></li>
+      <li><a class="info" href="<?php echo BASE_URL . 'info-utile.php?tip=1';?>">Info Botez</a></li>
+      <li><a class="info" href="<?php echo BASE_URL . 'info-utile.php?tip=2';?>">Info Cununiei</a></li>
+      <li><a class="info" href="<?php echo BASE_URL . 'info-utile.php?tip=3';?>">Info Spovedanie</a></li>
+      <li><a class="info" href="<?php echo BASE_URL . 'info-utile.php?tip=4';?>">Info Sfeștanie</a></li>
+      <li><a class="info" href="<?php echo BASE_URL . 'info-utile.php?tip=5';?>">Info Parastas</a></li>
     </ul>
     <a class="login" href="<?php echo BASE_URL . 'login/logout.php';?>">Logout</a>
         

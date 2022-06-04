@@ -22,6 +22,7 @@ if (isset($_POST['pomelnic'])) {
 
     $query = 'INSERT INTO pomelnice 
     SET 
+        parohie_id = ?,
         tip_pomelnic=?,
         lista_nume=?,
         durata_in_zile=?,
@@ -34,7 +35,7 @@ if (isset($_POST['pomelnic'])) {
 
     $stmt = $conn->prepare($query);
 
-    $stmt->bind_param('isissssi', $tip_pomelnic, $lista_nume, $durata_in_zile, $nume_si_prenume, $telefon, $email, $data_inceperii, $cu_donatie);
+    $stmt->bind_param('iisissssi', $parohie_id, $tip_pomelnic, $lista_nume, $durata_in_zile, $nume_si_prenume, $telefon, $email, $data_inceperii, $cu_donatie);
     $result = $stmt->execute();
 
 
