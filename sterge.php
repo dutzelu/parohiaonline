@@ -2,9 +2,6 @@
 
 
 include "header-frontend.php";
-$user_id = $_SESSION['id'];
-
-
     
     if (isset($_GET['stergeid']) && isset($_GET['eveniment'])) {
 

@@ -1,7 +1,4 @@
-<?php include 'header-frontend.php';
-$user_id = $_SESSION['id'];
-
-;?>
+<?php include 'header-frontend.php';?>
 
   <title><?php echo $eveniment; ?></title>
   

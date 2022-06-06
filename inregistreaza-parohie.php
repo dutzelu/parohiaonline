@@ -17,6 +17,11 @@ if (isset($_GET['inregistrare'])) {
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+  
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
   <link rel="stylesheet" href="css/main.css">
   <title>Parohia Online - Login</title>
 </head>
@@ -27,7 +32,7 @@ if (isset($_GET['inregistrare'])) {
 
   <div class="row">
       <div class="col-md-6 offset-md-6 form-wrapper auth">
-        <p><img src="images/logo-parohiaonline.png" class="logo"/></p>
+      <p><a href="<?php echo BASE_URL; ?>"><img src="<?php echo BASE_URL . 'images/logo-parohiaonline.png';?>" class="logo"/></a></p>
       
         <h3 class="text-center form-title">Înregistrare parohie nouă</h3>
 

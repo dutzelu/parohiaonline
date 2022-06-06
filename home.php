@@ -1,10 +1,4 @@
-<?php include "header-frontend.php"; 
- 
-if (!empty($_SESSION['id'])) {
-    $user_id = $_SESSION['id'];
-}
-  
-?>
+<?php include "header-frontend.php"; ?>
 
 <title>Programările mele</title>
 </head>
@@ -78,7 +72,7 @@ if (!empty($_SESSION['id'])) {
                               ) x ";
 
                             $stmt = $conn->prepare($query_count);
-                            $stmt->bind_param('iii', $_SESSION['id'], $_SESSION['id'], $_SESSION['id']);
+                            $stmt->bind_param('iii', $user_id, $user_id, $user_id);
                             $rez = $stmt->execute();
                             $rez = $stmt->get_result();
  
@@ -110,7 +104,7 @@ if (!empty($_SESSION['id'])) {
                             LIMIT ?, ?";
 
                             $stmt = $conn->prepare($query);
-                            $stmt->bind_param('iiiii', $_SESSION['id'], $_SESSION['id'], $_SESSION['id'], $offset, $total_records_per_page);
+                            $stmt->bind_param('iiiii', $user_id, $user_id, $user_id, $offset, $total_records_per_page);
                             $result = $stmt->execute();
                             $result = $stmt->get_result();
 

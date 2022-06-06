@@ -27,18 +27,10 @@ if (isset($_GET['id'])) {
 $data_ora_cateheza = $year . '-' . $month . '-' . $zi . ' ' . $ora_cateheza . ":00";
 $data_cateheza = $year . '-' . $month . '-' . $zi;
 
-var_dump($data_ora_cateheza);
-echo "<br>";
-var_dump($id_prog);
-
+ 
 if ($pentru == 'cateheza_botez') {
  
-    // $query = "UPDATE programari_botez SET data_ora_cateheza = ? WHERE id = ?";
-    // $stmt = $conn->prepare($query);
-    // $stmt->bind_param('si', $status, $id);
-    // $result = $stmt->execute();
-    // $result = $stmt->get_result();
-    
+ 
     $query = "UPDATE programari_botez SET data_ora_cateheza = '$data_ora_cateheza'  WHERE id =  $id_prog";
     var_dump ( $query);
     $rezultate = mysqli_query ($conn, $query);
@@ -49,7 +41,7 @@ if ($pentru == 'cateheza_botez') {
     WHERE tip_programare = 'cateheza_botez' AND (data_start LIKE '%$data_cateheza%' AND parohie_id = $parohie_id)";
     $rezultate = mysqli_query ($conn, $sql);
 
-    echo '<script> location.replace("../info-utile.php?succes=ok&tip=botez"); </script>';
+    echo '<script> location.replace("../info-utile.php?succes=ok"); </script>';
 
 }
 
@@ -64,7 +56,7 @@ if ($pentru == 'cateheza_cununie') {
 
     $rezultate = mysqli_query ($conn, $sql);
 
-    echo '<script> location.replace("../info-utile.php?succes=ok&tip=cununie"); </script>';
+    echo '<script> location.replace("../info-utile.php?succes=ok"); </script>';
 }
 
 

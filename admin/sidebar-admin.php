@@ -11,13 +11,13 @@
     <a class="potir" href="<?php echo BASE_URL . 'admin/';?>programul-slujbelor.php">Programul slujbelor</a>
     <button class="zile dropdown-btn">Zile rânduite <i class="fas fa-chevron-down" style="margin-left:10px; font-size:10px"></i></button>
     <ul class="dropdown-container">
+      <li><a href="<?php echo BASE_URL . 'admin/';?>zile-stabilite.php?pentru=botez">Botez</a></li>
+      <li><a href="<?php echo BASE_URL . 'admin/';?>zile-stabilite.php?pentru=cateheza_botez">Cateheza Botez</a></li>
+      <li><a href="<?php echo BASE_URL . 'admin/';?>zile-stabilite.php?pentru=cununie">Cununie</a></li>
+      <li><a href="<?php echo BASE_URL . 'admin/';?>zile-stabilite.php?pentru=cateheza_cununie">Cateheza Cununie</a></li>
+      <li><a href="<?php echo BASE_URL . 'admin/';?>zile-stabilite.php?pentru=parastas ">Parastas</a></li>
       <li><a href="<?php echo BASE_URL . 'admin/';?>zile-stabilite.php?pentru=spovedanie ">Spovedanie</a></li>
       <li><a href="<?php echo BASE_URL . 'admin/';?>zile-stabilite.php?pentru=sfestanie ">Sfeștanie</a></li>
-      <li><a href="<?php echo BASE_URL . 'admin/';?>zile-stabilite.php?pentru=parastas ">Parastas</a></li>
-      <li><a href="<?php echo BASE_URL . 'admin/';?>zile-stabilite.php?pentru=botez">Botez</a></li>
-      <li><a href="<?php echo BASE_URL . 'admin/';?>zile-stabilite.php?pentru=cununie">Cununie</a></li>
-      <li><a href="<?php echo BASE_URL . 'admin/';?>zile-stabilite.php?pentru=cateheza_botez">Cateheza Botez</a></li>
-      <li><a href="<?php echo BASE_URL . 'admin/';?>zile-stabilite.php?pentru=cateheza_cununie">Cateheza Cununie</a></li>
     </ul>
     <a class="botezuri" href="<?php echo BASE_URL . 'admin/';?>registru.php?eveniment=programari_botez">Botezuri</a>
     <a class="cununii" href="<?php echo BASE_URL . 'admin/';?>registru.php?eveniment=programari_cununie">Cununii</a>

@@ -1,6 +1,6 @@
 <?php include "header-admin.php"; 
 
-$user_id = $_SESSION['id'];
+$user_id = $_SESSION['parohie_id'];
 
 if(isset ($_GET['id'])) {
     $id_pomelnic = $_GET['id'];

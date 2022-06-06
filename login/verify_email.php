@@ -13,7 +13,7 @@ if (isset($_GET['token'])) {
         $query = "UPDATE users SET verified=1 WHERE token='$token'";
 
         if (mysqli_query($conn, $query)) {
-            $_SESSION['id'] = $user['id'];
+            $_SESSION['user_id'] = $user['id'];
             $_SESSION['nume'] = $user['nume'];
             $_SESSION['prenume'] = $user['prenume'];
             $_SESSION['username'] = $user['username'];
@@ -41,7 +41,7 @@ if (isset($_GET['ptoken'])) {
         $query = "UPDATE parohii SET verified=1 WHERE token='$token'";
 
         if (mysqli_query($conn, $query)) {
-            $_SESSION['id'] = $user['id'];
+            $_SESSION['parohie_id'] = $user['id'];
             $_SESSION['nume_parohie'] = $user['nume'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['email'] = $user['email'];

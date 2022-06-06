@@ -109,7 +109,7 @@ If ( isset ($_POST['inregistrare_parohie']) ) {
 
             phpmailer ($email, $from, $nume_parohie , "Înregistrare parohiaonline.com", $mesaj_email, $link_cerere='');
         
-            $_SESSION['id'] = $user_id;
+            $_SESSION['parohie_id'] = $user_id;
             $_SESSION['nume'] = $nume;
             $_SESSION['prenume'] = $prenume;
             $_SESSION['username'] = $username;
@@ -193,7 +193,7 @@ if (isset($_POST['login-parohie'])) {
                         
                         // dacă parolele coincid
                         $stmt->close();
-                        $_SESSION['id'] = $user['id'];
+                        $_SESSION['parohie_id'] = $user['id'];
                         $_SESSION['nume_parohie'] = $user['nume_parohie'];
                         $_SESSION['username'] = $user['username'];
                         $_SESSION['email'] = $user['email'];

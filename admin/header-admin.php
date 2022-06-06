@@ -5,16 +5,13 @@ setlocale(LC_TIME, array('ro.utf-8', 'ro_RO.UTF-8', 'ro_RO.utf-8', 'ro', 'ro_RO'
 include '../controllers/authController.php';
 include '../includes/functions.php';
  
-if ( empty ($_SESSION['id']) ) {
+if ( empty ($_SESSION['parohie_id']) ) {
     die;
   }
 
 setlocale(LC_ALL, 'ro_RO');
 
-$id = $_SESSION['id'];
-
-
-
+$id = $_SESSION['parohie_id'];
  
 if ( isset($_GET['pentru']) ) {$pentru = $_GET['pentru'];} else {$pentru = "";}
 

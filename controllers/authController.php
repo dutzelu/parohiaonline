@@ -121,8 +121,8 @@ if (isset($_POST['signup-btn'])) {
 
             phpmailer ($email, $from, $parohia, "Înregistrare parohiaonline.com", $mesaj_email, $link_cerere='');
          
-            $_SESSION['id'] = $user_id;
-            $_SESSION['parohie_id'] = $user['parohie_id'];
+            $_SESSION['user_id'] = $user_id;
+            $_SESSION['parohie_user_id'] = $user['parohie_id'];
             $_SESSION['nume'] = $nume;
             $_SESSION['prenume'] = $prenume;
             $_SESSION['username'] = $username;
@@ -198,8 +198,8 @@ if (isset($_POST['login-btn'])) {
                         
                         // dacă parolele coincid
                         $stmt->close();
-                        $_SESSION['id'] = $user['id'];
-                        $_SESSION['parohie_id'] = $user['parohie_id'];
+                        $_SESSION['user_id'] = $user['id'];
+                        $_SESSION['parohie_user_id'] = $user['parohie_id'];
                         $_SESSION['nume'] = $user['nume'];
                         $_SESSION['prenume'] = $user['prenume'];
                         $_SESSION['telefon'] = $user['telefon'];

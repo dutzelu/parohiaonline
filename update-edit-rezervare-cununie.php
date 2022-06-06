@@ -1,6 +1,6 @@
 <?php
 
-include "header-admin.php"; 
+include "header-frontend.php"; 
 
 if (isset($_GET['id'])) {
     $id_programare = $_GET['id'];
@@ -101,7 +101,7 @@ if (isset($_POST['actualizeaza'])) {
     $stmt->bind_param('sssssssssssssssssssssssi', $nume_mire, $prenume_mire, $nume_mireasa, $prenume_mireasa, $adresa_mire, $adresa_mireasa, $telefon, $email, $numar_certificat_casatorie, $data_eliberarii_certificatului, $eliberat_de_primaria,  $nume_nas, $nume_nasa, $localitate_nasi, $nume_cameraman, $telefon_cameraman, $link_mire_ci, $link_mireasa_ci, $link_plata_contributiei, $link_certificat_casatorie_civila, $link_certificat_botez_mire, $link_certificat_botez_mireasa,  $link_dispensa, $id_programare);
     $result = $stmt->execute();
 
-    echo '<script> location.replace("rezervare-unica-cununie.php?id=' . $id_programare . '&edit=ok"); </script>';
+    echo '<script> location.replace("home-unic-cununie.php?id=' . $id_programare . '&edit=ok"); </script>';
 }
 
 

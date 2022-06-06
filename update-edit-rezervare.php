@@ -1,6 +1,6 @@
 <?php
 
-include "header-admin.php"; 
+include "header-frontend.php"; 
  
 
 if (isset($_GET['id'])) {
@@ -103,7 +103,7 @@ if (isset($_POST['actualizeaza'])) {
     $stmt->bind_param('sssssssssssssssssssssssi', $nume_tata, $prenume_tata, $nume_mama, $prenume_mama, $adresa, $telefon, $email, $nume_copil, $prenume_copil, $data_nasterii_copilului, $numar_certificat_nastere, $data_eliberarii_certificatului, $eliberat_de_primaria, $nume_botez_copil, $nume_nas, $nume_nasa, $localitate_nasi, $nume_cameraman, $telefon_cameraman, $link_tata_ci, $link_mama_ci, $link_plata_contributiei, $link_certificat_nastere_copil, $id_programare);
     $result = $stmt->execute();
 
-    echo '<script> location.replace("rezervare-unica.php?id=' . $id_programare . '&edit=ok"); </script>';
+    echo '<script> location.replace("home-unic.php?id=' . $id_programare . '&edit=ok"); </script>';
 }
 
 

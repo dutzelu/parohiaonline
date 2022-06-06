@@ -89,7 +89,7 @@ while ($data = mysqli_fetch_assoc($result)){
 ?>
 
 
-<form id="actualizeaza" action="admin/update-edit-rezervare-cununie.php?id=<?php echo $id_programare?>" method="post" enctype = "multipart/form-data">
+<form id="actualizeaza" action="update-edit-rezervare-cununie.php?id=<?php echo $id_programare?>" method="post" enctype = "multipart/form-data">
 
 
 <div class="input-group mb-2">
@@ -243,3 +243,5 @@ while ($data = mysqli_fetch_assoc($result)){
 </div>
 
 </div>
+
+ 

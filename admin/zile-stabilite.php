@@ -246,11 +246,6 @@
                             $libere = $data['libere'];
                             $rezervari = $data['rezervari'];
                        
-  
- 
-
-                            
-
                             echo '<tr>';
                             
                             echo '<td>' . $data_start_fara_ora . '</td>';

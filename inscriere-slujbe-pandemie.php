@@ -2,7 +2,6 @@
 
 include "header-frontend.php"; 
 
-$user_id = $_SESSION['id'];
 $user_id = $user_id . ',';
 
 if ($_GET[ 'month' ] && $_GET ['year'])  {

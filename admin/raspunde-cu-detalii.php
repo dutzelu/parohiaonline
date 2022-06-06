@@ -14,7 +14,7 @@ $name = '';
 
 $timp = date('Y-m-d h:i:s', time());
 
-$user_id = $_SESSION['id'];
+$user_id = $_SESSION['parohie_id'];
  
 if (isset($_POST['raspunde'])) {
     $id = $_GET['id'];

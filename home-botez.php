@@ -65,7 +65,7 @@
                               ) x ";
 
                             $stmt = $conn->prepare($query_count);
-                            $stmt->bind_param('i', $_SESSION['id']);
+                            $stmt->bind_param('i', $user_id);
                             $rez = $stmt->execute();
                             $rez = $stmt->get_result();
  
@@ -85,7 +85,7 @@
                             LIMIT ?, ?";
 
                             $stmt = $conn->prepare($query);
-                            $stmt->bind_param('iii', $_SESSION['id'], $offset, $total_records_per_page);
+                            $stmt->bind_param('iii', $user_id, $offset, $total_records_per_page);
                             $result = $stmt->execute();
                             $result = $stmt->get_result();
 

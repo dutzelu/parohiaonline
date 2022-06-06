@@ -1,5 +1,5 @@
 <?php include 'header-admin.php';
-$user_id = $_SESSION['id'];
+$user_id = $_SESSION['parohie_id'];
 
 if ($_GET['id']) {
     $id_slujba = $_GET['id'];

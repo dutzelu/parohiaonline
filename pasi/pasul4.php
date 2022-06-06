@@ -15,7 +15,7 @@ $ora = '';
         $ora = $_GET['ora'];
     }
 
- $user_id = $_SESSION['id'];
+
  $data_si_ora = $year . "-" . $month . '-' . $zi . " " . $ora . ":00";
  $data_simpla = $year . "-" . $month . '-' . $zi;
 

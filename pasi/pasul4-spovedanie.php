@@ -15,7 +15,7 @@ $ora = '';
         $ora = $_GET['ora'];
     }
 
- $user_id = $_SESSION['id'];
+
  $data_si_ora = $year . "-" . $month . '-' . $zi . " " . $ora . ":00";
  $data_simpla = $year . "-" . $month . '-' . $zi;
 
@@ -52,7 +52,7 @@ $ora = '';
 
 
     $sql="UPDATE zile_stabilite
-    SET rezervari = rezervari - 1
+    SET libere = libere - 1, rezervari = rezervari + 1
     WHERE tip_programare = 'spovedanie' AND (data_start LIKE '%$data_simpla%' AND parohie_id = $parohie_id) ";
 
     $rezultate = mysqli_query ($conn, $sql);
@@ -76,6 +76,6 @@ $name = "Parohia Online";
  
  phpmailer ($email_crestin, $from, $name, $subiect, $mesaj_email, "");
 
- echo '<script> location.replace("../info-utile.php?succes=ok&tip=spovedanie"); </script>';
+ echo '<script> location.replace("../info-utile.php?succes=ok"); </script>';
  
  ?>

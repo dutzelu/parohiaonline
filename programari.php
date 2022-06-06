@@ -1,12 +1,4 @@
-<?php include 'header-frontend.php';
-
-if (!empty($_SESSION['id']) && $admin == 0) {
-    header('location: frontend.php?pentru=botez');
-} elseif (!empty($_SESSION['id']) && $admin == 1) {
-    header('location: registru.php?eveniment=programari_botez');
-}
-
-?>
+<?php include 'header-frontend.php';?>
 
   <title><?php echo $eveniment; ?></title>
 </head>

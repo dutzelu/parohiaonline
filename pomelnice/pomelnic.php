@@ -1,6 +1,6 @@
 <?php include "../header-frontend.php"; 
  
-$user_id = $_SESSION['id'];
+
 
 if (isset($_GET['tip'])) {
     $tip = $_GET['tip'];

@@ -1,7 +1,7 @@
 <?php 
 
 include "header-admin.php"; 
-$id = $_SESSION['id'];
+$id = $_SESSION['parohie_id'];
 ?>
 
 <title>Membri</title>

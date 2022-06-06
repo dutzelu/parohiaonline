@@ -3,13 +3,15 @@
 include "header-frontend.php"; 
 
 
+
+
+
 $data_cateheza = '';
 $ora_cateheza = '';
 
 if (isset($_GET['id'])) {
     $id_programare = $_GET['id'];
 }
-
 
 $query = 'SELECT * FROM programari_botez WHERE id = ?';
 $stmt = $conn->prepare($query);
@@ -26,13 +28,14 @@ while ($data = mysqli_fetch_assoc($result)){
     $data_simpla = date("d-m-Y", strtotime($data["data_si_ora"]));
 
 }
+
 ?>
 
 
 <div class="container-fluid">
 
     <div class="row">
-        <div class="col-sm-3 sidebar-admin"><?php include "sidebar-frontend.php"?></div>
+        <div class="col-sm-3 sidebar-admin"><?php include "sidebar-frontend.php";?></div>
 
         <div class="col-sm-9 p-4 zona-principala">
 
@@ -42,7 +45,6 @@ while ($data = mysqli_fetch_assoc($result)){
         <div class="mt-3 p-5 wrapper-rezervare-unica">
 
  <?php    
- 
 
 
     echo "<p>";
@@ -93,7 +95,7 @@ while ($data = mysqli_fetch_assoc($result)){
  
  ?>
 
-<form id="actualizeaza" action="admin/update-edit-rezervare.php?id=<?php echo $id_programare?>" method="post" enctype = "multipart/form-data">
+<form id="actualizeaza" action="update-edit-rezervare.php?id=<?php echo $id_programare?>" method="post" enctype = "multipart/form-data">
 
 
 <div class="input-group mb-2">
@@ -234,3 +236,4 @@ while ($data = mysqli_fetch_assoc($result)){
 </div>
 
 </div>
+

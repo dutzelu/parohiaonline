@@ -1,5 +1,4 @@
 <?php include "header-frontend.php"; 
-$user_id = $_SESSION['id'];
 
 $continut = NULL;
 $tip = NULL;
@@ -61,7 +60,7 @@ if (isset($_GET['id'])) {
         <div class="row mt-3 ultimele-programari">
 
               <?php if (isset($_GET['succes'])) { 
-                echo '<p class="mb-2">Cererea ta de programare online s-a finalizat cu succes. În cel mai scurt timp vei primi un EMAIL privind starea cererii tale de programare. Dacă este cazul, ți se vor solicita detalii suplimentare. Dacă dorești să ceri lămuriri suplimentare privind cererea ta de programare făcută, te rugăm să suni la numărul de telefon 0744.185.581 sau să trimiți un mesaj la paroh@sfantulambrozie.ro</p>'
+                echo '<p class="mb-2">Cererea ta de programare online s-a finalizat cu succes. În cel mai scurt timp vei primi un EMAIL privind starea cererii tale de programare. Dacă este cazul, ți se vor solicita detalii suplimentare. Dacă dorești să ceri lămuriri suplimentare privind cererea ta de programare făcută, te rugăm să suni la numărul de telefon X sau să trimiți un mesaj la emailul X</p>'
                 ;
                 $succes = $_GET['succes'];
                 } else {$succes = '';} ?>

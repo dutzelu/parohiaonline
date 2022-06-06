@@ -1,10 +1,4 @@
-<?php
-
-include "header-frontend.php"; 
- 
-
-$user_id = $_SESSION['id'];
-?>
+<?php include "header-frontend.php"; ?>
 
 
 <div class="container-fluid">
@@ -33,8 +27,6 @@ $user_id = $_SESSION['id'];
     $id_programare = $_GET['id'];
   }
 
-
-$user_id = $_SESSION['id'];
 
 
 $query = 'SELECT * FROM programari_sfestanie WHERE id = ? AND user_id = ? ORDER BY id DESC';

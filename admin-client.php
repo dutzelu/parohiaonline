@@ -1,7 +1,5 @@
-<?php 
-      include "header-frontend.php"; 
+<?php  include "header-frontend.php"; ?>
 
-?>
 <title>Panoul de control</title>
 </head>
 
@@ -162,7 +160,7 @@
                             LIMIT 15";
 
                             $stmt = $conn->prepare($query);
-                            $stmt->bind_param('iiiii', $_SESSION['id'], $_SESSION['id'], $_SESSION['id'], $_SESSION['id'], $_SESSION['id']);
+                            $stmt->bind_param('iiiii', $user_id, $user_id, $user_id, $user_id, $user_id);
                             $result = $stmt->execute();
                             $result = $stmt->get_result();
                                 

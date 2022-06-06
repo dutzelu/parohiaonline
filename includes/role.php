@@ -2,7 +2,7 @@
 
  
 $admin = '';
-$id_user = $_SESSION['id'];
+$id_user = $user_id;
 
 $query = "SELECT * FROM users WHERE id = ?";
 $stmt = $conn->prepare($query);

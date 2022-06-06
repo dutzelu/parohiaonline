@@ -1,10 +1,4 @@
-<?php include "header-frontend.php"; 
- 
-
-
-$user_id = $_SESSION['id'];
-  
-?>
+<?php include "header-frontend.php"; ?>
 
 <title>Programări Cununii</title>
 </head>
@@ -70,7 +64,7 @@ $user_id = $_SESSION['id'];
                               ) x ";
 
                             $stmt = $conn->prepare($query_count);
-                            $stmt->bind_param('i', $_SESSION['id']);
+                            $stmt->bind_param('i', $user_id);
                             $rez = $stmt->execute();
                             $rez = $stmt->get_result();
  
@@ -90,7 +84,7 @@ $user_id = $_SESSION['id'];
                             LIMIT ?, ?";
 
                             $stmt = $conn->prepare($query);
-                            $stmt->bind_param('iii', $_SESSION['id'], $offset, $total_records_per_page);
+                            $stmt->bind_param('iii', $user_id, $offset, $total_records_per_page);
                             $result = $stmt->execute();
                             $result = $stmt->get_result();
 

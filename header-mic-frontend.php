@@ -3,7 +3,7 @@
  
 $query_parohie = "Select * from users Where id = ?";
 $stmt = $conn->prepare($query_parohie);
-$stmt->bind_param('i', $_SESSION['id']);
+$stmt->bind_param('i', $_SESSION['user_id']);
 $rez = $stmt->execute();
 $rez = $stmt->get_result();
 
@@ -14,7 +14,7 @@ while ($row = mysqli_fetch_assoc($rez)) {
  
 $query_parohie = "SELECT * FROM parohii WHERE id = (Select parohie_id from users Where id = ?);";
 $stmt = $conn->prepare($query_parohie);
-$stmt->bind_param('i', $_SESSION['id']);
+$stmt->bind_param('i', $_SESSION['user_id']);
 $rez = $stmt->execute();
 $rez = $stmt->get_result();
 

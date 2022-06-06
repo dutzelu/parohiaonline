@@ -9,8 +9,6 @@ $data_si_ora = '';
 
 $timp = date('Y-m-d h:i:s', time());
 
-$user_id = $_SESSION['id'];
- 
 if (isset($_POST['raspunde'])) {
     $id_prog = $_GET['id'];
     $mesaj = $_POST['mesaj'];
