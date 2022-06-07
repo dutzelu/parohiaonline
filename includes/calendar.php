@@ -2,7 +2,7 @@
  $an_si_luna = $selected_year . '-' . $selected_month;
  $zile_programate = [];
  
- $sql="SELECT * FROM zile_stabilite WHERE tip_programare LIKE '$pentru' AND data_start LIKE '%$an_si_luna%'";
+ $sql="SELECT * FROM zile_stabilite WHERE tip_programare LIKE '$pentru' AND (data_start LIKE '%$an_si_luna%' AND parohie_id = $parohie_id)";
  $rezultate = mysqli_query ($conn, $sql);
  
         while ($data = mysqli_fetch_assoc($rezultate)){   

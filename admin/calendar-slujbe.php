@@ -4,7 +4,7 @@
        
  
          /* draws a calendar */
-         function draw_calendar($month,$year){
+         function draw_calendar($month,$year) {
         
          global $link_rezervare;
          $calendar = '';
@@ -41,32 +41,30 @@
  global $an_si_luna;
  global $rezervari;
  global $conn;
+ global $id;
 
- 
- 
-
- $query_prog_luna_in_curs = "
+$query_prog_luna_in_curs = "
 
  Select id, 'Botez' as Programare, concat(nume_tata, ' ', prenume_tata) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_botez 
- WHERE data_si_ora LIKE '%$an_si_luna%'
+ WHERE data_si_ora LIKE '%$an_si_luna%' AND parohie_id = $id
 
  UNION ALL 
 
  Select id, 'Cununie' as Programare, concat(nume_mire, ' ', prenume_mire) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_cununie 
- WHERE `data_si_ora` LIKE '%$an_si_luna%'
+ WHERE `data_si_ora` LIKE '%$an_si_luna%' AND parohie_id = $id
 
          UNION ALL 
 
-Select id, 'Spovedanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_spovedanie WHERE `data_si_ora` LIKE '%$an_si_luna%' 
+Select id, 'Spovedanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_spovedanie WHERE `data_si_ora` LIKE '%$an_si_luna%'  AND parohie_id = $id
 
          UNION ALL 
 
-Select id, 'Sfeștanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_sfestanie WHERE `data_si_ora` LIKE '%$an_si_luna%'
+Select id, 'Sfeștanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_sfestanie WHERE `data_si_ora` LIKE '%$an_si_luna%' AND parohie_id = $id
          UNION ALL 
 
-Select id, 'Parastas' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_parastas WHERE `data_si_ora` LIKE '%$an_si_luna%' 
+Select id, 'Parastas' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_parastas WHERE `data_si_ora` LIKE '%$an_si_luna%'  AND parohie_id = $id
 
- ORDER BY Data ASC";
+ORDER BY Data ASC";
 
  $stmt = $conn->prepare($query_prog_luna_in_curs);
  $rezultat = $stmt->execute();

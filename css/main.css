@@ -137,8 +137,10 @@ div.titlu p {line-height:23px;color:#4374B9}
 
 span.status {font-size:11px; display:inline-block;width:fit-content; padding:2px 5px; border-radius: 6px;text-align:center;}
 
-.ultimele-programari a.sterge > i {color:red;margin-right:10px;}
-.ultimele-programari a.sterge > i:hover, .ultimele-programari a.edit:hover > i {font-size:18px;}
+.ultimele-programari a.sterge > i {color:red;margin-right:10px;font-size:16px;}
+.ultimele-programari tr.clickable-row > td > a.sterge > i:hover {color:coral;margin-right:10px;}
+.ultimele-programari tr.clickable-row > td > a.accepta > i {color:green; font-size:16px}
+.ultimele-programari tr.clickable-row > td > a.accepta > i:hover {color:greenyellow }
 
 /* calendar cu slujbe */ 
 

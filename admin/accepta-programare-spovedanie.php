@@ -1,5 +1,6 @@
 <?php
 include "header-admin.php"; 
+
 $mesaj_email_admin = "";
 $name = "";
 $from = "";
@@ -22,7 +23,13 @@ if (isset($_GET['status'])) {
   
 } 
 
+if ( isset ($_GET['back']) ) {
+   $back = $_GET['back'];
+  if ($back == "registru") {
+ 
+    echo '<script> location.replace("registru.php?eveniment=programari_spovedanie"); </script>';
+  }
+}
 
 ?>
 
-<script> location.replace("rezervare-unica-spovedanie.php?id=<?php echo $id; ?>"); </script>

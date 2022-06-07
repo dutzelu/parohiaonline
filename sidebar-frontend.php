@@ -1,6 +1,4 @@
  
- 
- 
   <div class="row justify-content-center">
     <div class="col-sm-9 mt-4 logo"><img src="<?php echo BASE_URL . 'images\logo-parohiaonline.png'; ?>" ></div>
  </div>
@@ -9,9 +7,9 @@
 
   <div class="sidenav frontend">
     <a class="prima-pagina" href="<?php echo BASE_URL . 'admin-client.php'; ?>">Prima pagină</a>
-    <button class="programari active dropdown-btn">Programările mele<i class="fas fa-chevron-down" style="margin-left:10px; font-size:10px"></i></button>
+    <button class="programari dropdown-btn">Programările mele<i class="fas fa-chevron-down" style="margin-left:10px; font-size:10px"></i></button>
     <ul class="dropdown-container">
-      <li><a class="botezuri <?= (isset($active_meniu) && in_array("botez", $active_meniu)) ? 'active' : '' ?>" href="<?php echo BASE_URL . 'home-botez.php';?>">Botezuri</a></li>
+      <li><a class="botezuri" href="<?php echo BASE_URL . 'home-botez.php';?>">Botezuri</a></li>
       <li><a class="cununii" href="<?php echo BASE_URL . 'home-cununie.php';?>">Cununii</a></li>
       <li><a class="spovedanii" href="<?php echo BASE_URL . 'home-spovedanie.php';?>">Spovedanii</a></li>
       <li><a class="sfestanii" href="<?php echo BASE_URL . 'home-sfestanie.php';?>">Sfeștanii</a></li>

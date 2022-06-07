@@ -7,13 +7,21 @@ include __DIR__ .'/includes/functions.php';
 
 $user_id = $_SESSION['user_id'];
 
+
 // dacă userul nu este logat pagina nu se încarcă
-if ( empty ($_SESSION['user_id']) ) {
-  die;
+if ( empty ($_SESSION['user_id'])) { die;}
+
+// dacă userul este blocat pagina nu se încarcă
+$user_blocat = NULL;
+user_blocat ($user_id);
+
+if ($user_blocat == 1) {
+  echo '<script> location.replace("index.php"); </script>';
 }
+ 
 
 if (isset($_SESSION['parohie_user_id'])) {
-  $parohie_id = $_SESSION['parohie_user_id'];
+   $parohie_id = $_SESSION['parohie_user_id'];
 }
 
 $nume_fisier = basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']);
@@ -48,7 +56,7 @@ if (isset($_GET['month']) && isset($_GET['year'])) {
 }
 
 $link_rezervare = "rezerva.php?year=" . $selected_year . "&month=" . $selected_month . "&pentru=" . $pentru;
-
+;
 ?>
 
 <!DOCTYPE html>

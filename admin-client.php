@@ -73,7 +73,7 @@
                 <p>Anunțuri în parohie</p>
                 <?php
 
-                    $query = 'Select * From articole WHERE tip_articol = "anunt" ORDER BY id DESC';
+                    $query = 'Select * From articole WHERE tip_articol = "anunt" AND parohie_id = ' . $parohie_id . ' ORDER BY id DESC';
 
                     $stmt = $conn->prepare($query);
                     $rezultat = $stmt->execute();
@@ -215,34 +215,34 @@
 
                                 if ($row['Programare']=="Botez") {?>
 
-                                      <a href="sterge.php?eveniment=programari_botez&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                                      <a href="sterge.php?eveniment=programari_botez&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                                       <i class="rosu fas fa-trash-alt"></i></a>
                                 <?php
                                 }
     
                                 if ($row['Programare']=="Cununie") {?>
-                                     <a href="sterge.php?eveniment=programari_cununie&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                                     <a href="sterge.php?eveniment=programari_cununie&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                                       <i class="rosu fas fa-trash-alt"></i></a>
                                 
                                 <?php    
                                 }
     
                                 if ($row['Programare']=="Spovedanie") {?>
-                                     <a href="sterge.php?eveniment=programari_spovedanie&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                                     <a href="sterge.php?eveniment=programari_spovedanie&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                                       <i class="rosu fas fa-trash-alt"></i></a>
                                 
                                 <?php    
                                 }
     
                                 if ($row['Programare']=="Sfeștanie") {?>
-                                     <a href="sterge.php?eveniment=programari_sfestanie&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                                     <a href="sterge.php?eveniment=programari_sfestanie&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                                       <i class="rosu fas fa-trash-alt"></i></a>
                                 
                                 <?php    
                                 }
     
                                 if ($row['Programare']=="Parastas") {?>
-                                     <a href="sterge.php?eveniment=programari_parastas&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                                     <a href="sterge.php?eveniment=programari_parastas&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                                       <i class="rosu fas fa-trash-alt"></i></a>
                                 
                                 <?php    

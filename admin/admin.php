@@ -4,25 +4,25 @@
       // datele programarilor cu status acceptat
 
           $query = "
-          Select id, 'Botez' as Programare, concat(nume_tata, ' ', prenume_tata) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_botez 
+          Select id, user_id, 'Botez' as Programare, concat(nume_tata, ' ', prenume_tata) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_botez 
           WHERE status LIKE 'acceptata' AND parohie_id = $id
 
           UNION ALL 
 
-          Select id, 'Cununie' as Programare, concat(nume_mire, ' ', prenume_mire) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_cununie 
+          Select id, user_id, 'Cununie' as Programare, concat(nume_mire, ' ', prenume_mire) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_cununie 
           WHERE status LIKE 'acceptata' AND parohie_id = $id
 
           UNION ALL 
 
-          Select id, 'Spovedanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_spovedanie WHERE status LIKE 'acceptata' AND parohie_id = $id
+          Select id, user_id, 'Spovedanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_spovedanie WHERE status LIKE 'acceptata' AND parohie_id = $id
 
           UNION ALL 
 
-          Select id, 'Sfeștanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_sfestanie WHERE status LIKE 'acceptata' AND parohie_id = $id
+          Select id, user_id, 'Sfeștanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_sfestanie WHERE status LIKE 'acceptata' AND parohie_id = $id
           
           UNION ALL 
 
-          Select id, 'Parastas' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_parastas WHERE status LIKE 'acceptata' AND parohie_id = $id
+          Select id, user_id, 'Parastas' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_parastas WHERE status LIKE 'acceptata' AND parohie_id = $id
           
 
           ORDER BY Data DESC 
@@ -42,23 +42,23 @@
         // datele programarilor cu orice status
 
           $query_orice_status = "
-          Select id, 'Botez' as Programare, concat(nume_tata, ' ', prenume_tata) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_botez WHERE parohie_id = $id
+          Select id, user_id, 'Botez' as Programare, concat(nume_tata, ' ', prenume_tata) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_botez WHERE parohie_id = $id
 
           UNION ALL 
 
-          Select id, 'Cununie' as Programare, concat(nume_mire, ' ', prenume_mire) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_cununie WHERE parohie_id = $id
+          Select id, user_id, 'Cununie' as Programare, concat(nume_mire, ' ', prenume_mire) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_cununie WHERE parohie_id = $id
 
           UNION ALL 
 
-          Select id, 'Spovedanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_spovedanie WHERE parohie_id = $id
+          Select id, user_id, 'Spovedanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_spovedanie WHERE parohie_id = $id
 
           UNION ALL 
 
-          Select id, 'Sfeștanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_sfestanie WHERE parohie_id = $id
+          Select id, user_id, 'Sfeștanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_sfestanie WHERE parohie_id = $id
           
           UNION ALL 
 
-          Select id, 'Parastas' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_parastas WHERE parohie_id = $id
+          Select id, user_id, 'Parastas' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_parastas WHERE parohie_id = $id
           
 
           ORDER BY Data DESC 
@@ -184,7 +184,7 @@
                         
                         <div class="mt-5 legenda">
                             <p><span class="fw-bold">Legenda:</span><br>
-                În calendar apar subliniate zilele în care există evenimente. <br> Alegeți una din zilele pentru detalii.</p>
+                          În calendar apar subliniate zilele în care există evenimente. <br> Alegeți una din zilele pentru detalii.</p>
 
 
                         </div>
@@ -193,7 +193,7 @@
 
             <div class="row mt-3 ultimele-programari">
                 <div class="col-sm-12">
-                    <p class="fw-bold">Ultimele programări</p>
+                    <p class="fw-bold">Ultimele programări (orice status)</p>
                     <table class="table">
 
                         <thead>
@@ -202,6 +202,7 @@
                             <th scope="col">Programare</th>
                             <th scope="col">Data</th>
                             <th scope="col">Ora</th>
+                            <th scope="col">Adăugat de:</th>
                             <th scope="col">Status</th>
                             <th scope="col">Acțiuni</th>
                             </tr>
@@ -241,6 +242,7 @@
                             <td><?php echo $row2['Programare']; ?></td>
                             <td><?php echo $row2['Data']; ?></td>
                             <td><?php echo $row2['Ora']; ?></td>
+                            <td><?php nume_user($row2['user_id']); ?></td>
                             <td><?php echo '<span class="status ';
                             
                             switch($row2['status']) {
@@ -262,34 +264,34 @@
 
                             if ($row2['Programare']=="Botez") {?>
 
-                                <a href="actiuni.php?eveniment=programari_botez&stergeid=<?php echo $row2['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                                <a href="actiuni.php?eveniment=programari_botez&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row2['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                                 <i class="rosu fas fa-trash-alt"></i></a>
                             <?php
                             }
 
                             if ($row2['Programare']=="Cununie") {?>
-                            <a href="actiuni.php?eveniment=programari_cununie&stergeid=<?php echo $row2['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                            <a href="actiuni.php?eveniment=programari_cununie&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row2['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                                 <i class="rosu fas fa-trash-alt"></i></a>
 
                             <?php    
                             }
 
                             if ($row2['Programare']=="Spovedanie") {?>
-                            <a href="actiuni.php?eveniment=programari_spovedanie&stergeid=<?php echo $row2['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                            <a href="actiuni.php?eveniment=programari_spovedanie&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row2['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                                 <i class="rosu fas fa-trash-alt"></i></a>
 
                             <?php    
                             }
 
                             if ($row2['Programare']=="Sfeștanie") {?>
-                            <a href="actiuni.php?eveniment=programari_sfestanie&stergeid=<?php echo $row2['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                            <a href="actiuni.php?eveniment=programari_sfestanie&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row2['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                                 <i class="rosu fas fa-trash-alt"></i></a>
 
                             <?php    
                             }
 
                             if ($row2['Programare']=="Parastas") {?>
-                            <a href="actiuni.php?eveniment=programari_parastas&stergeid=<?php echo $row2['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                            <a href="actiuni.php?eveniment=programari_parastas&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row2['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                                 <i class="rosu fas fa-trash-alt"></i></a>
 
                             <?php    

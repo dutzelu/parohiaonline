@@ -200,3 +200,39 @@ function sterge_programare_parohie ($tip_programare, $sterge_id, $parohie_id, $s
 
 }
 
+// afla nume utilizator
+
+function nume_user ($user_id) {
+
+  global $conn;
+
+  $sql="Select * FROM users WHERE id = ?";
+  $stmt = mysqli_stmt_init($conn);
+  mysqli_stmt_prepare($stmt, $sql);
+  mysqli_stmt_bind_param($stmt, "i", $user_id);
+  mysqli_stmt_execute($stmt);
+  $rezultat = mysqli_stmt_get_result($stmt);
+  while ($data = mysqli_fetch_assoc($rezultat)) {
+      echo $data['nume'] . ' ' . $data['prenume'];
+  }
+
+}
+
+// afla dacă e blocat
+
+function user_blocat ($user_id) {
+
+  global $conn;
+  global $user_blocat;
+
+  $sql="Select * FROM users WHERE id = ?";
+  $stmt = mysqli_stmt_init($conn);
+  mysqli_stmt_prepare($stmt, $sql);
+  mysqli_stmt_bind_param($stmt, "i", $user_id);
+  mysqli_stmt_execute($stmt);
+  $rezultat = mysqli_stmt_get_result($stmt);
+  while ($data = mysqli_fetch_assoc($rezultat)) {
+     $user_blocat = $data['blocat'];
+  }
+
+}
