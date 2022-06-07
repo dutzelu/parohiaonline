@@ -2,8 +2,6 @@
 
 include "../admin/header-admin.php";
 
- 
-// dacă nu e admin
 
     if (isset($_GET['id']) && isset($_GET['month']) && isset($_GET['year'])) {
         $id_rezervare = $_GET['id'];
@@ -24,53 +22,54 @@ include "../admin/header-admin.php";
     echo '<script> location.replace("zile-stabilite.php?month=' . $month .'&year='. $year .'&pentru=' .$pentru .'"); </script>';
 
     } 
-    
-    if (isset($_GET['stergeid']) && isset($_GET['eveniment'])) {
+
+    // ștergere programari
+
+    if ( isset ( $_GET['stergeid'] ) && isset ( $_GET['eveniment'] )  && isset ( $_GET['data'] )) {
 
         $stergeid = $_GET['stergeid'];
         $eveniment = $_GET['eveniment'];
+        $data_programarii = $_GET['data'];
 
         if ($eveniment=="programari_botez") {
-            $sql="DELETE FROM programari_botez WHERE id = ? AND parohie_id = ?";
 
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param('ii', $stergeid, $id);
-            $result = $stmt->execute();  
-        
+            sterge_programare_parohie ($eveniment, $stergeid, $parohie_id, "botez");
             echo '<script> location.replace("registru.php?eveniment=programari_botez&sters=ok"); </script>';
         }
 
         if ($eveniment=="programari_cununie") {
-            $sql="DELETE FROM programari_cununie WHERE id = ? AND parohie_id = ?";
-
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param('ii', $stergeid, $id);
-            $result = $stmt->execute();  
-        
+       
+            sterge_programare_parohie ($eveniment, $stergeid, $parohie_id, "cununie");
             echo '<script> location.replace("registru.php?eveniment=programari_cununie&sters=ok"); </script>';
         }
 
         if ($eveniment=="programari_spovedanie") {
-            $sql="DELETE FROM programari_spovedanie WHERE id = ? AND parohie_id = ?";
-
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param('ii', $stergeid, $id);
-            $result = $stmt->execute();  
-        
+       
+            sterge_programare_parohie ($eveniment, $stergeid, $parohie_id, "spovedanie");
             echo '<script> location.replace("registru.php?eveniment=programari_spovedanie&sters=ok"); </script>';
         }
 
-        if ($eveniment=="programari_parastas") {
-            $sql="DELETE FROM programari_parastas WHERE id = ? AND parohie_id = ?";
-
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param('ii', $stergeid, $id);
-            $result = $stmt->execute();  
-        
-            echo '<script> location.replace("registru.php?eveniment=programari_parastas&sters=ok"); </script>';
+        if ($eveniment=="programari_sfestanie") {
+       
+            sterge_programare_parohie ($eveniment, $stergeid, $parohie_id, "sfestanie");
+            echo '<script> location.replace("registru.php?eveniment=programari_sfestanie&sters=ok"); </script>';
         }
 
- 
+        if ($eveniment=="programari_parastas") {
+    
+            sterge_programare_parohie ($eveniment, $stergeid, $parohie_id, "parastas");
+            echo '<script> location.replace("registru.php?eveniment=programari_parastas&sters=ok"); </script>';
+
+        } 
+    }
+    
+//----------------------------//
+
+
+    if (isset($_GET['stergeid']) && isset($_GET['eveniment'])) {
+
+        $stergeid = $_GET['stergeid'];
+        $eveniment = $_GET['eveniment'];
 
         if ($eveniment=="pomelnic") {
             $sql="DELETE FROM pomelnice WHERE id = ? AND parohie_id = ?";
@@ -89,7 +88,6 @@ include "../admin/header-admin.php";
             $stmt->bind_param('ii', $stergeid, $id);
             $result = $stmt->execute();  
         
-
             echo '<script> location.replace("anunturi.php?sters=ok"); </script>';
         }
 
@@ -100,7 +98,6 @@ include "../admin/header-admin.php";
             $stmt->bind_param('ii', $stergeid, $id);
             $result = $stmt->execute();  
         
-
             echo '<script> location.replace("participare-slujbe.php?sters=ok"); </script>';
         }
 
@@ -111,7 +108,6 @@ include "../admin/header-admin.php";
             $stmt->bind_param('ii', $stergeid, $id);
             $result = $stmt->execute();  
         
-
             echo '<script> location.replace("membri.php?sters=ok"); </script>';
         }
 

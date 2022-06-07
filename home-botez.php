@@ -121,7 +121,7 @@
 
                              
 
-                                <a href="sterge.php?eveniment=programari_botez&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                                <a href="sterge.php?eveniment=programari_botez&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                                 <i class="rosu fas fa-trash-alt"></i></a>
                 
 

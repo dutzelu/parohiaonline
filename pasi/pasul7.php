@@ -32,7 +32,6 @@ if ($pentru == 'cateheza_botez') {
  
  
     $query = "UPDATE programari_botez SET data_ora_cateheza = '$data_ora_cateheza'  WHERE id =  $id_prog";
-    var_dump ( $query);
     $rezultate = mysqli_query ($conn, $query);
 
 

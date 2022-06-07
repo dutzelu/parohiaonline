@@ -85,8 +85,9 @@ while($data = $result->fetch_assoc()) {
 
         ?>
 
-        <a href="sterge.php?eveniment=programari_sfestanie&stergeid=<?php echo $id_programare; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
-          <i class="rosu fas fa-trash-alt"></i> Anulează</a>
+          <a href="sterge.php?eveniment=programari_sfestanie&data=<?php echo date("Y-m-d", strtotime($data_si_ora)); ?>&stergeid=<?php echo $id_programare; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+          <i class="rosu fas fa-trash-alt"></i> Șterge</a>
+          
 
         <?php
                     

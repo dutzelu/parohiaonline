@@ -123,28 +123,80 @@ function upload_foto($input, $nume_fisier, $link) {
 }
  
 
-function hideEmailAddress($email)
-
-{
+function hideEmailAddress($email) {
 
     if(filter_var($email, FILTER_VALIDATE_EMAIL))
-
     {
-
         list($first, $last) = explode('@', $email);
-
         $first = str_replace(substr($first, '3'), str_repeat('*', strlen($first)-3), $first);
-
         $last = explode('.', $last);
-
         $last_domain = str_replace(substr($last['0'], '1'), str_repeat('*', strlen($last['0'])-1), $last['0']);
-
         $hideEmailAddress = $first.'@'.$last_domain.'.'.$last['1'];
-
         return $hideEmailAddress;
-
     }
+}
+
+
+function sterge_programare_user ($eveniment, $sterge_id, $user_id, $slujba, $parohie_id) {
+
+      global $conn;
+      global $data_programarii;
+     
+      $sql="DELETE FROM $eveniment WHERE id = ? AND user_id = ?";
+      $stmt = mysqli_stmt_init($conn);
+      mysqli_stmt_prepare($stmt, $sql);
+      mysqli_stmt_bind_param($stmt, "ii", $sterge_id, $user_id);
+      mysqli_stmt_execute($stmt);
+
+      $query="UPDATE zile_stabilite
+      SET libere = libere + 1, rezervari = rezervari - 1
+      WHERE tip_programare = ? AND (data_start LIKE ? AND parohie_id = ?) ";
+      $stmt = mysqli_stmt_init($conn);
+      mysqli_stmt_prepare($stmt, $query);
+      $data_programarii = '%' . $data_programarii . '%';
+      mysqli_stmt_bind_param($stmt, "ssi", $slujba, $data_programarii, $parohie_id);
+      mysqli_stmt_execute($stmt);
+
+      if (!$conn) {
+          die("Connection failed: " . mysqli_connect_error());
+      }
+
+      mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+      // adaug la zile stabilite 1 rezervare în plus
 
 }
 
+function sterge_programare_parohie ($tip_programare, $sterge_id, $parohie_id, $slujba) {
+
+      global $conn;
+      global $data_programarii;
+      global $id;
+      // $id este setat ca id-ul parohiei în header-admin.php
+      $parohie_id = $id;
+     
+      $sql="DELETE FROM $tip_programare WHERE id = ? AND parohie_id = ?";
+      $stmt = mysqli_stmt_init($conn);
+      mysqli_stmt_prepare($stmt, $sql);
+      mysqli_stmt_bind_param($stmt, "ii", $sterge_id, $parohie_id);
+      mysqli_stmt_execute($stmt);
+
+      $query="UPDATE zile_stabilite
+      SET libere = libere + 1, rezervari = rezervari - 1
+      WHERE tip_programare = ? AND (data_start LIKE ? AND parohie_id = ?) ";
+      $stmt = mysqli_stmt_init($conn);
+      mysqli_stmt_prepare($stmt, $query);
+      $data_programarii = '%' . $data_programarii . '%';
+      mysqli_stmt_bind_param($stmt, "ssi", $slujba, $data_programarii, $parohie_id);
+      mysqli_stmt_execute($stmt);
+
+      if (!$conn) {
+          die("Connection failed: " . mysqli_connect_error());
+      }
+
+      mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+      // adaug la zile stabilite 1 rezervare în plus
+
+}
 

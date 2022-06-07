@@ -163,7 +163,7 @@
                             echo '">' .$row['status'] . '</span>'; ?></td>
                   <td>
 
-                      <a href="actiuni.php?eveniment=<?php echo $eveniment_registru; ?>&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                      <a href="actiuni.php?eveniment=<?php echo $eveniment_registru; ?>&data=<?php echo date("Y-m-d", strtotime($row['data_si_ora'])); ?>&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                       <i class="fas fa-trash-alt"></i></a>
 
                       <?php echo '<a href="';

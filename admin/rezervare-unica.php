@@ -91,7 +91,7 @@
 
                 echo '<a href="rezervare-unica.php?id=' . $id_programare . '&status=respinsa" role="button" ><i class="orange fas fa-backspace"></i> Respinge</a>'; ?>
 
-                <a href="actiuni.php?eveniment=programari_botez&stergeid=<?php echo $id_programare; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                <a href="actiuni.php?eveniment=programari_botez&data=<?php echo date("Y-m-d", strtotime($data_si_ora)); ?>&stergeid=<?php echo $id_programare; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                 <i class="rosu fas fa-trash-alt"></i> Șterge</a>
 
                 <?php
