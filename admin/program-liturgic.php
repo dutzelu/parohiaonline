@@ -109,7 +109,7 @@
                                     <div class="col-sm-7">
                                         
                                         <div class="input-group mb-2">
-                                            <form id="role_program" method="POST" action="programul-slujbelor.php">
+                                            <form id="role_program" method="POST" action="program-liturgic.php">
                                             <?php
                                             $query = 'Select * From programul_slujbelor Where parohie_id = ' . $id;
 
@@ -261,7 +261,7 @@
                     while ($data = mysqli_fetch_assoc($rezultat)) {
                         $nume_program = $data['nume'];
                         $id_program = $data['id'];
-                        echo '<li><a href="programul-slujbelor.php?idprog=' . $id_program . '">' . $nume_program . '</a></li>';
+                        echo '<li><a href="program-liturgic.php?idprog=' . $id_program . '">' . $nume_program . '</a></li>';
                     }
                 
                     ?>

@@ -31,10 +31,16 @@ if (isset($_POST['anunt'])) {
             <?php include "header-mic-admin.php";?>
         
         <div class="row mt-3 ultimele-programari">
-              <p class="fw-bold">Anunțuri</p>
+              <p class="fw-bold">Info și anunțuri</p>
 
               <div class="col-sm">
-               
+
+                <p>Informații utile pentru credincioși înainte de săvârșirea slujbelor:</p>
+                
+                <p><a class="btn btn-outline-primary" href="info-slujbe.php?tip=botez" role="button">Taina Botezului</a> <a class="btn btn-outline-primary" href="info-slujbe.php?tip=cununie" role="button">Taina Cununiei</a> <a class="btn btn-outline-primary" href="info-slujbe.php?tip=spovedanie" role="button">Taina Spovedaniei</a> <a class="btn btn-outline-primary" href="info-slujbe.php?tip=sfestanie" role="button">Sfeștanie</a> <a class="btn btn-outline-primary" href="info-slujbe.php?tip=parastas" role="button">Parastas</a></p>
+                  
+                  
+                <p>Publicați un anunț pentru credincioșii din parohie</p>
                 <p><a class="btn btn-outline-primary" href="anunt-nou.php" role="button">Adaugă un anunț</a>  </p>
 
                     <?php

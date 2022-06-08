@@ -243,6 +243,16 @@ $email_admin = 'balan.claudiu@gmail.com';
 phpmailer ($email, $from, $name, $subiect, $mesaj_email, $link_cerere);
 phpmailer ($email_admin, $from, $name, $subiect_admin, $mesaj_email_admin, $link_cerere='');
 
+
+if ( isset ($_GET['backpage']) ) {
+    $page_no = $_GET['backpage'];
+    echo '<script> location.replace("registru.php?eveniment=programari_botez&page_no=' . $page_no .  '"); </script>';
+}
+
+if ( isset ($_GET['back']) ) {
+    echo '<script> location.replace("admin.php#accepta' . $id . '"); </script>';
+}
+
 ?>
 
 <script> location.replace("rezervare-unica.php?id=<?php echo $id; ?>"); </script>

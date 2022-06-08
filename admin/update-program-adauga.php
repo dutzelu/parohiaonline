@@ -27,4 +27,4 @@ $result = $stmt->get_result();
 
 
     
-echo '<script> location.replace("programul-slujbelor.php?adaugat=ok"); </script>';
+echo '<script> location.replace("program-liturgic.php?adaugat=ok"); </script>';

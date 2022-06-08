@@ -563,7 +563,7 @@ ul.dropdown-container > li {list-style-type: none;}
 }
 ul.dropdown-container {
   margin-left: 16px;
-  margin-top: 13px;
+  margin-top: 0px;
   margin-bottom: 0;
 }
 
@@ -646,6 +646,7 @@ ul#zone_mesaje li:nth-child(odd) {background: #EFEFEF; }
 
 form.calendar-complet #month,  form.calendar-complet #year {width:150px!important;}
 form.calendar-complet .sageti {font-size:20px;}
+form.calendar-complet span.sageti a {color:red;}
 form.calendar-complet .btn {margin-left:5px!important;padding:7px; margin-top:-5px;}
 
 table.calendar-complet tr > td {border:none}

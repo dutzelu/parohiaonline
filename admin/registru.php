@@ -167,33 +167,33 @@
                             echo '">' .$row['status'] . '</span>'; ?></td>
                   <td>
 
-                      <a href="actiuni.php?eveniment=<?php echo $eveniment_registru; ?>&data=<?php echo date("Y-m-d", strtotime($row['data_si_ora'])); ?>&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                      <a href="actiuni.php?eveniment=<?php echo $eveniment_registru; ?>&data=<?php echo date("Y-m-d", strtotime($row['data_si_ora'])); ?>&stergeid=<?php echo $row['id']; ?>" class="sterge" title="Șterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                       <i class="fas fa-trash-alt"></i></a>
 
                       <?php  
                       if ($eveniment_registru == 'programari_botez') {
 
-                          echo '<a class="accepta" href="accepta-programare.php?id=' . $row['id'] . '&status=acceptata&back=registru  " role="button"><i class="far fa-check-circle"></i></a>';
+                          echo '<a class="accepta" href="accepta-programare.php?id=' . $row['id'] . '&status=acceptata&backpage=' . $page_no . '" role="button" id="accepta'. $row['id'] . '" title="Acceptă"><i class="far fa-check-circle"></i></a>';
                      
                       } elseif ($eveniment_registru == 'programari_cununie') {
 
-                          echo '<a class="accepta" href="accepta-programare-cununie.php?id=' . $row['id'] . '&status=acceptata&back=registru" role="button"><i class="far fa-check-circle"></i></a>';
+                          echo '<a class="accepta" href="accepta-programare-cununie.php?id=' . $row['id'] . '&status=acceptata&backpage=' . $page_no . '" role="button" id="accepta'. $row['id'] . '" title="Acceptă"><i class="far fa-check-circle"></i></a>';
 
                       }
                        elseif ($eveniment_registru == 'programari_spovedanie') {
 
-                          echo '<a class="accepta" href="accepta-programare-spovedanie.php?id=' . $row['id'] . '&status=acceptata&back=registru" role="button"><i class="far fa-check-circle"></i></a>';
+                          echo '<a class="accepta" href="accepta-programare-spovedanie.php?id=' . $row['id'] . '&status=acceptata&backpage=' . $page_no . '" role="button" id="accepta'. $row['id'] . '"  title="Acceptă"><i class="far fa-check-circle"></i></a>';
 
                       }
     
                        elseif ($eveniment_registru == 'programari_sfestanie') {
 
-                          echo '<a class="accepta" href="accepta-programare-sfestanie.php?id=' . $row['id'] . '&status=acceptata&back=registru" role="button"><i class=" far fa-check-circle"></i></a>';
+                          echo '<a class="accepta" href="accepta-programare-sfestanie.php?id=' . $row['id'] . '&status=acceptata&backpage=' . $page_no . '" role="button" id="accepta'. $row['id'] . '"  title="Acceptă"><i class=" far fa-check-circle"></i></a>';
 
                       }
                        elseif ($eveniment_registru == 'programari_parastas') {
 
-                          echo '<a class="accepta" href="accepta-programare-parastas.php?id=' . $row['id'] . '&status=acceptata&back=registru" role="button"><i class=" far fa-check-circle"></i></a>';
+                          echo '<a class="accepta" href="accepta-programare-parastas.php?id=' . $row['id'] . '&status=acceptata&backpage=' . $page_no . '" role="button"  id="accepta'. $row['id'] . '" title="Acceptă"><i class=" far fa-check-circle"></i></a>';
 
                       }
 

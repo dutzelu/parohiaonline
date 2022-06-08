@@ -101,6 +101,6 @@ if (isset($_POST['editeaza'])) {
 
 }
 
-echo '<script> location.replace("programul-slujbelor.php?idprog=' . $id_selectat . '"); </script>';
+echo '<script> location.replace("program-liturgic.php?idprog=' . $id_selectat . '"); </script>';
 
 

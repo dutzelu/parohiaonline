@@ -30,6 +30,6 @@ while ($data = mysqli_fetch_assoc($rez)) {
             </div>
         </div>
         <div class="col-sm-4 col-lg-3 setari">
-            <a href="#" ><i class="fas fa-cog" style="font-size:12px"></i> Setări</a> | <a href="#" ><i class="fas fa-user" style="font-size:12px"></i> Contul meu</a> | <a href="logout.php" >Logout</a>
+            <a href="#" ><i class="fas fa-cog" style="font-size:12px"></i> Setări</a> | <a href="#" ><i class="fas fa-user" style="font-size:12px"></i> Contul meu</a> | <a href="../login/logout.php" >Logout</a>
         </div>
 </div>

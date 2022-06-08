@@ -118,7 +118,7 @@ $zi = null;
                             <th scope="col">Programare</th>
                             <th scope="col">Nume</th>
                             <th scope="col">Status</th>
-                            <th scope="col">Acțiuni</th>
+                    
                             </tr>
                         </thead>
 
@@ -189,55 +189,7 @@ $zi = null;
                             
                             echo '">' .$row['status'] . '</span>'; ?></td>
 
-                            <td><?php 
-
-                            if ($row['Programare']=="Botez") {?>
-
-                                <a href="actiuni.php?eveniment=programari_botez&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
-                                <i class="rosu fas fa-trash-alt"></i></a>
-                            <?php
-                            }
-
-                            if ($row['Programare']=="Cununie") {?>
-                            <a href="actiuni.php?eveniment=programari_cununie&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
-                                <i class="rosu fas fa-trash-alt"></i></a>
-
-                            <?php    
-                            }
-
-                            if ($row['Programare']=="Spovedanie") {?>
-                            <a href="actiuni.php?eveniment=programari_spovedanie&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
-                                <i class="rosu fas fa-trash-alt"></i></a>
-
-                            <?php    
-                            }
-
-                            if ($row['Programare']=="Sfeștanie") {?>
-                            <a href="actiuni.php?eveniment=programari_sfestanie&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
-                                <i class="rosu fas fa-trash-alt"></i></a>
-
-                            <?php    
-                            }
-
-                            if ($row['Programare']=="Parastas") {?>
-                            <a href="actiuni.php?eveniment=programari_parastas&stergeid=<?php echo $row['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
-                                <i class="rosu fas fa-trash-alt"></i></a>
-
-                            <?php    
-                            }
-
-                            if ($row['Programare']=="Botez") {
-                                echo '  <a href="';
-                                echo "edit-rezervare.php?id=" . $row['id'];
-                                echo '" class="edit"><i class="fas fa-edit"></i></a>';
-                            } elseif ($row['Programare']=="Cununie") {
-                                echo '  <a href="';
-                                echo "edit-rezervare-cununie.php?id=" .  $row['id'];
-                                echo '" class="edit"><i class="fas fa-edit"></i></a>';
-                            } else {echo '';}
-
                             
-                            ?></td>
                             </tr>
 
                             <?php }?>

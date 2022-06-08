@@ -95,9 +95,7 @@ if($rowcount == 0) {
 
               <div class="col-sm-12">
 
-                <p>Alegeți slujba pentru care vreți să adăugați informații utile pentru credincioși.</p>
-               
-                <p><a class="btn btn-outline-primary" href="info-slujbe.php?tip=botez" role="button">Taina Botezului</a> <a class="btn btn-outline-primary" href="info-slujbe.php?tip=cununie" role="button">Taina Cununiei</a> <a class="btn btn-outline-primary" href="info-slujbe.php?tip=spovedanie" role="button">Taina Spovedaniei</a> <a class="btn btn-outline-primary" href="info-slujbe.php?tip=sfestanie" role="button">Sfeștanie</a> <a class="btn btn-outline-primary" href="info-slujbe.php?tip=parastas" role="button">Parastas</a></p>
+
      
                 <?php if (isset($_GET['tip'])) {
                     

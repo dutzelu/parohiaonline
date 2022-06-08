@@ -59,7 +59,7 @@
                     echo '<p class="">' . $prog_decod->nume_program . "<span class='rosu'> [Edit] </span></p>"; 
                 }
                 
-                echo '<p><a href="programul-slujbelor.php?idprog=' . $id_selectat . '"><i class="fas fa-chevron-circle-left"></i> Renunță</a> ';
+                echo '<p><a href="program-liturgic.php?idprog=' . $id_selectat . '"><i class="fas fa-chevron-circle-left"></i> Renunță</a> ';
                 echo ' <button type="submit" form="editeaza" name ="editeaza" class="m-2 btn salveaza"><i class="fas fa-save albastru-inchis"></i> Salveaza</button></p>';
                 
                 ?>

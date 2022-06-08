@@ -182,12 +182,14 @@
                 <div class="col-sm-8 p-5 calendar">
                     <?php include 'calendar-slujbe.php'?>
                         
-                        <div class="mt-5 legenda">
+                        <div class="mt-3 legenda">
                             <p><span class="fw-bold">Legenda:</span><br>
                           În calendar apar subliniate zilele în care există evenimente. <br> Alegeți una din zilele pentru detalii.</p>
 
+                        <p class="mt-5"><a class="btn btn-primary" href="calendar-complet.php" role="button">Vezi Calendar complet</a>  </p>
 
                         </div>
+
                 </div>
             </div>
 
@@ -264,48 +266,65 @@
 
                             if ($row2['Programare']=="Botez") {?>
 
-                                <a href="actiuni.php?eveniment=programari_botez&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row2['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                                <a href="actiuni.php?eveniment=programari_botez&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row2['id']; ?>" class="sterge" title="Șterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                                 <i class="rosu fas fa-trash-alt"></i></a>
                             <?php
                             }
 
                             if ($row2['Programare']=="Cununie") {?>
-                            <a href="actiuni.php?eveniment=programari_cununie&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row2['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                            <a href="actiuni.php?eveniment=programari_cununie&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row2['id']; ?>" class="sterge" title="Șterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                                 <i class="rosu fas fa-trash-alt"></i></a>
 
                             <?php    
                             }
 
                             if ($row2['Programare']=="Spovedanie") {?>
-                            <a href="actiuni.php?eveniment=programari_spovedanie&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row2['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                            <a href="actiuni.php?eveniment=programari_spovedanie&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row2['id']; ?>" class="sterge" title="Șterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                                 <i class="rosu fas fa-trash-alt"></i></a>
 
                             <?php    
                             }
 
                             if ($row2['Programare']=="Sfeștanie") {?>
-                            <a href="actiuni.php?eveniment=programari_sfestanie&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row2['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                            <a href="actiuni.php?eveniment=programari_sfestanie&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row2['id']; ?>" class="sterge" title="Șterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                                 <i class="rosu fas fa-trash-alt"></i></a>
 
                             <?php    
                             }
 
                             if ($row2['Programare']=="Parastas") {?>
-                            <a href="actiuni.php?eveniment=programari_parastas&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row2['id']; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+                            <a href="actiuni.php?eveniment=programari_parastas&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row2['id']; ?>" class="sterge" title="Șterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                                 <i class="rosu fas fa-trash-alt"></i></a>
 
                             <?php    
                             }
 
-                            if ($row2['Programare']=="Botez") {
-                                echo '  <a href="';
-                                echo "rezervare-unica.php?id=" . $row2['id'];
-                                echo '" class="edit"><i class="fas fa-edit"></i></a>';
-                            } elseif ($row2['Programare']=="Cununie") {
-                                echo '  <a href="';
-                                echo "rezervare-unica-cununie.php?id=" .  $row2['id'];
-                                echo '" class="edit"><i class="fas fa-edit"></i></a>';
-                            } else {echo '';}
+                             
+                      if ($row2['Programare']=="Botez") {
+
+                          echo '<a class="accepta" id="accepta' . $row2['id'] . '". href="accepta-programare.php?id=' . $row2['id'] . '&status=acceptata&back=admin" role="button" title="Acceptă"><i class="far fa-check-circle"></i></a>';
+                     
+                      } elseif ($row2['Programare']=="Cununie") {
+
+                          echo '<a class="accepta" id="accepta' . $row2['id'] . '". href="accepta-programare-cununie.php?id=' . $row2['id'] . '&status=acceptata&back=admin" role="button" title="Acceptă"><i class="far fa-check-circle"></i></a>';
+
+                      }
+                       elseif ($row2['Programare']=="Spovedanie") {
+
+                          echo '<a class="accepta" id="accepta' . $row2['id'] . '". href="accepta-programare-spovedanie.php?id=' . $row2['id'] . '&status=acceptata&back=admin" role="button" title="Acceptă"><i class="far fa-check-circle"></i></a>';
+
+                      }
+    
+                       elseif ($row2['Programare']=="Sfeștanie") {
+
+                          echo '<a class="accepta" id="accepta' . $row2['id'] . '". href="accepta-programare-sfestanie.php?id=' . $row2['id'] . '&status=acceptata&back=admin" role="button" title="Acceptă"><i class=" far fa-check-circle"></i></a>';
+
+                      }
+                       elseif ($row2['Programare']=="Parastas") {
+
+                          echo '<a class="accepta" id="accepta' . $row2['id'] . '". href="accepta-programare-parastas.php?id=' . $row2['id'] . '&status=acceptata&back=admin" role="button" title="Acceptă"><i class=" far fa-check-circle"></i></a>';
+
+                      }
 
                             
                             ?></td>

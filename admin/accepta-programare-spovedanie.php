@@ -23,13 +23,15 @@ if (isset($_GET['status'])) {
   
 } 
 
+if ( isset ($_GET['backpage']) ) {
+    $page_no = $_GET['backpage'];
+    echo '<script> location.replace("registru.php?eveniment=programari_spovedanie&page_no=' . $page_no .  '"); </script>';
+}
+
 if ( isset ($_GET['back']) ) {
-   $back = $_GET['back'];
-  if ($back == "registru") {
- 
-    echo '<script> location.replace("registru.php?eveniment=programari_spovedanie"); </script>';
-  }
+    echo '<script> location.replace("admin.php#accepta' . $id . '"); </script>';
 }
 
 ?>
 
+<script> location.replace("rezervare-unica-spovedanie.php?id=<?php echo $id; ?>"); </script>
