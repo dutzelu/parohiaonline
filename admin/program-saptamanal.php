@@ -22,10 +22,9 @@
             <h4 class="h4">Adăugă un program de slujbe "SĂPTĂMÂNAL"</h4>
 
             <ul>
-                <li class="badge bg-primary">fara zile calendaristice exacte</li>
-                <li class="badge bg-warning">doar cu zile ale săptămânii</li>
+                <li class="badge bg-primary">fara zile calendaristice exacte | doar cu zile ale săptămânii</li>
                 <li class="badge bg-info">se repeta pe perioade lungi de timp</li>
-                <li class="badge bg-danger">stabilește oricâte zile vrei (7, 14, 30, etc.)</li>
+                <li class="badge bg-primary">stabilește oricâte zile vrei (7, 14, 30, etc.)</li>
             </ul>
 
 
@@ -118,7 +117,7 @@
             
             <form  action="update-program-adauga.php" method="POST">
                 
-                <div class="input-group mb-2">
+                <div class="input-group mt-3 mb-2">
                     <span class="input-group-text">Numele programului:</span>
                     <input type="text" name="nume_program" placeholder="ex: Program obișnuit, program Săptămâna mare, program Postul Mare" class="form-control" required>
                 </div>

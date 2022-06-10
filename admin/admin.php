@@ -98,7 +98,15 @@
                     <div>
                         <div class="row align-items-center">
                             <div class="col-sm-3"><img src="../images/botez-albastru.png" /></div>
-                            <div class="col-sm-9">3 botezuri <br> în ultimele 30 de zile</div>
+                            <div class="col-sm-9">
+                                <?php program_ultimele_30_zile("programari_botez", $id);
+                                
+                                if ($nr_randuri_prog == 1) {
+                                    echo " botez ";
+                                } else {echo ' botezuri ';}
+                                
+                                ?> 
+                                <br> în ultimele 30 de zile</div>
                         </div>
                     </div>
                 </a>
@@ -107,7 +115,15 @@
                     <div>
                         <div class="row align-items-center">
                             <div class="col-sm-3"><img src="../images/cununii-auriu.png" /></div>
-                            <div class="col-sm-9">2 cununii <br> în ultimele 30 de zile</div>
+                            <div class="col-sm-9">
+                                
+                            <?php program_ultimele_30_zile("programari_cununie", $id);
+                                
+                                if ($nr_randuri_prog == 1) {
+                                    echo " cununie ";
+                                } else {echo ' cununii ';}
+                            ?>
+                            <br> în ultimele 30 de zile</div>
                         </div>
                     </div>
                 </a>
@@ -116,7 +132,15 @@
                     <div>
                         <div class="row align-items-center">
                             <div class="col-sm-3"><img src="../images/sfestanii-verde.png" /></div>
-                            <div class="col-sm-9">5 sfeștanii <br> în ultimele 30 de zile</div>
+                            <div class="col-sm-9">
+                            
+                            <?php program_ultimele_30_zile("programari_sfestanie", $id);
+                                
+                            if ($nr_randuri_prog == 1) {
+                                echo " sfeștanie ";
+                            } else {echo ' sfeștanii ';} 
+                            ?>
+                            <br> în ultimele 30 de zile</div>
                         </div>
                     </div>
                 </a>
@@ -125,20 +149,50 @@
 
             <div class="row mt-3 justify-content-start contoare">
 
-                <a href="registru.php?eveniment=programari_botez" class="col-sm-4 m-2">
+                <a href="registru.php?eveniment=programari_spovedanie" class="col-sm-3 m-2">
                     <div>
                         <div class="row align-items-center">
                             <div class="col-sm-3"><img src="../images/spovedanii-rosu.png" /></div>
-                            <div class="col-sm-9">23 persoane programate la Spovedanie în ultimele 30 de zile</div>
+                            <div class="col-sm-9">
+                                <?php program_ultimele_30_zile("programari_spovedanie", $id);
+                                
+                                if ($nr_randuri_prog == 1) {
+                                    echo " spovedanie ";
+                                } else {echo ' spovedanii ';} 
+                                
+                                ?> <br> în ultimele 30 de zile</div>
                         </div>
                     </div>
                 </a>
 
-                <a href="registru.php?eveniment=programari_cununie" class="col-sm-3 m-2">
+                <a href="registru.php?eveniment=programari_parastas" class="col-sm-3 m-2">
                     <div>
                         <div class="row align-items-center">
                             <div class="col-sm-3"><img src="../images/parastase-portocaliu.png" /></div>
-                            <div class="col-sm-9">2 cununii <br> în ultimele 30 de zile</div>
+                            <div class="col-sm-9">
+                                <?php program_ultimele_30_zile("programari_parastas", $id);
+                                
+                                if ($nr_randuri_prog == 1) {
+                                    echo " parastas ";
+                                } else {echo ' parastase ';} 
+                                ?>
+                                <br> în ultimele 30 de zile</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="pomelnice.php" class="col-sm-3 m-2">
+                    <div>
+                        <div class="row align-items-center">
+                            <div class="col-sm-3"><img src="../images/pomelnic-albastru.png" /></div>
+                            <div class="col-sm-9">
+                                <?php pomelnice_30_zile($id);
+                                
+                                if ($nr_randuri_prog == 1) {
+                                    echo " pomelnic ";
+                                } else {echo ' pomelnice ';} 
+                                ?>
+                                <br> în ultimele 30 de zile</div>
                         </div>
                     </div>
                 </a>

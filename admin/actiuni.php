@@ -111,6 +111,16 @@ include "../admin/header-admin.php";
             echo '<script> location.replace("membri.php?sters=ok"); </script>';
         }
 
+        if ($eveniment=="liturgic") {
+            $sql="DELETE FROM program_liturgic WHERE id = ? AND parohie_id = ?";
+             
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('ii', $stergeid, $id);
+            $result = $stmt->execute();  
+        
+            echo '<script> location.replace("program-liturgic.php?sters=ok"); </script>';
+        }
+
     } 
 
     if (isset($_GET['blocheaza_id'])) {

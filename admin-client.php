@@ -1,4 +1,8 @@
-<?php  include "header-frontend.php"; ?>
+<?php  
+include "header-frontend.php"; 
+$ultima_zi = NULL;
+
+?>
 
 <title>Panoul de control</title>
 </head>
@@ -47,7 +51,7 @@
 
             <div class="row mt-3 justify-content-start contoare">
 
-                <a href="frontend.php?pentru=spovedanie" class="col-sm-4 m-2">
+                <a href="frontend.php?pentru=spovedanie" class="col-sm-3 m-2">
                     <div>
                         <div class="row align-items-center">
                             <div class="col-sm-3"><img src="images/spovedanii-rosu.png" /></div>
@@ -98,10 +102,107 @@
 
                 </div>
 
-                <div class="col-sm-8 p-5 calendar">
+                <div class="col-sm-8 p-4 calendar">
                      
+                <div class="col-sm-12">
+
+                <!-- Afiseaza programul liturgic oficial -->                    
+
+                    <?php
+
+                    $query = "Select * From program_liturgic Where status = 1 AND parohie_id = ?;";
+
+                    $stmt = $conn->prepare($query);
+                    $stmt->bind_param('i',$parohie_id);
+                    $rezultat = $stmt->execute();
+                    $rezultat = $stmt->get_result();
+                    $rowcount = mysqli_num_rows($rezultat);
+
+                    if ($rowcount != 0) {
+
+                        while ($data = mysqli_fetch_assoc($rezultat)) {
+                    
+                            $program_json = $data['program'];
+                            $nume_program_selectat = $data['nume'];
+                            $prog_decod = json_decode($program_json);
+                            $status = $data['status'];
+    
+                        }
+                    } else {
+                        $nume_program_selectat = NULL;
+                        echo "<h5>Programul slujbelor</h5>";
+                        echo "<p>Încă nu a fost introdus de parohie.</p>";
+                    }
+
+                    echo '<h5 class="mt-3">' . $nume_program_selectat . "</h5>";  ?>
+
+                
+                    <table class="table">
                         
- 
+                        
+                    <?php if($rowcount != 0) { ?>
+                        
+                        <thead>
+                            <tr>
+                                <th scope="col">Ziua</th>
+                                <th scope="col">Ora</th>
+                                <th scope="col">Slujba</th>
+                                <th scope="col">Observații</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody >
+
+                    <?php
+
+                        $data = json_decode($program_json, true);
+                        $nr_slujbe = (count($data)-2)/5;
+
+                        for ($i=1; $i <= $nr_slujbe ; $i++) {
+
+                        $ziua_saptamanii = 'ziua_saptamanii'.$i;
+                        $slujba = 'slujba'.$i;
+                        $text_optional = 'text_optional'.$i;
+                        $alte_observatii = 'alte_observatii'.$i;
+                        $ora_start = 'ora_start'.$i;
+
+                    ?>
+
+                    <tr  class="
+                            <?php  $ziua = $prog_decod->$ziua_saptamanii;
+                            if ($ultima_zi != $ziua){echo "subliniat"; } ?>">
+
+                        <td class="ziua">
+                            <?php if ($ultima_zi != $ziua)
+                            {
+                                $ultima_zi = $ziua;
+                                // dacă e zi a săptămânii
+                                if(preg_match("/[a-z]/i", $ziua)){
+                                    echo $ziua; 
+                                } 
+                                // dacă e zi calendaristică
+                                else {
+                                    $time = strtotime($ziua);
+                                    echo strftime('%A',$time) . ', ' . strftime('%e %b %Y',$time);
+                                }
+                            }?>
+                        </td>
+
+                        <td><?php echo $prog_decod->$ora_start; ?></td>
+                        <td class="slujba_colorata"><?php 
+
+
+                            echo '<span class="p-1 albastru-inchis">' . $prog_decod->$slujba . ' ' . $prog_decod->$text_optional . '</span>' ; ?>
+                        </td>
+
+                            <td><?php echo $prog_decod->$alte_observatii; ?></td>
+
+                    </tr>
+                    <?php }} ?> 
+                    </tbody>
+                    </table>
+
+
                 </div>
             </div>
 

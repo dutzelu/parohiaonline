@@ -17,7 +17,7 @@ if (isset($_POST['salveazaProgram'])) {
 
  
 
-$query = 'INSERT INTO programul_slujbelor (nume, program, status, parohie_id) VALUES (?,?,?,?)';
+$query = 'INSERT INTO program_liturgic (nume, program, status, parohie_id) VALUES (?,?,?,?)';
 
 $role=0;
 $stmt = $conn->prepare($query);

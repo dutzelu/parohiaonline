@@ -5,7 +5,7 @@ include "header-admin.php";
 if (isset($_GET['idprog'])) {
     $id_selectat = $_GET['idprog'];
 } 
-$query = "Select * From programul_slujbelor Where id = ?;";
+$query = "Select * From program_liturgic Where id = ?;";
 
 $stmt = $conn->prepare($query);
 $stmt->bind_param('i', $id_selectat);
@@ -80,11 +80,11 @@ if (isset($_POST['editeaza'])) {
             // echo "<br>";
             // echo "<br>";
 
-            $query = 'UPDATE programul_slujbelor  SET program = JSON_SET(program,' . $ziua_saptamanii_y . ',' . $z . ',' . $slujba_y . ',' . $s . ',' . $text_optional_y . ',' . $t . ',' . $alte_observatii_y . ',' . $a . ',' . $ora_start_y . ',' . $o . '), nume = "' . $nume_program . '" ' . 'WHERE id = ' . $id_selectat;
+            $query = 'UPDATE program_liturgic  SET program = JSON_SET(program,' . $ziua_saptamanii_y . ',' . $z . ',' . $slujba_y . ',' . $s . ',' . $text_optional_y . ',' . $t . ',' . $alte_observatii_y . ',' . $a . ',' . $ora_start_y . ',' . $o . '), nume = "' . $nume_program . '" ' . 'WHERE id = ' . $id_selectat;
 
             // var_dump ($query);
 
-            // $query = 'UPDATE programul_slujbelor 
+            // $query = 'UPDATE program_liturgic 
             // SET program = JSON_SET(program, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             // WHERE id = ?;';
 

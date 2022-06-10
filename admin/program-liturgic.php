@@ -3,16 +3,18 @@
       $ziua = null;
       $ultima_zi = null;
       
-    if (isset($_POST['salveaza_rol_program'])) {
+// salvează rol program
+
+    if (isset($_GET ['program_ales'])) {
   
-              $program_ales = $_POST["program_ales"];
-              $query = "UPDATE programul_slujbelor SET status = 1 Where id = ? AND parohie_id = $id;";
+              $program_ales = $_GET["program_ales"];
+              $query = "UPDATE program_liturgic SET status = 1 Where id = ? AND parohie_id = $id;";
               $stmt = $conn->prepare($query);
               $stmt->bind_param('i', $program_ales);
               $result = $stmt->execute();
   
               
-              $query = "UPDATE programul_slujbelor SET status = 0 Where id != ? AND parohie_id = $id;";
+              $query = "UPDATE program_liturgic SET status = 0 Where id != ? AND parohie_id = $id;";
               $stmt = $conn->prepare($query);
               $stmt->bind_param('i', $program_ales);
               $result = $stmt->execute();
@@ -25,7 +27,7 @@
  
     elseif (isset($_GET['adaugat'])) {
             // dacă se adaugă program nou
-            $sql = "SELECT * FROM programul_slujbelor WHERE parohie_id = $id ORDER BY id DESC LIMIT 1; ";
+            $sql = "SELECT * FROM program_liturgic WHERE parohie_id = $id ORDER BY id DESC LIMIT 1; ";
             $stmt = $conn->prepare($sql);
             $rezultat = $stmt->execute();
             $rezultat = $stmt->get_result();
@@ -37,7 +39,7 @@
 
     else {
             // dacă nu este selectat niciun id atunci ia idul cel mai recent
-            $sql = "SELECT * FROM programul_slujbelor WHERE status = 1 AND parohie_id = $id;";
+            $sql = "SELECT * FROM program_liturgic WHERE parohie_id = $id;";
             $stmt = $conn->prepare($sql);
             $rezultat = $stmt->execute();
             $rezultat = $stmt->get_result();
@@ -67,24 +69,61 @@
                 
                 <div class="row ultimele-programari programul-slujbelor">
                     
-                    <h4 class="h4 mb-4 rosu"> Programul slujbelor</h4>
+                    <h4 class="h4 mb-2 rosu"> Programul slujbelor</h4>
 
-                    <?php 
-                if(isset($_GET['adaugat'])) {
-                    echo '<p class="bg-primary text-light" id="dispari">Programul a fost adăugat cu succes.</p>';
-                }
+                    <?php
+                    if (isset($_GET['sters'])) {
+                      echo '<p id="dispari">Programarea a fost ștearsă cu succes</p>';
+                    } ?>
+
+                    <p><a href="program-saptamanal.php" ><i class="far fa-plus-square rosu mb-2"></i> Adaugă program "săptămânal"</a>   <a class="m-3" href="program-calendaristic.php"><i class="far fa-plus-square rosu"></i> Adaugă program calendaristic</a></p>
+
+                    <!-- Afișează programele liturgice salvate -->
+
+                    <?php
+
+                    $query = 'Select * From program_liturgic WHERE parohie_id =' . $id;
+
+                    $stmt = $conn->prepare($query);
+                    $rezultat = $stmt->execute();
+                    $rezultat = $stmt->get_result();
+                    $nr_randuri = mysqli_num_rows($rezultat);
+
+                    if ( $nr_randuri!== 0) {
+                        echo '<hr>';
+                        echo "<p>Programe liturgice salvate:</p>";
+                        echo '<ul class="m-3 mt-0">';
+                        while ($data = mysqli_fetch_assoc($rezultat)) {
+                            $nume_program = $data['nume'];
+                            $id_program = $data['id'];
+                            echo '<li class="disc"><a href="program-liturgic.php?idprog=' .  $data['id'] . '">' . $nume_program .'</span></a>' ; 
+                            if($data['status']==1) {echo '  <span class="badge bg-info"> oficial</span> ';}
+                            echo '<li>';
+                        }
+                       
+                        echo '</ul>';
+                        echo '<hr>';
+    
+                        
+                            if(isset($_GET['adaugat'])) {
+                        echo '<p class="bg-primary text-light" id="dispari">Programul a fost adăugat cu succes.</p>';
+                            }
+
+                    }
+
+ 
                 
-                ?>
+                     ?>
 
-                <div class="col-sm-9">
+                <div class="col-sm-12">
 
                     
                          <?php
-
-                            $query = "Select * From programul_slujbelor Where id = ? AND parohie_id = $id;";
+                         
+                            $query = "Select * From program_liturgic Where id = ? AND parohie_id = ?;";
 
                             $stmt = $conn->prepare($query);
-                            $stmt->bind_param('i', $id_selectat);
+                            $stmt->bind_param('ii', $id_selectat, $id);
                             $rezultat = $stmt->execute();
                             $rezultat = $stmt->get_result();
                             $rowcount = mysqli_num_rows($rezultat);
@@ -96,62 +135,33 @@
                                 $prog_decod = json_decode($program_json);
                                 $status = $data['status'];
                             }
-                            if($rowcount != 0) {?>
 
-                            <div class="program-selectat mb-2">
+                            if($rowcount !== 0) {?>
 
-                                <div class="row justify-content-end align-items-center">
-
-                                    <div class="col-sm-5">
-                                        <p>Alege un <strong>program oficial</strong> din cele salvate, care va fi public tuturor credincioșilor.
-                                    </div>
-
-                                    <div class="col-sm-7">
-                                        
-                                        <div class="input-group mb-2">
-                                            <form id="role_program" method="POST" action="program-liturgic.php">
-                                            <?php
-                                            $query = 'Select * From programul_slujbelor Where parohie_id = ' . $id;
-
-                                            $stmt = $conn->prepare($query);
-                                            $rezultat = $stmt->execute();
-                                            $rezultat = $stmt->get_result();
-
-                                            echo '<select name="program_ales" class="form-control">';
-                                                    while ($data = mysqli_fetch_assoc($rezultat)) {
-                                                        $nume_program = $data['nume'];
-                                                        $id_program = $data['id'];
-                                                        echo '<option value="' . $id_program .'">' . $nume_program . '</option>';
-                                                    }?>
-                                                </select>
-                                            </form>
-                                            <button form="role_program" name="salveaza_rol_program" class= "btn btn-primary">Alege</button>
-                                        </div>
-                                        
-
-
-                                    </div>
-
-                                </div>
-
-                            </div> 
+                            
     
 
                             <?php
                                 echo '<h5 class="mt-3">' . $nume_program_selectat . "</h5>";  ?>
 
                             <p>
+
                             <?php if($status ==1){echo '<span class="badge bg-primary">oficial</span>';}
                             else {echo '<span class="badge bg-secondary">salvat</span>';}?>
                             
+                            <?php if($status ==0) {
+                               echo '<a href="program-liturgic.php?program_ales=' . $id_selectat . '" class="m-2">↵ Seteaza ca oficial</a>';
+                             } ?>
                             <a href="program-edit.php?idprog=<?php echo $id_selectat;?>" class="m-2"><i class="albastru-inchis far fa-edit"></i> Modifică</a> 
 
-                            <a href="program-edit.php?idprog=<?php echo $id_selectat; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți aceast program?');"><i class="rosu fas fa-trash-alt"></i>Șterge</a> </p>
+                            <a href="actiuni.php?stergeid=<?php echo $id_selectat; ?>&eveniment=liturgic" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți aceast program?');"><i class="rosu fas fa-trash-alt"></i>Șterge</a> </p>
 
 
-                            <?php } else {
+                            <?php } 
+                            
+                            else {
                                 echo '<p>Până acum nu ai stabilit niciun program. Apasă "Adăugă program" pentru a stabili unul.</p>';
-                            }
+                            }  
                             
                             ?>
                             <table class="table">
@@ -221,60 +231,8 @@
 
 
             </div>
-            <div class="col-sm-3">
-                <p><a href="program-saptamanal.php" ><i class="far fa-plus-square rosu mb-2"></i> Adaugă program "săptămânal"</a><br>
-                 <a href="program-calendaristic.php"><i class="far fa-plus-square rosu"></i> Adaugă program calendaristic</a></p>
-                   
-                    <hr>
-                    <p>Program public acum:<br>
-
-                    <?php
-
-                    $query = 'Select * From programul_slujbelor WHERE status = 1';
-
-                    $stmt = $conn->prepare($query);
-                    $rezultat = $stmt->execute();
-                    $rezultat = $stmt->get_result();
-
-                    while ($data = mysqli_fetch_assoc($rezultat)) {
-                        $nume_program = $data['nume'];
-                        $id_program = $data['id'];
-                        echo '<span class="rosu">' . $nume_program .'</span></p>' ; 
-                    }
-                    ?>
-                    </p>
-                 
-                 
-                    <hr>
-                    <p class="fw-bold">Programe salvate</p>
-                    <hr>
-                    <ul class="m-3 programe-salvate">
-                    <?php 
-    
-                    
-                    $query = 'Select * From programul_slujbelor WHERE parohie_id =' . $id . ' ORDER BY id DESC';
-
-                    $stmt = $conn->prepare($query);
-                    $rezultat = $stmt->execute();
-                    $rezultat = $stmt->get_result();
-
-                    while ($data = mysqli_fetch_assoc($rezultat)) {
-                        $nume_program = $data['nume'];
-                        $id_program = $data['id'];
-                        echo '<li><a href="program-liturgic.php?idprog=' . $id_program . '">' . $nume_program . '</a></li>';
-                    }
-                
-                    ?>
-                </ul>
-               
-
-                
-
-            </div>
-             
-            
-            
-            
+        
+        
         </div>
 
 

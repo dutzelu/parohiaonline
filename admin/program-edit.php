@@ -42,7 +42,7 @@
 
             <?php
 
-                $query = "Select * From programul_slujbelor Where id = ?;";
+                $query = "Select * From program_liturgic Where id = ?;";
 
                 $stmt = $conn->prepare($query);
                 $stmt->bind_param('i', $id_selectat);

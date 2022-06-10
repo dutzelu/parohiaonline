@@ -236,3 +236,37 @@ function user_blocat ($user_id) {
   }
 
 }
+
+// programari în ultimele 30 de zile
+
+function program_ultimele_30_zile ($tabel_programari, $parohie_id) {
+
+  global $conn;
+  global $nr_randuri_prog;
+
+  $query = "Select * FROM $tabel_programari WHERE parohie_id = $parohie_id AND data_si_ora > (current_date - interval 30 day)";
+  $stmt = mysqli_stmt_init($conn);
+  mysqli_stmt_prepare($stmt, $query);
+  mysqli_stmt_execute($stmt);
+  
+  $rezultat = mysqli_stmt_get_result($stmt);
+  echo $nr_randuri_prog = mysqli_num_rows($rezultat);
+
+}
+
+// programari în ultimele 30 de zile
+
+function pomelnice_30_zile ($parohie_id) {
+
+  global $conn;
+  global $nr_randuri_prog;
+  
+  $query = "Select * FROM pomelnice WHERE parohie_id = $parohie_id";
+  $stmt = mysqli_stmt_init($conn);
+  mysqli_stmt_prepare($stmt, $query);
+  mysqli_stmt_execute($stmt);
+  
+  $rezultat = mysqli_stmt_get_result($stmt);
+  echo $nr_randuri_prog = mysqli_num_rows($rezultat);
+
+}

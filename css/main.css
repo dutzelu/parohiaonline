@@ -260,13 +260,8 @@ tr.subliniat {border-top:2px solid #EAF0F7;}
 
 .table > tbody > tr > td > select, .table > tbody > tr > td > input, .table > tbody > tr > td > textarea  {font-size:14px!important;}
 ul.programe-salvate li {list-style-type: disc;}
-/* .blue-ciel {background-color:#3498DB;}
-.auriu {background-color:#FFB624; }
-.verde-crud {background-color:#60BA50;}
-.sange {background-color:#E41E26;}
-.mov {background-color:#AB00C4; }
+li.badge {font-size:1em}
 
-td.slujba_colorata span{color:#FFF; border-radius: 5px; font-size:12px;} */
 
  /*----------------------*/
 
@@ -451,6 +446,7 @@ span.cap.imagine {padding:45px 15px!important}
 
 /* Calendar luat de pe W3 */
 
+.disc {list-style: disc;}
 ul {list-style-type: none;padding:0}
 ol.lista li {list-style-type: disc;}
 body {font-family: Georgia, sans-serif;}

@@ -98,7 +98,7 @@
                              
                 echo '<a href="edit-rezervare.php?id=' . $id_programare . '"><i class="albastru-inchis far fa-edit"></i> Modifică</a> ';
 
-                echo '<a href="" onclick="window.print()"><i class="fas fa-print"></i> Print</a>';
+                // echo '<a href="" onclick="window.print()"><i class="fas fa-print"></i> Print</a>';
                
               echo '</p>';
 

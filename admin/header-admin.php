@@ -15,6 +15,7 @@ $id = $_SESSION['parohie_id'];
  
 if ( isset($_GET['pentru']) ) {$pentru = $_GET['pentru'];} else {$pentru = "";}
 
+
 switch ($pentru) {
     case "botez": $eveniment = "Taina Botezului"; break;
     case "cununie": $eveniment = "Taina Cununiei"; break;
