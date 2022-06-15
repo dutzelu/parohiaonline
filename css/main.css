@@ -45,26 +45,24 @@ a {color:#4374B9;}
 .wrapper {align-items: stretch; height:100%;}
 .zona-principala {background:#EDF0F5; font-family: 'Poppins', sans-serif;}
  div.logo img {max-width:100%;}
- img.logo {max-width:260px;}
-div.titlu p {line-height:23px;color:#4374B9}
+ div.logo {text-align: center;}
+ 
+div.titlu p {color:#4374B9}
 
 .preot {
-  font-size: 17px;
+  font-size: 17px; margin:0;
 }
 
 .parohie {
-  font-size: 30px;
+  font-size: 24px;
   font-weight: bold;
   margin-bottom:10px;
 }
 
-.mitropolia {
-  font-size: 17px;
-  margin:20px 0 8px 0;
-}
+ 
 
-
-.setari {color:#AAA;text-align:right}
+.setari a {display:inline-block; margin-right:10px; color:#AAA; font-size:15px;}
+.setari a:hover {color:red;}
 
 .zona-principala .contoare a > div {background:#FFF;padding:20px;border-radius:10px;box-shadow: 3px 4px 10px -4px #C7C7C7;}
 .zona-principala div.contoare a {display:inline-block}
@@ -99,14 +97,16 @@ div.titlu p {line-height:23px;color:#4374B9}
 }
 .calendar {background:#FFF;}
 
+#month {max-width:100px}
+#year {max-width:89px}
+
 /* Ultimele programari */
 
 .ultimele-programari .table > thead:nth-child(1) > tr:nth-child(1) {color:#303E67; background:#F1F5FA;border:1px solid #EAF0F7; font-weight:bold;}
 .ultimele-programari, .zile-stabilite {
   box-shadow: 3px 4px 10px -4px #C7C7C7;
   background: #FFF;
-  padding: 49px 34px;
-  margin: 24px 12px;
+  margin-top: 1rem;
   font-size:14px;
 }
 .ultimele-programari .input-group-text {
@@ -144,10 +144,7 @@ span.status {font-size:11px; display:inline-block;width:fit-content; padding:2px
 
 /* calendar cu slujbe */ 
 
-.legenda {
-  font-size: 13px;
-  margin-left: 26px;
-}
+.legenda {  }
 
 .legenda > div {
   display: inline-block;
@@ -254,7 +251,7 @@ div.capcalendar {
  }
 
 /* Programul slujbelor */ 
-.programul-slujbelor .table {color:#000;}
+.programul-slujbelor .table {color:#000; overflow-x: auto!important;}
 .programul-slujbelor .table tr > td {border:none}
 tr.subliniat {border-top:2px solid #EAF0F7;}
 
@@ -495,7 +492,11 @@ body {font-family: Georgia, sans-serif;}
   margin: 0;
 }
 
-li.calendar-day > label {width:40px;}
+ 
+li.calendar-day a label, li.calendar-day label, li.calendar-day span {width:40px;}
+.navbar-toggler-icon {
+  background-image: url('../images/menu.svg');
+}
 
 .days li {
   list-style-type: none;
@@ -524,31 +525,37 @@ li.calendar-day > label {width:40px;}
   width: 265px;
   margin-top:30px;
 }
+a.nav-link, #navbarSupportedContent > ul > li.nav-item.dropdown.show > div > a.dropdown-item  {color:#4374B9; font-size:18px}
+#navbarSupportedContent > ul {flex-direction: column; }
+
+.navbar-expand-lg .navbar-nav .dropdown-menu {
+  padding: 22px;
+}
 
 
-.potir {background:url('../images/potir-negru.png') no-repeat left center !important; color:#4374B9}
-.membri {background:url('../images/membri.png') no-repeat left center !important; color:#4374B9}
-.program {background:url('../images/potir-negru.png') no-repeat left center !important; color:#4374B9}
-.program:hover, button.program.active {background:url('../images/potir-alb.png') no-repeat left center #4374B9 !important;}
+.potir {background:url('../images/potir-negru.png') no-repeat left center !important; color:#4374B9; padding-left:40px!important}
+.membri {background:url('../images/membri.png') no-repeat left center !important; color:#4374B9;padding-left:40px!important}
+.program {background:url('../images/potir-negru.png') no-repeat left center !important; color:#4374B9;padding-left:40px!important}
+.program:hover, button.program.active {background:url('../images/potir-alb.png') no-repeat left center #4374B9 !important;;padding-left:40px!important}
 
-.programari {background:url('../images/ceas-negru.png') no-repeat left center !important; color:#4374B9}
+.programari {background:url('../images/ceas-negru.png') no-repeat left center !important; color:#4374B9;padding-left:40px!important}
 .programari:hover, button.programari.active {background:url('../images/ceas-alb.png') no-repeat 7px 3px #4374B9 !important;}
 
 
-.zile {background:url('../images/ceas-negru.png') no-repeat left center !important; color:#4374B9}
+.zile {background:url('../images/ceas-negru.png') no-repeat left center !important; color:#4374B9;padding-left:40px!important}
 .zile:hover, button.zile.active {background:url('../images/ceas-alb.png') no-repeat 5px center #4374B9 !important;}
 
-a.botezuri {background:url('../images/botezuri.png') no-repeat left center; }
-a.prima-pagina {background:url('../images/cruce.png') no-repeat left center; }
-a.cununii {background:url('../images/cununii.png') no-repeat left center}
-a.spovedanii {background:url('../images/spovedanii.png') no-repeat left center}
-a.sfestanii {background:url('../images/sfestanii.png') no-repeat left center}
-a.parastase {background:url('../images/parastase.png') no-repeat left center}
-a.participare-slujbe {background:url('../images/participare-slujbe.png') no-repeat left center}
-a.rugaciuni {background:url('../images/rugaciuni.png') no-repeat left center}
-a.pomelnic {background:url('../images/pomelnic.png') no-repeat left center}
-a.info {background:url('../images/info.png') no-repeat left center}
-a.calendar {background:url('../images/monitor.png') no-repeat left center}
+a.botezuri {background:url('../images/botezuri.png') no-repeat left center; ;padding-left:40px!important}
+a.prima-pagina {background:url('../images/cruce.png') no-repeat left center; ;padding-left:40px!important}
+a.cununii {background:url('../images/cununii.png') no-repeat left center;padding-left:40px!important}
+a.spovedanii {background:url('../images/spovedanii.png') no-repeat left center;padding-left:40px!important}
+a.sfestanii {background:url('../images/sfestanii.png') no-repeat left center;padding-left:40px!important}
+a.parastase {background:url('../images/parastase.png') no-repeat left center;padding-left:40px!important}
+a.participare-slujbe {background:url('../images/participare-slujbe.png') no-repeat left center;padding-left:40px!important}
+a.rugaciuni {background:url('../images/rugaciuni.png') no-repeat left center;padding-left:40px!important}
+a.pomelnic {background:url('../images/pomelnic.png') no-repeat left center;padding-left:40px!important}
+a.info {background:url('../images/info.png') no-repeat left center;padding-left:40px!important}
+a.calendar {background:url('../images/monitor.png') no-repeat left center;padding-left:40px!important}
 
 ul.dropdown-container > li {list-style-type: none;}
 

@@ -162,7 +162,7 @@ ORDER BY Data ASC";
  $controls = 
             '<form method="get" class="calendar-complet">
                 
-                    <p><span class="sageti">' .  $previous_month_link . ' ' . $next_month_link . '</span>' . $select_month_control . $select_year_control .  '<button type="submit" class="btn btn-outline-primary"/> '.' Schimbă luna și anul</button></p>
+                    <p><span class="sageti">' .  $previous_month_link . ' ' . $next_month_link . '</span>' . $select_month_control . $select_year_control .  '<button type="submit" class="btn btn-outline-primary"/> '.' Schimbă</button></p>
  
             </form>';
  echo $controls;

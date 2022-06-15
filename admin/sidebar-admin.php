@@ -1,59 +1,74 @@
- 
- <div class="row justify-content-center">
-    <div class="col-sm-9 mt-4 logo"><img src="../images/logo-parohiaonline.png" ></div>
- </div>
+
 
 <div class="row justify-content-center">
-
-  <div class="sidenav admin">
-    <a class="prima-pagina" href="<?php echo BASE_URL . 'admin/';?>admin.php">Prima pagină</a>
-    <button class="dropdown-btn">Stabilește zile pentru<i class="fas fa-chevron-down" style="margin-left:10px; font-size:10px"></i></button>
-      <ul class="dropdown-container">
-        <li><a href="<?php echo BASE_URL . 'admin/';?>zile-stabilite.php?pentru=botez">Botez</a></li>
-        <li><a href="<?php echo BASE_URL . 'admin/';?>zile-stabilite.php?pentru=cateheza_botez">Cateheza Botez</a></li>
-        <li><a href="<?php echo BASE_URL . 'admin/';?>zile-stabilite.php?pentru=cununie">Cununie</a></li>
-        <li><a href="<?php echo BASE_URL . 'admin/';?>zile-stabilite.php?pentru=cateheza_cununie">Cateheza Cununie</a></li>
-        <li><a href="<?php echo BASE_URL . 'admin/';?>zile-stabilite.php?pentru=parastas ">Parastas</a></li>
-        <li><a href="<?php echo BASE_URL . 'admin/';?>zile-stabilite.php?pentru=spovedanie ">Spovedanie</a></li>
-        <li><a href="<?php echo BASE_URL . 'admin/';?>zile-stabilite.php?pentru=sfestanie ">Sfeștanie</a></li>
-      </ul>
-    <button class="zile dropdown-btn">Registru <i class="fas fa-chevron-down" style="margin-left:10px; font-size:10px"></i></button>
-      <ul class="dropdown-container">
-        <a class="botezuri" href="<?php echo BASE_URL . 'admin/';?>registru.php?eveniment=programari_botez">Botezuri</a>
-        <a class="cununii" href="<?php echo BASE_URL . 'admin/';?>registru.php?eveniment=programari_cununie">Cununii</a>
-        <a class="spovedanii" href="<?php echo BASE_URL . 'admin/';?>registru.php?eveniment=programari_spovedanie">Spovedanii</a>
-        <a class="sfestanii" href="<?php echo BASE_URL . 'admin/';?>registru.php?eveniment=programari_sfestanie">Sfeștanii</a>
-        <a class="parastase" href="<?php echo BASE_URL . 'admin/';?>registru.php?eveniment=programari_parastas">Parastase</a>
-      </ul>
-      <a class="potir" href="<?php echo BASE_URL . 'admin/';?>program-liturgic.php">Programul liturgic</a>
-      <a class="participare-slujbe" href="<?php echo BASE_URL . 'admin/';?>participare-slujbe.php">Participare la slujbe</a>
-      <!-- <a class="rugaciuni" href="rugaciuni-in-comun.php">Rugăciuni în comun</a> -->
-      <a class="pomelnic" href="<?php echo BASE_URL . 'admin/';?>pomelnice.php">Pomelnice</a>
-      <a class="membri" href="<?php echo BASE_URL . 'admin/';?>membri.php">Membri</a>
-      <a class="info" href="<?php echo BASE_URL . 'admin/';?>anunturi.php">Info utile</a>
-
-        
-  </div> 
-
+  <div class="mt-4 logo"><img src="../images/logo-parohiaonline.png" ></div>
 </div>
 
 
-<script>
-/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-var dropdown = document.getElementsByClassName("dropdown-btn");
-var i;
+<div class="row justify-content-center">
 
-for (i = 0; i < dropdown.length; i++) {
-  dropdown[i].addEventListener("click", function() {
-  this.classList.toggle("active");
-  var dropdownContent = this.nextElementSibling;
-  if (dropdownContent.style.display === "block") {
-  dropdownContent.style.display = "none";
-  } else {
-  dropdownContent.style.display = "block";
-  }
-  });
-}
-</script>
+<nav class="navbar navbar-expand-lg">
+  
+ 
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
+      <ul class="navbar-nav admin">
+
+        <li class="nav-item ">
+          <a class="nav-link" href="<?php echo BASE_URL . 'admin/';?>admin.php">Prima pagină</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Stabilește zile pentru</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="<?php echo BASE_URL . 'admin/';?>zile-stabilite.php?pentru=botez">Botez</a>
+            <a class="dropdown-item" href="<?php echo BASE_URL . 'admin/';?>zile-stabilite.php?pentru=cateheza_botez">Cateheza Botez</a>
+            <a class="dropdown-item" href="<?php echo BASE_URL . 'admin/';?>zile-stabilite.php?pentru=cununie">Cununie</a>
+            <a class="dropdown-item" href="<?php echo BASE_URL . 'admin/';?>zile-stabilite.php?pentru=cateheza_cununie">Cateheza Cununie</a>
+            <a class="dropdown-item" href="<?php echo BASE_URL . 'admin/';?>zile-stabilite.php?pentru=parastas ">Parastas</a>
+            <a class="dropdown-item" href="<?php echo BASE_URL . 'admin/';?>zile-stabilite.php?pentru=spovedanie ">Spovedanie</a>
+            <a class="dropdown-item" href="<?php echo BASE_URL . 'admin/';?>zile-stabilite.php?pentru=sfestanie ">Sfeștanie</a>
+          </div>
+        </li>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Registru</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item botezuri" href="<?php echo BASE_URL . 'admin/';?>registru.php?eveniment=programari_botez">Botezuri</a>
+            <a class="dropdown-item cununii" href="<?php echo BASE_URL . 'admin/';?>registru.php?eveniment=programari_cununie">Cununii</a>
+            <a class="dropdown-item spovedanii" href="<?php echo BASE_URL . 'admin/';?>registru.php?eveniment=programari_spovedanie">Spovedanii</a>
+            <a class="dropdown-item sfestanii" href="<?php echo BASE_URL . 'admin/';?>registru.php?eveniment=programari_sfestanie">Sfeștanii</a>
+            <a class="dropdown-item parastase" href="<?php echo BASE_URL . 'admin/';?>registru.php?eveniment=programari_parastas">Parastase</a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link potir" href="<?php echo BASE_URL . 'admin/';?>program-liturgic.php">Programul liturgic</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link participare-slujbe" href="<?php echo BASE_URL . 'admin/';?>participare-slujbe.php">Participare la slujbe</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link pomelnic" href="<?php echo BASE_URL . 'admin/';?>pomelnice.php">Pomelnice</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link membri" href="<?php echo BASE_URL . 'admin/';?>membri.php">Membri</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link info" href="<?php echo BASE_URL . 'admin/';?>anunturi.php">Info utile</a>
+        </li>
+
+            
+      </ul> 
+
+    </div>
+
+</nav>
+
+</div>
+ 
 

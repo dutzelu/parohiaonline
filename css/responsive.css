@@ -1,0 +1,46 @@
+
+@media screen and (max-width: 575px) {
+    
+    p.parohie  {font-size:20px}
+    .urmeaza-in-calendar, .calendar {padding:5%}
+    .ultimele-programari {padding:3%}
+    p.parohie  {font-size:20px}
+  }
+
+@media screen and (min-width: 576px) {
+    
+   
+    .urmeaza-in-calendar, .calendar {padding:5%}
+    .ultimele-programari {padding:4%}
+
+  }
+
+@media screen and (min-width: 768px) {
+    
+    .urmeaza-in-calendar, .calendar {padding:5%}
+
+  }
+
+@media screen and (min-width: 992px) {
+
+    .navbar-expand-lg {
+        flex-wrap: nowrap;
+        width: 300px;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+  }
+
+@media screen and (min-width: 1200px) {
+    
+
+
+  }
+
+@media screen and (min-width: 1400px) {
+    
+
+
+  }

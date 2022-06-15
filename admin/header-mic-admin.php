@@ -18,18 +18,22 @@ while ($data = mysqli_fetch_assoc($rez)) {
 ?>
 
 
-<div class="row p-3 justify-content-between align-items-center header noprint">
-        <div class="col-sm-8 col-lg-9">
-            <div class="row align-items-center">
-                <div class="col-sm-5 icon-biserica col-xl-2"><img src="../images/parohie.png" width="130px"></div>
-                <div class="col-sm-9 titlu">
-                    <p class="mitropolia"><?php echo $mitropolia . ' » ' . $episcopia; ?></p>
-                    <p class="parohie"><?php echo $parohia; ?></p>
+<div class="row header">
+
+        
+            <div class="row align-items-center gx-4">
+                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6 icon-biserica"><img src="../images/parohie.png" ></div>
+                <div class="col-xl-10 col-lg-9 col-md-9 col-sm-8 col-6 titlu">
+
                     <p class="preot"><?php echo "Preot: " . $numele_preotului; ?></p>
+                    <p class="parohie"><?php echo $parohia; ?></p>
+                    <div class="setari">
+                        <a href="#" ><i class="fas fa-cog"></i> Setări</a> 
+                        <a href="../login/logout.php" ><i class="fas fa-user"></i> Logout</a>  
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-4 col-lg-3 setari">
-            <a href="#" ><i class="fas fa-cog" style="font-size:12px"></i> Setări</a> | <a href="#" ><i class="fas fa-user" style="font-size:12px"></i> Contul meu</a> | <a href="../login/logout.php" >Logout</a>
-        </div>
+       
+
+
 </div>

@@ -86,19 +86,19 @@
 <div class="container-fluid">
 
     <div class="row wrapper">
-        <div class="col-sm-3 sidebar-admin"><?php include "sidebar-admin.php"?></div>
+        <div class="col-sm-3 gx-5 sidebar-admin"><?php include "sidebar-admin.php"?></div>
 
         <div class="col-sm-9 p-4 zona-principala">
             
             <?php include "header-mic-admin.php";?>
 
-            <div class="row mt-1 justify-content-start contoare">
+            <div class="row g-4 mt-1 align-items-center contoare">
 
-                <a href="registru.php?eveniment=programari_botez" class="col-sm-3 m-2">
+                <a href="registru.php?eveniment=programari_botez" class="col-md-4 col-6 ">
                     <div>
                         <div class="row align-items-center">
-                            <div class="col-sm-3"><img src="../images/botez-albastru.png" /></div>
-                            <div class="col-sm-9">
+                            <div class="col-xxl-3 col-lg-4  mb-2"><img src="../images/botez-albastru.png" /></div>
+                            <div class="col-lg-8 ">
                                 <?php program_ultimele_30_zile("programari_botez", $id);
                                 
                                 if ($nr_randuri_prog == 1) {
@@ -106,16 +106,16 @@
                                 } else {echo ' botezuri ';}
                                 
                                 ?> 
-                                <br> în ultimele 30 de zile</div>
+                                în ultimele 30 de zile</div>
                         </div>
                     </div>
                 </a>
 
-                <a href="registru.php?eveniment=programari_cununie" class="col-sm-3 m-2">
+                <a href="registru.php?eveniment=programari_cununie" class="col-md-4 col-6 ">
                     <div>
                         <div class="row align-items-center">
-                            <div class="col-sm-3"><img src="../images/cununii-auriu.png" /></div>
-                            <div class="col-sm-9">
+                           <div class="col-xxl-3 col-lg-4  mb-2"><img src="../images/cununii-auriu.png" /></div>
+                            <div class="col-lg-8 ">
                                 
                             <?php program_ultimele_30_zile("programari_cununie", $id);
                                 
@@ -123,16 +123,16 @@
                                     echo " cununie ";
                                 } else {echo ' cununii ';}
                             ?>
-                            <br> în ultimele 30 de zile</div>
+                            în ultimele 30 de zile</div>
                         </div>
                     </div>
                 </a>
 
-                <a href="registru.php?eveniment=programari_sfestanie" class="col-sm-3 m-2">
+                <a href="registru.php?eveniment=programari_sfestanie" class="col-md-4 col-6 ">
                     <div>
                         <div class="row align-items-center">
-                            <div class="col-sm-3"><img src="../images/sfestanii-verde.png" /></div>
-                            <div class="col-sm-9">
+                           <div class="col-xxl-3 col-lg-4  mb-2"><img src="../images/sfestanii-verde.png" /></div>
+                            <div class="col-lg-8 ">
                             
                             <?php program_ultimele_30_zile("programari_sfestanie", $id);
                                 
@@ -140,67 +140,63 @@
                                 echo " sfeștanie ";
                             } else {echo ' sfeștanii ';} 
                             ?>
-                            <br> în ultimele 30 de zile</div>
+                            în ultimele 30 de zile</div>
                         </div>
                     </div>
                 </a>
 
-            </div>
-
-            <div class="row mt-3 justify-content-start contoare">
-
-                <a href="registru.php?eveniment=programari_spovedanie" class="col-sm-3 m-2">
+                <a href="registru.php?eveniment=programari_spovedanie" class="col-md-4 col-6 ">
                     <div>
                         <div class="row align-items-center">
-                            <div class="col-sm-3"><img src="../images/spovedanii-rosu.png" /></div>
-                            <div class="col-sm-9">
+                           <div class="col-xxl-3 col-lg-4  mb-2"><img src="../images/spovedanii-rosu.png" /></div>
+                            <div class="col-lg-8 ">
                                 <?php program_ultimele_30_zile("programari_spovedanie", $id);
                                 
                                 if ($nr_randuri_prog == 1) {
                                     echo " spovedanie ";
                                 } else {echo ' spovedanii ';} 
                                 
-                                ?> <br> în ultimele 30 de zile</div>
+                                ?> în ultimele 30 de zile</div>
                         </div>
                     </div>
                 </a>
 
-                <a href="registru.php?eveniment=programari_parastas" class="col-sm-3 m-2">
+                <a href="registru.php?eveniment=programari_parastas" class="col-md-4 col-6 ">
                     <div>
                         <div class="row align-items-center">
-                            <div class="col-sm-3"><img src="../images/parastase-portocaliu.png" /></div>
-                            <div class="col-sm-9">
+                           <div class="col-xxl-3 col-lg-4  mb-2"><img src="../images/parastase-portocaliu.png" /></div>
+                            <div class="col-lg-8 ">
                                 <?php program_ultimele_30_zile("programari_parastas", $id);
                                 
                                 if ($nr_randuri_prog == 1) {
                                     echo " parastas ";
                                 } else {echo ' parastase ';} 
                                 ?>
-                                <br> în ultimele 30 de zile</div>
+                               în ultimele 30 de zile</div>
                         </div>
                     </div>
                 </a>
 
-                <a href="pomelnice.php" class="col-sm-3 m-2">
+                <a href="pomelnice.php" class="col-md-4 col-6">
                     <div>
                         <div class="row align-items-center">
-                            <div class="col-sm-3"><img src="../images/pomelnic-albastru.png" /></div>
-                            <div class="col-sm-9">
+                           <div class="col-xxl-3 col-lg-4  mb-2"><img src="../images/pomelnic-albastru.png" /></div>
+                            <div class="col-lg-8 ">
                                 <?php pomelnice_30_zile($id);
                                 
                                 if ($nr_randuri_prog == 1) {
                                     echo " pomelnic ";
                                 } else {echo ' pomelnice ';} 
                                 ?>
-                                <br> în ultimele 30 de zile</div>
+                                în ultimele 30 de zile</div>
                         </div>
                     </div>
                 </a>
 
-                </div>
+            </div>
 
-            <div class="row mt-3 justify-content-start p-4 urmeaza">
-                <div class="col-sm-4 p-5 urmeaza-in-calendar">
+            <div class="row justify-content-start mt-3 g-4 urmeaza">
+                <div class="col-md-4 col-sm-12 urmeaza-in-calendar">
 
                     <p class="fw-bold">Calendar (status: acceptat)</p>
                     
@@ -232,23 +228,26 @@
                     } ?>
 
 
+
                 </div>
-                <div class="col-sm-8 p-5 calendar">
-                    <?php include 'calendar-slujbe.php'?>
+
+                <div class="col-md-8 col-sm-12 calendar">
+                    
+                    <div class="legenda">
+                        <p><span class="fw-bold mb-2">Calendar programări (orice status):</span><br>Alegeți una din zilele pentru detalii.</p>
                         
-                        <div class="mt-3 legenda">
-                            <p><span class="fw-bold">Legenda:</span><br>
-                          În calendar apar subliniate zilele în care există evenimente. <br> Alegeți una din zilele pentru detalii.</p>
+                        <?php include 'calendar-slujbe.php'?>
 
                         <p class="mt-5"><a class="btn btn-primary" href="calendar-complet.php" role="button">Vezi Calendar complet</a>  </p>
 
                         </div>
 
                 </div>
+
             </div>
 
-            <div class="row mt-3 ultimele-programari">
-                <div class="col-sm-12">
+            <div class="row  ultimele-programari">
+                <div class="table-responsive">
                     <p class="fw-bold">Ultimele programări (orice status)</p>
                     <table class="table">
 
@@ -258,9 +257,9 @@
                             <th scope="col">Programare</th>
                             <th scope="col">Data</th>
                             <th scope="col">Ora</th>
-                            <th scope="col">Adăugat de:</th>
                             <th scope="col">Status</th>
                             <th scope="col">Acțiuni</th>
+                            <th scope="col">Adăugat de:</th>
                             </tr>
                         </thead>
 
@@ -298,7 +297,7 @@
                             <td><?php echo $row2['Programare']; ?></td>
                             <td><?php echo $row2['Data']; ?></td>
                             <td><?php echo $row2['Ora']; ?></td>
-                            <td><?php nume_user($row2['user_id']); ?></td>
+                            
                             <td><?php echo '<span class="status ';
                             
                             switch($row2['status']) {
@@ -320,74 +319,75 @@
 
                             if ($row2['Programare']=="Botez") {?>
 
-                                <a href="actiuni.php?eveniment=programari_botez&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row2['id']; ?>" class="sterge" title="Șterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
+<a href="actiuni.php?eveniment=programari_botez&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row2['id']; ?>" class="sterge" title="Șterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                                 <i class="rosu fas fa-trash-alt"></i></a>
                             <?php
                             }
-
+                            
                             if ($row2['Programare']=="Cununie") {?>
                             <a href="actiuni.php?eveniment=programari_cununie&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row2['id']; ?>" class="sterge" title="Șterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                                 <i class="rosu fas fa-trash-alt"></i></a>
-
-                            <?php    
+                                
+                                <?php    
                             }
-
+                            
                             if ($row2['Programare']=="Spovedanie") {?>
                             <a href="actiuni.php?eveniment=programari_spovedanie&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row2['id']; ?>" class="sterge" title="Șterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                                 <i class="rosu fas fa-trash-alt"></i></a>
-
-                            <?php    
+                                
+                                <?php    
                             }
-
+                            
                             if ($row2['Programare']=="Sfeștanie") {?>
                             <a href="actiuni.php?eveniment=programari_sfestanie&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row2['id']; ?>" class="sterge" title="Șterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                                 <i class="rosu fas fa-trash-alt"></i></a>
-
-                            <?php    
+                                
+                                <?php    
                             }
-
+                            
                             if ($row2['Programare']=="Parastas") {?>
                             <a href="actiuni.php?eveniment=programari_parastas&data=<?php echo $row['Data']; ?>&stergeid=<?php echo $row2['id']; ?>" class="sterge" title="Șterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
                                 <i class="rosu fas fa-trash-alt"></i></a>
 
                             <?php    
                             }
-
-                             
-                      if ($row2['Programare']=="Botez") {
+                            
+                            
+                            if ($row2['Programare']=="Botez") {
 
                           echo '<a class="accepta" id="accepta' . $row2['id'] . '". href="accepta-programare.php?id=' . $row2['id'] . '&status=acceptata&back=admin" role="button" title="Acceptă"><i class="far fa-check-circle"></i></a>';
                      
-                      } elseif ($row2['Programare']=="Cununie") {
+                        } elseif ($row2['Programare']=="Cununie") {
 
-                          echo '<a class="accepta" id="accepta' . $row2['id'] . '". href="accepta-programare-cununie.php?id=' . $row2['id'] . '&status=acceptata&back=admin" role="button" title="Acceptă"><i class="far fa-check-circle"></i></a>';
-
-                      }
+                            echo '<a class="accepta" id="accepta' . $row2['id'] . '". href="accepta-programare-cununie.php?id=' . $row2['id'] . '&status=acceptata&back=admin" role="button" title="Acceptă"><i class="far fa-check-circle"></i></a>';
+                            
+                        }
                        elseif ($row2['Programare']=="Spovedanie") {
 
-                          echo '<a class="accepta" id="accepta' . $row2['id'] . '". href="accepta-programare-spovedanie.php?id=' . $row2['id'] . '&status=acceptata&back=admin" role="button" title="Acceptă"><i class="far fa-check-circle"></i></a>';
-
-                      }
-    
-                       elseif ($row2['Programare']=="Sfeștanie") {
-
+                           echo '<a class="accepta" id="accepta' . $row2['id'] . '". href="accepta-programare-spovedanie.php?id=' . $row2['id'] . '&status=acceptata&back=admin" role="button" title="Acceptă"><i class="far fa-check-circle"></i></a>';
+                           
+                        }
+                        
+                        elseif ($row2['Programare']=="Sfeștanie") {
+                            
                           echo '<a class="accepta" id="accepta' . $row2['id'] . '". href="accepta-programare-sfestanie.php?id=' . $row2['id'] . '&status=acceptata&back=admin" role="button" title="Acceptă"><i class=" far fa-check-circle"></i></a>';
-
-                      }
+                          
+                        }
                        elseif ($row2['Programare']=="Parastas") {
 
-                          echo '<a class="accepta" id="accepta' . $row2['id'] . '". href="accepta-programare-parastas.php?id=' . $row2['id'] . '&status=acceptata&back=admin" role="button" title="Acceptă"><i class=" far fa-check-circle"></i></a>';
-
-                      }
-
-                            
-                            ?></td>
+                           echo '<a class="accepta" id="accepta' . $row2['id'] . '". href="accepta-programare-parastas.php?id=' . $row2['id'] . '&status=acceptata&back=admin" role="button" title="Acceptă"><i class=" far fa-check-circle"></i></a>';
+                           
+                        }
+                        
+                        
+                        ?></td>
+                        <td><?php nume_user($row2['user_id']); ?></td>
                             </tr>
-
+                            
                             <?php }?>
-
+                            
                         </tbody>
-
+                        
                     </table>
 
                 </div>    

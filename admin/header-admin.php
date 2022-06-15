@@ -56,6 +56,7 @@ $link_rezervare = "rezerva.php?year=" . $selected_year . "&month=" . $selected_m
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> 
   <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/responsive.css">
   <link href="../lightbox/dist/css/lightbox.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
   
