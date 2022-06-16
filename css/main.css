@@ -44,7 +44,7 @@ a {color:#4374B9;}
 
 .wrapper {align-items: stretch; height:100%;}
 .zona-principala {background:#EDF0F5; font-family: 'Poppins', sans-serif;}
- div.logo img {max-width:100%;}
+ div.logo img, .login img {max-width:100%;}
  div.logo {text-align: center;}
  
 div.titlu p {color:#4374B9}
@@ -493,10 +493,9 @@ body {font-family: Georgia, sans-serif;}
 }
 
  
-li.calendar-day a label, li.calendar-day label, li.calendar-day span {width:40px;}
-.navbar-toggler-icon {
-  background-image: url('../images/menu.svg');
-}
+/* li.calendar-day a label, li.calendar-day label, li.calendar-day span {width:40px;} */
+
+ 
 
 .days li {
   list-style-type: none;
@@ -528,9 +527,23 @@ li.calendar-day a label, li.calendar-day label, li.calendar-day span {width:40px
 a.nav-link, #navbarSupportedContent > ul > li.nav-item.dropdown.show > div > a.dropdown-item  {color:#4374B9; font-size:18px}
 #navbarSupportedContent > ul {flex-direction: column; }
 
-.navbar-expand-lg .navbar-nav .dropdown-menu {
-  padding: 22px;
+ 
+#navbarSupportedContent > ul {background:#FFF}
+
+.navbar-dark .navbar-nav .nav-link, #navbarDropdown {color: #4374B9;}
+
+.dropdown-menu {
+  border: none;
 }
+
+.navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .show>.nav-link {
+  color: red;
+}
+
+.navbar-brand  {margin-left:15px;}
+
+.registru {margin-left:20px;}
+.registru a {margin-bottom:10px}
 
 
 .potir {background:url('../images/potir-negru.png') no-repeat left center !important; color:#4374B9; padding-left:40px!important}

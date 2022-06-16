@@ -5,6 +5,10 @@
     .urmeaza-in-calendar, .calendar {padding:5%}
     .ultimele-programari {padding:3%}
     p.parohie  {font-size:20px}
+
+ 
+
+
   }
 
 @media screen and (min-width: 576px) {
@@ -29,6 +33,22 @@
         justify-content: center;
         align-items: center;
     }
+
+  
+
+  }
+
+  @media screen and (max-width: 992px) {
+
+   .navbar {background:#4374b9}
+    .logo img {max-width:200px!important}
+    button.navbar-toggler {margin-right:20px; padding: 0.35rem 0.55rem;}
+    .navbar-dark .navbar-toggler-icon {background-image: url('../images/menu.png');}
+    .navbar-dark .navbar-toggler {
+      color: #FFF;
+      background: red;
+  }
+
 
 
   }
