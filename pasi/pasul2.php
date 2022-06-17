@@ -23,9 +23,9 @@ $ore =(array) NULL;
 <div class="container-fluid">
 
     <div class="row wrapper">
-        <div class="col-sm-3 sidebar-admin"><?php include "../sidebar-frontend.php"?></div>
+        <div class="col-lg-3 sidebar-admin"><?php include "../sidebar-frontend.php"?></div>
 
-        <div class="col-sm-9 p-4 zona-principala">
+        <div class="col-lg-9 p-4 zona-principala">
             
             <?php include "../header-mic-frontend.php";?>
 

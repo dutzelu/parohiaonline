@@ -86,13 +86,13 @@
 <div class="container-fluid">
 
     <div class="row wrapper">
-        <div class="col-lg-3 idebar-admin"><?php include "sidebar-admin.php"?></div>
+        <div class="col-lg-3 sidebar-admin"><?php include "sidebar-admin.php"?></div>
 
         <div class="col-lg-9 p-4 zona-principala">
             
             <?php include "header-mic-admin.php";?>
 
-            <div class="row g-4 mt-1 align-items-center contoare">
+            <div class="row g-4 align-items-center contoare">
 
                 <a href="registru.php?eveniment=programari_botez" class="col-md-4 col-6 ">
                     <div>
@@ -246,7 +246,7 @@
 
             </div>
 
-            <div class="row  ultimele-programari">
+            <div class="row  ultimele-programari mt-5">
                 <div class="table-responsive">
                     <p class="fw-bold">Ultimele programări (orice status)</p>
                     <table class="table">

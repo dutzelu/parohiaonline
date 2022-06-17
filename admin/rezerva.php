@@ -10,7 +10,8 @@ if (isset($_GET['month']) && isset($_GET['year'])) {
    $month = '';
    $year = '';
 }
-if (isset($_POST['rezerva'])) {
+
+if ( isset($_POST['rezerva']) && $pentru !=NULL) {
 
    // datele din formular 
 
@@ -48,6 +49,9 @@ if (isset($_POST['rezerva'])) {
   }
 
   echo '<script> location.replace("zile-stabilite.php?month=' . $month .'&year='. $year .'&pentru=' .$pentru .'"); </script>';
+} else {
+   echo '<script> location.replace("zile-stabilite.php?month=' . $month .'&year='. $year .'&pentru=botez"); </script>';
+
 }
 
 if (isset($_POST['participare_slujbe'])) {

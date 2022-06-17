@@ -270,3 +270,18 @@ function pomelnice_30_zile ($parohie_id) {
   echo $nr_randuri_prog = mysqli_num_rows($rezultat);
 
 }
+
+function alerta_program_oficial ($parohie_id) {
+  global $conn;
+  $query = "Select * FROM program_liturgic WHERE parohie_id = $parohie_id AND status = 1";
+  $stmt = mysqli_stmt_init($conn);
+  mysqli_stmt_prepare($stmt, $query);
+  mysqli_stmt_execute($stmt);
+
+  $rezultat = mysqli_stmt_get_result($stmt);
+  $nr_randuri_prog = mysqli_num_rows($rezultat);
+  if ($nr_randuri_prog == 0) {
+    echo "<p class='rosu'>Nu ai stabilit un program oficial până acum. Alege un program și apasa mai jos butonul <strong>Setează ca oficial</strong></p>";
+  }
+
+}

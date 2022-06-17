@@ -2,12 +2,12 @@
 <div class="row">
 
 
-    <div class="col-12 col-6">
+    <div class="col-12">
       <div class="mt-4  d-none 	d-md-none d-lg-block d-sm-block d-sm-none d-md-block logo"><img src="../images/logo-parohiaonline.png" ></div>
     </div>
 
 
-    <div class="col-12 justify-content-center" style="padding:0">
+    <div class="col-12" style="padding:0">
 
     <nav class="navbar navbar-dark navbar-expand-lg" >
       

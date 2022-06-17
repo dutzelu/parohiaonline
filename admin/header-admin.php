@@ -13,7 +13,7 @@ setlocale(LC_ALL, 'ro_RO');
 
 $id = $_SESSION['parohie_id'];
  
-if ( isset($_GET['pentru']) ) {$pentru = $_GET['pentru'];} else {$pentru = "";}
+if ( isset($_GET['pentru']) ) {$pentru = $_GET['pentru'];} else {$pentru = NULL;}
 
 
 switch ($pentru) {

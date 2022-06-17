@@ -26,7 +26,7 @@ $i = 1;
     <div class="row wrapper">
 
         <div class="col-sm-3 sidebar-admin noprint"><?php include "sidebar-admin.php"?></div>
-        <div class="col-sm-9 p-4 zona-principala">
+        <div class="col-lg-9 p-4 zona-principala">
 
              <?php include "header-mic-admin.php";?>
 

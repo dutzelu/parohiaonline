@@ -12,13 +12,13 @@
 
     <div class="row wrapper">
 
-        <div class="col-sm-3 sidebar-admin"><?php include "sidebar-admin.php"?></div>
-        <div class="col-sm-9 p-4 zona-principala">
+        <div class="col-lg-3 sidebar-admin"><?php include "sidebar-admin.php"?></div>
+        <div class="col-lg-9 p-4 zona-principala">
 
              <?php include "header-mic-admin.php";?>
 
             <div class="row zile-stabilite">
-                 <div class="col-sm-12 col-xl-6 justify-content-between">
+                 <div class="col-md-6 justify-content-between">
                     <h1 class="h1 mb-5">Alegeți zilele pentru  <span class="albastru"><?php echo $eveniment; ?></span> pentru fiecare lună  </h1>
 
                         <?php
@@ -67,7 +67,7 @@
                             
 
                         /* keep going with days.... */
-                        echo '<form method="POST" action="' . $link_rezervare .'" enctype = "multipart/form-data">' .
+                    echo '<form method="POST" action="' . $link_rezervare .'" enctype = "multipart/form-data">' .
                         '<div class="row btn-group" role="group" aria-label="Basic checkbox toggle button group">';
 
                         global $zile_programate;
@@ -153,42 +153,42 @@
                         /* bringing the controls together */
 
                         $controls = 
-                        '<form method="get">
-                            <div class="row justify-content-between align-items-center mb-5">
-                                <div class="col-sm-1 text-center">' . $previous_month_link . '</div>
-                                <div class="col-sm-3">' . $select_month_control . '</div>
-                                <div class="col-sm-1 text-center">' . $next_month_link . '</div> 
-                                <div class="col-sm-3">' . $select_year_control .  '</div> 
-                                <div class="col-sm-4"><button type="submit" name="pentru" value="' .$pentru . '" class="btn btn-outline-primary"/> '.' Schimbă luna și anul</button></div>
-                            </div>
-                        </form>';echo $controls;
+                        '<form method="get" class="calendar-complet">
+                            
+                                <p><span class="sageti">' .  $previous_month_link . ' ' . $next_month_link . '</span>' . $select_month_control . $select_year_control .  '<button type="submit" class="btn btn-outline-primary"/> '.' Schimbă</button></p>
+             
+                        </form>';
 
-                      
+                        echo $controls;
                         echo draw_calendar($month,$year);
 
 
                         ?>
 
-                        <div class="input-group">
+                        <div class="row gy-4 input-group">
 
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Ora start</span>  
-                            </div>
-                            <div>
-                                <?php ore_pentru_select("ora_start"); ?>
+                            <div class="col-sm-6">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Ora start</span>  
+                                </div>
+
+                                <div><?php ore_pentru_select("ora_start"); ?></div>
+
                             </div>
 
-                            <div class="input-group-prepend ml-2" style="margin-left:25px">
-                                <span class="input-group-text">Ora final</span>  
+                            <div class="col-sm-6">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Ora final</span>  
+                                </div>
+
+                                <div> <?php ore_pentru_select("ora_final"); ?></div>
                             </div>
-                            <div >
-                            <?php ore_pentru_select("ora_final"); ?>
-                            </div>
-               
+
                         </div>
                         
                         
-                        <div class="input-group mt-3">
+                        <div class="row input-group mt-3 gx-4 align-items-center">
                             <label class="col-sm-6 col-form-label">Intervalul dintre programări în min.</label>  
                             <div class="col-sm-3">
                                 <input type="number" name="intervalul" value="30" class="form-control" min="1" max="120">
@@ -206,13 +206,15 @@
 
                
                 </div></div>
-                <div class="col-sm-12 col-xl-6">
+
+                <div class="col-md-6">
             
 
 
                     <div class="rezervari">
-                    <p class="mb-4 text-center bg-light"> Zile rezervate pentru <?php echo $eveniment; ?></p>
+                    <p class="mb-4 text-center zile_rezervate"> Zile rezervate pentru <?php echo $eveniment; ?></p>
 
+                    <div class="table-responsive">
                     <?php
 
                     echo '<table class="table table-striped">';
