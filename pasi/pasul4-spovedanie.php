@@ -27,7 +27,7 @@ $ora = '';
     $prenume = $_POST['prenume'];
 
     $telefon = $_POST['telefon'];
-    $email_crestin = $_POST['email'];
+    $email= $_POST['email'];
 
     $status = "în așteptare";
   
@@ -74,7 +74,8 @@ $name = "Parohia Online";
  <p>Pentru a anula această programare intrați în aplicația Parohia Online la "Programările mele", selectați programarea și apăsați "Anulează spovedania".
  </p>';
  
- phpmailer ($email_crestin, $from, $name, $subiect, $mesaj_email, "");
+
+ phpmailer ($email, $from, $name, $subiect, $mesaj_email, "");
 
  echo '<script> location.replace("../info-utile.php?succes=ok"); </script>';
  

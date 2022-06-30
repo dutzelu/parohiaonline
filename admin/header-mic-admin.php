@@ -1,21 +1,4 @@
-<?php 
-
-$query_parohie = "Select * from parohii Where id = ?";
-
-$stmt = $conn->prepare($query_parohie);
-$stmt->bind_param('i', $_SESSION['parohie_id']);
-$rez = $stmt->execute();
-$rez = $stmt->get_result();
-
-while ($data = mysqli_fetch_assoc($rez)) {
-
-    $parohia = $data['nume_parohie'];
-    $mitropolia = $data['mitropolia'];
-    $episcopia = $data['episcopia'];
-    $numele_preotului = $data['numele_preotului'];
-}
-
-?>
+<?php afla_parohia(); ?>
 
 
 <div class="row header">

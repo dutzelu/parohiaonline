@@ -18,10 +18,7 @@ $user_id = $_SESSION['parohie_id'];
 
 <?php
 
-
  
-
-
   if (isset($_GET['id'])) {
     $id_programare = $_GET['id'];
   }
@@ -98,8 +95,6 @@ while($data = $result->fetch_assoc()) {
 
               <?php
               
-            
-             
             echo '</p>';
 
  
@@ -119,6 +114,7 @@ while($data = $result->fetch_assoc()) {
     echo '<p><span class="cap">Nume mireasă: </span>' . $prenume . '</p>';
     echo '<p><span class="cap">Telefon: </span>' . $telefon . '</p>';
     echo '<p><span class="cap">Email: </span>' . $email . '</p>';
+    echo '<p><span class="cap">Mesaj: </span>' . $mesaj . '</p>';
 
 }   
  
@@ -130,7 +126,7 @@ if (empty($succes)) {
 
   // Formular pentru butonul de "Raspunde cu detalii" 
 
-  echo '<form method="POST" action="raspunde-cu-detalii.php?id=' . $id_programare . '&eveniment=sfestanie">' .
+  echo '<form method="POST" action="raspunde-cu-detalii.php?id=' . $id_programare . '&eveniment=parastas">' .
 
   '<textarea name="mesaj" class="form-control" placeholder = "Scrieți aici mesajul dumneavoastră." style="margin:20px 0" rows="6" cols="10"></textarea>  
   <button type="submit" name ="raspunde" class="btn btn-warning">Trimite mesaj</button>';

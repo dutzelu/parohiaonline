@@ -218,12 +218,11 @@ function nume_user ($user_id) {
 
 }
 
-// afla dacă e blocat
+// afla dacă userul e blocat
 
-function user_blocat ($user_id) {
+function detalii_user ($user_id) {
 
-  global $conn;
-  global $user_blocat;
+  global $conn, $user_blocat, $nume_user, $prenume_user;
 
   $sql="Select * FROM users WHERE id = ?";
   $stmt = mysqli_stmt_init($conn);
@@ -233,6 +232,8 @@ function user_blocat ($user_id) {
   $rezultat = mysqli_stmt_get_result($stmt);
   while ($data = mysqli_fetch_assoc($rezultat)) {
      $user_blocat = $data['blocat'];
+     $nume_user = $data['nume'];
+     $prenume_user = $data['prenume'];
   }
 
 }
@@ -284,4 +285,58 @@ function alerta_program_oficial ($parohie_id) {
     echo "<p class='rosu'>Nu ai stabilit un program oficial până acum. Alege un program și apasa mai jos butonul <strong>Setează ca oficial</strong></p>";
   }
 
+}
+
+
+// Află user_id-ul dintr-o programare
+
+function afla_user_id ($id_programare, $eveniment) {
+
+  global $conn;
+  global $user_id;
+      switch ($eveniment) {
+        case "botez": 
+        $query = "SELECT user_id FROM programari_botez Where id = $id_programare";
+        break;
+        
+        case "cununie":
+        $query = "SELECT user_id FROM programari_cununie Where id = $id_programare ";
+        break;
+          
+        case "sfestanie":
+        $query = "SELECT user_id FROM programari_sfestanie Where id = $id_programare ";
+        break;
+          
+        case "parastas":
+        $query = "SELECT user_id FROM programari_parastas Where id = $id_programare ";
+        break;
+      } 
+
+  $stmt = mysqli_stmt_init($conn);
+  mysqli_stmt_prepare($stmt, $query);
+  mysqli_stmt_execute($stmt);
+  $rezultat = mysqli_stmt_get_result($stmt);
+  $rez = mysqli_fetch_all($rezultat);
+  $user_id = $rez[0][0];
+
+}
+
+// afla parohie
+
+function afla_parohia() {
+
+    global $conn, $parohia, $mitropolia, $episcopia, $numele_preotului;
+    $query_parohie = "Select * from parohii Where id = ?";
+
+    $stmt = $conn->prepare($query_parohie);
+    $stmt->bind_param('i', $_SESSION['parohie_id']);
+    $rez = $stmt->execute();
+    $rez = $stmt->get_result();
+
+    while ($data = mysqli_fetch_assoc($rez)) {
+      $parohia = $data['nume_parohie'];
+      $mitropolia = $data['mitropolia'];
+      $episcopia = $data['episcopia'];
+      $numele_preotului = $data['numele_preotului'];
+    }
 }

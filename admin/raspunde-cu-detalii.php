@@ -1,9 +1,7 @@
 <?php
 
-$url_site = 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']);
+$url_site = 'https://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']);
 include "header-admin.php"; 
-
- 
 
 $mesaj='';
 $mesaj_email = '';
@@ -14,10 +12,10 @@ $name = '';
 
 $timp = date('Y-m-d h:i:s', time());
 
-$user_id = $_SESSION['parohie_id'];
+$parohie_id = $_SESSION['parohie_id'];
  
 if (isset($_POST['raspunde'])) {
-    $id = $_GET['id'];
+    $id_programare = $_GET['id'];
     if (isset($_GET['status'])) {
         $status = $_GET['status'];
     }
@@ -28,21 +26,47 @@ if (isset($_GET['eveniment'])) {
 }
 
 
- 
+// MESAJE pentru Botezuri și Cununii
+
+afla_user_id ($id_programare, $eveniment);
+afla_parohia();
+
 if (isset($_POST['raspunde'])) {
 
     $mesaj = $_POST['mesaj'];
-  
+    
 
     // introdu mesajul in baza de date
 
-    $query = 'INSERT INTO mesaje (id_programare, eveniment, user_id, mesaj, data_ora) VALUES (?,?,?,?,?)';
+    $query = 'INSERT INTO mesaje (id_programare, parohie_id, eveniment, user_id, mesaj, data_ora, trimis_de) VALUES (?,?,?,?,?,?,?)';
     $stmt = $conn->prepare($query);
-    $stmt->bind_param('isiss', $id, $eveniment, $user_id, $mesaj, $timp);
+    $stmt->bind_param('iisisss', $id_programare, $parohie_id,  $eveniment, $user_id, $mesaj, $timp, $numele_preotului);
     $result = $stmt->execute();
     $result = $stmt->get_result();
 
-    // setează status detalii
+    // redirecționează
+    
+    switch ($eveniment) {
+        case "botez": 
+        echo '<script> location.replace("rezervare-unica.php?id=' . $id_programare . '"); </script>';
+        break;
+
+        case "cununie":
+        echo '<script> location.replace("rezervare-unica-cununie.php?id=' . $id_programare . '"); </script>';
+        break;
+
+        case "sfestanie":
+        echo '<script> location.replace("rezervare-unica-sfestanie.php?id=' . $id_programare . '"); </script>';
+        break;
+
+        case "parastas":
+        echo '<script> location.replace("rezervare-unica-parastas.php?id=' . $id_programare . '"); </script>';
+        break;
+    } 
+
+
+
+// SETEAZĂ STATUS 
 
     if ($eveniment == 'botez') {
         $query = 'UPDATE programari_botez SET status = ? WHERE id = ? ';

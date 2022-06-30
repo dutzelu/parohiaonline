@@ -1,12 +1,8 @@
-
-<?php
-
-include "../header-frontend.php"; 
+<?php include "../header-frontend.php"; 
  
- if (isset($_POST['pasul1'])) {
+if (isset($_POST['pasul1'])) {
 
- $zile = $_POST['zile'];
- 
+$zile = $_POST['zile'];
 
    foreach ($zile as $zi) {
 

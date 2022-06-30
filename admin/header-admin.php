@@ -2,7 +2,7 @@
 
 setlocale(LC_TIME, array('ro.utf-8', 'ro_RO.UTF-8', 'ro_RO.utf-8', 'ro', 'ro_RO', 'ro_RO.ISO8859-2'));  
 
-include '../controllers/authController.php';
+include '../controllers/authController-parohie.php';
 include '../includes/functions.php';
  
 if ( empty ($_SESSION['parohie_id']) ) {

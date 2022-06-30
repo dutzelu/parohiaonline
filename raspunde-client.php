@@ -17,12 +17,14 @@ if (isset($_GET['eveniment'])) {
     $eveniment = $_GET['eveniment'];
 }
   
+    detalii_user ($user_id);
+    $trimis_de = $nume_user . ' ' . $prenume_user;
 
     // introdu mesajul in baza de date
 
-    $query = 'INSERT INTO mesaje (id_programare, eveniment, user_id, mesaj, data_ora, parohie_id) VALUES (?,?,?,?,?,?)';
+    $query = 'INSERT INTO mesaje (id_programare, parohie_id, eveniment, user_id, mesaj, data_ora, trimis_de) VALUES (?,?,?,?,?,?,?)';
     $stmt = $conn->prepare($query);
-    $stmt->bind_param('isiss', $id_prog, $eveniment, $user_id, $mesaj, $timp, $parohie_id);
+    $stmt->bind_param('iisisss', $id_prog, $parohie_id, $eveniment, $user_id, $mesaj, $timp, $trimis_de);
     $result = $stmt->execute();
     $result = $stmt->get_result();
 

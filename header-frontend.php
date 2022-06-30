@@ -1,9 +1,7 @@
-<?php 
+<?php include __DIR__ .'/controllers/authController.php';
+      include __DIR__ .'/includes/functions.php';
 
 setlocale(LC_TIME, array('ro.utf-8', 'ro_RO.UTF-8', 'ro_RO.utf-8', 'ro', 'ro_RO', 'ro_RO.ISO8859-2'));  
-
-include __DIR__ .'/controllers/authController.php';
-include __DIR__ .'/includes/functions.php';
 
 $user_id = $_SESSION['user_id'];
 
@@ -13,7 +11,7 @@ if ( empty ($_SESSION['user_id'])) { die;}
 
 // dacă userul este blocat pagina nu se încarcă
 $user_blocat = NULL;
-user_blocat ($user_id);
+detalii_user ($user_id);
 
 if ($user_blocat == 1) {
   echo '<script> location.replace("index.php"); </script>';
@@ -56,7 +54,7 @@ if (isset($_GET['month']) && isset($_GET['year'])) {
 }
 
 $link_rezervare = "rezerva.php?year=" . $selected_year . "&month=" . $selected_month . "&pentru=" . $pentru;
-;
+
 ?>
 
 <!DOCTYPE html>

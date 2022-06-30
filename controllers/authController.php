@@ -1,6 +1,4 @@
-<?php
-
-session_start();
+<?php session_start();
 
 include __DIR__. "/../includes/config.php";
 include __DIR__. '/../includes/conexiune.php';
