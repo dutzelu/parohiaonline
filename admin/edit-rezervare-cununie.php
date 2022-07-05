@@ -38,7 +38,7 @@ while ($data = mysqli_fetch_assoc($result)){
         <?php include "header-mic-admin.php";?>
 
   
-        <div class="mt-3 p-5 wrapper-rezervare-unica">
+        <div class="mt-3 wrapper-rezervare-unica">
  
         <?php    
  

@@ -10,7 +10,7 @@
         <?php include "header-mic-admin.php";?>
 
   
-        <div class="mt-3 p-5 wrapper-rezervare-unica">
+        <div class="mt-3 wrapper-rezervare-unica">
               <?php
 
  
@@ -46,22 +46,22 @@
               echo "<p>";
 
                   if (empty($data['nume_tata'])) {
-                    echo '<span class="nume">' . $data['nume_mama'] . ' ' . $data['prenume_mama'] . "</span>"; 
+                    echo '<span class="nume">' . $data['nume_mama'] . ' ' . $data['prenume_mama'] . ""; 
                   } else {
-                    echo '<span class="nume">' . $data['nume_tata'] . ' ' . $data['prenume_tata'] . "</span>"; 
+                    echo '<span class="nume">' . $data['nume_tata'] . ' ' . $data['prenume_tata'] . ""; 
                   }
 
                   echo ' <i class="fas fa-angle-double-right"></i> ';
                   
-                  echo ' <span class="albastru-inchis">' . $eveniment . ' </span>';
+                  echo ' <span class="albastru-inchis">' . $eveniment . ' ';
 
                   echo ' <i class="fas fa-angle-double-right"></i> ';
 
-                  echo '<span class="rosu">' . date("d M Y", strtotime($data_si_ora)) . '</span>';
+                  echo '<span class="rosu">' . date("d M Y", strtotime($data_si_ora)) . '';
 
                   echo ' <i class="fas fa-angle-double-right"></i> ';
 
-                  echo '<span class="rosu">' . date("H:i", strtotime($data_si_ora)) . '</span>';
+                  echo '<span class="rosu">' . date("H:i", strtotime($data_si_ora)) . '';
 
               echo "</p>";
 
@@ -95,86 +95,165 @@
                 <i class="rosu fas fa-trash-alt"></i> Șterge</a>
 
                 <?php
-                             
-                echo '<a href="edit-rezervare.php?id=' . $id_programare . '"><i class="albastru-inchis far fa-edit"></i> Modifică</a> ';
-
-                // echo '<a href="" onclick="window.print()"><i class="fas fa-print"></i> Print</a>';
-               
-              echo '</p>';
-
-              echo  '<hr />';
+                    echo '<a href="edit-rezervare.php?id=' . $id_programare . '"><i class="albastru-inchis far fa-edit"></i> Modifică</a> ';
+                 }?>
+              </p>
               
-              echo '<div class="tabel-rezervare view">';
+              <div class="tabel-responsive">
+              <table class='table rezervare-unica'>
+              
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
 
+              <?php
               if (isset($_GET['edit'])) { 
-                echo '<p id ="dispari" class="btn btn-outline-success"> Rezervarea a fost editată cu succes</p>' ;
-              } 
-
-              echo '<p><span class="cap">Data catehezei: </span>' . date("d.m.Y", strtotime($data_ora_cateheza)) . '' . ' <span class="cap stanga">Ora: </span>' . date("H:i", strtotime($data_ora_cateheza)) . '</p>';
-
-              echo '<p><span class="cap">Nume tată: </span>' . $nume_tata . ' ' . $prenume_tata . '</p>';
-              echo '<p><span class="cap">Nume mamă: </span>' . $nume_mama . ' ' . $prenume_mama . '</p>';
-
-              echo '<p><span class="cap">Adresă: </span>' . $adresa . '</p>';
-              echo '<p><span class="cap">Telefon: </span>' . $telefon . '</p>';
-              echo '<p><span class="cap">Email: </span>' . $email . '</p>';
-
-              echo '<p><span class="cap">Nume copil: </span>' . $nume_copil . ' ' . $prenume_copil . '  <span class="cap stanga"> Nume botez copil: </span>' . $nume_botez_copil . '</p>';
-
-              echo '<p><span class="cap">Data nașterii copilului </span>' . $data_nasterii_copilului . '</p>'; 
-              echo '<p><span class="cap">Număr certificat de naștere: </span>' . $numar_certificat_nastere . '</p>';
-              echo '<p><span class="cap">Data eliberării certificatului: </span>' . $data_eliberarii_certificatului . '</p>';
-              echo '<p><span class="cap">Eliberat de Primăria: </span>' . $eliberat_de_primaria . '</p>';
-              echo '<p><span class="cap">Nași: </span>' . $nume_nas . ' și ' . $nume_nasa . '</p>';
-              echo '<p><span class="cap">Nume cameraman: </span>' . $nume_cameraman . '</p>';
-              echo '<p><span class="cap">Telefon cameraman: </span>' . $telefon_cameraman . '</p>';
-
-
+                echo '<p id ="dispari" class="btn btn-outline-success"> Rezervarea a fost editată cu succes</p>';
+              } ?>
               
+              <tr>
+                <td class="evident">Data catehezei:</td>
+                <td class="evident-date"><?php echo date("d.m.Y", strtotime($data_ora_cateheza));?></td>
+              </tr>
 
-              echo '<p><span class="cap imagine">Carte de identitate tată: </span>';
+              <tr>
+                <td class="evident">Ora:</td>
+                <td class="evident-date"><?php echo date("H:i", strtotime($data_ora_cateheza));?></td>
+              </tr>
 
-              // if-urile sunt necesare pentru a nu încarca galeria foto imagini goale in lightbox 
+              <tr>
+                <td class="evident">Nume tată:</td>
+                <td class="evident-date"><?php echo $nume_tata . ' ' . $prenume_tata;?></td>
+              </tr>
 
-              if (!empty($link_tata_ci)) {
+              <tr>
+                <td class="evident">Nume mamă:</td> 
+                <td class="evident-date"><?php echo $nume_mama . ' ' . $prenume_mama;?></td>
+              </tr>
 
-              echo '<a target="popup" data-title ="' . basename($link_tata_ci) . '"data-lightbox ="foto_acte" href="' . BASE_URL . $link_tata_ci .'">
-              <img src="../' . $link_tata_ci . '"/></a>';
+              <tr>
+                <td class="evident">Adresă:</td>
+                <td class="evident-date"><?php echo $adresa;?></td>
+              </tr>
 
-              }
+              <tr>
+                <td class="evident">Telefon:</td>
+                <td class="evident-date"><?php echo $telefon;?></td>
+              </tr>
 
-              echo '<p><span class="cap imagine">Carte de identitate mamă: </span>';
+              <tr>
+                <td class="evident">Email:
+                <td class="evident-date"><?php echo $email;?></td>
+              </tr>
 
+              <tr>
+                <td class="evident">Nume copil:</td>
+                <td class="evident-date"><?php echo $nume_copil . ' ' . $prenume_copil;?></td>
+              </tr> 
+
+              <tr>
+                 <td class="evident"> Nume botez copil:
+                 <td class="evident-date"><?php echo $nume_botez_copil;?></td>
+              </tr>
+
+              <tr>
+                <td class="evident">Data nașterii copilului
+                <td class="evident-date"><?php echo $data_nasterii_copilului;?></td>
+              </tr>
+              
+              <tr>
+                <td class="evident">Număr certificat de naștere:
+                <td class="evident-date"><?php echo $numar_certificat_nastere;?></td>
+              </tr>
+              
+              <tr>
+                <td class="evident">Data eliberării certificatului:
+                <td class="evident-date"><?php echo $data_eliberarii_certificatului;?></td>
+              </tr>
+
+              <tr>
+                <td class="evident">Eliberat de Primăria:
+                <td class="evident-date"><?php echo $eliberat_de_primaria;?></td>
+              </tr>
+
+              <tr>
+                <td class="evident">Nași:
+                <td class="evident-date"><?php echo $nume_nas . ' și ' . $nume_nasa;?></td>
+              </tr>
+
+              <tr>
+                <td class="evident">Nume cameraman:
+                <td class="evident-date"><?php echo $nume_cameraman;?></td>
+              </tr>
+
+              <tr>
+                <td class="evident">Telefon cameraman:
+                <td class="evident-date"><?php echo $telefon_cameraman;?> </td>
+              </tr>
+
+              <tr>
+                <td class="evident">Carte de identitate tată:</td>
+
+                <td class="evident-date"><?php 
+                // if-urile sunt necesare pentru a nu încarca galeria foto imagini goale in lightbox 
+
+                if (!empty($link_tata_ci)) {
+
+                echo '<a target="popup" data-title ="' . basename($link_tata_ci) . '"data-lightbox ="foto_acte" href="' . BASE_URL . $link_tata_ci .'">
+                <img src="../' . $link_tata_ci . '"/></a>';
+
+                }?></td>
+              </tr>
+
+              <tr>
+                <td class="evident">Carte de identitate mamă:</td>
+                <td><?php 
               if (!empty($link_mama_ci)) {
 
               echo '<a target="popup" data-title ="' . basename($link_mama_ci) . '"data-lightbox ="foto_acte"  href="'. BASE_URL  . $link_mama_ci .'">
               <img src="../' . $link_mama_ci . '"/></a>';
 
-              }
+              } ?></td>
+              </tr>
 
-              echo '<p><span class="cap imagine">Plata contribuției: </span>';
+              <tr>
+                <td class="evident">Plata contribuției:</td>
+                <td><?php 
+                if (!empty($link_plata_contributiei)) {
 
-              if (!empty($link_plata_contributiei)) {
+                echo '<a target="popup" data-title ="' . basename($link_plata_contributiei) . '"data-lightbox ="foto_acte"  href="'. BASE_URL  . $link_plata_contributiei .'">
+                <img src="../' . $link_plata_contributiei . '"/></a>';
 
-              echo '<a target="popup" data-title ="' . basename($link_plata_contributiei) . '"data-lightbox ="foto_acte"  href="'. BASE_URL  . $link_plata_contributiei .'">
-              <img src="../' . $link_plata_contributiei . '"/></a>';
+                }?></td>
+              </tr>
 
-              }
+              <tr>
+                <td class="evident">Certificat de naștere copil:</td>
+                <td class="evident-date"><?php 
 
-              echo '<p><span class="cap imagine">Certificat de naștere copil: </span>';
+                if (!empty($link_certificat_nastere_copil)) {
 
-              if (!empty($link_certificat_nastere_copil)) {
+                echo '<a target="popup" data-title ="' . basename($link_certificat_nastere_copil) . '"data-lightbox ="foto_acte"  href="'. BASE_URL  . $link_certificat_nastere_copil .'">
+                <img src="../' . $link_certificat_nastere_copil . '"/></a>';
 
-              echo '<a target="popup" data-title ="' . basename($link_certificat_nastere_copil) . '"data-lightbox ="foto_acte"  href="'. BASE_URL  . $link_certificat_nastere_copil .'">
-              <img src="../' . $link_certificat_nastere_copil . '"/></a>';
+                }?></td>
+              </tr>
 
-              }
+             <tr>
+                <td class="evident">Cerere și declarație:</td>
+                <td class="evident-date"><a target="popup" href="<?php echo BASE_URL . $link_cerere;?>"> <?php echo basename($link_cerere);?> </a></td>
+              </tr>
+              
+               
 
-              echo '<p><span class="cap">Cerere și declarație: </span><a target="popup" href="'. BASE_URL . $link_cerere .'">' . basename($link_cerere) . '</a>';
-              echo '<hr>';
-              }   
-              echo '</div>';
-
+              </table>
+              
+              </div>
+              
+              <?php
               // selectez din db toate mesajele corespunzătoare acestei rezervări
 
               include "../includes/afiseaza-mesaje.php";

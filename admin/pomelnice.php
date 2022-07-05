@@ -21,57 +21,57 @@
 
             <div class="filtre mb-4">
 
-            <form method="GET" action="pomelnice-filtre.php">
+              <form method="GET" action="pomelnice-filtre.php">
 
-                <div class="input-group mb-2">
-                    <!-- <span class="input-group-text">Tip pomelnic</span> -->
-                    <select name="tip_pomelnic" class="form-control">
-                        <option hidden disabled selected value> - Tip pomelnic - </option>
-                        <option value="1" >Liturghie (vii)</option>
-                        <option value="2" >Liturghie (adormiți)</option>
-                        <option value="3" >Maslu</option>
-                        <option value="4" >Acatist</option>
-                        <option value="5" >Parastas</option>
-                    </select>
+                  <div class="input-group mb-2">
+                      <!-- <span class="input-group-text">Tip pomelnic</span> -->
+                      <select name="tip_pomelnic" class="form-control">
+                          <option hidden disabled selected value> - Tip pomelnic - </option>
+                          <option value="1" >Liturghie (vii)</option>
+                          <option value="2" >Liturghie (adormiți)</option>
+                          <option value="3" >Maslu</option>
+                          <option value="4" >Acatist</option>
+                          <option value="5" >Parastas</option>
+                      </select>
 
-                    <!-- <span class="input-group-text">Durata</span> -->
-                    <select name="durata_in_zile" class="form-control">
-                        <option hidden disabled selected value> - Durata - </option>
-                        <option value="1">O zi</option>
-                        <option value="7">O săptămână</option>
-                        <option value="30">O lună</option>
-                        <option value="40">40 de zile</option>
-                        <option value="365">Un an</option>
-                    </select>
+                      <!-- <span class="input-group-text">Durata</span> -->
+                      <select name="durata_in_zile" class="form-control">
+                          <option hidden disabled selected value> - Durata - </option>
+                          <option value="1">O zi</option>
+                          <option value="7">O săptămână</option>
+                          <option value="30">O lună</option>
+                          <option value="40">40 de zile</option>
+                          <option value="365">Un an</option>
+                      </select>
 
-                    <input type="text" name="nume_si_prenume" class="form-control" placeholder="nume">
+                      <input type="text" name="nume_si_prenume" class="form-control" placeholder="nume">
 
-                    <!-- <span class="input-group-text">Cu sau fără donație</span> -->
-                    <select name="cu_donatie" class="form-control">
-                        <option hidden disabled selected value> - Donație - </option>
-                        <option value="1">Da</option>
-                        <option value="2">Nu</option>
-                    </select>
+                      <!-- <span class="input-group-text">Cu sau fără donație</span> -->
+                      <select name="cu_donatie" class="form-control">
+                          <option hidden disabled selected value> - Donație - </option>
+                          <option value="1">Da</option>
+                          <option value="2">Nu</option>
+                      </select>
 
-                </div>
+                  </div>
 
-                <div class="input-group mb-2">
+                  <div class="input-group mb-2">
 
-                    <span class="input-group-text">Începând cu data</span>
-                    <input type="date" name="data_start" class="form-control">
+                      <span class="input-group-text">Începând cu data</span>
+                      <input type="date" name="data_start" class="form-control">
 
-                    <span class="input-group-text">Până la data</span>
-                    <input type="date" name="data_final" class="form-control">
+                      <span class="input-group-text">Până la data</span>
+                      <input type="date" name="data_final" class="form-control">
 
-                </div>
+                  </div>
 
-                    <button class="btn btn-primary" name="filtre">Filtrează</button>
-                    <a href="pomelnice.php" class="btn btn-outline-primary">Reset</a>
+                      <button class="btn btn-primary" name="filtre">Filtrează</button>
+                      <a href="pomelnice.php" class="btn btn-outline-primary">Reset</a>
 
-                </form>
+              </form>
 
 
-</div>
+            </div>
 
             <?php
                   if (isset($_GET['sters'])) {
@@ -79,8 +79,8 @@
                   }
             ?>
 
-            
-            <table class="table">
+              <div class="tabel-responsive">
+              <table class='table'>
 
               <thead>
                 <tr>
@@ -171,16 +171,14 @@
             
               </tbody>
             </table>
+          </div>
 
-
-            <?php $link_paginatie = 'pomelnice.php?'; include "../includes/paginatie.php";?>
-
-
+          <?php $link_paginatie = 'pomelnice.php?'; include "../includes/paginatie.php";?>
             
         </div>
       </div>
     </div>
- </div>
+  </div>
 </div>
 
 </body>

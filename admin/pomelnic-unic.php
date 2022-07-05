@@ -18,7 +18,7 @@ if(isset ($_GET['id'])) {
         <?php include "header-mic-admin.php";?>
 
   
-        <div class="mt-3 p-5 wrapper-rezervare-unica">
+        <div class="mt-3 wrapper-rezervare-unica">
 
 <?php
 
@@ -34,7 +34,7 @@ while($data = $result->fetch_assoc()) {
 
   include "../includes/extras-pomelnic.php";
 
-                  echo '<p><span class="nume">' . $nume_si_prenume . "</span></p>"; 
+      echo '<p><span class="nume">' . $nume_si_prenume . "</span></p>"; 
             
  ;?>
 
@@ -44,52 +44,76 @@ while($data = $result->fetch_assoc()) {
               echo '<a href="pomelnice.php"><i class="fas fa-chevron-circle-left" style="margin:0"></i> Înapoi</a> ';
 
               echo '<a href="" onclick="window.print()"><i class="fas fa-print"></i> Print</a></p>';
-    
-    echo '   
-    
-    <div class="tabel-rezervare view">
-    
-    <hr />';
+    ?>
 
+    <div class="tabel-responsive">
+              
+              <table class='table rezervare-unica'>
+                  
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+
+                <tr>
+                  <td class="evident">Tip pomelnic: </td>
+                  <td class="evident-date"><?php 
+                      if ($data['tip_pomelnic'] == "1") {
+                          echo "Liturghie (vii)";
+                      } elseif ($data['tip_pomelnic'] == "2") {
+                        echo "Liturghie (adormiți)";
+                      } elseif ($data['tip_pomelnic'] == "3") {
+                        echo "Maslu";
+                      } elseif ($data['tip_pomelnic'] == "4") {
+                        echo "Acatist";
+                      } elseif ($data['tip_pomelnic'] == "5") {
+                        echo "Parastas";
+                      }
+                  ?></td>
+                 </tr>    
  
-    echo '<p><span class="cap">Tip pomelnic: </span>'; 
+                <tr>
+                  <td class="evident">Listă nume:</td>
+                  <td class="evident-date"><?php echo $lista_nume;?></td>
+                </tr>
     
-    if ($data['tip_pomelnic'] == "1") {
-        echo "Liturghie (vii)";
-    } elseif ($data['tip_pomelnic'] == "2") {
-      echo "Liturghie (adormiți)";
-    } elseif ($data['tip_pomelnic'] == "3") {
-      echo "Maslu";
-    } elseif ($data['tip_pomelnic'] == "4") {
-      echo "Acatist";
-    } elseif ($data['tip_pomelnic'] == "5") {
-      echo "Parastas";
-    }; echo '' . '</p>';
-
-    echo '<p> <div class="m-3">' . $lista_nume . '</div></p>';
-    echo '<p><span class="cap">Durată în zile: </span>' . $durata_in_zile. '</p>';
-
-    echo '<p><span class="cap">Telefon:  </span>' . $telefon . '</p>';
-    echo '<p><span class="cap">Email:  </span>' . $email . '</p>';
-    echo '<p><span class="cap">Data începerii:  </span>' . date("d.m.Y", strtotime($data['data_inceperii'])) . '</p>';
-    echo '<p><span class="cap">Donație:  </span>';
-    
-    if ($data['cu_donatie'] == 1) {
-        echo '<span class="verde"><i class="fas fa-check"></i> Da </span>';
-    } elseif  ($data['cu_donatie'] == 0) {
-        echo '-';
-    }
-    
-    echo '</p>';
  
-
-    echo "</div>";
-    echo '<p></p><hr>';
-
+                <tr>
+                  <td class="evident">Durată în zile:</td>
+                  <td class="evident-date"><?php echo $durata_in_zile;?></td>
+                </tr>
+    
+ 
+                <tr>
+                  <td class="evident">Telefon:</td>
+                  <td class="evident-date"><?php echo $telefon;?></td>
+                </tr>
+    
+                <tr>
+                  <td class="evident">Email:</td>
+                  <td class="evident-date"><?php echo $email;?></td>
+                </tr>
+    
+                <tr>
+                  <td class="evident">Data începerii:</td>
+                  <td class="evident-date"><?php echo date("d.m.Y", strtotime($data['data_inceperii']));?></td>
+                </tr>
+ 
+                <tr>
+                  <td class="evident">Donație:</td>
+                  <td class="evident-date"><?php 
+                      if ($data['cu_donatie'] == 1) {
+                        echo '<span class="verde"><i class="fas fa-check"></i> Da </span>';
+                    } elseif  ($data['cu_donatie'] == 0) {echo '-';}
+                  ?></td>
+                </tr>
+ 
+                </table>
+              </div>
   
-     
-}   
-?>
+        <?php } ?>
 
 
 

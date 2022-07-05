@@ -195,7 +195,7 @@ p.butoane i {margin:0 0 0 20px; font-size:16px}
   border-radius: .25rem;
       border-top-right-radius: 0.25rem;
       border-bottom-right-radius: 0.25rem;
-  width: 250px;
+ 
 }
 
 .wrapper-rezervare-unica .input-group {
@@ -423,7 +423,7 @@ form.parohie .form-control {text-align: center;}
 /* tabel rezervare */
 
 .tabel-rezervare {font-size:14px}
-.tabel-rezervare p {color:#000; background: #F1F5FA;border:1px solid #4374B9;border-radius: 10px 0 0 10px; line-height:25px; border-radius:4px}
+.tabel-rezervare p {color:#000; background: #F1F5FA; line-height:25px;}
 
 .tabel-rezervare img {max-height:100px;}
 
@@ -442,6 +442,7 @@ span.cap.imagine {padding:45px 15px!important}
 .stanga {margin-left:20px;}
 
 #butoane {margin-bottom:20px;}
+
 
 /* Calendar luat de pe W3 */
 
@@ -741,3 +742,9 @@ ul.anunt li .data {font-size:12px;color:#AAA!important; }
   padding:5px;
   font-size:16px;
 }
+
+
+table.rezervare-unica img {max-width:200px;}
+table.rezervare-unica tbody .evident-date {border-top:none!important; word-break: break-all;}
+.evident {width:30%!important;  color:#4374B9}
+.evident-date {width:70%!important;}

@@ -1,7 +1,4 @@
-<?php
-
-include "header-admin.php"; 
-
+<?php include "header-admin.php"; 
 
 $data_cateheza = '';
 $ora_cateheza = '';
@@ -9,7 +6,6 @@ $ora_cateheza = '';
 if (isset($_GET['id'])) {
     $id_programare = $_GET['id'];
 }
-
 
 $query = 'SELECT * FROM programari_botez WHERE id = ?';
 $stmt = $conn->prepare($query);
@@ -39,7 +35,7 @@ while ($data = mysqli_fetch_assoc($result)){
         <?php include "header-mic-admin.php";?>
 
   
-        <div class="mt-3 p-5 wrapper-rezervare-unica">
+        <div class="mt-3 wrapper-rezervare-unica">
 
  <?php    
  
@@ -92,6 +88,7 @@ while ($data = mysqli_fetch_assoc($result)){
     echo '</p>';
  
  ?>
+ 
 
 <form id="actualizeaza" action="update-edit-rezervare.php?id=<?php echo $id_programare?>" method="post" enctype = "multipart/form-data">
 

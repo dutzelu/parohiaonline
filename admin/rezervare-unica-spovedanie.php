@@ -13,8 +13,7 @@ $user_id = $_SESSION['parohie_id'];
 
         <?php include "header-mic-admin.php";?>
 
-  
-        <div class="mt-3 p-5 wrapper-rezervare-unica">
+        <div class="mt-3 wrapper-rezervare-unica">
 
 <?php
 
@@ -102,31 +101,47 @@ while($data = $result->fetch_assoc()) {
              
             echo '</p>';
 
- 
+ ?>
+
+            <div class="tabel-responsive">
+              <table class='table rezervare-unica'>
+              
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+
+              <?php
+                if (isset($_GET['edit'])) { 
+                  echo '<p id ="dispari" class="btn btn-success"> Rezervarea a fost editată cu succes</p>' ;
+                } 
+              } ?>
+<tr>
+                <td class="evident">Nume: </td>
+                <td class="evident-date"><?php echo $nume;?></td>
+              </tr>
+
+              <tr>
+                <td class="evident">Prenume:</td>
+                <td class="evident-date"><?php echo $prenume;?></td>
+              </tr>
+
+              <tr>
+                <td class="evident">Telefon:</td>
+                <td class="evident-date"><?php echo $telefon;?></td>
+              </tr>
+
+              <tr>
+                <td class="evident">Email:
+                <td class="evident-date"><?php echo $email;?></td>
+              </tr>
+
+            </table>
+            </div>
 
   
-    echo '   
-    
-    <div class="tabel-rezervare view">
-    
-    <hr />';
-
-    if (isset($_GET['edit'])) { 
-      echo '<p id ="dispari" class="btn btn-success"> Rezervarea a fost editată cu succes</p>' ;
-    } 
-    
-    echo '<p><span class="cap">Num: </span>' . $nume . '</p>';
-    echo '<p><span class="cap">Prenume: </span>' . $prenume . '</p>';
-    echo '<p><span class="cap">Telefon: </span>' . $telefon . '</p>';
-    echo '<p><span class="cap">Email: </span>' . $email . '</p>';
-
-}   
-?>
-
-
-
-
-
 
 </div>
 
