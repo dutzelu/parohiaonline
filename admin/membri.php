@@ -37,7 +37,8 @@ $id = $_SESSION['parohie_id'];
                   }
             ?>
             
-            <table class="table">
+            <div class="table-responsive">
+              <table class="table">
               <thead>
                 <tr>
                   <th scope="col">Nume</th>
@@ -120,6 +121,7 @@ $id = $_SESSION['parohie_id'];
             
               </tbody>
             </table>
+            </div>
 
 
             <?php $link_paginatie = '?'; include "../includes/paginatie.php";?>
