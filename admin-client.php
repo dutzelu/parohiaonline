@@ -18,61 +18,56 @@ $ultima_zi = NULL;
             
             <?php include "header-mic-frontend.php";?>
 
-            <div class="row mt-1 justify-content-start contoare">
+            <div class="row g-4 align-items-center contoare">
 
-                <a href="frontend.php?pentru=botez" class="col-sm-3 m-2">
+                <a href="frontend.php?pentru=botez" class="col-md-4 col-6">
                     <div>
                         <div class="row align-items-center">
-                            <div class="col-sm-3"><img src="images/botez-albastru.png" /></div>
-                            <div class="col-sm-9">Programează Taina Botezului</div>
+                            <div class="col-xxl-3 col-lg-4  mb-2"><img src="images/botez-albastru.png" /></div>
+                            <div class="col-lg-8">Programează Taina Botezului</div>
                         </div>
                     </div>
                 </a>
 
-                <a href="frontend.php?pentru=cununie" class="col-sm-3 m-2">
+                <a href="frontend.php?pentru=cununie" class="col-md-4 col-6">
                     <div>
                         <div class="row align-items-center">
-                            <div class="col-sm-3"><img src="images/cununii-auriu.png" /></div>
-                            <div class="col-sm-9">Programează Taina Cununiei</div>
+                            <div class="col-xxl-3 col-lg-4  mb-2"><img src="images/cununii-auriu.png" /></div>
+                            <div class="col-lg-8">Programează Taina Cununiei</div>
                         </div>
                     </div>
                 </a>
 
-                <a href="frontend.php?pentru=sfestanie" class="col-sm-3 m-2">
+                <a href="frontend.php?pentru=sfestanie" class="col-md-4 col-6">
                     <div>
                         <div class="row align-items-center">
-                            <div class="col-sm-3"><img src="images/sfestanii-verde.png" /></div>
-                            <div class="col-sm-9">Programează Șfeștanie</div>
+                            <div class="col-xxl-3 col-lg-4  mb-2"><img src="images/sfestanii-verde.png" /></div>
+                            <div class="col-lg-8">Programează Șfeștanie</div>
                         </div>
                     </div>
                 </a>
 
-            </div>
-
-            <div class="row mt-3 justify-content-start contoare">
-
-                <a href="frontend.php?pentru=spovedanie" class="col-sm-3 m-2">
+                <a href="frontend.php?pentru=spovedanie" class="col-md-4 col-6">
                     <div>
                         <div class="row align-items-center">
-                            <div class="col-sm-3"><img src="images/spovedanii-rosu.png" /></div>
+                            <div class="col-xxl-3 col-lg-4  mb-2"><img src="images/spovedanii-rosu.png" /></div>
                             <div class="col-sm-9">Programează Taina Spovedaniei</div>
                         </div>
                     </div>
                 </a>
 
-                <a href="frontend.php?pentru=parastas" class="col-sm-3 m-2">
+                <a href="frontend.php?pentru=parastas" class="col-md-4 col-6 ">
                     <div>
                         <div class="row align-items-center">
-                            <div class="col-sm-3"><img src="images/parastase-portocaliu.png" /></div>
+                            <div class="col-xxl-3 col-lg-4  mb-2"><img src="images/parastase-portocaliu.png" /></div>
                             <div class="col-sm-9">Programează Parastas</div>
                         </div>
                     </div>
                 </a>
 
-                </div>
-
-            <div class="row mt-3 justify-content-start p-4 urmeaza">
-                <div class="col-sm-4 p-5 urmeaza-in-calendar">
+               
+            <div class="row justify-content-start mt-3 g-4 urmeaza">
+                <div class="col-md-4 col-sm-12 urmeaza-in-calendar">
 
                 <p>Anunțuri în parohie</p>
                 <?php
@@ -102,7 +97,7 @@ $ultima_zi = NULL;
 
                 </div>
 
-                <div class="col-sm-8 p-4 calendar">
+                <div class="col-md-8 col-sm-12 calendar">
                      
                 <div class="col-sm-12">
 
@@ -136,7 +131,7 @@ $ultima_zi = NULL;
 
                     echo '<h5 class="mt-3">' . $nume_program_selectat . "</h5>";  ?>
 
-                
+                    <div class="table-responsive">
                     <table class="table">
                         
                         
@@ -201,14 +196,14 @@ $ultima_zi = NULL;
                     <?php }} ?> 
                     </tbody>
                     </table>
-
+                    </div>
 
                 </div>
             </div>
 
-            <div class="row mt-3 ultimele-programari">
-                <div class="col-sm-12">
-                    <p class="fw-bold">Ultimele programări</p>
+            <div class="row  ultimele-programari mt-5">
+            <div class="table-responsive">
+                <p class="fw-bold">Ultimele programări</p>
                     <table class="table">
 
                         <thead>
@@ -373,7 +368,7 @@ $ultima_zi = NULL;
                         </tbody>
 
                     </table>
-
+                    </div> 
                 </div>    
         </div>
 

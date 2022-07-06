@@ -81,7 +81,7 @@
 <title>Panoul de control</title>
 </head>
 
-<body>
+    <body>
 
 <div class="container-fluid">
 
@@ -94,7 +94,7 @@
 
             <div class="row g-4 align-items-center contoare">
 
-                <a href="registru.php?eveniment=programari_botez" class="col-md-4 col-6 ">
+                <a href="registru.php?eveniment=programari_botez" class="col-md-4 col-6">
                     <div>
                         <div class="row align-items-center">
                             <div class="col-xxl-3 col-lg-4  mb-2"><img src="../images/botez-albastru.png" /></div>
@@ -111,11 +111,11 @@
                     </div>
                 </a>
 
-                <a href="registru.php?eveniment=programari_cununie" class="col-md-4 col-6 ">
+                <a href="registru.php?eveniment=programari_cununie" class="col-md-4 col-6">
                     <div>
                         <div class="row align-items-center">
                            <div class="col-xxl-3 col-lg-4  mb-2"><img src="../images/cununii-auriu.png" /></div>
-                            <div class="col-lg-8 ">
+                            <div class="col-lg-8">
                                 
                             <?php program_ultimele_30_zile("programari_cununie", $id);
                                 
@@ -128,11 +128,11 @@
                     </div>
                 </a>
 
-                <a href="registru.php?eveniment=programari_sfestanie" class="col-md-4 col-6 ">
+                <a href="registru.php?eveniment=programari_sfestanie" class="col-md-4 col-6">
                     <div>
                         <div class="row align-items-center">
                            <div class="col-xxl-3 col-lg-4  mb-2"><img src="../images/sfestanii-verde.png" /></div>
-                            <div class="col-lg-8 ">
+                            <div class="col-lg-8">
                             
                             <?php program_ultimele_30_zile("programari_sfestanie", $id);
                                 
@@ -145,7 +145,7 @@
                     </div>
                 </a>
 
-                <a href="registru.php?eveniment=programari_spovedanie" class="col-md-4 col-6 ">
+                <a href="registru.php?eveniment=programari_spovedanie" class="col-md-4 col-6">
                     <div>
                         <div class="row align-items-center">
                            <div class="col-xxl-3 col-lg-4  mb-2"><img src="../images/spovedanii-rosu.png" /></div>
@@ -161,7 +161,7 @@
                     </div>
                 </a>
 
-                <a href="registru.php?eveniment=programari_parastas" class="col-md-4 col-6 ">
+                <a href="registru.php?eveniment=programari_parastas" class="col-md-4 col-6">
                     <div>
                         <div class="row align-items-center">
                            <div class="col-xxl-3 col-lg-4  mb-2"><img src="../images/parastase-portocaliu.png" /></div>

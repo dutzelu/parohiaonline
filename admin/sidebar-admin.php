@@ -1,17 +1,14 @@
 
 <div class="row">
-
-
-    <div class="col-12">
+  <div class="col-12">
       <div class="mt-4  d-none 	d-md-none d-lg-block d-sm-block d-sm-none d-md-block logo"><img src="../images/logo-parohiaonline.png" ></div>
     </div>
-
 
     <div class="col-12" style="padding:0">
 
     <nav class="navbar navbar-dark navbar-expand-lg" >
       
-      <a class="navbar-brand p-2  d-xxl-none d-xxl-block d-xl-none d-lg-none d-xl-block" href="admin.php"><img src="../images/logo-PO-mobil.png" width="150"></a>
+      <a class="navbar-brand p-2  d-xxl-none d-xxl-block d-xl-none d-lg-none d-xl-block" href="admin.php"><img src="../images/logo-PO-mobil.png" width="1750"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon bg-outline-primary"></span>
         </button>
@@ -66,11 +63,7 @@
 
                 
           </ul> 
-
         </div>
-
-    </nav>
-
+     </nav>
     </div>
-    
 </div>
