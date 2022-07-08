@@ -6,8 +6,12 @@
  
     p.parohie  {font-size:20px}
 
- 
+    .pomelnic .input-group-text {
+      max-width: 170px;
+    }
+    .explicatie {margin-top:20px}
 
+  .zona-principala {padding-top:0!important}
 
   }
 
@@ -68,3 +72,5 @@
 
 
   }
+
+div.container-fluid > div > div.col-lg-3.sidebar-admin > div > div:nth-child(2) > nav > a > img {max-width:200px;}

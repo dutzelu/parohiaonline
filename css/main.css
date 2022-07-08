@@ -69,9 +69,12 @@ div.titlu p {color:#4374B9}
   padding: 20px;
   border-radius: 10px;
   box-shadow: 2px -2px 17px -3px #c7c7c7;
+  text-align: center;
 }
 .zona-principala div.contoare a {display:inline-block}
-
+.contor:hover {
+  box-shadow: 2px -2px 17px -3px #007bff !important;
+}
 
 /* culori Urmează în calendar */
 
@@ -653,7 +656,7 @@ ul.dropdown-container {
 /* mesaje intre preot si parintii copilului */
 
 #zone_mesaje {
-  padding: 25px;
+  padding: 10px;
   border: 9px solid #EFEFEF;
   border-radius: 10px;
   margin: 10px 0;

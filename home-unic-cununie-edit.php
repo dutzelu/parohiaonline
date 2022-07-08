@@ -38,7 +38,7 @@ while ($data = mysqli_fetch_assoc($result)){
         <?php include "header-mic-frontend.php";?>
 
   
-        <div class="mt-3 p-5 wrapper-rezervare-unica">
+        <div class="mt-3 wrapper-rezervare-unica">
  
         <?php    
  
@@ -81,7 +81,7 @@ while ($data = mysqli_fetch_assoc($result)){
  }
 
  echo '">' .$status . '</span>';
- echo '<a href="rezervare-unica-cununie.php?id=' . $id_programare . '"><i class="fas fa-chevron-circle-left"></i> Renunță</a> ';
+ echo '<a href="home-unic-cununie.php?id=' . $id_programare . '"><i class="fas fa-chevron-circle-left"></i> Renunță</a> ';
  echo ' <button type="submit" form="actualizeaza" name ="actualizeaza" class="btn salveaza"><i class="fas fa-save"></i> Salveaza</button>';
 
  echo '</p>';

@@ -11,7 +11,7 @@
         <?php include "header-mic-frontend.php";?>
 
   
-        <div class="mt-3 p-5 wrapper-rezervare-unica">
+        <div class="mt-3 wrapper-rezervare-unica">
 
 <?php
 
@@ -93,26 +93,55 @@ while($data = $result->fetch_assoc()) {
                     
     echo '</p>';
 
-    echo  '<hr />';
-
-    echo '<div class="tabel-rezervare view">';
     
-        if (isset($_GET['edit'])) { 
-          echo '<p id ="dispari" class="btn btn-success"> Rezervarea a fost editată cu succes</p>' ;
-        } 
+  }?>
+  
+              
+  <div class="tabel-responsive">
+      <table class='table rezervare-unica'>
       
-        echo '<p><span class="cap">Nume: </span>' . $nume . '</p>';
-        echo '<p><span class="cap">Nume: </span>' . $prenume . '</p>';
-        echo '<p><span class="cap">Telefon: </span>' . $telefon . '</p>';
-        echo '<p><span class="cap">Email: </span>' . $email . '</p>';
-        echo '<p><span class="cap">Adresă: </span>' . $adresa . '</p>';
-        echo '<p><span class="cap">Mesaj: </span>' . $mesaj . '</p>';
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+    <?php
+      if (isset($_GET['edit'])) { 
+        echo '<p id ="dispari" class="btn btn-success"> Rezervarea a fost editată cu succes</p>' ;
+      } 
+     ?>
 
-     
-    echo '</div>';
+      <tr>
+        <td class="evident">Nume: </td>
+        <td class="evident-date"><?php echo $nume;?></td>
+      </tr>
 
-}   
+      <tr>
+        <td class="evident">Prenume:</td>
+        <td class="evident-date"><?php echo $prenume;?></td>
+      </tr>
 
+      <tr>
+        <td class="evident">Telefon:</td>
+        <td class="evident-date"><?php echo $telefon;?></td>
+      </tr>
+
+      <tr>
+        <td class="evident">Email:
+        <td class="evident-date"><?php echo $email;?></td>
+      </tr>
+
+      <tr>
+        <td class="evident">Mesaj:
+        <td class="evident-date"><?php echo $mesaj;?></td>
+      </tr>
+
+    </table>
+    </div>
+
+
+<?php
     
 if (empty($succes)) {
 

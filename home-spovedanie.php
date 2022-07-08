@@ -23,6 +23,7 @@
                       echo '<p id="dispari">Programarea a fost ștearsă cu succes</p>';
                   }
              ?>
+             <div class="table-responsive">
                     <table class="table">
 
                         <thead>
@@ -133,7 +134,7 @@
                         </tbody>
 
                     </table>
-
+                    </div>
                     <?php 
                     $link_paginatie = 'home-spovedanie.php?'; 
                     include "includes/paginatie.php"; ?>

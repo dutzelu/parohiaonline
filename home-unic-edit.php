@@ -2,10 +2,6 @@
 
 include "header-frontend.php"; 
 
-
-
-
-
 $data_cateheza = '';
 $ora_cateheza = '';
 
@@ -42,7 +38,7 @@ while ($data = mysqli_fetch_assoc($result)){
         <?php include "header-mic-frontend.php";?>
 
   
-        <div class="mt-3 p-5 wrapper-rezervare-unica">
+        <div class="mt-3 wrapper-rezervare-unica">
 
  <?php    
 

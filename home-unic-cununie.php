@@ -10,7 +10,7 @@
 
         <?php include "header-mic-frontend.php";?>
 
-        <div class="mt-3 p-5 wrapper-rezervare-unica">
+        <div class="mt-3 wrapper-rezervare-unica">
 
 <?php
 
@@ -90,101 +90,187 @@ while($data = $result->fetch_assoc()) {
                     
         echo '<a href="home-unic-cununie-edit.php?id=' . $id_programare . '"><i class="albastru-inchis far fa-edit"></i> Modifică</a> ';
 
-        // echo '<a href="" onclick="window.print()"><i class="fas fa-print"></i> Print</a>';
+        echo '</p>'; 
+        ?>
 
-    echo '</p>';
+        <div class="tabel-responsive">  
+              
+          <table class='table rezervare-unica'>
+              
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
 
-    echo  '<hr />';
-
-    echo '<div class="tabel-rezervare view">';
-
-    if (isset($_GET['edit'])) { 
-      echo '<p id ="dispari" class="btn btn-success"> Rezervarea a fost editată cu succes</p>' ;
-    } 
-
-    echo '<p><span class="cap">Data catehezei: </span>' . date("d.m.Y", strtotime($data_ora_cateheza)) . '' . '<span class="cap stanga">Ora: </span>' . date("H:i", strtotime($data_ora_cateheza)) . '</p>';
-
-    echo '<p><span class="cap">Nume mire: </span>' . $nume_mire . ' ' . $prenume_mire . '<span class="cap stanga">Nume mireasă: </span>' . $nume_mireasa . ' ' . $prenume_mireasa . '</p>';
-
-    echo '<p><span class="cap">Adresă mire: </span> ' . $adresa_mire . '</p>';
-    echo '<p><span class="cap">Adresă mireasă: </span> ' . $adresa_mireasa . '</p>';
-    echo '<p><span class="cap">Telefon: </span>' . $telefon . '</p>';
-    echo '<p><span class="cap">Email: </span>' . $email . '</p>';
-
-    echo '<p><span class="cap">Număr certificat de căsătorie: </span>' . $numar_certificat_casatorie . '</p>';
-    echo '<p><span class="cap">Data eliberării certificatului: </span>' . $data_eliberarii_certificatului . '</p>';
-    echo '<p><span class="cap">Eliberat de Primăria: </span>' . $eliberat_de_primaria . '</p>';
-    echo '<p><span class="cap">Nași: </span>' . $nume_nas . ' și ' . $nume_nasa . '</p>';
-    if (!empty($nume_cameraman)) {
-        echo '<p><span class="cap">Nume cameraman: </span>' . $nume_cameraman . '<span class="cap stanga">Telefon: </span>' . $telefon_cameraman . '</p>';
-    }
-
-    echo '<p><span class="cap">Link carte de identitate mire: </span>';
-
-    // if-urile sunt necesare pentru a nu încarca galeria foto imagini goale in lightbox 
-    
-    if (!empty($link_mire_ci)) {
-
-    echo '<a target="popup" data-title ="' . basename($link_mire_ci) . '"data-lightbox ="foto_acte" href="' . $link_mire_ci .'">
-    <img src="' . $link_mire_ci . '"/></a></p>';
-
-    }
-
-    echo '<p><span class="cap">Link carte de identitate mireasă: </span>';
-    
-    if (!empty($link_mireasa_ci)) {
-    
-    echo '<a target="popup" data-title ="' . basename($link_mireasa_ci) . '"data-lightbox ="foto_acte"  href="' . $link_mireasa_ci .'">
-    <img src="' . $link_mireasa_ci . '"/></a></a></p>';
-
-    }
-
-    echo '<p><span class="cap">Link plata contribuției: </span>';
-    
-    if (!empty($link_plata_contributiei)) {
-
-    echo '<a target="popup" data-title ="' . basename($link_plata_contributiei) . '"data-lightbox ="foto_acte"  href="' . $link_plata_contributiei .'"><img src="' . $link_plata_contributiei . '"/></a></a></p>';
-
-    }
-
-    echo '<p><span class="cap">Link certificat de căsătorie: </span>';
-    
-    if (!empty($link_certificat_casatorie_civila)) {
-    
-    echo '<a target="popup" data-title ="' . basename($link_certificat_casatorie_civila) . '"data-lightbox ="foto_acte"  href="' . $link_certificat_casatorie_civila .'"><img src="' . $link_certificat_casatorie_civila . '"/></a></a></p>';
-
-    }
-
-    echo '<p><span class="cap">Link certificat de botez mire: </span>';
-    
-    if (!empty($link_certificat_botez_mire)) {
-    
-    echo '<a target="popup" data-title ="' . basename($link_certificat_botez_mire) . '"data-lightbox ="foto_acte"  href="' . $link_certificat_botez_mire .'"><img src="' . $link_certificat_botez_mire . '"/></a></a></p>';
-
-    }
-
-    echo '<p><span class="cap">Link certificat de botez mireasă: </span>';
   
-    if (!empty($link_certificat_botez_mireasa)) {
-    
-    echo '<a target="popup" data-title ="' . basename($link_certificat_botez_mireasa) . '"data-lightbox ="foto_acte"  href="' . $link_certificat_botez_mireasa .'"><img src="' . $link_certificat_botez_mireasa . '"/></a></p>';
+            <?php
 
-    }
+              if (isset($_GET['edit'])) { 
+                echo '<p id ="dispari" class="btn btn-success"> Rezervarea a fost editată cu succes</p>' ;
+              } 
+            ?>
 
-    echo '<p><span class="cap">Link dispensă: </span>';
-    
-    if (!empty($link_dispensa)) {
-    
-    echo '<a target="popup" data-title ="' . basename($link_dispensa) . '"data-lightbox ="foto_acte"  href="' . $link_dispensa .'">
-    <img src="' . $link_dispensa . '"/></a></p>';
+            <tr>
+                <td class="evident">Data catehezei:</td>
+                <td class="evident-date"><?php echo date("d.m.Y", strtotime($data_ora_cateheza));?></td>
+              </tr>
 
-    }
+              <tr>
+                <td class="evident">Ora:</td>
+                <td class="evident-date"><?php echo date("H:i", strtotime($data_ora_cateheza));?></td>
+              </tr>
+
+              <tr>
+                <td class="evident">Nume mire:</td>
+                <td class="evident-date"><?php echo $nume_mire . ' ' . $prenume_mire;?></td>
+              </tr>
+
+              <tr>
+                <td class="evident">Nume mireasă:</td> 
+                <td class="evident-date"><?php echo $nume_mireasa . ' ' . $prenume_mireasa;?></td>
+              </tr>
+
+              <tr>
+                <td class="evident">Adresă mire:</td>
+                <td class="evident-date"><?php echo $adresa_mire;?></td>
+              </tr>
+
+              <tr>
+                <td class="evident">Adresă mireasă:</td>
+                <td class="evident-date"><?php echo $adresa_mireasa;?></td>
+              </tr>
+
+              <tr>
+                <td class="evident">Telefon:</td>
+                <td class="evident-date"><?php echo $telefon;?></td>
+              </tr>
+
+              <tr>
+                <td class="evident">Email:</td>
+                <td class="evident-date"><?php echo $email;?></td>
+              </tr>
+
+              <tr>
+                <td class="evident">Număr certificat de căsătorie:</td>
+                <td class="evident-date"><?php echo $numar_certificat_casatorie;?></td>
+              </tr>
+
+              <tr>
+                <td class="evident">Data eliberării certificatului:</td>
+                <td class="evident-date"><?php echo $data_eliberarii_certificatului;?></td>
+              </tr>
+
+              <tr>
+                <td class="evident">Eliberat de Primăria:</td>
+                <td class="evident-date"><?php echo $eliberat_de_primaria;?></td>
+              </tr>
+    
+              <tr>
+                <td class="evident">Nași:</td>
+                <td class="evident-date"><?php echo $nume_nas . ' și ' . $nume_nasa;?></td>
+              </tr>
+    
+              <tr>
+                <td class="evident">Nume cameraman: </td>
+                <td class="evident-date"><?php echo $nume_cameraman;?></td>
+              </tr>
+    
+              <tr>
+                <td class="evident">Telefon cameraman: </td>
+                <td class="evident-date"><?php echo $telefon_cameraman;?></td>
+              </tr>
+    
+              <tr>
+                <td class="evident">Carte de identitate mire:</td>
+                <td class="evident-date"><?php  
+                // if-urile sunt necesare pentru a nu încarca galeria foto imagini goale in lightbox 
+    
+                  if (!empty($link_mire_ci)) {
+
+                    echo '<a target="popup" data-title ="' . basename($link_mire_ci) . '"data-lightbox ="foto_acte" href="' . BASE_URL . $link_mire_ci .'">
+                    <img src="' . $link_mire_ci . '"/></a></p>';
+                  }?></td>
+              </tr>
+        
+              <tr>
+                <td class="evident">Carte de identitate mireasă:</td>
+                <td class="evident-date"><?php 
+                
+                if (!empty($link_mireasa_ci)) {
+    
+                  echo '<a target="popup" data-title ="' . basename($link_mireasa_ci) . '"data-lightbox ="foto_acte"  href="' . BASE_URL  . $link_mireasa_ci .'">
+                  <img src="' . $link_mireasa_ci . '"/></a></p>';
   
-  
-    echo '<p><span class="cap">Link cerere și declarație: </span><a target="popup" href="' . $link_cerere .'">' . basename($link_cerere) . '</a>';
-    echo '<p></p>';
-    echo '</div>';
+                }?></td>
+                </tr>
+    
+                <tr>
+                <td class="evident">Plata contribuției: </td>
+                <td class="evident-date"><?php  
 
+                    if (!empty($link_plata_contributiei)) {
+
+                      echo '<a target="popup" data-title ="' . basename($link_plata_contributiei) . '"data-lightbox ="foto_acte"  href="' . BASE_URL  . $link_plata_contributiei .'"><img src="' . $link_plata_contributiei . '"/></a></p>';
+    
+                    }?></td>
+                  </tr>
+      
+                <tr>
+                <td class="evident">Certificat de căsătorie:</td>
+                <td class="evident-date"><?php  
+
+                if (!empty($link_certificat_casatorie_civila)) {
+                
+                echo '<a target="popup" data-title ="' . basename($link_certificat_casatorie_civila) . '"data-lightbox ="foto_acte"  href="' . BASE_URL  . $link_certificat_casatorie_civila .'"><img src="' . $link_certificat_casatorie_civila . '"/></a></p>';
+
+                }?></td>
+                </tr>
+
+                <tr>
+                <td class="evident">Certificat de botez mire: </td>
+                <td class="evident-date"><?php  
+
+                  if (!empty($link_certificat_botez_mire)) {
+
+                  echo '<a target="popup" data-title ="' . basename($link_certificat_botez_mire) . '"data-lightbox ="foto_acte"  href="'  . BASE_URL . $link_certificat_botez_mire .'"><img src="' . $link_certificat_botez_mire . '"/></a></p>';
+
+                  }?></td>
+                  </tr>
+
+                <tr>
+                <td class="evident">Certificat de botez mireasă:</td>
+                <td class="evident-date"><?php  
+
+                  if (!empty($link_certificat_botez_mireasa)) {
+                  
+                  echo '<a target="popup" data-title ="' . basename($link_certificat_botez_mireasa) . '"data-lightbox ="foto_acte"  href="' . BASE_URL  . $link_certificat_botez_mireasa .'"><img src="' . $link_certificat_botez_mireasa . '"/></a></p>';
+
+                  }?></td>
+                </tr>
+                  
+                <tr>
+                  <td class="evident">Link dispensă:</td>
+                  <td class="evident-date"><?php  
+                  
+                      if (!empty($link_dispensa)) {
+                      
+                      echo '<a target="popup" data-title ="' . basename($link_dispensa) . '"data-lightbox ="foto_acte"  href="' . BASE_URL  . $link_dispensa .'"><img src="' . $link_dispensa . '"/></a></p>';
+
+                }?></td>
+                </tr>
+
+                    
+              <tr>
+                <td class="evident">Link cerere și declarație:</td>
+                <td class="evident-date"><?php echo '<p><span class="cap"></span><a target="popup" href="' . BASE_URL  . $link_cerere .'">' . basename($link_cerere) . '</a>';?></td>
+              </tr>
+  
+              </table>
+              </div>
+                  
+  <?php    
     
     if (empty($succes)) {
 

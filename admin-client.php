@@ -64,9 +64,9 @@ $ultima_zi = NULL;
                         </div>
                     </div>
                 </a>
-
+            </div>
                
-            <div class="row justify-content-start mt-3 g-4 urmeaza">
+            <div class="row justify-content-start mt-3 urmeaza">
                 <div class="col-md-4 col-sm-12 urmeaza-in-calendar">
 
                 <p>Anunțuri în parohie</p>
@@ -148,7 +148,7 @@ $ultima_zi = NULL;
                         
                         <tbody >
 
-                    <?php
+                         <?php
 
                         $data = json_decode($program_json, true);
                         $nr_slujbe = (count($data)-2)/5;
@@ -161,9 +161,9 @@ $ultima_zi = NULL;
                         $alte_observatii = 'alte_observatii'.$i;
                         $ora_start = 'ora_start'.$i;
 
-                    ?>
+                         ?>
 
-                    <tr  class="
+                        <tr class="
                             <?php  $ziua = $prog_decod->$ziua_saptamanii;
                             if ($ultima_zi != $ziua){echo "subliniat"; } ?>">
 
@@ -196,14 +196,17 @@ $ultima_zi = NULL;
                     <?php }} ?> 
                     </tbody>
                     </table>
+
                     </div>
 
                 </div>
             </div>
+            </div>
 
             <div class="row  ultimele-programari mt-5">
+            <p class="fw-bold">Ultimele programări</p>
+            
             <div class="table-responsive">
-                <p class="fw-bold">Ultimele programări</p>
                     <table class="table">
 
                         <thead>

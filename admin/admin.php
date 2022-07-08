@@ -88,14 +88,15 @@
     <div class="row wrapper">
         <div class="col-lg-3 sidebar-admin"><?php include "sidebar-admin.php"?></div>
 
-        <div class="col-lg-9 p-4 zona-principala">
+        <div class="col-lg-9 p-4 g-4 zona-principala">
             
             <?php include "header-mic-admin.php";?>
 
             <div class="row g-4 align-items-center contoare">
-
+                <p class="mt-5">În ultimele 30 de zile:</p>
+                
                 <a href="registru.php?eveniment=programari_botez" class="col-md-4 col-6">
-                    <div>
+                    <div class="contor">
                         <div class="row align-items-center">
                             <div class="col-xxl-3 col-lg-4  mb-2"><img src="../images/botez-albastru.png" /></div>
                             <div class="col-lg-8 ">
@@ -106,13 +107,13 @@
                                 } else {echo ' botezuri ';}
                                 
                                 ?> 
-                                în ultimele 30 de zile</div>
+                                </div>
                         </div>
                     </div>
                 </a>
 
                 <a href="registru.php?eveniment=programari_cununie" class="col-md-4 col-6">
-                    <div>
+                    <div class="contor">
                         <div class="row align-items-center">
                            <div class="col-xxl-3 col-lg-4  mb-2"><img src="../images/cununii-auriu.png" /></div>
                             <div class="col-lg-8">
@@ -123,13 +124,61 @@
                                     echo " cununie ";
                                 } else {echo ' cununii ';}
                             ?>
-                            în ultimele 30 de zile</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="registru.php?eveniment=programari_spovedanie" class="col-md-4 col-6">
+                    <div class="contor">
+                        <div class="row align-items-center">
+                           <div class="col-xxl-3 col-lg-4  mb-2"><img src="../images/spovedanii-rosu.png" /></div>
+                            <div class="col-lg-8 ">
+                                <?php program_ultimele_30_zile("programari_spovedanie", $id);
+                                
+                                if ($nr_randuri_prog == 1) {
+                                    echo " spovedanie ";
+                                } else {echo ' spovedanii ';} 
+                                
+                                ?> </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="registru.php?eveniment=programari_parastas" class="col-md-4 col-6">
+                    <div class="contor">
+                        <div class="row align-items-center">
+                           <div class="col-xxl-3 col-lg-4  mb-2"><img src="../images/parastase-portocaliu.png" /></div>
+                            <div class="col-lg-8 ">
+                                <?php program_ultimele_30_zile("programari_parastas", $id);
+                                
+                                if ($nr_randuri_prog == 1) {
+                                    echo " parastas ";
+                                } else {echo ' parastase ';} 
+                                ?>
+                               </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="pomelnice.php" class="col-md-4 col-6">
+                    <div class="contor">
+                        <div class="row align-items-center">
+                           <div class="col-xxl-3 col-lg-4  mb-2"><img src="../images/pomelnic-albastru.png" /></div>
+                            <div class="col-lg-8 ">
+                                <?php pomelnice_30_zile($id);
+                                
+                                if ($nr_randuri_prog == 1) {
+                                    echo " pomelnic ";
+                                } else {echo ' pomelnice ';} 
+                                ?>
+                                </div>
                         </div>
                     </div>
                 </a>
 
                 <a href="registru.php?eveniment=programari_sfestanie" class="col-md-4 col-6">
-                    <div>
+                    <div class="contor">
                         <div class="row align-items-center">
                            <div class="col-xxl-3 col-lg-4  mb-2"><img src="../images/sfestanii-verde.png" /></div>
                             <div class="col-lg-8">
@@ -140,55 +189,7 @@
                                 echo " sfeștanie ";
                             } else {echo ' sfeștanii ';} 
                             ?>
-                            în ultimele 30 de zile</div>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="registru.php?eveniment=programari_spovedanie" class="col-md-4 col-6">
-                    <div>
-                        <div class="row align-items-center">
-                           <div class="col-xxl-3 col-lg-4  mb-2"><img src="../images/spovedanii-rosu.png" /></div>
-                            <div class="col-lg-8 ">
-                                <?php program_ultimele_30_zile("programari_spovedanie", $id);
-                                
-                                if ($nr_randuri_prog == 1) {
-                                    echo " spovedanie ";
-                                } else {echo ' spovedanii ';} 
-                                
-                                ?> în ultimele 30 de zile</div>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="registru.php?eveniment=programari_parastas" class="col-md-4 col-6">
-                    <div>
-                        <div class="row align-items-center">
-                           <div class="col-xxl-3 col-lg-4  mb-2"><img src="../images/parastase-portocaliu.png" /></div>
-                            <div class="col-lg-8 ">
-                                <?php program_ultimele_30_zile("programari_parastas", $id);
-                                
-                                if ($nr_randuri_prog == 1) {
-                                    echo " parastas ";
-                                } else {echo ' parastase ';} 
-                                ?>
-                               în ultimele 30 de zile</div>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="pomelnice.php" class="col-md-4 col-6">
-                    <div>
-                        <div class="row align-items-center">
-                           <div class="col-xxl-3 col-lg-4  mb-2"><img src="../images/pomelnic-albastru.png" /></div>
-                            <div class="col-lg-8 ">
-                                <?php pomelnice_30_zile($id);
-                                
-                                if ($nr_randuri_prog == 1) {
-                                    echo " pomelnic ";
-                                } else {echo ' pomelnice ';} 
-                                ?>
-                                în ultimele 30 de zile</div>
+                            </div>
                         </div>
                     </div>
                 </a>
