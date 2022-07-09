@@ -9,4 +9,6 @@
         window.location = $(this).data("href");
     });
 });
+
+
 </script>

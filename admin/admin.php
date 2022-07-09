@@ -42,28 +42,28 @@
         // datele programarilor cu orice status
 
           $query_orice_status = "
-          Select id, user_id, 'Botez' as Programare, concat(nume_tata, ' ', prenume_tata) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_botez WHERE parohie_id = $id
+          Select id, user_id, 'Botez' as Programare, concat(nume_tata, ' ', prenume_tata) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status, introdus_la_data FROM programari_botez WHERE parohie_id = $id
 
           UNION ALL 
 
-          Select id, user_id, 'Cununie' as Programare, concat(nume_mire, ' ', prenume_mire) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_cununie WHERE parohie_id = $id
+          Select id, user_id, 'Cununie' as Programare, concat(nume_mire, ' ', prenume_mire) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status, introdus_la_data FROM programari_cununie WHERE parohie_id = $id
 
           UNION ALL 
 
-          Select id, user_id, 'Spovedanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_spovedanie WHERE parohie_id = $id
+          Select id, user_id, 'Spovedanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status, introdus_la_data FROM programari_spovedanie WHERE parohie_id = $id
 
           UNION ALL 
 
-          Select id, user_id, 'Sfeștanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_sfestanie WHERE parohie_id = $id
+          Select id, user_id, 'Sfeștanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status, introdus_la_data FROM programari_sfestanie WHERE parohie_id = $id
           
           UNION ALL 
 
-          Select id, user_id, 'Parastas' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_parastas WHERE parohie_id = $id
+          Select id, user_id, 'Parastas' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status, introdus_la_data FROM programari_parastas WHERE parohie_id = $id
           
 
-          ORDER BY Data DESC 
+          ORDER BY introdus_la_data DESC 
           
-          LIMIT 15";
+          LIMIT 50";
 
           $stmt = $conn->prepare($query_orice_status);
           $result2 = $stmt->execute();
@@ -88,7 +88,7 @@
     <div class="row wrapper">
         <div class="col-lg-3 sidebar-admin"><?php include "sidebar-admin.php"?></div>
 
-        <div class="col-lg-9 p-4 g-4 zona-principala">
+        <div class="col-lg-9 p-4 zona-principala">
             
             <?php include "header-mic-admin.php";?>
 
@@ -250,7 +250,7 @@
             <div class="row  ultimele-programari mt-5">
                 <div class="table-responsive">
                     <p class="fw-bold">Ultimele programări (orice status)</p>
-                    <table class="table">
+                    <table id="example" class="table">
 
                         <thead>
                             <tr>
@@ -397,10 +397,15 @@
           
 </div>
 
-
+<script>
+$(document).ready(function () {
+    $('#example').DataTable();
+});
+</script>
 
 
 <?php include "../includes/footer.php"?>
+
 </body>
 </html>
 

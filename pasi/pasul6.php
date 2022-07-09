@@ -3,12 +3,7 @@ include "../header-frontend.php";
 
  
 if (isset($_POST['pasul1'])) {
-
-  $zile = $_POST['zile'];
- foreach ($zile as $zi) {
-
- }
-
+    $zile = $_POST['zile'];
 }
 
  if ( isset($_GET['zi']) ) {

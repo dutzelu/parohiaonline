@@ -18,13 +18,13 @@ $ultima_zi = NULL;
             
             <?php include "header-mic-frontend.php";?>
 
-            <div class="row g-4 align-items-center contoare">
+            <div class="row g-4 align-items-center contoare mt-4 mb-5">
 
                 <a href="frontend.php?pentru=botez" class="col-md-4 col-6">
                     <div>
                         <div class="row align-items-center">
                             <div class="col-xxl-3 col-lg-4  mb-2"><img src="images/botez-albastru.png" /></div>
-                            <div class="col-lg-8">Programează Taina Botezului</div>
+                            <div class="col-lg-8">Programează un botez</div>
                         </div>
                     </div>
                 </a>
@@ -33,7 +33,7 @@ $ultima_zi = NULL;
                     <div>
                         <div class="row align-items-center">
                             <div class="col-xxl-3 col-lg-4  mb-2"><img src="images/cununii-auriu.png" /></div>
-                            <div class="col-lg-8">Programează Taina Cununiei</div>
+                            <div class="col-lg-8">Programează o cununie</div>
                         </div>
                     </div>
                 </a>
@@ -42,7 +42,7 @@ $ultima_zi = NULL;
                     <div>
                         <div class="row align-items-center">
                             <div class="col-xxl-3 col-lg-4  mb-2"><img src="images/sfestanii-verde.png" /></div>
-                            <div class="col-lg-8">Programează Șfeștanie</div>
+                            <div class="col-lg-8">Programează o Șfeștanie</div>
                         </div>
                     </div>
                 </a>
@@ -51,7 +51,7 @@ $ultima_zi = NULL;
                     <div>
                         <div class="row align-items-center">
                             <div class="col-xxl-3 col-lg-4  mb-2"><img src="images/spovedanii-rosu.png" /></div>
-                            <div class="col-sm-9">Programează Taina Spovedaniei</div>
+                            <div class="col-lg-8">Programează o spovedanie</div>
                         </div>
                     </div>
                 </a>
@@ -60,10 +60,20 @@ $ultima_zi = NULL;
                     <div>
                         <div class="row align-items-center">
                             <div class="col-xxl-3 col-lg-4  mb-2"><img src="images/parastase-portocaliu.png" /></div>
-                            <div class="col-sm-9">Programează Parastas</div>
+                            <div class="col-lg-8">Programează un parastas</div>
                         </div>
                     </div>
                 </a>
+
+                <a href="pomelnic-online.php" class="col-md-4 col-6">
+                    <div>
+                        <div class="row align-items-center">
+                            <div class="col-xxl-3 col-lg-4  mb-2"><img src="images/pomelnic-albastru.png" /></div>
+                            <div class="col-lg-8">Trimte un pomelnic</div>
+                        </div>
+                    </div>
+                </a>
+
             </div>
                
             <div class="row justify-content-start mt-3 urmeaza">
@@ -227,34 +237,34 @@ $ultima_zi = NULL;
                             // datele programarilor cu status acceptat
 
                             $query = "
-                            Select id, 'Botez' as Programare, concat(nume_tata, ' ', prenume_tata) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_botez 
+                            Select id, 'Botez' as Programare, concat(nume_tata, ' ', prenume_tata) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status, introdus_la_data FROM programari_botez 
                             WHERE user_id = ?
 
                             UNION ALL 
 
-                            Select id, 'Cununie' as Programare, concat(nume_mire, ' ', prenume_mire) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_cununie 
-
-                            WHERE user_id = ?
-
-                            UNION ALL 
-
-                            Select id, 'Spovedanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_spovedanie 
+                            Select id, 'Cununie' as Programare, concat(nume_mire, ' ', prenume_mire) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status, introdus_la_data FROM programari_cununie 
 
                             WHERE user_id = ?
 
                             UNION ALL 
 
-                            Select id, 'Sfeștanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_sfestanie 
+                            Select id, 'Spovedanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status, introdus_la_data FROM programari_spovedanie 
 
                             WHERE user_id = ?
 
                             UNION ALL 
 
-                            Select id, 'Parastas' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_parastas
+                            Select id, 'Sfeștanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status, introdus_la_data FROM programari_sfestanie 
 
                             WHERE user_id = ?
 
-                            ORDER BY Data ASC 
+                            UNION ALL 
+
+                            Select id, 'Parastas' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status, introdus_la_data FROM programari_parastas
+
+                            WHERE user_id = ?
+
+                            ORDER BY introdus_la_data DESC 
                                     
                             LIMIT 15";
 
