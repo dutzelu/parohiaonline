@@ -359,3 +359,17 @@ function data_pastelui($anul) {
       $data_pastelui = date("d M Y", mktime(00, 00, 00, $luna_pastelui, $ziua_pastelui, $anul));
     }
 }
+
+function aflaDuminici ($y,$m){ 
+
+  global $duminici_in_luna;
+  $date = "$y-$m-01";
+  $first_day = date('N',strtotime($date));
+  $first_day = 7 - $first_day + 1;
+  $last_day =  date('t',strtotime($date));
+  $duminici_in_luna = array();
+  for($i=$first_day; $i<=$last_day; $i=$i+7 ){
+      $duminici_in_luna[] = $i;
+  }
+  return  $duminici_in_luna;
+}
