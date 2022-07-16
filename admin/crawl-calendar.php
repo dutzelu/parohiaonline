@@ -12,12 +12,19 @@
     <title>Document</title>
 </head>
 <body>
+<<<<<<< HEAD
      
     <?php
     // (\d+)\s*([SDLMJVS]{1})\n(.*)
 
 $re = '/(\d{1,2})\s*[SDLMJV]{1}\r(.*)/m';
 $str = '1 S
+=======
+    regex = (^\d+)
+<div>
+
+1 S
+>>>>>>> admin-frontend-separat
 (✝) Tăierea împrejur cea după trup a Domnului; ✝) Sfântul Ierarh Vasile cel Mare, Arhiepiscopul Cezareei Capadociei; Sfânta Emilia, mama Sfântului Ierarh Vasile cel Mare;  
 2 D
 Sfântul Mucenic Serghie; Sfântul Ierarh Silvestru, Episcopul Romei; Sfântul Cuvios Serafim de Sarov; Sfânta Iuliana din Lazarevo;  
@@ -80,6 +87,7 @@ Sfântul Sfințit Mucenic Ipolit, Episcopul Romei; ✝) Sfinții Trei Ierarhi: V
 31  L
 Sfântul Mucenic Diodor; Sfântul Mucenic Serapion; Sfântul Mucenic Papia; Sfântul Mucenic Nichifor; Sfântul Mucenic Claudiu; Sfântul Doctor fără de arginți, făcătorul de minuni, Chir; Sfântul Doctor fără de arginți, făcătorul de minuni, Ioan; Sfântul Mucenic Victorin; Sfântul Mucenic Victor; Sfânta Muceniță Trifena; Sfântul Arsenie din Paros;  
 
+<<<<<<< HEAD
 ';
 
 
@@ -92,6 +100,13 @@ echo '<pre>'; print_r($matches); echo '</pre>';
 ?>
 
  
+=======
+
+
+
+
+</div>
+>>>>>>> admin-frontend-separat
 
 
 
