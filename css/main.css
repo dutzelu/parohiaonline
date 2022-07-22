@@ -160,6 +160,10 @@ span.status {font-size:11px; display:inline-block;width:fit-content; padding:2px
   margin-right: 2px;
 }
 
+.rezervat {border:2px solid #F00!important};
+ 
+ 
+
 /* Pomelnic */
 
 .pomelnic .input-group-text {width:200px;}

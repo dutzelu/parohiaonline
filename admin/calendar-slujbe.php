@@ -86,13 +86,13 @@ ORDER BY Data ASC";
     
                 /* daca ziua ESTE deja rezervata*/
                     $calendar.= ' 
-                   <span class="btn" data-toggle="tooltip" title="">' . $list_day . '</span>';
+                    <a href="calendar-complet.php?day='. $list_day . '&month=' . $month . '&year=' . $year . '"><label class="btn btn-outline-primary " for="btncheck' . $list_day .  '">' . $list_day . '</label></a>';
                 } else {
    
                 /* daca NU este rezervata*/ 
                     $calendar.= ' 
                     
-                    <a href="calendar-complet.php?day='. $list_day . '&month=' . $month . '&year=' . $year . '"><label class="btn btn-outline-primary " for="btncheck' . $list_day .  '">' . $list_day . '</label></a>';
+                    <a href="calendar-complet.php?day='. $list_day . '&month=' . $month . '&year=' . $year . '"><label class="btn btn-outline-primary rezervat" for="btncheck' . $list_day .  '">' . $list_day . '</label></a>';
                 }
                       
 

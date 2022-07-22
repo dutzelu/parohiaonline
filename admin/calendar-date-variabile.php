@@ -1,117 +1,7 @@
-<?php 
-
-$ultima_luna = null;
-$zi = null;
-$calendarMobil = [];
-
-      include "header-admin.php"; 
-
-        /* date settings */
-
-        $day = (int) (isset($_GET['day']) ? $_GET['day'] : date('d'));
-        $month = (int) (isset($_GET['month']) ? $_GET['month'] : date('m'));
-        $year = (int)  (isset($_GET['year']) ? $_GET['year'] : date('Y'));
-
-        /* select month control */
-
-        $select_month_control = '<select name="month" id="month" class="d-inline form-select">';
-        for($x = 1; $x <= 12; $x++) {
-        $select_month_control.= '<option value="'.$x.'"'.($x != $month ? '' : ' selected="selected"').'>'.date('F',mktime(0,0,0,$x,1,$year)).'</option>';
-        }
-        $select_month_control.= '</select>';
-
-        /* select year control */
-
-        $year_range = 7;
-        $select_year_control = '<select name="year" id="year" class="d-inline form-select">';
-        for($x = ($year-floor($year_range/2)); $x <= ($year+floor($year_range/2)); $x++) {
-        $select_year_control.= '<option value="'.$x.'"'.($x != $year ? '' : ' selected="selected"').'>'.$x.'</option>';
-        }
-        $select_year_control.= '</select>';
-
-        /* "next month" control */
-
-        $next_month_link = '<a href="?month='.($month != 12 ? $month + 1 : 1).'&year='.($month != 12 ? $year : $year + 1) .'" class="control"> &#10095; </a>';
-
-        /* "previous month" control */
-
-        $previous_month_link = '<a href="?month='.($month != 1 ? $month - 1 : 12).'&year='.    ($month != 1 ? $year : $year - 1).'" class="control"> &#10094; </a>';
-
-
-
-      // datele programarilor cu status acceptat
-
-          $query = "
-          Select id, 'Botez' as Programare, concat(nume_tata, ' ', prenume_tata) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_botez WHERE data_si_ora LIKE ? AND parohie_id = ?
-         
-          UNION ALL 
-
-          Select id, 'Cununie' as Programare, concat(nume_mire, ' ', prenume_mire) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_cununie  WHERE data_si_ora LIKE ? AND parohie_id = ?
-      
-          UNION ALL 
-
-          Select id, 'Spovedanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_spovedanie  WHERE data_si_ora LIKE ? AND parohie_id = ?
-
-          UNION ALL 
-
-          Select id, 'Sfeștanie' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_sfestanie WHERE data_si_ora LIKE ? AND parohie_id = ?
-          
-          UNION ALL 
-
-          Select id, 'Parastas' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status FROM programari_parastas WHERE data_si_ora LIKE ? AND parohie_id = ? 
-          
-
-          ORDER BY Data, Ora ASC";
-        
-
-        if ($day < 10) {$day = '0' . $day;}
-        if ($month <= 10) {$month = '0' . $month;}
-       
-          if (isset($_GET['day'])) {
-              $data_exacta = "%" . $year . "-" .  $month. "-" . $day  . "%" ;
-          } else {
-            $data_exacta = "%" . $year . "-" .  $month . "%" ;
-          }
-
-          $stmt = $conn->prepare($query);
-          $stmt->bind_param('sisisisisi', $data_exacta, $id, $data_exacta, $id, $data_exacta, $id, $data_exacta, $id,  $data_exacta, $id );
-          $result = $stmt->execute();
-          $result = $stmt->get_result();
-                
-          $rows = array();
-          while ($row = mysqli_fetch_assoc($result)) { 
-              $id_programare = $row['id'];
-              $rows[] = $row;
-          }
-
-
-?>
-
-<title>Calendar complet</title>
-</head>
-
-<body>
-
-<div class="container-fluid">
-
-    <div class="row wrapper">
-        <div class="col-lg-3 sidebar-admin"><?php include "sidebar-admin.php"?></div>
-
-        <div class="col-lg-9 p-4 zona-principala">
-            
-            <?php include "header-mic-admin.php";?>
-
-            <div class="row mt-3 ultimele-programari">
-                <p class="fw-bold">Calendarul complet al rezervărilor</p>
-                <div class="col-sm-6">
-                    <?php include 'calendar-slujbe.php';?>
-                </div>
-
-                <div class="col-sm-6">
-
-
-            <?php
-
+             <?php
+             
+ 
+            $calendarMobil=[];
             data_pastelui($year);
             $Pasti = $data_pastelui;
     
@@ -129,6 +19,7 @@ $calendarMobil = [];
                 $Duminica_dinaintea_Nasterii_Domnului_0 = date('d M Y', strtotime($Nasterea_Domnului_0. ' -7 days'));
                 $Nasterea_Domnului_0 = date("d M Y", strtotime($Nasterea_Domnului_0));
                 $Duminica_dupa_Nasterea_Domnului_0 = $Nasterea_Domnului_0;
+
             } 
             
             //  dacă Nașterea Domnului cade în timpul săptămânii, adică este 1,2,3,4,5 si 6
@@ -140,6 +31,9 @@ $calendarMobil = [];
                 $Nasterea_Domnului_0 = date("d M Y", strtotime($Nasterea_Domnului_0));
 
                 $Duminica_dupa_Nasterea_Domnului_0 = date('d M Y', strtotime($Nasterea_Domnului_0. '+' . 7- $ziua_sapt_Nasterea_Domnului_0 . ' days'));
+
+                $Miercuri_dupa_Nasterea_Domnului = date('d M Y', strtotime($Nasterea_Domnului_0. '+' . 3- $ziua_sapt_Nasterea_Domnului_0 . ' days'));
+                $Vineri_dupa_Nasterea_Domnului = date('d M Y', strtotime($Nasterea_Domnului_0. '+' . 5- $ziua_sapt_Nasterea_Domnului_0 . ' days'));
                 
             }
          
@@ -284,65 +178,107 @@ $calendarMobil = [];
             // Duminicile Triodului
     
             $calendarMobil += [$Duminica_Rusalii_33 => "Duminica a 33-a după Rusalii (a Vameșului și a Fariselui). Începutul Triodului"];
+
+                $miercuri_harti_fiul_risipitor = date('d M Y', strtotime($Duminica_Rusalii_33. ' + 3 days'));
+                $calendarMobil += [$miercuri_harti_fiul_risipitor => "(Harți)"];
+            
+                $vineri_harti_fiul_risipitor = date('d M Y', strtotime($Duminica_Rusalii_33. ' + 5 days'));
+                $calendarMobil += [$vineri_harti_fiul_risipitor => "(Harți)"];
     
             $Duminica_Rusalii_34 = date('d M Y', strtotime($Pasti. ' - 63 days'));
             $calendarMobil += [$Duminica_Rusalii_34 => "Duminica a 34-a după Rusalii (a Întoarcerii Fiului risipitor)"];
     
+                $Mosii_de_iarna = date('d M Y', strtotime($Pasti. ' - 57 days'));
+                $calendarMobil += [$Mosii_de_iarna => "(Sâmbăta morților - Moșii de iarnă)"];
+    
             $Duminica_3_Triod = date('d M Y', strtotime($Pasti. ' - 56 days'));
             $calendarMobil += [$Duminica_3_Triod => "Duminica Înfricoșătoarei judecăți (a Lăsatului sec de carne)"];
+
+                $Miercuri_dezlegare_lasat_sec = date('d M Y', strtotime($Pasti. ' - 53 days'));
+                $calendarMobil += [$Miercuri_dezlegare_lasat_sec => "(Zi aliturgică. Dezlegare la brânză, lapte, ouă și pește)"];
+
+                $Vineri_dezlegare_lasat_sec = date('d M Y', strtotime($Pasti. ' - 51 days'));
+                $calendarMobil += [$Vineri_dezlegare_lasat_sec => "(Zi aliturgică. Dezlegare la brânză, lapte, ouă și pește)"];
+
+                $Sambata_Sf_Cuviosi = date('d M Y', strtotime($Pasti. ' - 50 days'));
+                $calendarMobil += [$Sambata_Sf_Cuviosi => "(Sâmbăta Sfinților Cuvioși)"];
 
             $Duminica_4_Triod = date('d M Y', strtotime($Pasti. ' - 49 days'));
             $calendarMobil += [$Duminica_4_Triod => "Duminica izgonirii lui Adam din Rai (a Lăsatului sec de brânză)"];
 
             // Duminicile Postului Mare
     
-            $Inceputul_Postului_Mare = date('d M Y', strtotime($Pasti. ' - 48 days'));
-            $calendarMobil += [$Inceputul_Postului_Mare => "Începutul Postului Sfintelor Paști. Zi aliturgică. Canonul cel Mare"];
+                $Inceputul_Postului_Mare = date('d M Y', strtotime($Pasti. ' - 48 days'));
+                $calendarMobil += [$Inceputul_Postului_Mare => "Începutul Postului Sfintelor Paști. Zi aliturgică. Canonul cel Mare"];
+        
+                $Marti_sapt_1_Postul_Mare = date('d M Y', strtotime($Pasti. ' - 47 days'));
+                $calendarMobil += [$Marti_sapt_1_Postul_Mare => "Canonul cel Mare. Zi aliturgică."];
     
-            $Marti_sapt_1_Postul_Mare = date('d M Y', strtotime($Pasti. ' - 47 days'));
-            $calendarMobil += [$Marti_sapt_1_Postul_Mare => "Canonul cel Mare. Zi aliturgică."];
-    
-            $Miercuri_sapt_1_Postul_Mare = date('d M Y', strtotime($Pasti. ' - 46 days'));
-            $calendarMobil += [$Miercuri_sapt_1_Postul_Mare => "Canonul cel Mare. Zi aliturgică."];
-    
-            $Joi_sapt_1_Postul_Mare = date('d M Y', strtotime($Pasti. ' - 45 days'));
-            $calendarMobil += [$Joi_sapt_1_Postul_Mare => "Canonul cel Mare. Zi aliturgică."];
+                $Miercuri_sapt_1_Postul_Mare = date('d M Y', strtotime($Pasti. ' - 46 days'));
+                $calendarMobil += [$Miercuri_sapt_1_Postul_Mare => "Canonul cel Mare. Zi aliturgică."];
+        
+                $Joi_sapt_1_Postul_Mare = date('d M Y', strtotime($Pasti. ' - 45 days'));
+                $calendarMobil += [$Joi_sapt_1_Postul_Mare => "Canonul cel Mare. Zi aliturgică."];
+        
+                $Sambata_Sf_Teodor_Tiron = date('d M Y', strtotime($Pasti. ' - 43 days'));
+                $calendarMobil += [$Sambata_Sf_Teodor_Tiron => "(Sâmbăta Sf. Mare Mucenic Teodor Tiron. Pomenirea morților.)"];
     
             $Duminica_1_Postul_Mare = date('d M Y', strtotime($Pasti. ' - 42 days'));
             $calendarMobil += [$Duminica_1_Postul_Mare => "Duminica Întâi din Post (a Ortodoxiei)"];
     
+                $Pomenirea_mortilor_2 = date('d M Y', strtotime($Pasti. ' - 36 days'));
+                $calendarMobil += [$Pomenirea_mortilor_2 => "(Pomenirea morților)"];
+    
             $Duminica_2_Postul_Mare = date('d M Y', strtotime($Pasti. ' - 35 days'));
-            $calendarMobil += [$Duminica_2_Postul_Mare => "Duminica a 2-a din Post (a Sfântului Grigorie Palama)"];
+            $calendarMobil += [$Duminica_2_Postul_Mare => "(Duminica a 2-a din Post (a Sfântului Grigorie Palama))"];
+
+                $Pomenirea_mortilor_3 = date('d M Y', strtotime($Pasti. ' - 29 days'));
+                $calendarMobil += [$Pomenirea_mortilor_3 => "(Pomenirea morților)"];
     
             $Duminica_3_Postul_Mare = date('d M Y', strtotime($Pasti. ' - 28 days'));
             $calendarMobil += [$Duminica_3_Postul_Mare => "Duminica a 3-a din Post (a Sfintei Cruci)"];
+
+                $Pomenirea_mortilor_4 = date('d M Y', strtotime($Pasti. ' - 22 days'));
+                $calendarMobil += [$Pomenirea_mortilor_4 => "(Pomenirea morților)"];
     
             $Duminica_4_Postul_Mare = date('d M Y', strtotime($Pasti. ' - 21 days'));
             $calendarMobil += [$Duminica_4_Postul_Mare => "Duminica a 4-a din Post (a Sf. Ioan Scărarul)"];
+
+                $Denia_Canonului_Mare = date('d M Y', strtotime($Pasti. ' - 18 days'));
+                $calendarMobil += [$Denia_Canonului_Mare => "(Denia Canonului Mare)"];
+
+                $Denia_Buneivestiri = date('d M Y', strtotime($Pasti. ' - 16 days'));
+                $calendarMobil += [$Denia_Buneivestiri => "(Denia Acatistului Bunei Vestiri)"];
+            
+                $Pomenirea_mortilor_5 = date('d M Y', strtotime($Pasti. ' - 15 days'));
+                $calendarMobil += [$Pomenirea_mortilor_5 => "(Pomenirea morților)"];
     
             $Duminica_5_Postul_Mare = date('d M Y', strtotime($Pasti. ' - 14 days'));
             $calendarMobil += [$Duminica_5_Postul_Mare => "Duminica a 5-a din Post (a Cuvioasei Maria Egipteanca)"];
+
+                $Pomenirea_mortilor_6 = date('d M Y', strtotime($Pasti. ' - 8 days'));
+                $calendarMobil += [$Pomenirea_mortilor_6 => "(Sâmbăta lui Lazăr. Pomenirea morților)"];
     
             $Duminica_6_Postul_Mare = date('d M Y', strtotime($Pasti. ' - 7 days'));
-            $calendarMobil += [$Duminica_6_Postul_Mare => "Duminica a 6-a din Post (a Floriilor). Intrarea Domnului în Ierusalim"];
+            $calendarMobil += [$Duminica_6_Postul_Mare => "Duminica a 6-a din Post (a Floriilor). Intrarea Domnului în Ierusalim. (Denie)"];
 
     
             // Săptămâna Mare
 
             $Lunea_mare = date('d M Y', strtotime($Pasti. ' - 6 days'));
-            $calendarMobil += [$Lunea_mare => "Sfânta și Marea zi de Luni"];
+            $calendarMobil += [$Lunea_mare => "Sfânta și Marea zi de Luni (Denie)"];
     
             $Martea_mare = date('d M Y', strtotime($Pasti. ' - 5 days'));
-            $calendarMobil += [$Martea_mare => "Sfânta și Marea zi de Marti"];
+            $calendarMobil += [$Martea_mare => "Sfânta și Marea zi de Marti (Denie)"];
     
             $Miercurea_mare = date('d M Y', strtotime($Pasti. ' - 4 days'));
-            $calendarMobil += [$Miercurea_mare => "Sfânta și Marea zi de Miercuri"];
+            $calendarMobil += [$Miercurea_mare => "Sfânta și Marea zi de Miercuri (Denie)"];
     
             $Joia_mare = date('d M Y', strtotime($Pasti. ' - 3 days'));
-            $calendarMobil += [$Joia_mare => "Sfânta și Marea zi de Joi"];
+            $calendarMobil += [$Joia_mare => "Sfânta și Marea zi de Joi (Denia celor 12 Evanghelii)"];
     
             $Vinerea_mare = date('d M Y', strtotime($Pasti. ' - 2 days'));
-            $calendarMobil += [$Vinerea_mare => "Sfânta și Marea zi de Vineri"];
+            $calendarMobil += [$Vinerea_mare => "Sfânta și Marea zi de Vineri (Zi aliturgică. Denia Prohodului Domnului.)"];
     
             $Sambata_mare = date('d M Y', strtotime($Pasti. ' - 1 days'));
             $calendarMobil += [$Sambata_mare => "Sfânta și Marea zi de Sâmbăta"];
@@ -358,35 +294,86 @@ $calendarMobil = [];
             $Ziua_3_Pasti = date('d M Y', strtotime($Pasti. ' + 2 days'));
             $calendarMobil += [$Ziua_3_Pasti => "Sfintele Paști"];
             
+                $Miercuri_Pasti_Harti = date('d M Y', strtotime($Pasti. ' + 3 days'));
+                $calendarMobil += [$Miercuri_Pasti_Harti => "(Harți)"];
+                        
             $Izvorul_tamaduirii = date('d M Y', strtotime($Pasti. ' + 5 days'));
-            $calendarMobil += [$Izvorul_tamaduirii => "Izvorul Tămăduirii"];
-            
+            $calendarMobil += [$Izvorul_tamaduirii => "Izvorul Tămăduirii (Harți)"];
+
             $Duminica_2_dupa_Pasti = date('d M Y', strtotime($Pasti. ' + 7 days'));
             $calendarMobil += [$Duminica_2_dupa_Pasti => "Duminica a 2-a după Paști (a Sf. Apostol Toma)"];
+
+                $Miercuri_Dezlegare_3 = date('d M Y', strtotime($Pasti. ' + 10 days'));
+                $calendarMobil += [$Miercuri_Dezlegare_3 => "(Dezlegare la pește)"];
+
+                $Vineri_Dezlegare_3 = date('d M Y', strtotime($Pasti. ' + 12 days'));
+                $calendarMobil += [$Vineri_Dezlegare_3 => "(Dezlegare la pește)"];
             
             $Duminica_3_dupa_Pasti = date('d M Y', strtotime($Pasti. ' + 14 days'));
             $calendarMobil += [$Duminica_3_dupa_Pasti => "Duminica a 3-a după Paști (a Mironosițelor)"];
-            
+
+                $Miercuri_Dezlegare_4 = date('d M Y', strtotime($Pasti. ' + 17 days'));
+                $calendarMobil += [$Miercuri_Dezlegare_4 => "(Dezlegare la pește)"];
+
+                $Vineri_Dezlegare_4 = date('d M Y', strtotime($Pasti. ' + 19 days'));
+                $calendarMobil += [$Vineri_Dezlegare_4 => "(Dezlegare la pește)"];
+                
             $Duminica_4_dupa_Pasti = date('d M Y', strtotime($Pasti. ' + 21 days'));
             $calendarMobil += [$Duminica_4_dupa_Pasti => "Duminica a 4-a după Paști (Vindecarea slăbănogului de la Vitezda)"];
+
+                $Miercuri_Dezlegare_5 = date('d M Y', strtotime($Pasti. ' + 24 days'));
+                $calendarMobil += [$Miercuri_Dezlegare_5 => "Înjumătățirea Cincizecimii. (Dezlegare la pește)"];
+
+                $Vineri_Dezlegare_5 = date('d M Y', strtotime($Pasti. ' + 26 days'));
+                $calendarMobil += [$Vineri_Dezlegare_5 => "(Dezlegare la pește)"];
             
             $Duminica_5_dupa_Pasti = date('d M Y', strtotime($Pasti. ' + 28 days'));
             $calendarMobil += [$Duminica_5_dupa_Pasti => "Duminica a 5-a după Paști (a Samarinencei)"];
+
+                $Miercuri_Dezlegare_5 = date('d M Y', strtotime($Pasti. ' + 31 days'));
+                $calendarMobil += [$Miercuri_Dezlegare_5 => "Odovania Înjumătățirii Cincizecimii. (Dezlegare la pește)"];
+
+                $Vineri_Dezlegare_5 = date('d M Y', strtotime($Pasti. ' + 33 days'));
+                $calendarMobil += [$Vineri_Dezlegare_5 => "(Dezlegare la pește)"];
             
             $Duminica_6_dupa_Pasti = date('d M Y', strtotime($Pasti. ' + 35 days'));
             $calendarMobil += [$Duminica_6_dupa_Pasti => "Duminica a 6-a după Paști (Vindecarea orbului din naștere)"];
-            
-            $Inaltarea_Domnului = date('d M Y', strtotime($Pasti. ' + 39 days'));
-            $calendarMobil += [$Inaltarea_Domnului => "Înălțarea Domnului (Ziua Eroilor)"];
+
+                $Miercuri_Dezlegare_6 = date('d M Y', strtotime($Pasti. ' + 38 days'));
+                $calendarMobil += [$Miercuri_Dezlegare_6 => "Odovania Praznicului Învierii Domnului. (Dezlegare la pește)"];
+                
+                $Inaltarea_Domnului = date('d M Y', strtotime($Pasti. ' + 39 days'));
+                $calendarMobil += [$Inaltarea_Domnului => "Înălțarea Domnului (Ziua Eroilor)"];
+                
+                $Vineri_Dezlegare_6 = date('d M Y', strtotime($Pasti. ' + 40 days'));
+                $calendarMobil += [$Vineri_Dezlegare_6 => "(Dezlegare la pește)"];
             
             $Duminica_7_dupa_Pasti = date('d M Y', strtotime($Pasti. ' + 42 days'));
             $calendarMobil += [$Duminica_7_dupa_Pasti => "Duminica a 7-a după Paști (a Sf. Părinți de la Sinodul I Ecumenic)"];
+
+                $Miercuri_Dezlegare_7 = date('d M Y', strtotime($Pasti. ' + 45 days'));
+                $calendarMobil += [$Miercuri_Dezlegare_7 => "(Dezlegare la pește)"];
+
+                $Vineri_Dezlegare_7 = date('d M Y', strtotime($Pasti. ' + 47 days'));
+                $calendarMobil += [$Vineri_Dezlegare_7 => "Odovania praznicului Înălțării Domnului. (Dezlegare la pește)"];
+
+                $Mosii_de_vara = date('d M Y', strtotime($Pasti. ' + 48 days'));
+                $calendarMobil += [$Mosii_de_vara => "(Sâmbăta morților. Mosii_de_vară)"];
             
             $Rusalii = $Duminica_Pogorarii_Duhului_Sfant = date('d M Y', strtotime($Pasti. ' + 49 days'));
-            $calendarMobil += [$Duminica_Pogorarii_Duhului_Sfant => "Pogorârea Sfântului Duh (Cincizecimea sau Rusaliile)"];
+            $calendarMobil += [$Duminica_Pogorarii_Duhului_Sfant => "Pogorârea Sfântului Duh (Cincizecimea sau Rusaliile). Duminica a 8-a după Paști."];
             
             $Sfanta_Treime = date('d M Y', strtotime($Pasti. ' + 50 days'));
             $calendarMobil += [$Sfanta_Treime => "Sfânta Treime"];
+
+                $Miercuri_Cincizecime = date('d M Y', strtotime($Rusalii. ' + 3 days'));
+                $calendarMobil += [$Miercuri_Cincizecime => "(Harți)"];
+
+                $Vineri_Cincizecime = date('d M Y', strtotime($Rusalii. ' + 5 days'));
+                $calendarMobil += [$Vineri_Cincizecime => "(Harți)"];
+
+                $Sambata_Dupa_Cincizecime = date('d M Y', strtotime($Rusalii. ' + 6 days'));
+                $calendarMobil += [$Sambata_Dupa_Cincizecime => "Odavania praznicului Pogorârii Sfântului Duh"];
 
             // Octoihul
 
@@ -573,6 +560,13 @@ $calendarMobil = [];
                 // Duminica a 30-a (Dregătorul bogat – păzirea poruncilor)
 
           
+            // aflu sambatele din luna noiembrie
+            aflaSambete($year, 11);
+            $Mosii_de_toamna =  $year . '-11-' . reset($sambete_in_luna);
+            $Mosii_de_toamna =  date('d M Y', strtotime ($Mosii_de_toamna));
+            $calendarMobil += [$Mosii_de_toamna => "(Sâmbăta morților - Moșii de toamnă.)"];
+
+            // aflu duminicile din luna noiembrie
             aflaDuminici ($year, 11);
             end($duminici_in_luna);
 
@@ -583,9 +577,12 @@ $calendarMobil = [];
  
             $Duminica_Rusalii_26 = date('d M Y', strtotime(  $ultima_duminica_din_nov. ' - 7 days'));
             $calendarMobil += [$Duminica_Rusalii_26 => "Duminica a 26-a după Rusalii (Pilda bogatului căruia i-a rodit țarina)"];
+
+                $Ultima_Sambata_Nov = date('d M Y', strtotime(  $ultima_duminica_din_nov. ' - 1 days'));
+                $calendarMobil += [$Ultima_Sambata_Nov => "(Dezlegare la pește)"];
  
-            $Duminica_Rusalii_27 = date('d M Y', strtotime(  $ultima_duminica_din_nov));
-            $calendarMobil += [$Duminica_Rusalii_27 => "Duminica a 27-a după Rusalii (Pilda bogatului căruia i-a rodit țarina)"];
+            $Duminica_Rusalii_30 = date('d M Y', strtotime(  $ultima_duminica_din_nov));
+            $calendarMobil += [$Duminica_Rusalii_30 => "Duminica a 30-a după Rusalii (Dregătorul bogat - păzirea poruncilor) (Dezlegare la pește)"];
 
             
             // Aflu toate duminicile rămase libere în noiembrie 
@@ -635,6 +632,9 @@ $calendarMobil = [];
                 $Duminica_dinaintea_Nasterii_Domnului = date('d M Y', strtotime($Nasterea_Domnului. ' -7 days'));
                 $Nasterea_Domnului = date("d M Y", strtotime($Nasterea_Domnului));
                 $Duminica_dupa_Nasterea_Domnului = $Nasterea_Domnului;
+
+                $Miercuri_dupa_Nasterea_Domnului = date('d M Y', strtotime($Nasterea_Domnului. ' +3 days'));
+                $Vineri_dupa_Nasterea_Domnului = date('d M Y', strtotime($Nasterea_Domnului. ' +5 days'));
             } 
             
             //  dacă Nașterea Domnului cade în timpul săptămânii
@@ -668,13 +668,21 @@ $calendarMobil = [];
 
             }
 
-            $calendarMobil += [$Duminica_Rusalii_27 => "Duminica a 27-a după Rusalii (Tămăduirea femeii gârbove)"];
+                $Sambata_dinaintea_Duminicii_27 = date('d M Y', strtotime($Duminica_Rusalii_27. ' - 1 days'));
+                $calendarMobil += [$Sambata_dinaintea_Duminicii_27 => "(Dezlegare la pește)"];
+
+            $calendarMobil += [$Duminica_Rusalii_27 => "Duminica a 27-a după Rusalii (Tămăduirea femeii gârbove) (Dezlegare la pește)"];
+
+                $Sambata_dinaintea_Duminicii_27 = date('d M Y', strtotime($Duminica_Rusalii_27. ' +6 days'));
+                $calendarMobil += [$Sambata_dinaintea_Duminicii_27 => "(Dezlegare la pește)"];
 
             $Duminica_Rusalii_28 = date('d M Y', strtotime($Duminica_dinaintea_Nasterii_Domnului. ' - 7 days'));
-            $calendarMobil += [$Duminica_Rusalii_28 => "Duminica a 28-a după Rusalii (a Sf. Strămoși după trup ai Domnului.)"];
+            $calendarMobil += [$Duminica_Rusalii_28 => "Duminica a 28-a după Rusalii (a Sf. Strămoși după trup ai Domnului.) (Dezlegare la pește)"];
 
             $calendarMobil += [$Duminica_dinaintea_Nasterii_Domnului => "Duminica dinaintea Nașterii Domnului"];
+                
             $calendarMobil += [$Duminica_dupa_Nasterea_Domnului => "Duminica după Nașterea Domnului"];
+
             
             // sortez array-ul în ordinea cronologică a datelor
 

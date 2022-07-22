@@ -82,8 +82,17 @@ $zi = null;
               $id_programare = $row['id'];
               $rows[] = $row;
           }
+          echo "ziua: " . $day;
+          echo "<br>";
+          echo "luna: " . $month;
+          echo "<br>";
+          echo "anul: " . $year;
+          echo "<br>";
+        
 
-
+          include "calendar-date-variabile.php";
+ 
+          
 ?>
 
 <title>Calendar complet</title>
@@ -108,6 +117,30 @@ $zi = null;
 
                 <div class="col-sm-6">
 
+                <?php
+                     $data_exacta = trim($data_exacta, "%");
+                     $data_exacta = date('d M Y', strtotime($data_exacta));
+
+                     echo "<br>";
+                     echo $data_exacta;
+                     echo "Calendarul se afișează greșit începând cu 1 mai. Apar duminicile în locul zilelor de luni.";
+
+                     // afișez datele variabile
+                     foreach ($calendarMobil as $zi => $descriere) {
+                        if ($zi == $data_exacta) {
+                            echo "<p class='rosu'>" . $zi . ' - ' . $descriere . "</p>";
+                        }
+                     }
+
+                     // afișez datele fixe
+
+                     afiseazaSfinti ($month, $day);
+
+                     echo "<p>" . $sfinti . "</p>";
+
+                     
+
+                ?>
 
                     <table class="table calendar-complet">
 

@@ -373,3 +373,37 @@ function aflaDuminici ($y,$m){
   }
   return  $duminici_in_luna;
 }
+
+function aflaSambete ($y,$m){ 
+
+  global $sambete_in_luna;
+  $date = "$y-$m-01";
+  $first_day = date('N',strtotime($date));
+  $first_day = 6 - $first_day + 1;
+  $last_day =  date('t',strtotime($date));
+  $sambete_in_luna = array();
+  for($i=$first_day; $i<=$last_day; $i=$i+7 ){
+      $sambete_in_luna[] = $i;
+  }
+  return  $sambete_in_luna;
+}
+
+function afiseazaSfinti ($month, $day) {
+ 
+  global $conn, $sfinti, $sarbatoare, $post, $dezlegare_peste;
+
+  $query_sfinti = "SELECT * FROM calendar_date_fixe WHERE luna = ? AND zi = ?";
+  $stmt = $conn->prepare($query_sfinti);
+  $stmt->bind_param('ii', $month, $day);
+  $rez = $stmt->execute();
+  $rez = $stmt->get_result();
+
+  while ($data = mysqli_fetch_assoc($rez)) {
+      $sfinti = $data['sfinti'];
+      $sarbatoare = $data['sarbatoare'];
+      $post = $data['post'];
+      $dezlegare_peste = $data['dezlegare_peste'];
+  }
+
+  
+}
