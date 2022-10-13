@@ -170,7 +170,7 @@ $ora = '';
             
             <div class="col-sm-8">
                 <input type="file" name="plata_contributiei" class="col-sm-8 form-control size" required onchange="ValidateSingleInput(this);validateSize(this);">
-                <p>Se atașează copia chitanței plătite la biserică sau copia viramentului bancar. <br />Puteți plăti contribuția în contul:<br /> <strong>RO11 RNCB 0083 0028 8937 0001</strong> titular fiind: <br /><strong>PAROHIA APARATORII PATRIEI II</strong>.</p>
+                <p>Se atașează dovada chitanței plătite la biserică sau dovada viramentului bancar. <br />Puteți plăti contribuția în contul:<br /> <strong>RO11 RNCB 0083 0028 8937 0001</strong> titular fiind: <br /><strong>PAROHIA APARATORII PATRIEI II</strong>.</p>
             </div>
         </div>
         

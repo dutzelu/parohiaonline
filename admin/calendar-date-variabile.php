@@ -631,7 +631,7 @@
                 
                 $Duminica_dinaintea_Nasterii_Domnului = date('d M Y', strtotime($Nasterea_Domnului. ' -7 days'));
                 $Nasterea_Domnului = date("d M Y", strtotime($Nasterea_Domnului));
-                $Duminica_dupa_Nasterea_Domnului = $Nasterea_Domnului;
+                $Duminica_dupa_Nasterea_Domnului = NULL;
 
                 $Miercuri_dupa_Nasterea_Domnului = date('d M Y', strtotime($Nasterea_Domnului. ' +3 days'));
                 $Vineri_dupa_Nasterea_Domnului = date('d M Y', strtotime($Nasterea_Domnului. ' +5 days'));
@@ -692,7 +692,7 @@
 
                 array_multisort($sort, SORT_ASC, $calendarMobil);
 
-            echo '<pre>'; print_r($calendarMobil); echo '</pre>';
+            // echo '<pre>'; print_r($calendarMobil); echo '</pre>';
                 
             
                     ?>

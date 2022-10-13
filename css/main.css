@@ -119,6 +119,9 @@ div.titlu p {color:#4374B9}
     background-color: #F1F5FA;
 }
 
+.dataCalendarComplet {text-transform:capitalize; margin-bottom:5px; font-weight:bold;}
+
+
  /* programari botezuri */
 .ultimele-programari .select2-container .select2-selection--single {
     height: 38px;
@@ -162,7 +165,7 @@ span.status {font-size:11px; display:inline-block;width:fit-content; padding:2px
 
 .rezervat {border:2px solid #F00!important};
  
- 
+
 
 /* Pomelnic */
 

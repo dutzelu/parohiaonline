@@ -1,5 +1,5 @@
 <?php 
-
+ 
 $ultima_luna = null;
 $zi = null;
 
@@ -7,9 +7,12 @@ $zi = null;
 
         /* date settings */
 
-        $day = (int) (isset($_GET['day']) ? $_GET['day'] : date('d'));
-        $month = (int) (isset($_GET['month']) ? $_GET['month'] : date('m'));
-        $year = (int)  (isset($_GET['year']) ? $_GET['year'] : date('Y'));
+        if (isset($_GET['day'])) {
+            $day = $_GET['day'];
+        } else {$day = '1';}
+        
+        $month = $_GET['month'];
+        $year = $_GET['year'];
 
         /* select month control */
 
@@ -64,16 +67,17 @@ $zi = null;
         
 
         if ($day < 10) {$day = '0' . $day;}
-        if ($month <= 10) {$month = '0' . $month;}
+        if ($month < 10) {$month = '0' . $month;}
        
-          if (isset($_GET['day'])) {
-              $data_exacta = "%" . $year . "-" .  $month. "-" . $day  . "%" ;
+          if (isset($_GET['month'])) {
+              $data_selectata = "%" . $year . "-" .  $month. "-" . $day  . "%" ;
           } else {
-            $data_exacta = "%" . $year . "-" .  $month . "%" ;
+            $data_selectata = "%" . $year . "-" .  $month . "-01%"  ;
           }
+ 
 
           $stmt = $conn->prepare($query);
-          $stmt->bind_param('sisisisisi', $data_exacta, $id, $data_exacta, $id, $data_exacta, $id, $data_exacta, $id,  $data_exacta, $id );
+          $stmt->bind_param('sisisisisi', $data_selectata, $id, $data_selectata, $id, $data_selectata, $id, $data_selectata, $id,  $data_selectata, $id );
           $result = $stmt->execute();
           $result = $stmt->get_result();
                 
@@ -82,15 +86,8 @@ $zi = null;
               $id_programare = $row['id'];
               $rows[] = $row;
           }
-          echo "ziua: " . $day;
-          echo "<br>";
-          echo "luna: " . $month;
-          echo "<br>";
-          echo "anul: " . $year;
-          echo "<br>";
-        
 
-          include "calendar-date-variabile.php";
+           include "calendar-date-variabile.php";
  
           
 ?>
@@ -118,25 +115,30 @@ $zi = null;
                 <div class="col-sm-6">
 
                 <?php
-                     $data_exacta = trim($data_exacta, "%");
-                     $data_exacta = date('d M Y', strtotime($data_exacta));
+                     $data_selectata = trim($data_selectata, "%");
+                     $data_selectata = date('d M Y', strtotime($data_selectata));
 
                      echo "<br>";
-                     echo $data_exacta;
-                     echo "Calendarul se afișează greșit începând cu 1 mai. Apar duminicile în locul zilelor de luni.";
+                     echo '<p class="dataCalendarComplet">' . strftime("%A, %d %B %Y", strtotime($data_selectata)) . '</strong>';
+                   
+                     // Afișez datele variabile
 
-                     // afișez datele variabile
                      foreach ($calendarMobil as $zi => $descriere) {
-                        if ($zi == $data_exacta) {
-                            echo "<p class='rosu'>" . $zi . ' - ' . $descriere . "</p>";
+                        if ($zi == $data_selectata) {
+                            echo "<p class='rosu'>" . $descriere . "</p>";
                         }
                      }
+
+
 
                      // afișez datele fixe
 
                      afiseazaSfinti ($month, $day);
+                 
 
-                     echo "<p>" . $sfinti . "</p>";
+                     if($sarbatoare == 1) {$clasa = ' class="rosu" ';} else {$clasa="";}
+
+                     echo '<p' . $clasa . '>' . $sfinti . '</p>';
 
                      
 
@@ -242,6 +244,11 @@ $zi = null;
 
 
 <?php include "../includes/footer.php"?>
+<script>
+
+
+
+</script>
 </body>
 </html>
 

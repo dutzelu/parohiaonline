@@ -258,10 +258,12 @@
                             echo '<td>' . $libere . '</td>';
                             echo '<td> <a href="actiuni.php?month='. $month .'&year='. $year .'&id='. $id_rezervare .'&pentru='. $pentru .'">x șterge</a>' . '</td>';
                             echo '</tr>';
+                            
                     
                             }
                     ?>
-
+                            </table>    
+ 
                  </div>
             </div>
 </div>

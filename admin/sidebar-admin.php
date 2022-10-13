@@ -57,10 +57,18 @@
             <li class="nav-item">
               <a class="nav-link membri" href="<?php echo BASE_URL . 'admin/';?>membri.php">Membri</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link info" href="<?php echo BASE_URL . 'admin/';?>anunturi.php">Info utile</a>
-            </li>
 
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle info" href="<?php echo BASE_URL . 'admin/';?>anunturi.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Info utile</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="anunturi.php">Anunțuri</a>
+                <a class="dropdown-item" href="info-slujbe.php?tip=botez">Info Botez</a>
+                <a class="dropdown-item" href="info-slujbe.php?tip=cununie">Info Cununie</a>
+                <a class="dropdown-item" href="info-slujbe.php?tip=spovedanie">Info Spovedanie</a>
+                <a class="dropdown-item" href="info-slujbe.php?tip=sfestanie">Info Sfeștanie</a>
+                <a class="dropdown-item" href="info-slujbe.php?tip=parastas">Info Parastas</a>
+              </div>
+            </li>
                 
           </ul> 
         </div>

@@ -11,7 +11,7 @@
  ?>
  
      <ul class="weekdays">
-     <li>Lun</li>     <li>Mar</li>    <li>Mie</li>     <li>Joi</li>    <li>Vin</li>     <li>Sâm</li>    <li>Dum</li>    </ul>
+     <li>Dum</li>  <li>Lun</li>     <li>Mar</li>    <li>Mie</li>     <li>Joi</li>    <li>Vin</li>     <li>Sâm</li>     </ul>
  
  <?php
  
@@ -26,7 +26,7 @@
      $calendar.= '<ul class="days">';
  
      /* print "blank" days until the first of the current week */
-     for($x = 1; $x < $running_day; $x++):
+     for($x = 0 ; $x < $running_day; $x++):
          $calendar.= '<li class="calendar-day-np"> </li>';
          $days_in_this_week++;
      endfor;
@@ -77,7 +77,6 @@ ORDER BY Data ASC";
      $zile_programate[]= $zi; 
 
  }
- 
 
      for($list_day = 1; $list_day <= $days_in_month; $list_day++):   
          $calendar.= '<li class="calendar-day">';
@@ -95,7 +94,6 @@ ORDER BY Data ASC";
                     <a href="calendar-complet.php?day='. $list_day . '&month=' . $month . '&year=' . $year . '"><label class="btn btn-outline-primary rezervat" for="btncheck' . $list_day .  '">' . $list_day . '</label></a>';
                 }
                       
-
  
          $calendar.= '</li>';
          if($running_day == 6):

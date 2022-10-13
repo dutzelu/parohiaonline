@@ -237,9 +237,15 @@
                     <div class="legenda">
                         <p><span class="fw-bold mb-2">Calendar programări (orice status):</span><br>Alegeți una din zilele pentru detalii.</p>
                         
-                        <?php include 'calendar-slujbe.php'?>
+                        <?php include 'calendar-slujbe.php';
+                        
+                        $day = date('d');
+                        $month = date('m');
+                        $year = date('Y');
+                        
+                        ?>
 
-                        <p class="mt-5"><a class="btn btn-primary" href="calendar-complet.php" role="button">Vezi Calendar complet</a>  </p>
+                        <p class="mt-5"><a class="btn btn-primary" href="calendar-complet.php?<?php echo 'day=' . $day . '&month=' . $month . '&year=' . $year;?>" role="button">Vezi Calendar complet</a>  </p>
 
                         </div>
 

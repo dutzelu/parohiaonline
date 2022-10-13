@@ -28,7 +28,7 @@
  ?>
  
      <ul class="weekdays">
-     <li>L</li>     <li>M</li>    <li>M</li>     <li>J</li>    <li>V</li>     <li>S</li>    <li>D</li>    </ul>
+     <li>D</li> <li>L</li>     <li>M</li>    <li>M</li>     <li>J</li>    <li>V</li>     <li>S</li>       </ul>
  
  <?php
  
@@ -43,7 +43,7 @@
      $calendar.= '<ul class="days">';
  
      /* print "blank" days until the first of the current week */
-     for($x = 1; $x < $running_day; $x++):
+     for($x = 0; $x < $running_day; $x++):
          $calendar.= '<li class="calendar-day-np"> </li>';
          $days_in_this_week++;
      endfor;

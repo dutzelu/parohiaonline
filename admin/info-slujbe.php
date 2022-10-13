@@ -11,23 +11,23 @@ if (isset($_GET['tip'])) {
     switch ($tip) {
         
         case 'botez':
-            $tip_complet = "Taina Botezului";
+            $tip_complet = "Info Botez";
             $tip_articol = 1;
             break;
             
         case 'cununie':
-            $tip_complet = "Taina Cununiei";
+            $tip_complet = "Info Cununie";
             $tip_articol = 2;
             break;
             
         case 'spovedanie':
-            $tip_complet = "Taina Spovedaniei";
+            $tip_complet = "Info Spovedanie";
             $tip_articol = 3;
             break;
     
         case 'sfestanie':
             $tip_articol = 4;
-            $tip_complet = "Sfeștania";
+            $tip_complet = "Sfeștanie";
             break;
         
         case 'parastas':
@@ -92,7 +92,7 @@ if($rowcount == 0) {
         
         <div class="row mt-3 ultimele-programari">
               <p class="fw-bold">Info slujbe pentru credincioși</p>
-
+              <p>Informații utile pentru credincioși înainte de săvârșirea slujbelor:</p>
               <div class="col-sm-12">
 
 

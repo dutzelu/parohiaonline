@@ -49,10 +49,11 @@ if ( isset($_POST['rezerva']) && $pentru !=NULL) {
   }
 
   echo '<script> location.replace("zile-stabilite.php?month=' . $month .'&year='. $year .'&pentru=' .$pentru .'"); </script>';
-} else {
-   echo '<script> location.replace("zile-stabilite.php?month=' . $month .'&year='. $year .'&pentru=botez"); </script>';
+} 
 
-}
+// else {
+//    echo '<script> location.replace("zile-stabilite.php?month=' . $month .'&year='. $year .'&pentru=botez"); </script>';
+// }
 
 if (isset($_POST['participare_slujbe'])) {
 

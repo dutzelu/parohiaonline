@@ -69,7 +69,7 @@
                             
 
                         /* keep going with days.... */
-                        echo '<form method="POST" action="' . $link_rezervare .'" enctype = "multipart/form-data">' .
+                    echo '<form method="POST" action="' . $link_rezervare .'" enctype = "multipart/form-data">' .
                         '<div class="row btn-group" role="group" aria-label="Basic checkbox toggle button group">';
 
                         global $zile_programate;
@@ -306,9 +306,10 @@
                     ?>
 
                  </div>
+                </div>
             </div>
-</div>
-</div>
-</div>
+        </div>
+    </div>
+    <p>Credincioșii se vor putea înscrie la aceste slujbe înregistrându-se în aplicația Parohia Online cu userul și parola lor.</p>
 </body>
 </html>
