@@ -100,7 +100,7 @@ $year = (int)  (isset($_GET['year']) ? $_GET['year'] : date('Y'));
 /* select month control */
 $select_month_control = '<select name="month" id="month" class="form-select-sm mb-3">';
 for($x = 1; $x <= 12; $x++) {
-$select_month_control.= '<option value="'.$x.'"'.($x != $month ? '' : ' selected="selected"').'>'.date('F',mktime(0,0,0,$x,1,$year)).'</option>';
+$select_month_control.= '<option value="'.$x.'"'.($x != $month ? '' : ' selected="selected"').'>'.strftime('%B',mktime(0,0,0,$x,1,$year)).'</option>';
 }
 $select_month_control.= '</select>';
 

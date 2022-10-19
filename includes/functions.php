@@ -404,6 +404,91 @@ function afiseazaSfinti ($month, $day) {
       $post = $data['post'];
       $dezlegare_peste = $data['dezlegare_peste'];
   }
+}
+
+$martiri_fcp_total = array();
+
+function martiri_fcp ($month) {
+ 
+  global $conn, $martiri_fcp_total;
+
+  if ( strlen($month) < 2) {
+    $month = '0' . (string)$month;
+  } else {}
+
+  $mDataAdormire = '%-' . $month . '-%';
+
+  $query_mFCP = "SELECT * FROM calendar_fcp WHERE mDataAdormire LIKE ?";
+  $stmt = $conn->prepare($query_mFCP);
+  $stmt->bind_param('s', $mDataAdormire);
+  $rez = $stmt->execute();
+  $rez = $stmt->get_result();
+
+  while ($data = mysqli_fetch_assoc($rez)) {
+     $martiri_fcp_total[]= $data;
+  }
+  // echo '<pre>';
+  // print_r ($martiri_fcp_total);
+  // echo '</pre>';
+}
+
+$rezs = array();
+
+function afiseazaSfinti_luna ($month) {
+ 
+  global $conn, $sfinti, $sarbatoare, $post, $dezlegare_peste, $rezs; 
+
+  $query_sfinti = "SELECT * FROM calendar_date_fixe WHERE luna = ?";
+  $stmt = $conn->prepare($query_sfinti);
+  $stmt->bind_param('i', $month);
+  $rezultate = $stmt->execute();
+  $rezultate = $stmt->get_result();
 
   
+
+  while ($data = mysqli_fetch_assoc($rezultate)) {
+        $rezs[] = $data;
+  }
+   
+}
+
+function controls() {
+
+    global $day, $month, $year, $pentru;
+
+    /* select month control */
+    
+    $select_month_control = '<select name="month" id="month" class="d-inline form-select">';
+    for($x = 1; $x <= 12; $x++) {
+    $select_month_control.= '<option value="'.$x.'"'.($x != $month ? '' : ' selected="selected"').'>'.strftime('%B',mktime(0,0,0,$x,1,$year)).'</option>';
+    }
+    $select_month_control.= '</select>';
+    
+    /* select year control */
+    
+    $year_range = 7;
+    $select_year_control = '<select name="year" id="year" class="d-inline form-select">';
+    for($x = ($year-floor($year_range/2)); $x <= ($year+floor($year_range/2)); $x++) {
+    $select_year_control.= '<option value="'.$x.'"'.($x != $year ? '' : ' selected="selected"').'>'.$x.'</option>';
+    }
+    $select_year_control.= '</select>';
+    
+    /* "next month" control */
+    
+    $next_month_link = '<a href="?month='.($month != 12 ? $month + 1 : 1).'&year='.($month != 12 ? $year : $year + 1). '&pentru='. $pentru .'" class="control"> &#10095; </a>';
+    
+    /* "previous month" control */
+    
+    $previous_month_link = '<a href="?month='.($month != 1 ? $month - 1 : 12).'&year='.    ($month != 1 ? $year : $year - 1). '&pentru='. $pentru .'" class="control"> &#10094; </a>';
+    
+    /* bringing the controls together */
+    
+    $controls = 
+                '<form method="get" class="calendar-complet">
+                    
+                        <p><span class="sageti">' .  $previous_month_link . ' ' . $next_month_link . '</span>' . $select_month_control . $select_year_control .  '<button type="submit" class="btn btn-outline-primary"/> '.' Schimbă</button></p>
+    
+                </form>';
+    echo $controls;
+
 }

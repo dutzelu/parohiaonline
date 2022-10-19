@@ -46,6 +46,10 @@
             </li>
 
             <li class="nav-item">
+              <a class="nav-link" href="<?php echo BASE_URL . 'admin/';?>calendar-ortodox-anual.php">Calendar ortodox</a>
+            </li>
+
+            <li class="nav-item">
               <a class="nav-link potir" href="<?php echo BASE_URL . 'admin/';?>program-liturgic.php">Programul liturgic</a>
             </li>
             <li class="nav-item">

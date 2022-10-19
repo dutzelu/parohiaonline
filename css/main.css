@@ -78,7 +78,13 @@ div.titlu p {color:#4374B9}
 
 /* culori Urmează în calendar */
 
- 
+.sambata {
+  border-bottom: 2px solid red;
+  margin-bottom: 10px;
+}
+.normala {border-bottom:1px solid #e0e0e0; }
+.sfinti {margin:5px 0; }
+.titlu_luna {text-transform: uppercase; font-weight: bold; font-size:20px}
 
 .urmeaza-in-calendar  {background:#F5FAFF;}
 
@@ -105,8 +111,11 @@ div.titlu p {color:#4374B9}
 }
 .calendar {background:#FFF;border: 5px solid #F5FAFF;}
 
-#month {max-width:100px}
+#month {max-width:140px}
 #year {max-width:89px}
+.comemorareFCP {
+  color: dodgerblue;
+}
 
 /* Ultimele programari */
 

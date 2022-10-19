@@ -134,7 +134,7 @@ ORDER BY Data ASC";
  
  $select_month_control = '<select name="month" id="month" class="d-inline form-select">';
  for($x = 1; $x <= 12; $x++) {
- $select_month_control.= '<option value="'.$x.'"'.($x != $month ? '' : ' selected="selected"').'>'.date('F',mktime(0,0,0,$x,1,$year)).'</option>';
+ $select_month_control.= '<option value="'.$x.'"'.($x != $month ? '' : ' selected="selected"').'>'.strftime('%B',mktime(0,0,0,$x,1,$year)).'</option>';
  }
  $select_month_control.= '</select>';
  
