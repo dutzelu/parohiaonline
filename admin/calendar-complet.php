@@ -40,7 +40,6 @@ $zi = null;
         $previous_month_link = '<a href="?month='.($month != 1 ? $month - 1 : 12).'&year='.    ($month != 1 ? $year : $year - 1).'" class="control"> &#10094; </a>';
 
 
-
       // datele programarilor cu status acceptat
 
           $query = "
@@ -74,22 +73,20 @@ $zi = null;
           } else {
             $data_selectata = "%" . $year . "-" .  $month . "-01%"  ;
           }
- 
-
+          
           $stmt = $conn->prepare($query);
           $stmt->bind_param('sisisisisi', $data_selectata, $id, $data_selectata, $id, $data_selectata, $id, $data_selectata, $id,  $data_selectata, $id );
           $result = $stmt->execute();
           $result = $stmt->get_result();
-                
+          
           $rows = array();
           while ($row = mysqli_fetch_assoc($result)) { 
               $id_programare = $row['id'];
               $rows[] = $row;
-          }
-
-           include "calendar-date-variabile.php";
- 
-          
+            }
+            
+            include "calendar-date-variabile.php";
+            
 ?>
 
 <title>Calendar complet</title>
@@ -115,6 +112,7 @@ $zi = null;
                 <div class="col-sm-6">
 
                 <?php
+
                      $data_selectata = trim($data_selectata, "%");
                      $data_selectata = date('d M Y', strtotime($data_selectata));
 
@@ -134,12 +132,38 @@ $zi = null;
                      // afișez datele fixe
 
                      afiseazaSfinti ($month, $day);
-                 
+                     martiri_fcp($month);
 
                      if($sarbatoare == 1) {$clasa = ' class="rosu" ';} else {$clasa="";}
 
                      echo '<p' . $clasa . '>' . $sfinti . '</p>';
 
+                     // afișez martirii din temnițele comuniste
+
+                       // listează titlu Comemorare:
+                       foreach ($martiri_fcp_total as $a) {
+                        $data_deces = strtotime($a['mDataAdormire']);
+                        $zi_deces = date('d', $data_deces);
+                        
+                        if ($day == $zi_deces) {                                 
+                            echo '<p>Comemorare: ';
+                            break;
+                        } 
+                     }
+
+                     // listează martiri
+
+                     foreach ($martiri_fcp_total as $a) {
+                         $data_deces = strtotime($a['mDataAdormire']);
+                         $zi_deces = date('d', $data_deces);
+                         
+                         if ($day == $zi_deces) {
+                             
+                            echo '<span class="comemorareFCP"><a href="https://fericiticeiprigoniti.net/' . strtolower(replaceSpecialChars($a['mPrenume']))  . '-' . strtolower(replaceSpecialChars($a['mNume'])) . '">'. $a['mPrefix'] . ' ' . $a['mPrenume'] . ' ' . $a['mNume'] . ';</a></span> ';
+                            
+                            } else {$token = NULL;}
+
+                    }
                      
 
                 ?>

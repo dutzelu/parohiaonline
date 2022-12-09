@@ -34,13 +34,30 @@
               $stmt->bind_param('ii', $id_programare, $id);
               $result = $stmt->execute();
               $result = $stmt->get_result();
+              
 
+              echo '<p class="inapoi"><a href="registru.php?eveniment=programari_botez"><i class="fas fa-chevron-circle-left"></i> Înapoi</a></p> ';
+              ?>
+
+              <div class="row acceptaRespinge">
+
+                <div class="col accepta">
+                    <a href="accepta-programare.php?id=<?php echo $id_programare;?>&status=acceptata" role="button"><i class="far fa-check-circle"></i>  Acceptă</a>
+                </div>
+              
+                <div class="col respinge">
+                  <a href="rezervare-unica.php?id=<?php echo $id_programare;?>&status=respinsa" role="button" ><i class="orange fas fa-backspace"></i> Respinge</a>
+                </div>
+
+              </div>
+
+              <?php
 
               while($data = $result->fetch_assoc()) {
 
               include "../includes/extras-programare.php";
 
-
+              
               // afisez detaliile cererii (programarii)
 
               echo "<p>";
@@ -52,16 +69,12 @@
                   }
 
                   echo ' <i class="fas fa-angle-double-right"></i> ';
-                  
                   echo ' <span class="albastru-inchis">' . $eveniment . ' ';
-
                   echo ' <i class="fas fa-angle-double-right"></i> ';
-
                   echo '<span class="rosu">' . date("d M Y", strtotime($data_si_ora)) . '';
-
                   echo ' <i class="fas fa-angle-double-right"></i> ';
-
                   echo '<span class="rosu">' . date("H:i", strtotime($data_si_ora)) . '';
+
 
               echo "</p>";
 
@@ -85,17 +98,14 @@
                 
                 echo '">' .$status . '</span>';
 
-                echo '<a href="registru.php?eveniment=programari_botez"><i class="fas fa-chevron-circle-left"></i> Înapoi</a> ';
 
-                echo '<a href="accepta-programare.php?id=' . $id_programare . '&status=acceptata" role="button"><i class="verde far fa-check-circle"></i>  Acceptă</a>';
-
-                echo '<a href="rezervare-unica.php?id=' . $id_programare . '&status=respinsa" role="button" ><i class="orange fas fa-backspace"></i> Respinge</a>'; ?>
+                 ?>
 
                 <a href="actiuni.php?eveniment=programari_botez&data=<?php echo date("Y-m-d", strtotime($data_si_ora)); ?>&stergeid=<?php echo $id_programare; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
-                <i class="rosu fas fa-trash-alt"></i> Șterge</a>
+                <i class="rosu fas fa-trash-alt"></i> </a>
 
                 <?php
-                    echo '<a href="edit-rezervare.php?id=' . $id_programare . '"><i class="albastru-inchis far fa-edit"></i> Modifică</a> ';
+                    echo '<a href="edit-rezervare.php?id=' . $id_programare . '"><i class="albastru-inchis far fa-edit"></i> </a> ';
                  }?>
               </p>
               

@@ -13,22 +13,39 @@
 
     .zona-principala {padding-top:0!important}
     .titlu {margin-top:25px;}
+    .header {display:none;}
+    #month {max-width: 110px;}
 
+    .acceptaRespinge {position:fixed; bottom:0; width: -webkit-fill-available; margin-right:5px;}
+    .acceptaRespinge .col {background:#4374b9; color:#FFF; padding:10px;  margin:0 5px; border-radius: 5px;}
+    .acceptaRespinge .col a {color:#FFF; }
+    .accepta i {color:#FFF; font-size:initial}
   }
 
 @media screen and (min-width: 576px) {
-    
-   
     .urmeaza-in-calendar, .calendar {padding:5%}
- 
-    
   }
 
 @media screen and (max-width: 768px) {
     
   .rezervari {margin-top:2em}
 
+  
+  div.dataTables_wrapper div.dataTables_length, div.dataTables_wrapper div.dataTables_filter, div.dataTables_wrapper div.dataTables_info, div.dataTables_wrapper div.dataTables_paginate {
+    text-align: left!important;
+}
+
+  #example_filter {margin:5px 0 0 -12px}
+
+  #example_wrapper input.form-control {max-width:130px;}
+
   }
+
+@media screen and (max-width:992px) {
+ 
+  .navbar-toggler {margin-right: 20px;}
+
+}
 
 @media screen and (min-width: 768px) {
     
@@ -44,6 +61,7 @@
       flex-direction: column;
     }
     #navbarSupportedContent > ul > li.nav-item.dropdown.show > div {box-shadow: 2px 4px 11px #ccc; padding:15px;}
+
     
   }
 

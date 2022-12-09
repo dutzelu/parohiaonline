@@ -130,6 +130,12 @@ div.titlu p {color:#4374B9}
 
 .dataCalendarComplet {text-transform:capitalize; margin-bottom:5px; font-weight:bold;}
 
+p.inapoi i {
+  font-size: 17px;
+  margin: 0 6px 0 0;
+}
+
+.acceptaRespinge {}
 
  /* programari botezuri */
 .ultimele-programari .select2-container .select2-selection--single {

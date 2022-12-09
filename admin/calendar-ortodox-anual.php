@@ -3,7 +3,6 @@
         $ultima_luna = null;
         $zi = null;
         $calendarMobil = [];
-        $token = NULL;
 
         include "header-admin.php"; 
                
