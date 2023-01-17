@@ -199,7 +199,7 @@
             <div class="row justify-content-start mt-3 g-4 urmeaza">
                 <div class="col-md-4 col-sm-12 urmeaza-in-calendar">
 
-                    <p class="fw-bold">Calendar (status: acceptat)</p>
+                   <h1>Calendar (status: acceptat)</h1>
                     
                     <?php 
                     
@@ -255,7 +255,7 @@
 
             <div class="row  ultimele-programari mt-5">
                 <div class="table-responsive">
-                    <p class="fw-bold">Ultimele programări (orice status)</p>
+                   <h1>Ultimele programări (orice status)</h1>
                     <table id="example" class="table">
 
                         <thead>

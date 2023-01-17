@@ -91,7 +91,7 @@ $i = 0;
 
         <div class="row mt-3 ultimele-programari">
           <div class="col-sm-12">
-            <p class="fw-bold">Pomelnice</p>
+           <h1>Pomelnice</h1>
 
             <div class="filtre mb-4">
 

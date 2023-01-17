@@ -57,7 +57,7 @@
 
         <div class="row mt-3 ultimele-programari">
           <div class="col-sm-12">
-            <p class="fw-bold">Registru <?php echo $titlu; ?></p>
+           <h1>Registru <?php echo $titlu; ?></h1>
 
             <?php
                   if (isset($_GET['sters'])) {

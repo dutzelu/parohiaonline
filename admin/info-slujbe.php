@@ -91,7 +91,7 @@ if($rowcount == 0) {
             <?php include "header-mic-admin.php";?>
         
         <div class="row mt-3 ultimele-programari">
-              <p class="fw-bold">Info slujbe pentru credincioși</p>
+             <h1>Info slujbe pentru credincioși</h1>
               <p>Informații utile pentru credincioși înainte de săvârșirea slujbelor:</p>
               <div class="col-sm-12">
 

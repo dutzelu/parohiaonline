@@ -16,7 +16,7 @@
             <?php include "header-mic-frontend.php";?>
         
         <div class="row mt-3 ultimele-programari">
-              <p class="fw-bold">Pomelnic online</p>
+             <h1>Pomelnic online</h1>
 
               <div class="col-sm-6">
                   <p>Alegeți pomelnicul pe care vreți să-l trimiteți</p>

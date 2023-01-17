@@ -104,7 +104,7 @@ $zi = null;
             <?php include "header-mic-admin.php";?>
 
             <div class="row mt-3 ultimele-programari">
-                <p class="fw-bold">Calendarul complet al rezervărilor</p>
+                <h1>Calendarul complet al rezervărilor</h1>
                 <div class="col-sm-6">
                     <?php include 'calendar-slujbe.php';?>
                 </div>
@@ -116,7 +116,6 @@ $zi = null;
                      $data_selectata = trim($data_selectata, "%");
                      $data_selectata = date('d M Y', strtotime($data_selectata));
 
-                     echo "<br>";
                      echo '<p class="dataCalendarComplet">' . strftime("%A, %d %B %Y", strtotime($data_selectata)) . '</strong>';
                    
                      // Afișez datele variabile

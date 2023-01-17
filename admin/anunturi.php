@@ -31,7 +31,7 @@ if (isset($_POST['anunt'])) {
             <?php include "header-mic-admin.php";?>
         
         <div class="row mt-3 ultimele-programari">
-              <p class="fw-bold">Info și anunțuri</p>
+             <h1>Info și anunțuri</h1>
 
               <div class="col-sm">
 

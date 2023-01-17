@@ -21,7 +21,7 @@ $id = $_SESSION['parohie_id'];
 
         <div class="row mt-3 ultimele-programari">
            
-            <p class="fw-bold">Setări cont</p>
+           <h1>Setări cont</h1>
 
             
             

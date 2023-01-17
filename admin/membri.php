@@ -21,7 +21,7 @@ $id = $_SESSION['parohie_id'];
 
         <div class="row mt-3 ultimele-programari">
           <div class="col-sm-12">
-            <p class="fw-bold">Membrii înregistrați ai parohiei</p>
+           <h1>Membrii înregistrați ai parohiei</h1>
 
             <?php
                   if (isset($_GET['sters'])) {

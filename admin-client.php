@@ -214,7 +214,7 @@ $ultima_zi = NULL;
             </div>
 
             <div class="row  ultimele-programari mt-5">
-            <p class="fw-bold">Ultimele programări</p>
+           <h1>Ultimele programări</h1>
             
             <div class="table-responsive">
                     <table class="table">

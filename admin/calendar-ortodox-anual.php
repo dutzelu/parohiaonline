@@ -30,7 +30,7 @@
             <?php include "header-mic-admin.php";?>
 
             <div class="row mt-3 ultimele-programari">
-                <p class="fw-bold">Calendarul ortodox anual</p>
+                <h1>Calendarul ortodox anual</h1>
                
                     <?php controls();
                     

@@ -21,7 +21,7 @@ $user_id = $_SESSION['parohie_id'];
             <?php include "header-mic-admin.php";?>
         
         <div class="row mt-3 ultimele-programari">
-              <p class="fw-bold">Adaugă anunț nou</p>
+             <h1>Adaugă anunț nou</h1>
 
               <div class="col-sm">
 

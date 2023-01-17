@@ -16,7 +16,7 @@
             <?php include "header-mic-frontend.php";?>
         
         <div class="row mt-3 ultimele-programari">
-              <p class="fw-bold">Programări SFEȘTANII</p>
+             <h1>Programări SFEȘTANII</h1>
 
               <?php
                   if (isset($_GET['sters'])) {

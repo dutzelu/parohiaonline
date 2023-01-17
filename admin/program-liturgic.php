@@ -71,7 +71,7 @@
                 
                 <div class="row ultimele-programari programul-slujbelor">
                     
-                    <p class="fw-bold mb-2"> Programul slujbelor</p>
+                    <h1> Programul slujbelor</h1>
 
                     <?php
           

@@ -486,7 +486,7 @@ function controls() {
     $controls = 
                 '<form method="get" class="calendar-complet">
                     
-                        <p><span class="sageti">' .  $previous_month_link . ' ' . $next_month_link . '</span>' . $select_month_control . $select_year_control .  '<button type="submit" class="btn btn-outline-primary"/> '.' Schimbă</button></p>
+                <div class="navigare"><div class="sageti">'  .  $previous_month_link . ' ' . $next_month_link . '</div>' . $select_month_control . $select_year_control .  '<button type="submit" class="btn btn-outline-primary"/> '.' Schimbă</button></div>
     
                 </form>';
     echo $controls;

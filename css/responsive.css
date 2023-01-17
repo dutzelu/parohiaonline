@@ -20,6 +20,8 @@
     .acceptaRespinge .col {background:#4374b9; color:#FFF; padding:10px;  margin:0 5px; border-radius: 5px;}
     .acceptaRespinge .col a {color:#FFF; }
     .accepta i {color:#FFF; font-size:initial}
+
+ 
   }
 
 @media screen and (min-width: 576px) {
@@ -52,6 +54,7 @@
     .urmeaza-in-calendar, .calendar {padding:5%}
     .zile-stabilite {padding:25px}
   }
+ 
 
 @media screen and (min-width: 992px) {
 

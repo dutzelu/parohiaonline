@@ -19,7 +19,7 @@
             <?php include "header-mic-frontend.php";?>
         
         <div class="row mt-3 ultimele-programari">
-              <p class="fw-bold">Programări BOTEZURI</p>
+             <h1>Programări BOTEZURI</h1>
 
               <?php
                   if (isset($_GET['sters'])) {

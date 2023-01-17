@@ -43,7 +43,7 @@ if (isset($_GET['tip'])) {
             <?php include "../header-mic-frontend.php";?>
         
         <div class="row mt-3 ultimele-programari">
-              <p class="fw-bold"><?php echo $titlu_pomelnic;?></p>
+             <h1><?php echo $titlu_pomelnic;?></h1>
 
               <div class="col-sm-6 pomelnic">
 

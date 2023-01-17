@@ -22,6 +22,7 @@
      $day_counter = 0;
      $dates_array = array();
  
+     
      /* row for week one */
      $calendar.= '<ul class="days">';
  
@@ -80,18 +81,21 @@ ORDER BY Data ASC";
 
      for($list_day = 1; $list_day <= $days_in_month; $list_day++):   
          $calendar.= '<li class="calendar-day">';
- 
+
             if (!in_array($list_day, $zile_programate)) {
     
                 /* daca ziua ESTE deja rezervata*/
                     $calendar.= ' 
-                    <a href="calendar-complet.php?day='. $list_day . '&month=' . $month . '&year=' . $year . '"><label class="btn btn-outline-primary " for="btncheck' . $list_day .  '">' . $list_day . '</label></a>';
+                    <a href="calendar-complet.php?day='. $list_day . '&month=' . $month . '&year=' . $year . '">
+                        <label class="btn btn-outline-primary " for="btncheck' . $list_day .  '">' . $list_day . '</label>
+                    </a>';
                 } else {
-   
-                /* daca NU este rezervata*/ 
-                    $calendar.= ' 
-                    
-                    <a href="calendar-complet.php?day='. $list_day . '&month=' . $month . '&year=' . $year . '"><label class="btn btn-outline-primary rezervat" for="btncheck' . $list_day .  '">' . $list_day . '</label></a>';
+                    /* daca NU este rezervata*/ 
+                        $calendar.= ' 
+                        
+                        <a href="calendar-complet.php?day='. $list_day . '&month=' . $month . '&year=' . $year . '">
+                            <label class="btn btn-outline-primary rezervat" for="btncheck' . $list_day .  '">' . $list_day . '</label>
+                        </a>';
                 }
                       
  
@@ -160,7 +164,7 @@ ORDER BY Data ASC";
  $controls = 
             '<form method="get" class="calendar-complet">
                 
-                    <p><span class="sageti">' .  $previous_month_link . ' ' . $next_month_link . '</span>' . $select_month_control . $select_year_control .  '<button type="submit" class="btn btn-outline-primary"/> '.' Schimbă</button></p>
+                    <div class="navigare"><div class="sageti">' .  $previous_month_link . ' ' . $next_month_link . '</div>' . $select_month_control . $select_year_control .  '<button type="submit" class="btn btn-outline-primary"/> '.' Schimbă</button></div>
  
             </form>';
  echo $controls;
