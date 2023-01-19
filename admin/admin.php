@@ -222,10 +222,14 @@
                             break;
                         
                         }
+
+                        $data_afisata = strtotime($row['Data']);
+                        $data_afisata = strftime('%e %b %Y',$data_afisata);
+                         
+
+                        echo '">' . $row['Programare'] . '</span> ' .  $data_afisata . ' | ' . $row['Ora'] . '<br>' . '<span class="nume">' . $row['Nume'] . '</span></p><hr>';
                         
-                       echo '">' . $row['Programare'] . '</span> ' . $row['Data'] . ' | ' . $row['Ora'] . '<br>' . '<span class="nume">' . $row['Nume'] . '</span></p><hr>';
-                       
-                       if (++$i == 6) break;
+                        if (++$i == 6) break;
                     } ?>
 
 
@@ -302,7 +306,7 @@
                             ?>'>
                             <td><?php echo '<span class="nume">' . $row2['Nume'] . '</span>'; ?></td>
                             <td><?php echo $row2['Programare']; ?></td>
-                            <td><?php echo $row2['Data']; ?></td>
+                            <td><?php echo strftime('%e %b %Y',strtotime($row2['Data'])); ?></td>
                             <td><?php echo $row2['Ora']; ?></td>
                             
                             <td><?php echo '<span class="status ';

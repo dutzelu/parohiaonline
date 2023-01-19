@@ -19,6 +19,8 @@
           <div class="col-sm-12">
            <h1>Pomelnice</h1>
 
+           <button class="btn flipFiltre" name="filtre">⇣⇡ Filtre</button>
+
             <div class="filtre mb-4">
 
               <form method="GET" action="pomelnice-filtre.php">
@@ -79,8 +81,8 @@
                   }
             ?>
 
-              <div class="tabel-responsive">
-              <table class='table'>
+              <div class="table-responsive">
+                <table id="example" class="table">
 
               <thead>
                 <tr>
@@ -149,7 +151,7 @@
                   <td><?php echo $row['lista_nume'];?></td>
                   <td><?php echo $row['durata_in_zile'] ;?></td>
                   <td><?php echo $row['nume_si_prenume'];?></td>
-                  <td><?php echo date("d.m.Y", strtotime($row['data_inceperii']));?></td>
+                  <td><?php echo strftime('%e %b %Y',strtotime($row['data_inceperii']));?></td>
                   <td><?php  
                     if ($row['cu_donatie'] == 1) {
                         echo '<span class="verde"><i class="fas fa-check"></i></span>';
@@ -180,6 +182,14 @@
     </div>
   </div>
 </div>
+
+<script>
+      $(document).ready(function() {
+        $(".flipFiltre").click(function() {
+            $(".filtre").slideToggle("slow");
+        });
+    });
+</script>
 
 </body>
 </html>

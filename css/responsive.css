@@ -16,11 +16,8 @@
     .header {display:none;}
     #month {max-width: 110px;}
 
-    .acceptaRespinge {position:fixed; bottom:0; width: -webkit-fill-available; margin-right:5px;}
-    .acceptaRespinge .col {background:#4374b9; color:#FFF; padding:10px;  margin:0 5px; border-radius: 5px;}
-    .acceptaRespinge .col a {color:#FFF; }
-    .accepta i {color:#FFF; font-size:initial}
-
+    li.badge {white-space:unset;width:100%;}
+    #alte_observatii {min-height:100px;}
  
   }
 
@@ -31,7 +28,6 @@
 @media screen and (max-width: 768px) {
     
   .rezervari {margin-top:2em}
-
   
   div.dataTables_wrapper div.dataTables_length, div.dataTables_wrapper div.dataTables_filter, div.dataTables_wrapper div.dataTables_info, div.dataTables_wrapper div.dataTables_paginate {
     text-align: left!important;
@@ -53,6 +49,7 @@
     
     .urmeaza-in-calendar, .calendar {padding:5%}
     .zile-stabilite {padding:25px}
+    
   }
  
 

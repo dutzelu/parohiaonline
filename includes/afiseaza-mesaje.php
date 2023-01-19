@@ -26,7 +26,7 @@ if (mysqli_num_rows($result) !== 0) {
   while($data = $result->fetch_assoc()) {
 
     $mesaj = $data['mesaj'];
-    $data_mesajului = date("d M. Y", strtotime($data["data_ora"]));
+    $data_mesajului = strftime('%e %b %Y',strtotime($data["data_ora"]));
     $ora_mesajului  = date("H:m", strtotime($data["data_ora"]));
     $trimis_de = $data['trimis_de'];
 

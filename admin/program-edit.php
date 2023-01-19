@@ -177,6 +177,8 @@
                                         <option value="Cateheză" <?php if($prog_decod->$slujba == "Cateheză"){echo "selected";};?>>Cateheză</option>
                                         <option value="Seară biblică" <?php if($prog_decod->$slujba == "Seară biblică"){echo "selected";};?>>Seară biblică</option>
                                         <option value="Sfințirea Apei (Aghiazma)" <?php if($prog_decod->$slujba == "Sfințirea Apei (Aghiazma)"){echo "selected";};?>>Sfințirea Apei (Aghiazma)</option>
+                                        <option value="Sfințirea Apei (Aghiazma Mare)" <?php if($prog_decod->$slujba == "Sfințirea Apei (Aghiazma Mare)"){echo "selected";};?>>Sfințirea Apei (Aghiazma Mare)</option>
+                                        
                                         <option value="Tedeum" <?php if($prog_decod->$slujba == "Tedeum"){echo "selected";};?>>Tedeum</option>
                                         <option value="Moliftele Sf. Vasile cel Mare" <?php if($prog_decod->$slujba == "Moliftele Sf. Vasile cel Mare"){echo "selected";};?>>Moliftele Sf. Vasile cel Mare</option>
                                         <option value="Citirea Psaltirii" <?php if($prog_decod->$slujba == "Citirea Psaltirii"){echo "selected";};?>>Citirea Psaltirii</option>

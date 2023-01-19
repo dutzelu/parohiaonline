@@ -167,7 +167,9 @@ $zi = null;
 
                 ?>
 
-                    <table class="table calendar-complet">
+                <div class="table-responsive">
+                     <table id="example" class="table calendar-complet">
+                   
 
                         <thead>
                             <tr>
@@ -255,7 +257,7 @@ $zi = null;
                         </tbody>
 
                     </table>
-
+                </div>
                 </div>    
         </div>
 

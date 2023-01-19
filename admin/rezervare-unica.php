@@ -11,9 +11,9 @@
 
   
         <div class="mt-3 wrapper-rezervare-unica">
+
               <?php
 
- 
               if (isset($_GET['id'])) {$id_programare = $_GET['id'];} 
               if (isset($_GET['status'])) {
 
@@ -39,17 +39,7 @@
               echo '<p class="inapoi"><a href="registru.php?eveniment=programari_botez"><i class="fas fa-chevron-circle-left"></i> Înapoi</a></p> ';
               ?>
 
-              <div class="row acceptaRespinge">
 
-                <div class="col accepta">
-                    <a href="accepta-programare.php?id=<?php echo $id_programare;?>&status=acceptata" role="button"><i class="far fa-check-circle"></i>  Acceptă</a>
-                </div>
-              
-                <div class="col respinge">
-                  <a href="rezervare-unica.php?id=<?php echo $id_programare;?>&status=respinsa" role="button" ><i class="orange fas fa-backspace"></i> Respinge</a>
-                </div>
-
-              </div>
 
               <?php
 
@@ -67,23 +57,17 @@
                   } else {
                     echo '<span class="nume">' . $data['nume_tata'] . ' ' . $data['prenume_tata'] . ""; 
                   }
-
-                  echo ' <i class="fas fa-angle-double-right"></i> ';
-                  echo ' <span class="albastru-inchis">' . $eveniment . ' ';
-                  echo ' <i class="fas fa-angle-double-right"></i> ';
-                  echo '<span class="rosu">' . date("d M Y", strtotime($data_si_ora)) . '';
-                  echo ' <i class="fas fa-angle-double-right"></i> ';
-                  echo '<span class="rosu">' . date("H:i", strtotime($data_si_ora)) . '';
-
-
-              echo "</p>";
-
-              echo "<p class='butoane'>";
-
-                echo '<span class="status ';
-                              
-                switch($status) {
-
+              echo "<br>";
+                  
+                  
+                  echo ' <span class="eveniment albastru-inchis">' . $eveniment;
+                  
+              echo "<br>";
+                  
+                  echo '<span class="status ';
+                  
+                  switch($status) {
+                    
                     case "acceptata": echo 'acceptata';
                     break;
                     case "respinsa": echo 'respinsa';
@@ -94,19 +78,30 @@
                     break;
                     case "în așteptare": echo 'in-asteptare';
                     break;
-                }
+                  }
+                  
+                  echo '">' .$status . '</span>';
+                  
+                  echo '<i class="fas fa-angle-double-right"></i>';
+                  echo '<span class="rosu">' . strftime('%e %b %Y',strtotime($data_si_ora)) . '';
+                  echo '<i class="fas fa-angle-double-right"></i>';
+                  echo '<span class="rosu">' . date("H:i", strtotime($data_si_ora)) . '';
+
+              ?>
+              </p>
+
+              <p class="butoane">
+
+                <a href="accepta-programare.php?id=<?php echo $id_programare;?>&status=acceptata" role="button" class="btn btn-success">Acceptă</a>
                 
-                echo '">' .$status . '</span>';
+                <a href="rezervare-unica.php?id=<?php echo $id_programare;?>&status=respinsa" role="button" class="btn btn-danger">Respinge</a>
+              
+                <a href="actiuni.php?eveniment=programari_botez&data=<?php echo date("Y-m-d", strtotime($data_si_ora)); ?>&stergeid=<?php echo $id_programare; ?>" class="sterge btn btn-outline-secondary" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');" role="button" >Șterge</a>
 
+                <a href="edit-rezervare.php?id=<?php echo $id_programare;?>" role="button" class="btn btn-outline-secondary">Editează </a>
 
-                 ?>
+                <?php  }?>
 
-                <a href="actiuni.php?eveniment=programari_botez&data=<?php echo date("Y-m-d", strtotime($data_si_ora)); ?>&stergeid=<?php echo $id_programare; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
-                <i class="rosu fas fa-trash-alt"></i> </a>
-
-                <?php
-                    echo '<a href="edit-rezervare.php?id=' . $id_programare . '"><i class="albastru-inchis far fa-edit"></i> </a> ';
-                 }?>
               </p>
               
               <div class="tabel-responsive">
@@ -126,7 +121,7 @@
               
               <tr>
                 <td class="evident">Data catehezei:</td>
-                <td class="evident-date"><?php echo date("d.m.Y", strtotime($data_ora_cateheza));?></td>
+                <td class="evident-date"><?php echo strftime('%e %b %Y',strtotime($data_ora_cateheza));?></td>
               </tr>
 
               <tr>
@@ -171,7 +166,7 @@
 
               <tr>
                 <td class="evident">Data nașterii copilului
-                <td class="evident-date"><?php echo $data_nasterii_copilului;?></td>
+                <td class="evident-date"><?php echo strftime('%e %b %Y',strtotime($data_nasterii_copilului));?></td>
               </tr>
               
               <tr>
@@ -181,7 +176,7 @@
               
               <tr>
                 <td class="evident">Data eliberării certificatului:
-                <td class="evident-date"><?php echo $data_eliberarii_certificatului;?></td>
+                <td class="evident-date"><?php echo strftime('%e %b %Y',strtotime($data_eliberarii_certificatului));?></td>
               </tr>
 
               <tr>

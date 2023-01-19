@@ -239,7 +239,7 @@
                     while ($data = mysqli_fetch_assoc($rezultate)){   
                             
                             $id_rezervare = $data['id'];
-                            $data_start_fara_ora = date("d M Y", strtotime($data["data_start"]));
+                            $data_start_fara_ora = strftime('%e %b %Y',strtotime($data["data_start"]));
                             $ora_start = date("H:i", strtotime($data["data_start"]));
                             $ora_final = date("H:i", strtotime($data["data_final"]));
                             $ora_start_simpla = date("H", strtotime($data["data_start"]));

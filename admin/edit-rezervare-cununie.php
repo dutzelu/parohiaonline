@@ -62,7 +62,7 @@ while ($data = mysqli_fetch_assoc($result)){
 
  echo "</p>";
 
- echo "<p class='butoane'>";
+ echo "<p class=''>";
 
  echo '<span class="status ';
                  
@@ -81,8 +81,8 @@ while ($data = mysqli_fetch_assoc($result)){
  }
 
  echo '">' .$status . '</span>';
- echo '<a href="rezervare-unica-cununie.php?id=' . $id_programare . '"><i class="fas fa-chevron-circle-left"></i> Renunță</a> ';
- echo ' <button type="submit" form="actualizeaza" name ="actualizeaza" class="btn salveaza"><i class="fas fa-save"></i> Salveaza</button>';
+ echo '<a href="rezervare-unica-cununie.php?id=' . $id_programare . '"><i class="fas fa-chevron-circle-left"></i>Renunță</a> ';
+ echo ' <button type="submit" form="actualizeaza" name ="actualizeaza" class="btn salveaza"><i class="fas fa-save"></i>Salveaza</button>';
 
  echo '</p>';
 

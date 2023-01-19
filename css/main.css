@@ -39,6 +39,7 @@ a {color:#4374B9;}
 }
 
 .toate_campurile {font-size:14px!Important; font-weight:normal;}
+
 /* Pagina admin */
 
 
@@ -138,9 +139,16 @@ div.titlu p {color:#4374B9}
 p.inapoi i {
   font-size: 17px;
   margin: 0 6px 0 0;
+  color:#AAA;
 }
 
-.acceptaRespinge {}
+p.inapoi a {color:#AAA;}
+
+/* .acceptaRespinge {max-width:300px}
+.acceptaRespinge { width: -webkit-fill-available; width: -moz-available; margin-left:-3px;}
+.acceptaRespinge .col {background:#4374b9; color:#FFF; padding:5px 5px;  margin:0 5px; border-radius: 5px;}
+.acceptaRespinge .col a {color:#FFF; }
+.accepta i {color:#FFF!important; font-size:initial} */
 
  /* programari botezuri */
 .ultimele-programari .select2-container .select2-selection--single {
@@ -202,6 +210,8 @@ div.filtre .form-control {display:inline-block!important; width: unset; }
     border-color: #4374B9;
 }
 
+
+
 /* Rezervare unică */
 
 .wrapper-rezervare-unica {background:white; border-radius:4px}
@@ -211,9 +221,18 @@ div.filtre .form-control {display:inline-block!important; width: unset; }
 .orange  {color:orange!important;}
 .verde {color:green!important}
 .albastru-inchis {color:#4374B9}
-p.butoane a {color:#9DA6C8;font-size:14px }
-p.butoane a:hover {color:#4374B9;}
+p.butoane {display:flex;}
+p.butoane a {font-size:14px; margin-right:10px; width: 100%; }
 p.butoane i {margin:0 0 0 20px; font-size:16px}
+p.butoane {max-width:450px!important}
+
+.butoane .btn-success {background-color: #4374b9;}
+.butoane .btn-success:hover {
+  background-color: #5490e5;
+  border-color: #4374b9;
+}
+
+.eveniment {text-transform: capitalize; font-weight: normal;}
 
 .wrapper-rezervare-unica .input-group-text {
   display: flex;
@@ -804,3 +823,8 @@ table.rezervare-unica img {max-width:200px;}
 table.rezervare-unica tbody .evident-date {border-top:none!important; word-break: break-all;}
 .evident {width:30%!important;  color:#4374B9}
 .evident-date {width:70%!important;}
+
+.filtre {display: none;}
+.filtre select, .filtre input {font-size:14px!important}
+.flipFiltre {margin-bottom:10px;}
+li.badge {margin-bottom:5px;}

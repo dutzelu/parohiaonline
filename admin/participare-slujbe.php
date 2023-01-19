@@ -19,7 +19,7 @@
 
             <div class="row zile-stabilite">
                  <div class="col-sm-12 col-xl-5 justify-content-between">
-                    <h1 class="h1 mb-2">Participare la slujbe pe timp de pandemie</h1>
+                    <h1 class="mb-2">Participare la slujbe pe timp de pandemie</h1>
                     <p>Dacă autoritățile impun un număr maxim de persoane în biserică la participarea la slujbe (de ex.: 30, 50, 100), atunci puteți crea aici o listă pentru înscrieri.</p>
                     <p class="fw-bold">Alege o zi pentru slujbă:</p>
 
@@ -155,14 +155,10 @@
                         /* bringing the controls together */
 
                         $controls = 
-                        '<form method="get">
-                            <div class="row justify-content-between align-items-center mb-5">
-                                <div class="col-sm-1 text-center">' . $previous_month_link . '</div>
-                                <div class="col-sm-3">' . $select_month_control . '</div>
-                                <div class="col-sm-1 text-center">' . $next_month_link . '</div> 
-                                <div class="col-sm-3">' . $select_year_control .  '</div> 
-                                <div class="col-sm-4"><button type="submit" name="pentru" value="' .$pentru . '" class="btn btn-outline-primary"/> '.' Schimbă luna și anul</button></div>
-                            </div>
+                        '<form method="get" class="calendar-complet">
+
+                        <div class="navigare"><div class="sageti">' .  $previous_month_link . ' ' . $next_month_link . '</div>' . $select_month_control . $select_year_control .  '<button type="submit" name="pentru" value="' .$pentru . '" class="btn btn-outline-primary"/>Schimbă</button></div>
+
                         </form>';
                         
                         echo $controls;
@@ -211,6 +207,7 @@
                                     <option value="Cateheză">Cateheză</option>
                                     <option value="Seară biblică">Seară biblică</option>
                                     <option value="Sfințirea Apei (Aghiazma)">Sfințirea Apei (Aghiazma)</option>
+                                    <option value="Sfințirea Apei (Aghiazma mare)">Sfințirea Apei (Aghiazma Mare)</option>
                                     <option value="Tedeum">Tedeum</option>
                                     <option value="Moliftele Sf. Vasile cel Mare">Moliftele Sf. Vasile cel Mare</option>
                                     <option value="Citirea Psaltirii">Citirea Psaltirii</option>
@@ -281,8 +278,10 @@
 
                     while ($data = mysqli_fetch_assoc($rezultate)){   
                             
+                        
+
                             $id_slujba= $data['id'];
-                            $data_start_fara_ora = date("d M Y", strtotime($data["data_start"]));
+                            $data_start_fara_ora = strftime('%e %b %Y',strtotime($data["data_start"]));
                             $ora_start = date("H:i", strtotime($data["data_start"]));
                             $ora_final = date("H:i", strtotime($data["data_final"]));
                             $ora_start_simpla = date("H", strtotime($data["data_start"]));

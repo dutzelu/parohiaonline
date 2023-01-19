@@ -58,7 +58,7 @@ if (isset($_POST['anunt'])) {
 
                             $continut_scurt = substr($data['continut'],0,100).'...';
                             $continut_scurt = strip_tags ($continut_scurt);
-                            $data_articolului =  date("d M. Y", strtotime($data["data"]));
+                            $data_articolului =  strftime('%e %b %Y',strtotime($data['data']));
 
                             echo '<a class="fs-6" href=anunt-unic.php?id=' . $data['id'] . '><li>';
                                 echo '<p class="titlu-anunt">' . $data['titlu'] .'</p>';

@@ -19,7 +19,7 @@
 
             <div class="row ultimele-programari">
 
-            <h4 class="h4">Adăugă un program de slujbe "SĂPTĂMÂNAL"</h4>
+            <h1>Adăugă un program de slujbe "SĂPTĂMÂNAL"</h1>
 
             <ul>
                 <li class="badge bg-primary">fara zile calendaristice exacte | doar cu zile ale săptămânii</li>
@@ -83,6 +83,7 @@
                                 <option value="Cateheză">Cateheză</option>
                                 <option value="Seară biblică">Seară biblică</option>
                                 <option value="Sfințirea Apei (Aghiazma)">Sfințirea Apei (Aghiazma)</option>
+                                <option value="Sfințirea Apei (Aghiazma mare)">Sfințirea Apei (Aghiazma Mare)</option>
                                 <option value="Tedeum">Tedeum</option>
                                 <option value="Moliftele Sf. Vasile cel Mare">Moliftele Sf. Vasile cel Mare</option>
                                 <option value="Citirea Psaltirii">Citirea Psaltirii</option>

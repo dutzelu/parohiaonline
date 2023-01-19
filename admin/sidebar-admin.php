@@ -1,7 +1,7 @@
 
 <div class="row">
   <div class="col-12">
-      <div class="mt-4  d-none 	d-md-none d-lg-block d-sm-block d-sm-none d-md-block logo"><img src="../images/logo-parohiaonline.gif" ></div>
+      <div class="mt-4  d-none 	d-md-none d-lg-block d-sm-block d-sm-none d-md-block logo"><a href="<?php echo BASE_URL;?>admin/admin.php"><img src="../images/logo-parohiaonline.gif" ></a></div>
     </div>
 
     <div class="col-12" style="padding:0">
@@ -18,7 +18,7 @@
           <ul class="navbar-nav admin p-4">
 
             <li class="nav-item ">
-              <a class="nav-link" href="<?php echo BASE_URL . 'admin/';?>admin.php">Prima pagină</a>
+              <a class="nav-link" href="<?php echo BASE_URL;?>admin/admin.php">Prima pagină</a>
             </li>
 
             <li class="nav-item dropdown">

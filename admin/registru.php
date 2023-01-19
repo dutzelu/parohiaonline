@@ -120,7 +120,7 @@
                               }
 
                               ?></td>
-                              <td><?php echo date("d M Y", strtotime($row['data_si_ora'])); ?></td>
+                              <td><?php echo strftime('%e %b %Y',strtotime($row['data_si_ora'])); ?></td>
                               <td><?php echo date("H:i", strtotime($row['data_si_ora'])); ?></td>
                               <td><?php echo $row['telefon']; ?></td>
                               <td><?php nume_user ($user_id); ?></td>

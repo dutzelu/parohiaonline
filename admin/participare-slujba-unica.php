@@ -45,7 +45,7 @@ $i = 1;
                         $numar_persoane = $data['numar_persoane'];
                         $rezervari = $data['rezervari'];
                      
-                        echo "<p class='rosu'>" . $slujba . " | " .  date("d M. Y", strtotime($data["data_start"])) . " | " .  date("H:i", strtotime($data["data_start"]));
+                        echo "<p class='rosu'>" . $slujba . " | " .  strftime('%e %b %Y',strtotime($data_start)) . " | " .  date("H:i", strtotime($data["data_start"]));
                         
                     }
                 echo '<div class="col-xl-6">';

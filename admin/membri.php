@@ -46,6 +46,7 @@ $id = $_SESSION['parohie_id'];
                   <th scope="col">Telefon</th>
                   <th scope="col">Username</th>
                   <th scope="col">Email</th>
+                  <th scope="col">Data înregistrării</th>
                   <th scope="col">Verificat</th>
                   <th scope="col">Status</th>
                   <th scope="col">Acțiuni</th>
@@ -98,6 +99,7 @@ $id = $_SESSION['parohie_id'];
                   <td><?php echo $row['telefon'];?></td>
                   <td><?php echo $row['username'];?></td>
                   <td><?php echo $row['email'];?></td>
+                  <td><?php echo strftime('%e %b %Y',strtotime($row['data_inregistrarii']));?></td>
                   <td><?php if ($row['verified'] == 1){echo '<img src="../images/check.png">  ';} else {echo '<img src="../images/xbutton.png">';};?></td>
                   <td><?= ($row['blocat'] == 1) ? "<span class='red'>blocat</span>" :  "activ"; ?></td>
                   

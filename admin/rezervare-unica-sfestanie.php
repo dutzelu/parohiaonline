@@ -45,6 +45,7 @@ $stmt->bind_param('ii', $id_programare, $id);
 $result = $stmt->execute();
 $result = $stmt->get_result();
 
+echo '<p class="inapoi"><a href="registru.php?eveniment=programari_sfestanie"><i class="fas fa-chevron-circle-left"></i> Înapoi</a></p> ';
 
 while($data = $result->fetch_assoc()) {
 
@@ -53,59 +54,54 @@ while($data = $result->fetch_assoc()) {
   echo "<p>";
                   echo '<span class="nume">' . $nume . ' ' . $prenume . "</span>"; 
                
-                  echo ' <i class="fas fa-angle-double-right"></i> ';
+                  echo "<br>";
                   
                   echo ' <span class="albastru-inchis">' . $eveniment . ' </span>';
+                  
+                  echo "<br>";
 
-                  echo ' <i class="fas fa-angle-double-right"></i> ';
+                  echo '<span class="status ';
+                            
+                  switch($status) {
 
-                  echo '<span class="rosu">' . date("d M Y", strtotime($data_si_ora)) . '</span>';
+                      case "acceptata": echo 'acceptata';
+                      break;
+                      case "respinsa": echo 'respinsa';
+                      break;
+                      case "anulata": echo 'respinsa';
+                      break;
+                      case "detalii": echo 'detalii';
+                      break;
+                      case "în așteptare": echo 'in-asteptare';
+                      break;
+                  }
+                  
+                  echo '">' .$status . '</span>';
+                      
 
-                  echo ' <i class="fas fa-angle-double-right"></i> ';
+                  echo '<i class="fas fa-angle-double-right"></i>';
+
+                  echo '<span class="rosu">' . strftime('%e %b %Y',strtotime($data_si_ora)) . '</span>';
+
+                  echo '<i class="fas fa-angle-double-right"></i>';
 
                   echo '<span class="rosu">' . date("H:i", strtotime($data_si_ora)) . '</span>';
+ ?>
 
-              echo "</p>";
+                </p>
 
-              echo "<p class='butoane'>";
+                <p class="butoane">
 
-              echo '<span class="status ';
-                            
-              switch($status) {
+                  <a href="accepta-programare-sfestanie.php?id=<?php echo $id_programare;?>&status=acceptata" role="button" class="btn btn-success">Acceptă</a>
+                  
+                  <a href="rezervare-unica-sfestanie.php?id=<?php echo $id_programare;?>&status=respinsa" role="button" class="btn btn-danger">Respinge</a>
 
-                  case "acceptata": echo 'acceptata';
-                  break;
-                  case "respinsa": echo 'respinsa';
-                  break;
-                  case "anulata": echo 'respinsa';
-                  break;
-                  case "detalii": echo 'detalii';
-                  break;
-                  case "în așteptare": echo 'in-asteptare';
-                  break;
-              }
-              
-              echo '">' .$status . '</span>';
+                  <a href="actiuni.php?eveniment=programari_sfestanie&data=<?php echo date("Y-m-d", strtotime($data_si_ora)); ?>&stergeid=<?php echo $id_programare; ?>" class="sterge btn btn-outline-secondary" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');" role="button" >Șterge</a>
 
-              echo '<a href="registru.php?eveniment=programari_sfestanie"><i class="fas fa-chevron-circle-left"></i> Înapoi</a> ';
 
-              echo '<a href="accepta-programare-sfestanie.php?id=' . $id_programare . '&status=acceptata" role="button"><i class="verde far fa-check-circle"></i>  Acceptă</a>';
+                  <?php  }?>
 
-              echo '<a href="rezervare-unica-sfestanie.php?id=' . $id_programare . '&status=respinsa" role="button" ><i class="orange fas fa-backspace"></i> Respinge</a>';?>
-
-              <a href="actiuni.php?eveniment=programari_sfestanie&data=<?php echo date("Y-m-d", strtotime($data_si_ora)); ?>&stergeid=<?php echo $id_programare; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
-              <i class="rosu fas fa-trash-alt"></i> Șterge</a>
-
-              <?php
-              
-            
-             
-            echo '</p>';
-
- 
-
-          }?>
-  
+                </p>
               
           <div class="tabel-responsive">
               <table class='table rezervare-unica'>
