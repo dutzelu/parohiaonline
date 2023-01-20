@@ -38,28 +38,18 @@ while($data = $result->fetch_assoc()) {
 
     include "includes/extras-programare-spovedanie.php";
 
+    echo '<p class="inapoi"><a href="home-spovedanie.php"><i class="fas fa-chevron-circle-left"></i> Înapoi</a></p>';
+
     echo "<p>";
 
 
         echo '<span class="nume">' . $data['nume'] . ' ' . $data['prenume'] . "</span>"; 
       
+        echo "<br>";
 
-        echo ' <i class="fas fa-angle-double-right"></i> ';
-        
         echo ' <span class="albastru-inchis">' . $eveniment . ' </span>';
-
-        echo ' <i class="fas fa-angle-double-right"></i> ';
-
-        echo '<span class="rosu">' . date("d M Y", strtotime($data_si_ora)) . '</span>';
-
-        echo ' <i class="fas fa-angle-double-right"></i> ';
-
-        echo '<span class="rosu">' . date("H:i", strtotime($data_si_ora)) . '</span>';
-
-    echo "</p>";
         
-    
-    echo "<p class='butoane'>";
+        echo "<br>";
 
         echo '<span class="status ';
                       
@@ -79,18 +69,26 @@ while($data = $result->fetch_assoc()) {
 
         echo '">' .$status . '</span>';
 
-        echo '<a href="home-spovedanie.php"><i class="fas fa-chevron-circle-left"></i> Înapoi</a> ';
+        echo '<i class="fas fa-angle-double-right"></i>';
 
+        echo '<span class="rosu">' . date("d M Y", strtotime($data_si_ora)) . '</span>';
+
+        echo '<i class="fas fa-angle-double-right"></i>';
+
+        echo '<span class="rosu">' . date("H:i", strtotime($data_si_ora)) . '</span>';
+
+ 
         ?>
 
-        <a href="sterge.php?eveniment=programari_spovedanie&data=<?php echo date("Y-m-d", strtotime($data_si_ora)); ?>&stergeid=<?php echo $id_programare; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
-          <i class="rosu fas fa-trash-alt"></i> Șterge</a>
+        </p>
+        
+        <p class='butoane'>
 
-        <?php
-                    
-    echo '</p>';
-    ?>
 
+          <a style="width:30%" href="sterge.php?eveniment=programari_spovedanie&data=<?php echo date("Y-m-d", strtotime($data_si_ora)); ?>&stergeid=<?php echo $id_programare; ?>" class="sterge btn btn-danger" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');" role="button">Șterge</a>
+
+        </p>
+        <?php }?>
     <div class="tabel-responsive">
       <table class='table rezervare-unica'>
       
@@ -105,7 +103,7 @@ while($data = $result->fetch_assoc()) {
         if (isset($_GET['edit'])) { 
           echo '<p id ="dispari" class="btn btn-success"> Rezervarea a fost editată cu succes</p>' ;
         } 
-      } ?>
+      ?>
 
       <tr>
         <td class="evident">Nume: </td>

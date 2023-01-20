@@ -210,7 +210,7 @@ for($list_day = 1; $list_day <= $days_in_month; $list_day++):
     
     /* select month control */
     
-    $select_month_control = '<select name="month" id="month" class="form-select-sm mb-3">';
+    $select_month_control = '<select name="month" id="month" class="form-select">';
  for($x = 1; $x <= 12; $x++) {
      $select_month_control.= '<option value="'.$x.'"'.($x != $month ? '' : ' selected="selected"').'>'.strftime('%B',mktime(0,0,0,$x,1,$year)).'</option>';
     }
@@ -219,7 +219,7 @@ for($list_day = 1; $list_day <= $days_in_month; $list_day++):
     /* select year control */
     
     $year_range = 7;
-    $select_year_control = '<select name="year" id="year" class="form-select-sm mb-3">';
+    $select_year_control = '<select name="year" id="year" class="form-select">';
     for($x = ($year-floor($year_range/2)); $x <= ($year+floor($year_range/2)); $x++) {
         $select_year_control.= '<option value="'.$x.'"'.($x != $year ? '' : ' selected="selected"').'>'.$x.'</option>';
     }
@@ -235,9 +235,14 @@ for($list_day = 1; $list_day <= $days_in_month; $list_day++):
     
     /* bringing the controls together */
     
-    $controls = '<form method="get">' . '<div class="capcalendar text-center">' . $previous_month_link .$select_month_control .$next_month_link .$select_year_control . ' <button type="submit" name="pentru" value="' .$pentru . '" class="btn btn-primary"/> '.' Schimbă luna și anul</button></div></form>';
- echo $controls;
- echo draw_calendar($month,$year);
+    $controls = 
+    '<form method="get" class="calendar-complet">
+        
+            <div class="navigare"><div class="sageti">' .  $previous_month_link . ' ' . $next_month_link . '</div>' . $select_month_control . $select_year_control .  '<button type="submit" class="btn btn-outline-primary"/> '.' Schimbă</button></div>
+   
+    </form>';
+    echo $controls;
+    echo draw_calendar($month,$year);
  
  
  ?>

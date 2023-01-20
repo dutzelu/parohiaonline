@@ -37,7 +37,6 @@ while ($data = mysqli_fetch_assoc($result)){
 
         <?php include "header-mic-frontend.php";?>
 
-  
         <div class="mt-3 wrapper-rezervare-unica">
 
  <?php    
@@ -65,7 +64,7 @@ while ($data = mysqli_fetch_assoc($result)){
 
     echo "</p>";
 
-    echo "<p class='butoane'>";
+    echo "<p>";
 
     echo '<span class="status ';
                     

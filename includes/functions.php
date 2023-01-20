@@ -238,6 +238,28 @@ function detalii_user ($user_id) {
 
 }
 
+function detalii_parohie ($parohie_id) {
+
+  global $conn, $nume_parohie, $localitatea_parohiei, $hramul_bisericii, $adresa_bisericii, $telefonul_parohiei, $emailul_parohiei, $preot_paroh;
+
+  $sql="Select * FROM parohii WHERE id = ?";
+  $stmt = mysqli_stmt_init($conn);
+  mysqli_stmt_prepare($stmt, $sql);
+  mysqli_stmt_bind_param($stmt, "i", $parohie_id);
+  mysqli_stmt_execute($stmt);
+  $rezultat = mysqli_stmt_get_result($stmt);
+  while ($data = mysqli_fetch_assoc($rezultat)) {
+     $nume_parohie = $data['nume_parohie'];
+     $localitatea_parohiei = $data['localitatea'];
+     $hramul_bisericii = $data['hramul_bisericii'];
+     $adresa_bisericii = $data['adresa_bisericii'];
+     $telefonul_parohiei = $data['telefon'];
+     $emailul_parohiei = $data['email'];
+     $preot_paroh = $data['numele_preotului'];
+  }
+
+}
+
 // programari în ultimele 30 de zile
 
 function program_ultimele_30_zile ($tabel_programari, $parohie_id) {
@@ -491,4 +513,14 @@ function controls() {
                 </form>';
     echo $controls;
 
+}
+
+// Împarte numărul de telefon în grupuri lizibile
+
+function space($str, $step, $reverse = false) {
+    
+  if ($reverse)
+      return strrev(chunk_split(strrev($str), $step, ' '));
+  
+  return chunk_split($str, $step, ' ');
 }

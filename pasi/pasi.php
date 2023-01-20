@@ -6,7 +6,7 @@ if ($pentru == 'spovedanie' || $pentru == 'sfestanie') {
     $y = 6;
 }
 
-echo '<p class="mb-5">';
+echo '<p class="mt-2 mb-2">';
 for ($x = 1; $x <= $y; $x++) {
 
     if ($x == $numar_pas) {

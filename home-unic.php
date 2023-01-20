@@ -31,6 +31,8 @@ while($data = $result->fetch_assoc()) {
 
     include "includes/extras-programare.php";
 
+    echo '<p class="inapoi"><a href="home-botez.php"><i class="fas fa-chevron-circle-left"></i> Înapoi</a></p> ';
+
     echo "<p>";
 
         if (empty($data['nume_tata'])) {
@@ -39,22 +41,11 @@ while($data = $result->fetch_assoc()) {
           echo '<span class="nume">' . $data['nume_tata'] . ' ' . $data['prenume_tata'] . "</span>"; 
         }
 
-        echo ' <i class="fas fa-angle-double-right"></i> ';
+        echo "<br>";
         
         echo ' <span class="albastru-inchis">' . $eveniment . ' </span>';
-
-        echo ' <i class="fas fa-angle-double-right"></i> ';
-
-        echo '<span class="rosu">' . date("d M Y", strtotime($data_si_ora)) . '</span>';
-
-        echo ' <i class="fas fa-angle-double-right"></i> ';
-
-        echo '<span class="rosu">' . date("H:i", strtotime($data_si_ora)) . '</span>';
-
-    echo "</p>";
         
-    
-    echo "<p class='butoane'>";
+        echo "<br>";
 
         echo '<span class="status ';
                       
@@ -74,18 +65,28 @@ while($data = $result->fetch_assoc()) {
 
         echo '">' .$status . '</span>';
 
-        echo '<a href="home-botez.php"><i class="fas fa-chevron-circle-left"></i> Înapoi</a> ';
+        echo '<i class="fas fa-angle-double-right"></i>';
 
-        echo '<a href="anuleaza.php?id-anulare=' . $id_programare . '&eveniment=' . preg_replace('/\s+/', '', $eveniment) . '"><i class="orange fas fa-backspace"></i> Anuleaza</a>'; ?>
+        echo '<span class="rosu">' . date("d M Y", strtotime($data_si_ora)) . '</span>';
 
-        <a href="sterge.php?eveniment=programari_botez&data=<?php echo date("Y-m-d", strtotime($data_si_ora)); ?>&stergeid=<?php echo $id_programare; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
-          <i class="rosu fas fa-trash-alt"></i> Șterge</a>
+        echo '<i class="fas fa-angle-double-right"></i>';
 
-        <?php
-                    
-        echo '<a href="home-unic-edit.php?id=' . $id_programare . '"><i class="albastru-inchis far fa-edit"></i> Modifică</a> ';
+        echo '<span class="rosu">' . date("H:i", strtotime($data_si_ora)) . '</span>';
 
-       ?>
+        ?>
+
+        </p>
+        
+    
+        <p class='butoane'>
+
+          <a href="anuleaza.php?id-anulare=<?php echo $id_programare . "&eveniment=" . preg_replace('/\s+/', '', $eveniment);?>" role="button" class="btn btn-success">Anuleaza</a>
+
+          <a href="sterge.php?eveniment=programari_botez&data=<?php echo date("Y-m-d", strtotime($data_si_ora)); ?>&stergeid=<?php echo $id_programare; ?>" class="sterge btn btn-danger" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');" role="button">Șterge</a>
+
+          <a href="home-unic-edit.php?id=<?php echo $id_programare ?>" role="button" class="btn btn-outline-secondary">Modifică</a> 
+              
+         </p>
 
         <div class="tabel-responsive">
         <table class='table rezervare-unica'>

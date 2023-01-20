@@ -26,9 +26,9 @@ $rezervari = '';
 
           <?php include "header-mic-frontend.php";?>
 
-           <div class="row mt-3 ultimele-programari">
+           <div class="row ultimele-programari">
 
-              <div class="col-sm-12 calendar-frontend">
+              <div class="calendar-frontend">
               <?php include "pasi/pasi.php";?>
 
               <h1 class="h1">Alegeți ziua dorită pentru <span class="albastru"><?php echo $eveniment; ?></span> </h1>

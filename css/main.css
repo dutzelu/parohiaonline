@@ -226,7 +226,7 @@ p.butoane a {font-size:14px; margin-right:10px; width: 100%; }
 p.butoane i {margin:0 0 0 20px; font-size:16px}
 p.butoane {max-width:450px!important}
 
-.butoane .btn-success {background-color: #4374b9;}
+.butoane .btn-success {background-color: #4374b9; border:none;}
 .butoane .btn-success:hover {
   background-color: #5490e5;
   border-color: #4374b9;
@@ -613,7 +613,15 @@ a.nav-link, #navbarSupportedContent > ul > li.nav-item.dropdown.show > div > a.d
 
 .registru {margin-left:20px;}
 .registru a {margin-bottom:10px}
-
+table#example {margin:15px 0!important; font-size:12px;}
+div.dataTables_wrapper div.dataTables_info, #example_length {
+  margin-left: 7px;
+  font-size:12px;
+}
+#example_filter {font-size:12px;}
+div.dataTables_wrapper div.dataTables_filter input {
+  max-width: 142px;
+}
 
 .potir {background:url('../images/potir-negru.png') no-repeat left center !important; color:#4374B9; padding-left:40px!important}
 .membri {background:url('../images/membri.png') no-repeat left center !important; color:#4374B9;padding-left:40px!important}

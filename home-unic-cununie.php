@@ -39,59 +39,56 @@ while($data = $result->fetch_assoc()) {
 
     include 'includes/extras-programare-cununie.php';
 
+    echo '<p class="inapoi"><a href="home-cununie.php"><i class="fas fa-chevron-circle-left"></i> Înapoi</a></p> ';
+
     echo "<p>";
   
     echo '<span class="nume">' . $data['nume_mire'] . ' ' . $data['prenume_mire'] . "</span>"; 
-   
 
-    echo ' <i class="fas fa-angle-double-right"></i> ';
-    
+    echo '<br>';
     echo ' <span class="albastru-inchis">' . $eveniment . ' </span>';
+    echo '<br>';
+    
+    echo '<span class="status ';
+    
+    switch($status) {
+      
+      case "acceptata": echo 'acceptata';
+      break;
+      case "respinsa": echo 'respinsa';
+      break;
+      case "anulata": echo 'respinsa';
+        break;
+        case "detalii": echo 'detalii';
+        break;
+        case "în așteptare": echo 'in-asteptare';
+        break;
+    }
 
-    echo ' <i class="fas fa-angle-double-right"></i> ';
+    echo '">' .$status . '</span>';
+
+    echo '<i class="fas fa-angle-double-right"></i>';
 
     echo '<span class="rosu">' . date("d M Y", strtotime($data_si_ora)) . '</span>';
 
-    echo ' <i class="fas fa-angle-double-right"></i> ';
+    echo '<i class="fas fa-angle-double-right"></i>';
 
     echo '<span class="rosu">' . date("H:i", strtotime($data_si_ora)) . '</span>';
 
-    echo "</p>";
-        
+    ?>
 
-    echo "<p class='butoane'>";
+    </p>
+    
+    <p class='butoane'>
 
-        echo '<span class="status ';
-                      
-        switch($status) {
+        <a href="anuleaza.php?id-anulare=<?php echo $id_programare . "&eveniment=" . preg_replace('/\s+/', '', $eveniment);?>" role="button" class="btn btn-success">Anuleaza</a>
 
-            case "acceptata": echo 'acceptata';
-            break;
-            case "respinsa": echo 'respinsa';
-            break;
-            case "anulata": echo 'respinsa';
-            break;
-            case "detalii": echo 'detalii';
-            break;
-            case "în așteptare": echo 'in-asteptare';
-            break;
-        }
+        <a href="sterge.php?eveniment=programari_cununie&data=<?php echo date("Y-m-d", strtotime($data_si_ora)); ?>&stergeid=<?php echo $id_programare; ?>" class="sterge btn btn-danger" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');" role="button">Șterge</a>
 
-        echo '">' .$status . '</span>';
-
-        echo '<a href="home.php"><i class="fas fa-chevron-circle-left"></i> Înapoi</a> ';
-
-        echo '<a href="anuleaza.php?id-anulare=' . $id_programare . '&eveniment=' . preg_replace('/\s+/', '', $eveniment) . '"><i class="orange fas fa-backspace"></i> Anuleaza</a>'; ?>
-
-        <a href="sterge.php?eveniment=programari_botez&data=<?php echo date("Y-m-d", strtotime($data_si_ora)); ?>&stergeid=<?php echo $id_programare; ?>" class="sterge" onclick="return confirm('Sunteți sigur că vreți să ștergeți această programare?');">
-        <i class="rosu fas fa-trash-alt"></i> Șterge</a>
-
-        <?php
-                    
-        echo '<a href="home-unic-cununie-edit.php?id=' . $id_programare . '"><i class="albastru-inchis far fa-edit"></i> Modifică</a> ';
-
-        echo '</p>'; 
-        ?>
+      <a href="home-unic-cununie-edit.php?id=<?php echo $id_programare ?>" role="button" class="btn btn-outline-secondary">Modifică</a> 
+    
+    </p>
+    
 
         <div class="tabel-responsive">  
               

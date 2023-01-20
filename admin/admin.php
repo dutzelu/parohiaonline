@@ -42,6 +42,7 @@
         // datele programarilor cu orice status
 
           $query_orice_status = "
+          
           Select id, user_id, 'Botez' as Programare, concat(nume_tata, ' ', prenume_tata) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status, introdus_la_data FROM programari_botez WHERE parohie_id = $id
 
           UNION ALL 
@@ -60,20 +61,9 @@
 
           Select id, user_id, 'Parastas' as Programare, concat(nume, ' ', prenume) as Nume , DATE(data_si_ora) as Data, DATE_FORMAT(data_si_ora,'%H:%i') as Ora, status, introdus_la_data FROM programari_parastas WHERE parohie_id = $id
           
-
           ORDER BY introdus_la_data DESC 
           
           LIMIT 50";
-
-          $stmt = $conn->prepare($query_orice_status);
-          $result2 = $stmt->execute();
-          $result2 = $stmt->get_result();
-                
-          $rows2 = array();
-          while ($row2 = mysqli_fetch_assoc($result2)) { 
-              $id_programare2 = $row2['id'];
-              $rows2[] = $row2;
-          }
 
 
 ?>
@@ -199,7 +189,7 @@
             <div class="row justify-content-start mt-3 g-4 urmeaza">
                 <div class="col-md-4 col-sm-12 urmeaza-in-calendar">
 
-                   <h1>Calendar (status: acceptat)</h1>
+                   <p class="fw-bold">Calendar (status: acceptat)</p>
                     
                     <?php 
                     
@@ -277,7 +267,12 @@
                         <tbody >
 
                     
-                            <?php foreach ($rows2 as $row2) { ?>
+                            <?php 
+                            
+                            $stmt = $conn->prepare($query_orice_status);
+                            $result2 = $stmt->execute();
+                            $result2 = $stmt->get_result();
+                            while ($row2 = mysqli_fetch_assoc($result2)) { ?>
 
                             <tr class='clickable-row' data-href='<?php 
                             
@@ -408,9 +403,18 @@
 </div>
 
 <script>
+
+
 $(document).ready(function () {
-    $('#example').DataTable();
+    $('#example').DataTable({
+        "order": [],
+        language: {
+            url: '../js/dataTablesRomana.json'
+        }
+    });
 });
+
+
 </script>
 
 

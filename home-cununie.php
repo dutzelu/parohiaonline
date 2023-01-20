@@ -24,7 +24,7 @@
                   }
              ?>
              <div class="table-responsive">
-                    <table class="table">
+                    <table id="example" class="table">
 
                         <thead>
                             <tr>
@@ -140,10 +140,6 @@
 
                     </table>
                 </div>
-                    <?php 
-                    $link_paginatie = 'home-cununie.php?'; 
-                    include "includes/paginatie.php"; ?>
-
  
 </div>    
 </div>
@@ -152,6 +148,18 @@
   
 </div>
 
+
+<script>
+$(document).ready(function () {
+    $('#example').DataTable({
+        "order": [],
+        language: {
+            url: 'js/dataTablesRomana.json'
+        }
+    });
+});
+
+</script>
 </body>
 </html>
 

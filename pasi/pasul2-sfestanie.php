@@ -92,7 +92,7 @@ foreach ($ore as $key => $ora) {
     
     if (!in_array($ora, $ore_rezervate)) {
         echo '
-        <input type="radio" class="btn-check" name="ora" id="ora' . $key . '" autocomplete="off" value="' . date("H:i", strtotime($ora)) . '"> 
+        <input type="radio" class="btn-check" name="ora" id="ora' . $key . '" autocomplete="off" value="' . date("H:i", strtotime($ora)) . '" required> 
         <label class="btn btn-outline-primary m-1" for="ora' . $key . '">' . date("H:i", strtotime($ora)) . '</label>'; 
       }
       

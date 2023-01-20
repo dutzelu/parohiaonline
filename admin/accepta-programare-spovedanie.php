@@ -34,4 +34,4 @@ if ( isset ($_GET['back']) ) {
 
 ?>
 
-<script> location.replace("rezervare-unica-spovedanie.php?id=<?php echo $id; ?>"); </script>
+<script> location.replace("registru.php?eveniment=programari_spovedanie#<?php echo $id; ?>"); </script>

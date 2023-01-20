@@ -60,9 +60,20 @@ if (isset($_GET['id'])) {
         <div class="row mt-3 ultimele-programari">
 
               <?php if (isset($_GET['succes'])) { 
-                echo '<p class="mb-2">Cererea ta de programare online s-a finalizat cu succes. În cel mai scurt timp vei primi un EMAIL privind starea cererii tale de programare. Dacă este cazul, ți se vor solicita detalii suplimentare. Dacă dorești să ceri lămuriri suplimentare privind cererea ta de programare făcută, te rugăm să suni la numărul de telefon X sau să trimiți un mesaj la emailul X</p>'
+
+                detalii_parohie ($parohie_id);
+                $telefonul_parohiei = space($telefonul_parohiei, 3, true);
+                
+                echo '<p class="mb-2"><b>Cererea ta de programare online s-a finalizat cu succes.</b> În cel mai scurt timp vei primi un email privind starea cererii tale de programare. Dacă este cazul, ți se vor solicita detalii suplimentare.</p> 
+                
+                <p>Dacă dorești să ceri lămuriri suplimentare privind cererea ta de programare făcută, te rugăm să suni la <b>numărul de telefon</b> ' .  $telefonul_parohiei . ' (' . $preot_paroh . ') sau să trimiți un <b>email la adresa </b>' . $emailul_parohiei . ' </p>
+                
+                <p><a href="admin-client.php" class="btn btn-primary" role="button">Prima pagină</a></p>'
+
                 ;
+
                 $succes = $_GET['succes'];
+
                 } else {$succes = '';} ?>
 
               <div class="col-sm-12">

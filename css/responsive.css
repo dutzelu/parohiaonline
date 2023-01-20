@@ -18,6 +18,7 @@
 
     li.badge {white-space:unset;width:100%;}
     #alte_observatii {min-height:100px;}
+
  
   }
 
@@ -33,9 +34,18 @@
     text-align: left!important;
 }
 
-  #example_filter {margin:5px 0 0 -12px}
+   
+#example_filter {
+  font-size: 12px;
+  margin-left: -5px;
+  margin-top: 5px;
+}
 
-  #example_wrapper input.form-control {max-width:130px;}
+div.dataTables_wrapper div.dataTables_filter input {
+  max-width: 182px;
+}
+
+ 
 
   }
 

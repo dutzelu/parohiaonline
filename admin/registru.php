@@ -197,8 +197,14 @@
 
 <script>
 $(document).ready(function () {
-    $('#example').DataTable();
+    $('#example').DataTable({
+        "order": [],
+        language: {
+            url: '../js/dataTablesRomana.json'
+        }
+    });
 });
+
 </script>
 
 </body>
