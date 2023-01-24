@@ -1,7 +1,6 @@
 <?php
  $an_si_luna = $selected_year . '-' . $selected_month;
  $zile_programate = [];
-       
  
          /* draws a calendar */
          function draw_calendar($month,$year) {
@@ -138,7 +137,7 @@ ORDER BY Data ASC";
  
  $select_month_control = '<select name="month" id="month" class="d-inline form-select">';
  for($x = 1; $x <= 12; $x++) {
- $select_month_control.= '<option value="'.$x.'"'.($x != $month ? '' : ' selected="selected"').'>'.strftime('%B',mktime(0,0,0,$x,1,$year)).'</option>';
+ $select_month_control.= '<option value="'.$x.'"'.($x != $month ? '' : ' selected="selected"').'>'.$formatter->format(mktime(0,0,0,$x,1,$year)).'</option>';
  }
  $select_month_control.= '</select>';
  

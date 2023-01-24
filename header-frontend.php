@@ -2,6 +2,8 @@
       include __DIR__ .'/includes/functions.php';
 
 setlocale(LC_TIME, array('ro.utf-8', 'ro_RO.UTF-8', 'ro_RO.utf-8', 'ro', 'ro_RO', 'ro_RO.ISO8859-2'));  
+$formatter_zi_luna_an = new IntlDateFormatter('ro_RO', null, null, null, null, 'L LLLL Y');
+$formatter_zi_sapt = new IntlDateFormatter('ro_RO', null, null, null, null, 'EEEE');
 
 $user_id = $_SESSION['user_id'];
 

@@ -15,92 +15,92 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 
 
-class database{
+// class database{
 
-    public $que;
+//     public $que;
 
-    private $servername='localhost';
-    private $username='root';
-    private $password='';
-    private $dbname='parohiaonline';
-    private $result=array();
-    private $mysqli='';
-
-
-    public function __construct(){
-        $this->mysqli = new mysqli($this->servername,$this->username,$this->password,$this->dbname);
-    }
+//     private $servername='localhost';
+//     private $username='root';
+//     private $password='';
+//     private $dbname='parohiaonline';
+//     private $result=array();
+//     private $mysqli='';
 
 
-    public function insert($table,$para=array()){
-
-        $table_columns = implode(',', array_keys($para));
-
-        $table_value = implode("','", $para);
-
-        $sql="INSERT INTO $table($table_columns) VALUES('$table_value')";
-
-        $result = $this->mysqli->query($sql);
-
-    }
+//     public function __construct(){
+//         $this->mysqli = new mysqli($this->servername,$this->username,$this->password,$this->dbname);
+//     }
 
 
-    public function update($table,$para=array(),$id){
+//     public function insert($table,$para=array()){
 
-        $args = array();
+//         $table_columns = implode(',', array_keys($para));
 
-        foreach ($para as $key => $value) {
+//         $table_value = implode("','", $para);
 
-            $args[] = "$key = '$value'"; 
+//         $sql="INSERT INTO $table($table_columns) VALUES('$table_value')";
 
-        }
+//         $result = $this->mysqli->query($sql);
 
-        $sql="UPDATE  $table SET " . implode(',', $args);
-
-        $sql .=" WHERE $id";
-
-        $result = $this->mysqli->query($sql);
-    }
+//     }
 
 
-    public function delete($table,$id){
+//     public function update($table,$para=array(),$id){
 
-        $sql="DELETE FROM $table";
+//         $args = array();
 
-        $sql .=" WHERE $id ";
+//         foreach ($para as $key => $value) {
 
-        $sql;
+//             $args[] = "$key = '$value'"; 
 
-        $result = $this->mysqli->query($sql);
-    }
+//         }
+
+//         $sql="UPDATE  $table SET " . implode(',', $args);
+
+//         $sql .=" WHERE $id";
+
+//         $result = $this->mysqli->query($sql);
+//     }
 
 
-    public $sql;
+//     public function delete($table,$id){
+
+//         $sql="DELETE FROM $table";
+
+//         $sql .=" WHERE $id ";
+
+//         $sql;
+
+//         $result = $this->mysqli->query($sql);
+//     }
 
 
-    public function select($table,$rows="*",$where = null, $altele=''){
+//     public $sql;
 
-        if ($where != null) {
 
-            $sql="SELECT $rows FROM $table WHERE $where $altele";
+//     public function select($table,$rows="*",$where = null, $altele=''){
 
-        }else{
+//         if ($where != null) {
 
-            $sql="SELECT $rows FROM $table $altele";
-        }
+//             $sql="SELECT $rows FROM $table WHERE $where $altele";
+
+//         }else{
+
+//             $sql="SELECT $rows FROM $table $altele";
+//         }
         
-        $this->sql = $result = $this->mysqli->set_charset("utf8");
-        $this->sql = $result = $this->mysqli->query($sql);
+//         $this->sql = $result = $this->mysqli->set_charset("utf8");
+//         $this->sql = $result = $this->mysqli->query($sql);
 
-    }
+//     }
 
 
-    public function __destruct(){
+//     public function __destruct(){
 
-        $this->mysqli->close();
+//         $this->mysqli->close();
 
-    }
+//     }
 
-}
+// }
 
 ?>

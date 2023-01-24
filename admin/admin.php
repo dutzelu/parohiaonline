@@ -239,7 +239,7 @@
                         
                         ?>
 
-                        <p class="mt-5"><a class="btn btn-primary" href="calendar-complet.php?<?php echo 'day=' . $day . '&month=' . $month . '&year=' . $year;?>" role="button">Vezi Calendar complet</a>  </p>
+                        <p class="mt-5"><a class="btn btn-primary" href="calendar-complet.php?<?php echo 'day=' . intval($day) . '&month=' . intval($month) . '&year=' . $year;?>" role="button">Vezi Calendar complet</a>  </p>
 
                         </div>
 

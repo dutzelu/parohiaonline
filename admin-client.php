@@ -188,7 +188,7 @@ $ultima_zi = NULL;
                                 // dacă e zi calendaristică
                                 else {
                                     $time = strtotime($ziua);
-                                    echo strftime('%A',$time) . ', ' . strftime('%e %b %Y',$time);
+                                    echo $formatter_zi_sapt->format($time) . ', ' . $formatter_zi_luna_an->format($time);
                                 }
                             }?>
                         </td>

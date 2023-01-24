@@ -365,22 +365,22 @@ function afla_parohia() {
 
 // afla data Paștelui
 
-function data_pastelui($anul) {
+// function data_pastelui($anul) {
 
-    global $conn, $data_pastelui;
-    $query = "Select * from data_pastelui Where anul = ?";
+//     global $conn, $data_pastelui;
+//     $query = "Select * from data_pastelui Where anul = ?";
 
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param('i', $anul);
-    $rez = $stmt->execute();
-    $rez = $stmt->get_result();
+//     $stmt = $conn->prepare($query);
+//     $stmt->bind_param('i', $anul);
+//     $rez = $stmt->execute();
+//     $rez = $stmt->get_result();
 
-    while ($data = mysqli_fetch_assoc($rez)) {
-      $luna_pastelui = $data['luna'];
-      $ziua_pastelui = $data['ziua'];
-      $data_pastelui = date("d M Y", mktime(00, 00, 00, $luna_pastelui, $ziua_pastelui, $anul));
-    }
-}
+//     while ($data = mysqli_fetch_assoc($rez)) {
+//       $luna_pastelui = $data['luna'];
+//       $ziua_pastelui = $data['ziua'];
+//       $data_pastelui = date("d M Y", mktime(00, 00, 00, $luna_pastelui, $ziua_pastelui, $anul));
+//     }
+// }
 
 function aflaDuminici ($y,$m){ 
 
@@ -476,13 +476,13 @@ function afiseazaSfinti_luna ($month) {
 
 function controls() {
 
-    global $day, $month, $year, $pentru;
+    global $day, $month, $year, $pentru, $formatter;
 
     /* select month control */
-    
+  
     $select_month_control = '<select name="month" id="month" class="d-inline form-select">';
     for($x = 1; $x <= 12; $x++) {
-    $select_month_control.= '<option value="'.$x.'"'.($x != $month ? '' : ' selected="selected"').'>'.strftime('%B',mktime(0,0,0,$x,1,$year)).'</option>';
+    $select_month_control.= '<option value="'.$x.'"'.($x != $month ? '' : ' selected="selected"').'>'.$formatter->format(mktime(0,0,0,$x,1,$year)).'</option>';
     }
     $select_month_control.= '</select>';
     

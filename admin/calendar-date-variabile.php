@@ -1,6 +1,22 @@
              <?php
+
+            function data_pastelui($anul) {
+
+                global $conn, $data_pastelui;
+                $query = "Select * from data_pastelui Where anul = ?";
+
+                $stmt = $conn->prepare($query);
+                $stmt->bind_param('i', $anul);
+                $rez = $stmt->execute();
+                $rez = $stmt->get_result();
+
+                while ($data = mysqli_fetch_assoc($rez)) {
+                $luna_pastelui = $data['luna'];
+                $ziua_pastelui = $data['ziua'];
+                $data_pastelui = date("d M Y", mktime(00, 00, 00, $luna_pastelui, $ziua_pastelui, $anul));
+                }
+            }
              
-            
             $calendarMobil=[];
             $zi_aparte=[];
             $dezlegari=[];
