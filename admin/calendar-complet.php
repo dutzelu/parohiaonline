@@ -123,7 +123,7 @@ $zi = null;
                      $data_selectata = trim($data_selectata, "%");
                      $data_selectata = date('d M Y', strtotime($data_selectata));
 
-                     echo '<p class="dataCalendarComplet">' . strftime("%A, %d %B %Y", strtotime($data_selectata)) . '</strong>';
+                     echo '<p class="dataCalendarComplet">' . $formatter_zi_sapt->format(strtotime($data_selectata)) . ', '  .$formatter_zi_luna_an->format(strtotime($data_selectata)) . '</strong>';
                    
                      // Afișez datele variabile
 

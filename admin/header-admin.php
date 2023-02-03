@@ -12,7 +12,7 @@ if ( empty ($_SESSION['parohie_id']) ) {
 setlocale(LC_ALL, 'ro_RO');
  // luna în limba română
  $formatter = new IntlDateFormatter('ro_RO', null, null, null, null, 'MMMM');
- $formatter_zi_luna_an = new IntlDateFormatter('ro_RO', null, null, null, null, 'L MMM Y');
+ $formatter_zi_luna_an = new IntlDateFormatter('ro_RO', \IntlDateFormatter::SHORT, \IntlDateFormatter::NONE,  'Europe/Bucharest', null, 'L MMM Y');
  $formatter_zi_sapt = new IntlDateFormatter('ro_RO', null, null, null, null, 'EEEE');
 
 $id = $_SESSION['parohie_id'];

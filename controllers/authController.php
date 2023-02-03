@@ -110,7 +110,7 @@ if (isset($_POST['signup-btn'])) {
                 <p>Vă mulțumim că v-ați înscris pe site-ul parohiei noastre. Ați primit acest email pentru că doriti să faceți o programare pentru Taina Sfântului Botezul sau Taina Sfintei Cununii la biserica noastră. </p>
                 <p>Datele dvs. de acces sunt următoarele:<br> <strong>Username:</strong> ' .$username . ' <br /><strong>Parolă:</strong> pe care ați ales-o.</p>
                 <p>Vă rugăm să activați contul accesând linkul de mai jos:</p>
-                <a href="' . $url_site . '/verify_email.php?token=' . $token . '"> Verificați emailul dumneavoastră! </a>
+                <a href="' . $url_site . 'verify_email.php?token=' . $token . '"> Verificați emailul dumneavoastră! </a>
                 <p>Dacă ați uitat parola dați click aici: <a href="' .$url_site . '/recupereaza.php"> recuperează parola </a></p>
             </div>
             </body>

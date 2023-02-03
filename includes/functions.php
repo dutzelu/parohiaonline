@@ -476,7 +476,7 @@ function afiseazaSfinti_luna ($month) {
 
 function controls() {
 
-    global $day, $month, $year, $pentru, $formatter;
+    global $day, $month, $year, $pentru;
 
     /* select month control */
   

@@ -100,7 +100,7 @@ If ( isset ($_POST['inregistrare_parohie']) ) {
                 <p>Ați creat cu succes un cont pentru parohia dumneavoastră pe siteul parohiaonline.com</p>
                 <p>Datele dvs. de acces sunt următoarele:<br> <strong>Username:</strong> ' .$utilizator . ' <br /><strong>Parolă:</strong> pe care ați ales-o.</p>
                 <p>Vă rugăm să activați contul accesând linkul de mai jos:</p>
-                <a href="' . $url_site . '/verify_email.php?ptoken=' . $token . '"> Verificați emailul dumneavoastră! </a>
+                <a href="' . $url_site . 'verify_email.php?ptoken=' . $token . '"> Verificați emailul dumneavoastră! </a>
                 <p>Dacă ați uitat password dați click aici: <a href="' .$url_site . '/recupereaza.php"> recuperează parolă </a></p>
             </div>
             </body>
