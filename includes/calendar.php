@@ -116,18 +116,22 @@
  /* select month control */
  
  $select_month_control = '<select name="month" id="month" class="form-select">';
+
  for($x = 1; $x <= 12; $x++) {
- $select_month_control.= '<option value="'.$x.'"'.($x != $month ? '' : ' selected="selected"').'>'.strftime('%B',mktime(0,0,0,$x,1,$year)).'</option>';
+    $select_month_control.= '<option value="'.$x.'"'.($x != $month ? '' : ' selected="selected"').'>'.strftime('%B',mktime(0,0,0,$x,1,$year)).'</option>';
  }
+
  $select_month_control.= '</select>';
  
  /* select year control */
  
  $year_range = 7;
  $select_year_control = '<select name="year" id="year" class="form-select">';
+
  for($x = ($year-floor($year_range/2)); $x <= ($year+floor($year_range/2)); $x++) {
- $select_year_control.= '<option value="'.$x.'"'.($x != $year ? '' : ' selected="selected"').'>'.$x.'</option>';
+    $select_year_control.= '<option value="'.$x.'"'.($x != $year ? '' : ' selected="selected"').'>'.$x.'</option>';
  }
+
  $select_year_control.= '</select>';
  
  /* "next month" control */
@@ -137,13 +141,17 @@
  /* "previous month" control */
  
  $previous_month_link = '<a href="?month='.($month != 1 ? $month - 1 : 12).'&year='.    ($month != 1 ? $year : $year - 1). '&pentru='. $pentru .'" class="control"> &#10094; </a>';
+
+ // input ascuns pentru selectarea tipului de programare (botez, cununie, spovedanie, etc.) ca să apară în linkul formului după submit
+
+ $pentru = '<input type="hidden" name="pentru" value="'. $pentru . '"/>';
  
  /* bringing the controls together */
  
  $controls = 
  '<form method="get" class="calendar-complet">
      
-         <div class="navigare"><div class="sageti">' .  $previous_month_link . ' ' . $next_month_link . '</div>' . $select_month_control . $select_year_control .  '<button type="submit" class="btn btn-outline-primary"/> '.' Schimbă</button></div>
+         <div class="navigare"><div class="sageti">' .  $previous_month_link . ' ' . $next_month_link . '</div>' . $select_month_control . $select_year_control .   $pentru  . '<button type="submit" class="btn btn-outline-primary"/> '.' Schimbă</button></div>
 
  </form>';
  
